@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0000000000000000000000000000BEEF, type: 3}
+  m_Name: Level_Preparation
+  m_EditorClassIdentifier:
+  LevelId: level_preparation
+  LevelName: Preparation for Hajj
+  Description: Learn the essential preparations every pilgrim must complete before
+    embarking on the Hajj journey.
+  Thumbnail: {fileID: 0}
+  Questions:
+  - QuestionText: What is the first step before embarking on Hajj?
+    Options:
+    - Intention (Niyyah)
+    - Tawaf
+    - Sa'i
+    - Wuquf at Arafat
+    CorrectAnswerIndex: 0
+    Explanation: The Niyyah (intention) is the first step. A pilgrim must sincerely
+      intend to perform Hajj for the sake of Allah.
+    GemsReward: 5
+  - QuestionText: Which ihram garments are worn by male pilgrims?
+    Options:
+    - Two unstitched white cloths
+    - White thobe and turban
+    - Any clean white clothing
+    - Black abaya
+    CorrectAnswerIndex: 0
+    Explanation: Male pilgrims wear two seamless white cloths called the Izar (lower)
+      and Rida (upper), symbolising equality and purity.
+    GemsReward: 5
+  - QuestionText: What should a pilgrim do upon reaching the Miqat boundary?
+    Options:
+    - Perform Tawaf
+    - Enter the state of Ihram
+    - Proceed directly to Mina
+    - Recite the Talbiyah once
+    CorrectAnswerIndex: 1
+    Explanation: At the Miqat, pilgrims must put on ihram garments and make the intention
+      to enter the sacred state before continuing toward Makkah.
+    GemsReward: 5
+  - QuestionText: Which phrase do pilgrims continuously recite after entering Ihram?
+    Options:
+    - Subhanallah
+    - Allahu Akbar
+    - Labbayk Allahumma Labbayk
+    - Bismillah
+    CorrectAnswerIndex: 2
+    Explanation: The Talbiyah — "Labbayk Allahumma Labbayk" — is the pilgrim's
+      response to Allah's call, recited from Ihram until the first stone is thrown
+      at Jamarat.
+    GemsReward: 5
+  - QuestionText: Which of the following is NOT prohibited while in the state of Ihram?
+    Options:
+    - Cutting hair or nails
+    - Wearing perfume
+    - Reciting Quran
+    - Hunting
+    CorrectAnswerIndex: 2
+    Explanation: Reciting the Quran is encouraged during Ihram. Cutting hair/nails,
+      wearing perfume, and hunting are all prohibited.
+    GemsReward: 5
+  CompletionBonusGems: 20
+  PassThreshold: 60
