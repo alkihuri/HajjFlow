@@ -1,7 +1,7 @@
 # Manasik – Unity Project Setup Guide
 
 > **Manasik** is a gamified Hajj-learning mobile application built with Unity (C# / URP).  
-> This document walks you through creating the four required scenes and wiring up the
+> This document walks you through opening the four pre-built base scenes and wiring up the
 > placeholder UI prefabs from scratch.
 
 ---
@@ -55,7 +55,8 @@ Assets/
 
 ## 3. Build Settings – Scene Order
 
-Add the following scenes in **File → Build Settings** (order matters for `SceneManager`):
+The four base scenes already exist under `Assets/Scenes/`.
+Add them in **File → Build Settings** in this order (order matters for `SceneManager`):
 
 | Index | Scene name | File path |
 |-------|-----------|-----------|
@@ -66,12 +67,43 @@ Add the following scenes in **File → Build Settings** (order matters for `Scen
 
 ---
 
+## 3a. Re-linking Scripts After First Open (Placeholder GUIDs)
+
+The scene files use **placeholder GUIDs** for user-defined scripts because Unity generates
+real GUIDs the first time the project is opened.  If any component shows a **"Missing Script"**
+warning in the Inspector, re-assign the script manually or update the `.unity` file:
+
+| Placeholder GUID | Script |
+|-----------------|--------|
+| `00000000000000000000000000000001` | `Core/GameManager.cs` |
+| `00000000000000000000000000000002` | `Core/LevelManager.cs` |
+| `00000000000000000000000000000011` | `UI/MainMenuUI.cs` |
+| `00000000000000000000000000000012` | `UI/LevelSelectionUI.cs` |
+| `00000000000000000000000000000013` | `UI/GameplayUI.cs` |
+| `00000000000000000000000000000014` | `UI/ResultsUI.cs` |
+| `00000000000000000000000000000021` | `Gameplay/QuizSystem.cs` |
+| `00000000000000000000000000000022` | `Gameplay/RewardSystem.cs` |
+| `0000000000000000000000000000BEEF` | `Data/LevelData.cs` (used in `Level_Preparation.asset`) |
+
+To fix a missing-script warning in bulk:
+1. After Unity assigns real GUIDs (visible in each `Scripts/**/*.cs.meta` file), run a
+   find-and-replace in the four `.unity` files, swapping each placeholder GUID for the
+   real one.
+2. Alternatively, re-assign scripts through the Inspector: click the ⊙ icon next to
+   "Missing (MonoBehaviour)" and pick the correct script.
+
+> **UI Package components** (Canvas, Button, Image, TextMeshProUGUI, etc.) are **not**
+> pre-wired in the base scenes because their GUIDs depend on which TextMeshPro and UI
+> package versions are installed.  Add these components directly in the Unity Editor after
+> opening each scene (see §§5–8 below for the required hierarchy).
+
+---
+
 ## 4. Persistent GameManager GameObject
 
-1. Create an **empty scene** (or open `MainMenu`).
-2. Create an empty GameObject → rename to **`_GameManager`**.
-3. Attach `GameManager` and `LevelManager` scripts.
-4. `GameManager.Awake()` calls `DontDestroyOnLoad` automatically – no extra setup needed.
+`_GameManager` is already present in `MainMenu.unity` with `GameManager` and `LevelManager`
+placeholder MonoBehaviours attached.  After re-linking the scripts (see §3a), no further
+setup is needed — `GameManager.Awake()` calls `DontDestroyOnLoad` automatically.
 
 ---
 
@@ -80,7 +112,9 @@ Add the following scenes in **File → Build Settings** (order matters for `Scen
 ### Hierarchy
 ```
 MainMenu (scene)
-└── _GameManager          ← GameManager + LevelManager (see §4)
+├── Main Camera           ← Camera + AudioListener
+├── EventSystem           ← required for UI input
+├── _GameManager          ← GameManager + LevelManager (see §4)
 └── MainMenuCanvas (Canvas, ScreenSpace-Overlay)
     ├── Background (Image – full-screen)
     ├── TitleText (TextMeshProUGUI) → "Manasik"
@@ -104,10 +138,13 @@ MainMenu (scene)
 ### Hierarchy
 ```
 LevelSelection (scene)
+├── Main Camera           ← Camera + AudioListener
+├── EventSystem           ← required for UI input
 └── LevelSelectionCanvas (Canvas)
-    ├── BackButton (Button > TMP_Text "← Back")
     ├── TitleText (TextMeshProUGUI) → "Choose Your Journey"
-    └── LevelGrid (ScrollRect > Content)   ← LevelButtonsContainer
+    ├── BackButton (Button > TMP_Text "← Back")
+    └── LevelGrid (ScrollRect)
+        └── Content       ← LevelButtonsContainer
 ```
 
 ### LevelButtonPrefab  (`Assets/Prefabs/LevelTilePrefab.prefab`)
@@ -136,9 +173,11 @@ Wire `_selectButton` to the root Button component.
 ### Hierarchy
 ```
 Gameplay (scene)
-└── Systems
-    ├── QuizSystem (empty GO + QuizSystem script)
-    └── RewardSystem (empty GO + RewardSystem script)
+├── Main Camera           ← Camera + AudioListener
+├── EventSystem           ← required for UI input
+├── Systems
+│   ├── QuizSystem        ← QuizSystem script pre-attached
+│   └── RewardSystem      ← RewardSystem script pre-attached
 └── GameplayCanvas (Canvas)
     ├── TopBar (HorizontalLayoutGroup)
     │   ├── LevelNameText (TextMeshProUGUI) – left
@@ -180,6 +219,8 @@ Gameplay (scene)
 ### Hierarchy
 ```
 Results (scene)
+├── Main Camera           ← Camera + AudioListener
+├── EventSystem           ← required for UI input
 └── ResultsCanvas (Canvas)
     ├── LevelNameText (TextMeshProUGUI)
     ├── ScoreText (TextMeshProUGUI)
