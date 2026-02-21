@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using HajjFlow.Data;
+using HajjFlow.Core.States;
 
 namespace HajjFlow.Core
 {
     /// <summary>
-    /// Manages the currently active level: holds a reference to the active LevelData,
-    /// drives scene transitions, and broadcasts level-lifecycle events.
+    /// Manages the currently active level using a State Machine pattern.
+    /// Each level (Warmup, Miqat, Tawaf) is a separate state with Enter/Update/Exit lifecycle.
     /// Place one instance in the GameManager GameObject.
     /// </summary>
     public class LevelManager : MonoBehaviour
@@ -23,14 +24,41 @@ namespace HajjFlow.Core
         /// <summary>The level currently being played (set before loading the Gameplay scene).</summary>
         public static LevelData ActiveLevel { get; private set; }
 
+        /// <summary>The state ID for the current level (warmup, miqat, tawaf).</summary>
+        public static string ActiveStateId { get; private set; }
+
+        /// <summary>Reference to the state machine (set when Gameplay scene loads).</summary>
+        public static LevelStateMachine StateMachine { get; private set; }
+
         // ── Scene-loading helpers ─────────────────────────────────────────────────
 
-        /// <summary>Stores the chosen level then loads the Gameplay scene.</summary>
-        public static void StartLevel(LevelData level)
+        /// <summary>Stores the chosen level and state, then loads the Gameplay scene.</summary>
+        public static void StartLevel(LevelData level, string stateId)
         {
             ActiveLevel = level;
-            Debug.Log($"[LevelManager] Starting level: {level.LevelName}");
+            ActiveStateId = stateId;
+            Debug.Log($"[LevelManager] Starting level: {level.LevelName} with state: {stateId}");
             SceneManager.LoadScene(SceneGameplay);
+        }
+
+        /// <summary>Legacy method - defaults to warmup state.</summary>
+        public static void StartLevel(LevelData level)
+        {
+            StartLevel(level, "warmup");
+        }
+
+        /// <summary>
+        /// Регистрирует машину состояний (вызывается из Gameplay сцены).
+        /// </summary>
+        public static void RegisterStateMachine(LevelStateMachine stateMachine)
+        {
+            StateMachine = stateMachine;
+            
+            // Запустить уровень с сохраненным состоянием
+            if (ActiveLevel != null && !string.IsNullOrEmpty(ActiveStateId))
+            {
+                stateMachine.StartLevel(ActiveStateId, ActiveLevel);
+            }
         }
 
         /// <summary>Returns to the level-selection map without saving additional progress.</summary>
@@ -47,7 +75,7 @@ namespace HajjFlow.Core
                 Debug.LogWarning("[LevelManager] RestartLevel called but ActiveLevel is null.");
                 return;
             }
-            StartLevel(ActiveLevel);
+            StartLevel(ActiveLevel, ActiveStateId);
         }
 
         /// <summary>Loads the Results screen after a level attempt finishes.</summary>
@@ -60,7 +88,15 @@ namespace HajjFlow.Core
         public static void GoToMainMenu()
         {
             ActiveLevel = null;
+            ActiveStateId = null;
+            StateMachine = null;
             SceneManager.LoadScene(SceneMainMenu);
+        }
+
+        /// <summary>Unregisters the state machine (cleanup).</summary>
+        public static void UnregisterStateMachine()
+        {
+            StateMachine = null;
         }
     }
 }

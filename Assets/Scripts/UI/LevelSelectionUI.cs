@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using HajjFlow.Core;
+using HajjFlow.Core.States;
 using HajjFlow.Data;
 using HajjFlow.Services;
 
@@ -69,7 +70,30 @@ namespace HajjFlow.UI
 
         private void OnLevelTileClicked(LevelData level)
         {
-            LevelManager.StartLevel(level);
+            // Определить StateId на основе LevelId
+            string stateId = DetermineStateId(level.LevelId);
+            LevelManager.StartLevel(level, stateId);
+        }
+
+        /// <summary>
+        /// Определяет StateId на основе LevelId.
+        /// Можно настроить логику определения состояния здесь.
+        /// </summary>
+        private string DetermineStateId(string levelId)
+        {
+            // Простая логика: если LevelId содержит имя состояния
+            string id = levelId.ToLower();
+            
+            if (id.Contains("warmup") || id.Contains("warm") || id.Contains("1"))
+                return LevelStateIds.Warmup;
+            else if (id.Contains("miqat") || id.Contains("2"))
+                return LevelStateIds.Miqat;
+            else if (id.Contains("tawaf") || id.Contains("3"))
+                return LevelStateIds.Tawaf;
+            
+            // По умолчанию warmup
+            Debug.LogWarning($"[LevelSelectionUI] Unknown level id '{levelId}', defaulting to warmup");
+            return LevelStateIds.Warmup;
         }
 
         private void OnBackClicked()

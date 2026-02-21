@@ -28,8 +28,8 @@ namespace HajjFlow.Core
 
         // ── Services (read-only public properties) ───────────────────────────────
 
-        public UserProfileService ProfileService  { get; private set; }
-        public ProgressService    ProgressService { get; private set; }
+        public UserProfileService ProfileService;
+        public ProgressService ProgressService;
 
         // ── Initialisation ───────────────────────────────────────────────────────
 
