@@ -37,8 +37,8 @@ namespace HajjFlow.Core
         {
             ActiveLevel = level;
             ActiveStateId = stateId;
-            Debug.Log($"[LevelManager] Starting level: {level.LevelName} with state: {stateId}");
-            SceneManager.LoadScene(SceneGameplay);
+            Debug.Log($"[LevelManager] Starting level: {level.LevelName} with state: {stateId}"); 
+            StateMachine.ChangeState(stateId, level); 
         }
 
         /// <summary>Legacy method - defaults to warmup state.</summary>

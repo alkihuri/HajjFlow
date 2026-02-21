@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: lvl 2
   m_EditorClassIdentifier: 
-  LevelId: 2
-  LevelName: miqat
-  Description: 
+  LevelId: level_2_miqat
+  LevelName: "Miqat - \u041C\u0435\u0441\u0442\u043E \u0418\u0445\u0440\u0430\u043C\u0430"
+  Description: "\u0423\u0437\u043D\u0430\u0439\u0442\u0435 \u043E \u043C\u0435\u0441\u0442\u0430\u0445
+    \u043F\u0440\u0438\u043D\u044F\u0442\u0438\u044F \u0438\u0445\u0440\u0430\u043C\u0430"
   Thumbnail: {fileID: 0}
   Questions: []
   CompletionBonusGems: 20

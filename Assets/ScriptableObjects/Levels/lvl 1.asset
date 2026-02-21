@@ -12,10 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: lvl 1
   m_EditorClassIdentifier: 
-  LevelId: 1
-  LevelName: warmup
-  Description: 
+  LevelId: 'Level Id: level_1_warmup '
+  LevelName: "\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A
+    \u0425\u0430\u0434\u0436\u0443"
+  Description: "\u0418\u0437\u0443\u0447\u0438\u0442\u0435 \u043E\u0441\u043D\u043E\u0432\u044B
+    \u0425\u0430\u0434\u0436\u0430 \u0432 \u044D\u0442\u043E\u043C \u043E\u0431\u0443\u0447\u0430\u044E\u0449\u0435\u043C
+    \u0443\u0440\u043E\u0432\u043D\u0435"
   Thumbnail: {fileID: 0}
-  Questions: []
+  Questions:
+  - QuestionText: 
+    Options: []
+    CorrectAnswerIndex: 0
+    Explanation: 
+    GemsReward: 0
+  - QuestionText: 
+    Options: []
+    CorrectAnswerIndex: 0
+    Explanation: 
+    GemsReward: 0
+  - QuestionText: 
+    Options: []
+    CorrectAnswerIndex: 0
+    Explanation: 
+    GemsReward: 0
+  - QuestionText: 
+    Options: []
+    CorrectAnswerIndex: 0
+    Explanation: 
+    GemsReward: 0
+  - QuestionText: 
+    Options: []
+    CorrectAnswerIndex: 0
+    Explanation: 
+    GemsReward: 0
   CompletionBonusGems: 20
   PassThreshold: 60

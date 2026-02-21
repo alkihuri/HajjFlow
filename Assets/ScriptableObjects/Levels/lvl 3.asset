@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: lvl 3
   m_EditorClassIdentifier: 
-  LevelId: 3
-  LevelName: tawaf
-  Description: 
+  LevelId: level_3_tawaf
+  LevelName: "Tawaf - \u041E\u0431\u0445\u043E\u0434 \u041A\u0430\u0430\u0431\u044B"
+  Description: "\u0421\u043E\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0441\u0432\u044F\u0449\u0435\u043D\u043D\u044B\u0439
+    \u043E\u0431\u0445\u043E\u0434 \u041A\u0430\u0430\u0431\u044B"
   Thumbnail: {fileID: 0}
   Questions: []
   CompletionBonusGems: 20
