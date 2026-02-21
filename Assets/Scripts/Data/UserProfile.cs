@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Manasik.Data
+namespace HajjFlow.Data
 {
     /// <summary>
     /// Represents the local user profile stored on device.

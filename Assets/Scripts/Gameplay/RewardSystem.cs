@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using Manasik.Core;
+using HajjFlow.Core;
 
-namespace Manasik.Gameplay
+namespace HajjFlow.Gameplay
 {
     /// <summary>
     /// Handles gem rewards and tracks level-completion bonuses.

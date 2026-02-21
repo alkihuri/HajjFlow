@@ -1,7 +1,7 @@
 using UnityEngine;
-using Manasik.Services;
+using HajjFlow.Services;
 
-namespace Manasik.Core
+namespace HajjFlow.Core
 {
     /// <summary>
     /// Central singleton that owns shared services and survives scene loads.

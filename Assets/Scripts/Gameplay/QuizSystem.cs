@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Manasik.Data;
-using Manasik.Core;
+using HajjFlow.Data;
+using HajjFlow.Core;
 
-namespace Manasik.Gameplay
+namespace HajjFlow.Gameplay
 {
     /// <summary>
     /// Drives the multiple-choice quiz for the active level.

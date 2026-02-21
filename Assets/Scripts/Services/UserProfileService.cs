@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 using UnityEngine;
-using Manasik.Data;
+using HajjFlow.Data;
 
-namespace Manasik.Services
+namespace HajjFlow.Services
 {
     /// <summary>
     /// Handles loading and saving the UserProfile to local device storage using JSON.

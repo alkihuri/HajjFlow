@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Manasik.Core;
-using Manasik.Data;
-using Manasik.Services;
+using HajjFlow.Core;
+using HajjFlow.Data;
+using HajjFlow.Services;
 
-namespace Manasik.UI
+namespace HajjFlow.UI
 {
     /// <summary>
     /// Controls the Level Selection scene (2.5D isometric map placeholder).

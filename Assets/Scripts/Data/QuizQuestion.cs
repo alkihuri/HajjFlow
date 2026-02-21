@@ -1,6 +1,6 @@
 using System;
 
-namespace Manasik.Data
+namespace HajjFlow.Data
 {
     /// <summary>
     /// A single multiple-choice quiz question used inside a level.

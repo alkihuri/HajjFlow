@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Manasik.Data
+namespace HajjFlow.Data
 {
     /// <summary>
     /// ScriptableObject that holds all configuration for a single game level.

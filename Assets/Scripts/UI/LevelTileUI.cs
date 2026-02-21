@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Manasik.Data;
+using HajjFlow.Data;
 
-namespace Manasik.UI
+namespace HajjFlow.UI
 {
     /// <summary>
     /// Represents a single level tile on the selection map.

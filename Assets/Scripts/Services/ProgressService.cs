@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Manasik.Data;
+using HajjFlow.Data;
 
-namespace Manasik.Services
+namespace HajjFlow.Services
 {
     /// <summary>
     /// Tracks and calculates progress across levels.

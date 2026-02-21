@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Manasik.Core;
+using HajjFlow.Core;
 
-namespace Manasik.UI
+namespace HajjFlow.UI
 {
     /// <summary>
     /// Controls the Main Menu scene.

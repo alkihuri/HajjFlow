@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Manasik.Core;
-using Manasik.Data;
+using HajjFlow.Core;
+using HajjFlow.Data;
 
-namespace Manasik.UI
+namespace HajjFlow.UI
 {
     /// <summary>
     /// Controls the Results screen shown after a level attempt.

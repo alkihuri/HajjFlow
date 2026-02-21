@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Manasik.Data;
+using HajjFlow.Data;
 
-namespace Manasik.Core
+namespace HajjFlow.Core
 {
     /// <summary>
     /// Manages the currently active level: holds a reference to the active LevelData,

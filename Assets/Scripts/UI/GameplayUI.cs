@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Manasik.Core;
-using Manasik.Data;
-using Manasik.Gameplay;
+using HajjFlow.Core;
+using HajjFlow.Data;
+using HajjFlow.Gameplay;
 
-namespace Manasik.UI
+namespace HajjFlow.UI
 {
     /// <summary>
     /// Controls the Gameplay scene HUD and quiz panel.
@@ -42,7 +42,7 @@ namespace Manasik.UI
 
         [Header("Quiz Panel")]
         [SerializeField] private TextMeshProUGUI _questionText;
-        [SerializeField] private Button[]        _optionButtons;    // exactly 4
+        [SerializeField] private Button[]   _optionButtons;    // exactly 4
         [SerializeField] private TextMeshProUGUI _feedbackText;
         [SerializeField] private Button          _nextButton;
 
@@ -137,7 +137,7 @@ namespace Manasik.UI
                     var label = _optionButtons[i].GetComponentInChildren<TextMeshProUGUI>();
                     if (label != null) label.text = question.Options[i];
                 }
-                _optionButtons[i]?.interactable = true;
+                //_optionButtons[i].gameObject.interactable = true;
             }
 
             SetFeedbackVisible(false);
