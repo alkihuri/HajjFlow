@@ -33,6 +33,8 @@ namespace HajjFlow.Core
         public UserProfileService ProfileService;
         public ProgressService ProgressService;
         public UIService uiService;
+        public StageCompletionService stageCompletionService;
+        public QuizService quizService;
 
         // ── Initialisation ───────────────────────────────────────────────────────
 
@@ -41,7 +43,15 @@ namespace HajjFlow.Core
             ProfileService = new UserProfileService();
             ProgressService = new ProgressService(ProfileService);
             if (uiService == null)
-                uiService = GameObject.FindObjectOfType<UIService>();
+                uiService = FindFirstObjectByType<UIService>();
+            
+            // Инициализируем сервисы уровней
+            if (stageCompletionService == null)
+                stageCompletionService = gameObject.AddComponent<StageCompletionService>();
+            
+            if (quizService == null)
+                quizService = gameObject.AddComponent<QuizService>();
+            
             Debug.Log("[GameManager] Services initialised.");
         }
 
