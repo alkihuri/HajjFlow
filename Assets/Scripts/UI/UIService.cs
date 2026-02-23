@@ -30,9 +30,9 @@ namespace HajjFlow.UI
 
         [SerializeField] private GameObject _gameStartScree;
         [SerializeField] private GameObject _mainMenuScreen;
-        [SerializeField] private GameObject _levelsScreen;
-
-
+        [SerializeField] private GameObject _levelSelect;
+        
+        [SerializeField] private GameObject _levelsUiRoot;
         [SerializeField] private GameObject[] _levelsUI;
 
         [Header("Level Configuration")] [SerializeField]
@@ -64,7 +64,7 @@ namespace HajjFlow.UI
             // hard code 
             _gameStartScree.SetActive(false);
             _mainMenuScreen.SetActive(false);
-            _levelsScreen.SetActive(true);
+            _levelSelect.SetActive(true);
         }
 
         private void OnDestroy()
@@ -101,6 +101,9 @@ namespace HajjFlow.UI
             level--;
             
             Debug.Log($"[LevelSelectionUI] Showing level {level}");
+            
+            if(!_levelsUiRoot.activeInHierarchy)
+                _levelsUiRoot.SetActive(true);
 
             foreach (var lvl in _levelsUI)
             {
@@ -151,7 +154,7 @@ namespace HajjFlow.UI
         {
             _mainMenuScreen.SetActive(true);
             _gameStartScree.SetActive(false);
-            _levelsScreen.SetActive(false);
+            _levelSelect.SetActive(false);
 
             ShowLevel(1);
         }
@@ -160,7 +163,7 @@ namespace HajjFlow.UI
         {
             _mainMenuScreen.SetActive(true);
             _gameStartScree.SetActive(false);
-            _levelsScreen.SetActive(false);
+            _levelSelect.SetActive(false);
 
             ShowLevel(2);
         }
@@ -169,7 +172,7 @@ namespace HajjFlow.UI
         {
             _mainMenuScreen.SetActive(true);
             _gameStartScree.SetActive(false);
-            _levelsScreen.SetActive(false);
+            _levelSelect.SetActive(false);
 
             ShowLevel(3);
         }
