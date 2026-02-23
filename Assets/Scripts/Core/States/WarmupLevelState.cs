@@ -47,10 +47,6 @@ namespace HajjFlow.Core.States
             Debug.Log($"[WarmupLevelState] Starting warmup level with {_totalQuestions} questions");
         }
 
-        public override void Update()
-        {
-        }
-
         public override void Exit()
         {
             // Save progress on exit (progress is tracked in the state machine flow)

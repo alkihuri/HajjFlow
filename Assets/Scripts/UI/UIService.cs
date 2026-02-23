@@ -97,11 +97,11 @@ namespace HajjFlow.UI
 
         // ── Level-specific screens ───────────────────────────────────────────────
 
-        public void ShowLevel(int level)
+        public void ShowLevel(int levelNumber)
         {
-            level--;
+            int levelIndex = levelNumber - 1;
             
-            Debug.Log($"[UIService] Showing level {level}");
+            Debug.Log($"[UIService] Showing level index {levelIndex}");
             
             if(!_levelsUiRoot.activeInHierarchy)
                 _levelsUiRoot.SetActive(true);
@@ -111,9 +111,9 @@ namespace HajjFlow.UI
                 lvl.SetActive(false);
             }
 
-            if (level < _levelsUI.Length)
+            if (levelIndex >= 0 && levelIndex < _levelsUI.Length)
             {
-                _levelsUI[level].SetActive(true);
+                _levelsUI[levelIndex].SetActive(true);
             }
         }
 
