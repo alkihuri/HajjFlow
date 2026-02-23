@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace HajjFlow.Data
 {
@@ -23,5 +24,33 @@ namespace HajjFlow.Data
 
         /// <summary>Gems awarded for answering this question correctly.</summary>
         public int GemsReward = 5;
+
+        /// <summary>
+        /// Создаёт QuizQuestion из JSON строки.
+        /// </summary>
+        public static QuizQuestion FromJson(string json)
+        {
+            return JsonUtility.FromJson<QuizQuestion>(json);
+        }
+
+        /// <summary>
+        /// Десериализует массив вопросов из JSON строки.
+        /// </summary>
+        public static QuizQuestion[] FromJsonArray(string jsonArray)
+        {
+            // JsonUtility не поддерживает массивы напрямую, оборачиваем в объект
+            string wrapped = "{\"items\":" + jsonArray + "}";
+            QuizQuestionWrapper wrapper = JsonUtility.FromJson<QuizQuestionWrapper>(wrapped);
+            return wrapper?.items ?? new QuizQuestion[0];
+        }
+    }
+
+    /// <summary>
+    /// Вспомогательный класс для десериализации массива вопросов.
+    /// </summary>
+    [System.Serializable]
+    public class QuizQuestionWrapper
+    {
+        public QuizQuestion[] items = new QuizQuestion[0];
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using HajjFlow.Services;
+using HajjFlow.UI;
 
 namespace HajjFlow.Core
 {
@@ -20,8 +21,9 @@ namespace HajjFlow.Core
                 Destroy(gameObject);
                 return;
             }
+
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Persist across scene loads
+            DontDestroyOnLoad(gameObject); // Persist across scene loads
 
             InitialiseServices();
         }
@@ -30,13 +32,16 @@ namespace HajjFlow.Core
 
         public UserProfileService ProfileService;
         public ProgressService ProgressService;
+        public UIService uiService;
 
         // ── Initialisation ───────────────────────────────────────────────────────
 
         private void InitialiseServices()
         {
-            ProfileService  = new UserProfileService();
+            ProfileService = new UserProfileService();
             ProgressService = new ProgressService(ProfileService);
+            if (uiService == null)
+                uiService = GameObject.FindObjectOfType<UIService>();
             Debug.Log("[GameManager] Services initialised.");
         }
 

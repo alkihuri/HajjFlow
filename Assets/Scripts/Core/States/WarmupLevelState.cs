@@ -38,6 +38,9 @@ namespace HajjFlow.Core.States
             _questionsAnswered = 0;
             _totalQuestions = _levelData?.Questions?.Length ?? 0;
 
+            
+            GameManager.Instance.uiService.WarmUpLevelShow();
+
             Debug.Log($"[WarmupLevelState] Starting warmup level with {_totalQuestions} questions");
         }
 

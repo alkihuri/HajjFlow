@@ -1,4 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace HajjFlow.Data
 {
@@ -28,6 +31,7 @@ namespace HajjFlow.Data
         /// <summary>Questions the player must answer to complete this level.</summary>
         public QuizQuestion[] Questions;
 
+
         [Header("Rewards")]
         /// <summary>Bonus gems awarded when the player completes the level for the first time.</summary>
         public int CompletionBonusGems = 20;
@@ -35,5 +39,57 @@ namespace HajjFlow.Data
         /// <summary>Minimum percentage score needed to pass (0–100).</summary>
         [Range(0, 100)]
         public int PassThreshold = 60;
+
+        /// <summary>
+        /// Загружает вопросы из JSON файла через диалоговое окно выбора файла.
+        /// Вызывается через контекст-меню инспектора.
+        /// </summary>
+        [ContextMenu("Load Questions from JSON")]
+        public void LoadQuestionsFromJson()
+        {
+#if UNITY_EDITOR
+            // Открываем диалог выбора файла
+            string path = EditorUtility.OpenFilePanel("Select JSON Quiz File", "Assets", "json");
+            
+            if (string.IsNullOrEmpty(path))
+            {
+                Debug.Log("File selection cancelled");
+                return;
+            }
+
+            try
+            {
+                // Читаем содержимое файла
+                string jsonContent = System.IO.File.ReadAllText(path);
+                
+                // Оборачиваем в объект с массивом для JsonUtility
+                string wrapped = "{\"items\":" + jsonContent + "}";
+                QuizQuestionWrapper wrapper = JsonUtility.FromJson<QuizQuestionWrapper>(wrapped);
+                
+                if (wrapper?.items == null || wrapper.items.Length == 0)
+                {
+                    Debug.LogWarning($"[{name}] No questions loaded from file: {path}");
+                    return;
+                }
+
+                Questions = wrapper.items;
+                Debug.Log($"[{name}] Successfully loaded {Questions.Length} questions from:\n{path}");
+                
+                // Выводим для проверки
+                for (int i = 0; i < Questions.Length; i++)
+                {
+                    Debug.Log($"  Q{i+1}: {Questions[i].QuestionText}");
+                }
+
+                EditorUtility.SetDirty(this);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"[{name}] Failed to load questions: {ex.Message}\n{ex.StackTrace}");
+            }
+#else
+            Debug.LogError("[" + name + "] This function only works in the Editor!");
+#endif
+        }
     }
 }

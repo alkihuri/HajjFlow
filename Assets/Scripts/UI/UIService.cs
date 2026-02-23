@@ -18,15 +18,24 @@ namespace HajjFlow.UI
     ///   - BackButton            → Returns to Main Menu
     ///   - LevelDataList         → Array of LevelData assets assigned in the Inspector
     /// </summary>
-    public class LevelSelectionUI : MonoBehaviour
+    public class UIService : MonoBehaviour
     {
-        [Header("UI References")]
-        [SerializeField] private Transform  _levelButtonsContainer;
-        [SerializeField] private GameObject _levelButtonPrefab;
-        [SerializeField] private Button     _backButton;
+        [Header("UI References")] [SerializeField]
+        private Transform _levelButtonsContainer;
 
-        [Header("Level Configuration")]
-        [SerializeField] private LevelData[] _levels;
+        [SerializeField] private GameObject _levelButtonPrefab;
+        [SerializeField] private Button _backButton;
+        [SerializeField] private Button _gameStartButton;
+
+        [SerializeField] private GameObject _gameStartScree;
+        [SerializeField] private GameObject _mainMenuScreen;
+        [SerializeField] private GameObject _levelsScreen;
+
+
+        [SerializeField] private GameObject[] _levelsUI;
+
+        [Header("Level Configuration")] [SerializeField]
+        private LevelData[] _levels;
 
         private ProgressService _progressService;
 
@@ -36,7 +45,17 @@ namespace HajjFlow.UI
 
             _backButton?.onClick.AddListener(OnBackClicked);
 
+            _gameStartButton.onClick.AddListener(GameStartUI);
+
             BuildLevelGrid();
+        }
+
+        private void GameStartUI()
+        {
+            // hard code 
+            _gameStartScree.SetActive(false);
+            _mainMenuScreen.SetActive(false);
+            _levelsScreen.SetActive(true);
         }
 
         private void OnDestroy()
@@ -68,6 +87,17 @@ namespace HajjFlow.UI
             }
         }
 
+        public void ShowLevel(int level)
+        {
+            level--;
+
+            if (level < _levelsUI.Length)
+            {
+                _levelsUI[level].SetActive(true);   
+            } 
+        }
+        
+
         private void OnLevelTileClicked(LevelData level)
         {
             // Определить StateId на основе LevelId
@@ -83,14 +113,14 @@ namespace HajjFlow.UI
         {
             // Простая логика: если LevelId содержит имя состояния
             string id = levelId.ToLower();
-            
+
             if (id.Contains("warmup") || id.Contains("warm") || id.Contains("1"))
                 return LevelStateIds.Warmup;
             else if (id.Contains("miqat") || id.Contains("2"))
                 return LevelStateIds.Miqat;
             else if (id.Contains("tawaf") || id.Contains("3"))
                 return LevelStateIds.Tawaf;
-            
+
             // По умолчанию warmup
             Debug.LogWarning($"[LevelSelectionUI] Unknown level id '{levelId}', defaulting to warmup");
             return LevelStateIds.Warmup;
@@ -99,6 +129,15 @@ namespace HajjFlow.UI
         private void OnBackClicked()
         {
             LevelManager.GoToMainMenu();
+        }
+
+        public void WarmUpLevelShow()
+        { 
+            _mainMenuScreen.SetActive(true);
+                _gameStartScree.SetActive(false);
+                _levelsScreen.SetActive(false);
+                
+                ShowLevel(1);
         }
     }
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   LevelName: "Tawaf - \u041E\u0431\u0445\u043E\u0434 \u041A\u0430\u0430\u0431\u044B"
   Description: "\u0421\u043E\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0441\u0432\u044F\u0449\u0435\u043D\u043D\u044B\u0439
     \u043E\u0431\u0445\u043E\u0434 \u041A\u0430\u0430\u0431\u044B"
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 1451513191, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
   Questions: []
   CompletionBonusGems: 20
   PassThreshold: 60

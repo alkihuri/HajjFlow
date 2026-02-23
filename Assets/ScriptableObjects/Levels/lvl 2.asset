@@ -16,7 +16,7 @@ MonoBehaviour:
   LevelName: "Miqat - \u041C\u0435\u0441\u0442\u043E \u0418\u0445\u0440\u0430\u043C\u0430"
   Description: "\u0423\u0437\u043D\u0430\u0439\u0442\u0435 \u043E \u043C\u0435\u0441\u0442\u0430\u0445
     \u043F\u0440\u0438\u043D\u044F\u0442\u0438\u044F \u0438\u0445\u0440\u0430\u043C\u0430"
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: -1184445823, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
   Questions: []
   CompletionBonusGems: 20
   PassThreshold: 60
