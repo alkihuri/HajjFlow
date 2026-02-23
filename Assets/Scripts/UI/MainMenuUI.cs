@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using HajjFlow.Core;
+using HajjFlow.Core.States;
 
 namespace HajjFlow.UI
 {
@@ -25,7 +26,7 @@ namespace HajjFlow.UI
         private void Start()
         {
             // Display a personalised greeting using the stored profile
-            var profile = GameManager.Instance?.ProfileService.GetProfile();
+            var profile = GameManager.Instance?.ProfileService?.GetProfile();
             if (profile != null && _greetingText != null)
                 _greetingText.text = $"Welcome, {profile.FullName}!";
 
@@ -44,12 +45,16 @@ namespace HajjFlow.UI
 
         private void OnPlayClicked()
         {
-            LevelManager.GoToLevelSelect();
+            // Prefer the state machine; fall back to LevelManager for compatibility
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            if (sm != null)
+                sm.ChangeState(GameStateIds.LevelSelect);
+            else
+                LevelManager.GoToLevelSelect();
         }
 
         private void OnSettingsClicked()
         {
-            // TODO: open settings panel
             Debug.Log("[MainMenuUI] Settings button pressed (not yet implemented).");
         }
     }

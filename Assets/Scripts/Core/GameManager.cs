@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using HajjFlow.Services;
 using HajjFlow.UI;
@@ -5,8 +7,10 @@ using HajjFlow.UI;
 namespace HajjFlow.Core
 {
     /// <summary>
-    /// Central singleton that owns shared services and survives scene loads.
-    /// Access via GameManager.Instance from any other script.
+    /// Central singleton that implements the Service Locator pattern.
+    /// Survives scene loads via DontDestroyOnLoad.
+    /// Services are registered by the <see cref="Bootstrapper"/> and accessed via
+    /// <see cref="GetService{T}"/> from any other script.
     /// </summary>
     public class GameManager : MonoBehaviour
     {
@@ -23,37 +27,49 @@ namespace HajjFlow.Core
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scene loads
-
-            InitialiseServices();
+            DontDestroyOnLoad(gameObject);
         }
 
-        // ── Services (read-only public properties) ───────────────────────────────
+        // ── Service Locator ──────────────────────────────────────────────────────
 
-        public UserProfileService ProfileService;
-        public ProgressService ProgressService;
-        public UIService uiService;
-        public StageCompletionService stageCompletionService;
-        public QuizService quizService;
+        private readonly Dictionary<Type, object> _services = new Dictionary<Type, object>();
 
-        // ── Initialisation ───────────────────────────────────────────────────────
-
-        private void InitialiseServices()
+        /// <summary>Registers a service instance by its type.</summary>
+        public void RegisterService<T>(T service) where T : class
         {
-            ProfileService = new UserProfileService();
-            ProgressService = new ProgressService(ProfileService);
-            if (uiService == null)
-                uiService = FindFirstObjectByType<UIService>();
-            
-            // Инициализируем сервисы уровней
-            if (stageCompletionService == null)
-                stageCompletionService = gameObject.AddComponent<StageCompletionService>();
-            
-            if (quizService == null)
-                quizService = gameObject.AddComponent<QuizService>();
-            
-            Debug.Log("[GameManager] Services initialised.");
+            if (service == null)
+            {
+                Debug.LogWarning($"[GameManager] Attempted to register null service for {typeof(T).Name}");
+                return;
+            }
+
+            _services[typeof(T)] = service;
+            Debug.Log($"[GameManager] Registered service: {typeof(T).Name}");
         }
+
+        /// <summary>Returns the registered service of type T, or null if not found.</summary>
+        public T GetService<T>() where T : class
+        {
+            if (_services.TryGetValue(typeof(T), out var service))
+                return service as T;
+
+            Debug.LogWarning($"[GameManager] Service not found: {typeof(T).Name}");
+            return null;
+        }
+
+        /// <summary>Returns true if a service of type T is registered.</summary>
+        public bool HasService<T>() where T : class
+        {
+            return _services.ContainsKey(typeof(T));
+        }
+
+        // ── Backward-compatible service accessors ────────────────────────────────
+
+        public UserProfileService ProfileService => GetService<UserProfileService>();
+        public ProgressService ProgressService => GetService<ProgressService>();
+        public UIService uiService => GetService<UIService>();
+        public StageCompletionService stageCompletionService => GetService<StageCompletionService>();
+        public QuizService quizService => GetService<QuizService>();
 
         // ── Convenience helpers ──────────────────────────────────────────────────
 
@@ -63,8 +79,10 @@ namespace HajjFlow.Core
         /// </summary>
         public void AddGems(int amount)
         {
-            ProfileService.UpdateProfile(p => p.Gems += amount);
-            Debug.Log($"[GameManager] +{amount} gems. Total: {ProfileService.GetProfile().Gems}");
+            var profileService = ProfileService;
+            if (profileService == null) return;
+            profileService.UpdateProfile(p => p.Gems += amount);
+            Debug.Log($"[GameManager] +{amount} gems. Total: {profileService.GetProfile().Gems}");
         }
     }
 }

@@ -5,12 +5,13 @@ using HajjFlow.Data;
 namespace HajjFlow.Core.States
 {
     /// <summary>
-    /// Состояние уровня Tawaf (Обход Каабы).
-    /// Третий уровень, самый сложный и важный ритуал Хаджа.
+    /// Gameplay state for the Tawaf level.
+    /// Includes streak bonuses and perfect-circle rewards.
+    /// UI is switched on Enter and cleaned up on Exit.
     /// </summary>
     public class TawafLevelState : BaseLevelState
     {
-        public override string StateId => "tawaf";
+        public override string StateId => GameStateIds.Tawaf;
 
         private QuizSystem _quizSystem;
         private RewardSystem _rewardSystem;
@@ -19,12 +20,16 @@ namespace HajjFlow.Core.States
         private int _totalQuestions;
         private int _consecutiveCorrect;
         private float _startTime;
+        private float _lastScorePercent;
 
         public override void Enter()
         {
             base.Enter();
 
-            // Найти системы в сцене
+            // Show level UI (all UI switching happens inside states)
+            GameManager.Instance?.uiService?.TawafLevelShow();
+
+            // Find systems in scene
             _quizSystem = Object.FindObjectOfType<QuizSystem>();
             _rewardSystem = Object.FindObjectOfType<RewardSystem>();
 
@@ -34,35 +39,27 @@ namespace HajjFlow.Core.States
                 return;
             }
 
-            // Подписаться на события
+            // Subscribe to events
             _quizSystem.OnQuestionReady += OnQuestionReady;
             _quizSystem.OnAnswerResult += OnAnswerResult;
             _quizSystem.OnQuizComplete += OnQuizComplete;
 
-            // Инициализация
+            // Initialize
             _quizSystem.Initialise(_levelData);
             _questionsAnswered = 0;
             _correctAnswers = 0;
             _totalQuestions = _levelData?.Questions?.Length ?? 0;
             _consecutiveCorrect = 0;
+            _lastScorePercent = 0f;
             _startTime = Time.time;
-            
-            GameManager.Instance.uiService.TawafLevelShow();
 
-            Debug.Log($"[TawafLevelState] Starting Tawaf level - the sacred circumambulation with {_totalQuestions} questions");
+            Debug.Log($"[TawafLevelState] Starting Tawaf level with {_totalQuestions} questions");
         }
 
         public override void Update()
         {
-            base.Update();
-            
-            // Специфичная логика для Tawaf
-            // Можно добавить визуализацию кругов вокруг Каабы
-            // или анимацию прогресса обхода
-            
             float elapsedTime = Time.time - _startTime;
-            
-            // Логирование для отладки (можно удалить в продакшене)
+
             if (Mathf.FloorToInt(elapsedTime) % 60 == 0 && Time.frameCount % 60 == 0)
             {
                 Debug.Log($"[TawafLevelState] Time elapsed: {elapsedTime:F0}s");
@@ -71,9 +68,10 @@ namespace HajjFlow.Core.States
 
         public override void Exit()
         {
-            base.Exit();
+            // Save progress on exit
+            SaveProgress();
 
-            // Отписаться от событий
+            // Unsubscribe from events
             if (_quizSystem != null)
             {
                 _quizSystem.OnQuestionReady -= OnQuestionReady;
@@ -81,7 +79,7 @@ namespace HajjFlow.Core.States
                 _quizSystem.OnQuizComplete -= OnQuizComplete;
             }
 
-            Debug.Log("[TawafLevelState] Tawaf level completed - May your pilgrimage be accepted");
+            base.Exit();
         }
 
         public override void OnPause()
@@ -94,17 +92,35 @@ namespace HajjFlow.Core.States
         {
             base.OnResume();
             Debug.Log("[TawafLevelState] Tawaf resumed");
-            // Скорректировать время
             _startTime += Time.unscaledDeltaTime;
         }
 
-        // ── Обработчики событий ──────────────────────────────────────────────────
+        // ── Progress tracking ────────────────────────────────────────────────────
+
+        private void SaveProgress()
+        {
+            var progressService = GameManager.Instance?.ProgressService;
+            if (progressService == null || _levelData == null) return;
+
+            progressService.RecordLevelProgress(_levelData.LevelId, _lastScorePercent, _levelData.PassThreshold);
+
+            // Perfect score bonus
+            if (_lastScorePercent == 100f)
+            {
+                _rewardSystem?.AwardGems(50);
+                Debug.Log("[TawafLevelState] Perfect Tawaf! +50 gems");
+            }
+
+            Debug.Log($"[TawafLevelState] Progress saved: {_lastScorePercent:F1}%");
+        }
+
+        // ── Event handlers ───────────────────────────────────────────────────────
 
         private void OnQuestionReady(QuizQuestion question, int questionNumber)
         {
             Debug.Log($"[TawafLevelState] Question {questionNumber}/{_totalQuestions}: {question.QuestionText}");
-            
-            // Показать номер круга Tawaf (каждые 7 вопросов = 1 круг)
+
+            // Show Tawaf circle number (every 7 questions = 1 circle)
             int currentCircle = (questionNumber - 1) / 7 + 1;
             Debug.Log($"[TawafLevelState] Circle {currentCircle} of Tawaf");
         }
@@ -112,23 +128,23 @@ namespace HajjFlow.Core.States
         private void OnAnswerResult(bool wasCorrect, string explanation)
         {
             _questionsAnswered++;
-            
+
             if (wasCorrect)
             {
                 _correctAnswers++;
                 _consecutiveCorrect++;
-                
+
                 Debug.Log($"[TawafLevelState] Correct answer! Streak: {_consecutiveCorrect}");
-                
-                // Бонус за серию правильных ответов (специфично для Tawaf)
+
+                // Streak bonus (3+ consecutive correct)
                 if (_consecutiveCorrect >= 3)
                 {
                     int bonusGems = _consecutiveCorrect * 2;
                     _rewardSystem?.AwardGems(bonusGems);
                     Debug.Log($"[TawafLevelState] Streak bonus: +{bonusGems} gems");
                 }
-                
-                // Специальный бонус за завершение полного круга (7 вопросов) без ошибок
+
+                // Perfect circle bonus (7 consecutive correct)
                 if (_consecutiveCorrect == 7)
                 {
                     _rewardSystem?.AwardGems(20);
@@ -144,31 +160,11 @@ namespace HajjFlow.Core.States
 
         private void OnQuizComplete(float scorePercent)
         {
+            _lastScorePercent = scorePercent;
             float elapsedTime = Time.time - _startTime;
-            Debug.Log($"[TawafLevelState] Tawaf completed with score: {scorePercent:F1}% in {elapsedTime:F0} seconds");
-            
-            // Сохранить прогресс
-            if (GameManager.Instance?.ProgressService != null && _levelData != null)
-            {
-                //GameManager.Instance.ProgressService.UpdateLevelProgress(_levelData.LevelId, scorePercent);
-                
-                // Проверить на идеальное прохождение
-                if (scorePercent == 100f)
-                {
-                    Debug.Log("[TawafLevelState] Perfect Tawaf! All circles completed flawlessly!");
-                    _rewardSystem?.AwardGems(50); // Большой бонус за идеальное прохождение
-                }
-                else if (scorePercent >= _levelData.PassThreshold)
-                {
-                    Debug.Log("[TawafLevelState] Tawaf accepted");
-                }
-                else
-                {
-                    Debug.Log("[TawafLevelState] Tawaf needs to be repeated");
-                }
-            }
+            Debug.Log($"[TawafLevelState] Tawaf completed: {scorePercent:F1}% in {elapsedTime:F0}s");
 
-            // Уведомить машину состояний о завершении
+            // Notify the state machine (will trigger transition to Results)
             _stateMachine?.CompleteLevel(scorePercent);
         }
     }

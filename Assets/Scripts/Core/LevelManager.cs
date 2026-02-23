@@ -1,102 +1,78 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using HajjFlow.Data;
 using HajjFlow.Core.States;
 
 namespace HajjFlow.Core
 {
     /// <summary>
-    /// Manages the currently active level using a State Machine pattern.
-    /// Each level (Warmup, Miqat, Tawaf) is a separate state with Enter/Update/Exit lifecycle.
-    /// Place one instance in the GameManager GameObject.
+    /// Static helper that delegates navigation calls to the <see cref="GameStateMachine"/>.
+    /// Kept for backward compatibility with existing UI scripts.
+    /// All logic is now driven by the single <see cref="GameStateMachine"/>.
     /// </summary>
-    public class LevelManager : MonoBehaviour
+    public static class LevelManager
     {
-        // ── Scene name constants ─────────────────────────────────────────────────
+        // ── Convenience accessors ────────────────────────────────────────────────
 
-        public const string SceneMainMenu      = "MainMenu";
-        public const string SceneLevelSelect   = "LevelSelection";
-        public const string SceneGameplay      = "Gameplay";
-        public const string SceneResults       = "Results";
+        private static GameStateMachine StateMachine =>
+            GameManager.Instance?.GetService<GameStateMachine>();
 
-        // ── Runtime state ────────────────────────────────────────────────────────
+        /// <summary>The level currently being played.</summary>
+        public static LevelData ActiveLevel => StateMachine?.ActiveLevelData;
 
-        /// <summary>The level currently being played (set before loading the Gameplay scene).</summary>
-        public static LevelData ActiveLevel { get; private set; }
+        /// <summary>The state ID for the current level.</summary>
+        public static string ActiveStateId => StateMachine?.ActiveLevelStateId;
 
-        /// <summary>The state ID for the current level (warmup, miqat, tawaf).</summary>
-        public static string ActiveStateId { get; private set; }
+        // ── Navigation (delegates to GameStateMachine) ───────────────────────────
 
-        /// <summary>Reference to the state machine (set when Gameplay scene loads).</summary>
-        public static LevelStateMachine StateMachine { get; private set; }
-
-        // ── Scene-loading helpers ─────────────────────────────────────────────────
-
-        /// <summary>Stores the chosen level and state, then loads the Gameplay scene.</summary>
+        /// <summary>Stores the chosen level and state, then transitions to the level state.</summary>
         public static void StartLevel(LevelData level, string stateId)
         {
-            ActiveLevel = level;
-            ActiveStateId = stateId;
-            Debug.Log($"[LevelManager] Starting level: {level.LevelName} with state: {stateId}"); 
-            StateMachine.ChangeState(stateId, level); 
-        }
-
-        /// <summary>Legacy method - defaults to warmup state.</summary>
-        public static void StartLevel(LevelData level)
-        {
-            StartLevel(level, "warmup");
-        }
-
-        /// <summary>
-        /// Регистрирует машину состояний (вызывается из Gameplay сцены).
-        /// </summary>
-        public static void RegisterStateMachine(LevelStateMachine stateMachine)
-        {
-            StateMachine = stateMachine;
-            
-            // Запустить уровень с сохраненным состоянием
-            if (ActiveLevel != null && !string.IsNullOrEmpty(ActiveStateId))
+            var sm = StateMachine;
+            if (sm == null)
             {
-                stateMachine.StartLevel(ActiveStateId, ActiveLevel);
-            }
-        }
-
-        /// <summary>Returns to the level-selection map without saving additional progress.</summary>
-        public static void GoToLevelSelect()
-        {
-            SceneManager.LoadScene(SceneLevelSelect);
-        }
-
-        /// <summary>Restarts the currently active level from scratch.</summary>
-        public static void RestartLevel()
-        {
-            if (ActiveLevel == null)
-            {
-                Debug.LogWarning("[LevelManager] RestartLevel called but ActiveLevel is null.");
+                Debug.LogError("[LevelManager] GameStateMachine not available.");
                 return;
             }
-            StartLevel(ActiveLevel, ActiveStateId);
+
+            sm.StartLevel(level, stateId);
         }
 
-        /// <summary>Loads the Results screen after a level attempt finishes.</summary>
+        /// <summary>Legacy overload — defaults to warmup state.</summary>
+        public static void StartLevel(LevelData level)
+        {
+            StartLevel(level, GameStateIds.Warmup);
+        }
+
+        /// <summary>Returns to the level-selection screen.</summary>
+        public static void GoToLevelSelect()
+        {
+            StateMachine?.ChangeState(GameStateIds.LevelSelect);
+        }
+
+        /// <summary>Restarts the currently active level.</summary>
+        public static void RestartLevel()
+        {
+            var sm = StateMachine;
+            if (sm == null || sm.ActiveLevelData == null)
+            {
+                Debug.LogWarning("[LevelManager] Cannot restart — no active level.");
+                return;
+            }
+
+            sm.StartLevel(sm.ActiveLevelData, sm.ActiveLevelStateId);
+        }
+
+        /// <summary>Loads the Results screen.</summary>
         public static void ShowResults()
         {
-            SceneManager.LoadScene(SceneResults);
+            StateMachine?.ChangeState(GameStateIds.Results);
         }
 
-        /// <summary>Returns to the Main Menu and clears the active level reference.</summary>
+        /// <summary>Returns to the Main Menu.</summary>
         public static void GoToMainMenu()
         {
-            ActiveLevel = null;
-            ActiveStateId = null;
-            StateMachine = null;
-            SceneManager.LoadScene(SceneMainMenu);
-        }
-
-        /// <summary>Unregisters the state machine (cleanup).</summary>
-        public static void UnregisterStateMachine()
-        {
-            StateMachine = null;
+            StateMachine?.ChangeState(GameStateIds.MainMenu);
         }
     }
 }
+

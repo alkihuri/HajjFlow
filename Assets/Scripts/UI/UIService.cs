@@ -9,14 +9,9 @@ using HajjFlow.Services;
 namespace HajjFlow.UI
 {
     /// <summary>
-    /// Controls the Level Selection scene (2.5D isometric map placeholder).
-    /// Attach to the LevelSelectionCanvas.
-    ///
-    /// Inspector wiring:
-    ///   - LevelButtonsContainer → Transform that holds level tile buttons
-    ///   - LevelButtonPrefab     → Prefab with a LevelTileUI component
-    ///   - BackButton            → Returns to Main Menu
-    ///   - LevelDataList         → Array of LevelData assets assigned in the Inspector
+    /// Central UI service responsible for showing / hiding screen panels.
+    /// Screen visibility is driven by the <see cref="GameStateMachine"/> states
+    /// via the public Show… methods.
     /// </summary>
     public class UIService : MonoBehaviour
     {
@@ -46,30 +41,107 @@ namespace HajjFlow.UI
 
             _backButton?.onClick.AddListener(OnBackClicked);
 
-            _gameStartButton.onClick.AddListener(GameStartUI);
+            _gameStartButton?.onClick.AddListener(GameStartUI);
 
-
-            _nextLevelButton.onClick.AddListener(NextLevel);
+            _nextLevelButton?.onClick.AddListener(NextLevel);
 
             BuildLevelGrid();
         }
 
         private void NextLevel()
         {
-
         }
 
         private void GameStartUI()
         {
-            // hard code 
-            _gameStartScree.SetActive(false);
-            _mainMenuScreen.SetActive(false);
-            _levelSelect.SetActive(true);
+            // Delegate to the state machine
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            sm?.ChangeState(GameStateIds.LevelSelect);
         }
 
         private void OnDestroy()
         {
             _backButton?.onClick.RemoveListener(OnBackClicked);
+        }
+
+        // ── Screen switching (called from game states) ───────────────────────────
+
+        /// <summary>Shows the main-menu / game-start screen.</summary>
+        public void ShowMainMenu()
+        {
+            _gameStartScree?.SetActive(true);
+            _mainMenuScreen?.SetActive(true);
+            _levelSelect?.SetActive(false);
+            _levelsUiRoot?.SetActive(false);
+        }
+
+        /// <summary>Shows the level-selection screen.</summary>
+        public void ShowLevelSelect()
+        {
+            _gameStartScree?.SetActive(false);
+            _mainMenuScreen?.SetActive(false);
+            _levelSelect?.SetActive(true);
+            _levelsUiRoot?.SetActive(false);
+        }
+
+        /// <summary>Shows the results screen (placeholder — actual results UI is on a separate panel).</summary>
+        public void ShowResults()
+        {
+            _gameStartScree?.SetActive(false);
+            _mainMenuScreen?.SetActive(false);
+            _levelSelect?.SetActive(false);
+            _levelsUiRoot?.SetActive(false);
+
+            Debug.Log("[UIService] Results screen shown");
+        }
+
+        // ── Level-specific screens ───────────────────────────────────────────────
+
+        public void ShowLevel(int level)
+        {
+            level--;
+            
+            Debug.Log($"[UIService] Showing level {level}");
+            
+            if(!_levelsUiRoot.activeInHierarchy)
+                _levelsUiRoot.SetActive(true);
+
+            foreach (var lvl in _levelsUI)
+            {
+                lvl.SetActive(false);
+            }
+
+            if (level < _levelsUI.Length)
+            {
+                _levelsUI[level].SetActive(true);
+            }
+        }
+
+        public void WarmUpLevelShow()
+        {
+            _mainMenuScreen?.SetActive(true);
+            _gameStartScree?.SetActive(false);
+            _levelSelect?.SetActive(false);
+
+            ShowLevel(1);
+        }
+
+        public void MiqatLevelShow()
+        {
+            _mainMenuScreen?.SetActive(true);
+            _gameStartScree?.SetActive(false);
+            _levelSelect?.SetActive(false);
+
+            ShowLevel(2);
+        }
+
+        public void TawafLevelShow()
+        {
+            _mainMenuScreen?.SetActive(true);
+            _gameStartScree?.SetActive(false);
+            _levelSelect?.SetActive(false);
+
+            ShowLevel(3);
         }
 
         // ── Private ──────────────────────────────────────────────────────────────
@@ -79,7 +151,7 @@ namespace HajjFlow.UI
         {
             if (_levels == null || _levelButtonPrefab == null || _levelButtonsContainer == null)
             {
-                Debug.LogWarning("[LevelSelectionUI] Missing references — cannot build level grid.");
+                Debug.LogWarning("[UIService] Missing references — cannot build level grid.");
                 return;
             }
 
@@ -96,85 +168,44 @@ namespace HajjFlow.UI
             }
         }
 
-        public void ShowLevel(int level)
-        {
-            level--;
-            
-            Debug.Log($"[LevelSelectionUI] Showing level {level}");
-            
-            if(!_levelsUiRoot.activeInHierarchy)
-                _levelsUiRoot.SetActive(true);
-
-            foreach (var lvl in _levelsUI)
-            {
-                lvl.SetActive(false);
-            }
-
-            if (level < _levelsUI.Length)
-            {
-                _levelsUI[level].SetActive(true);
-            }
-        }
-
-
         private void OnLevelTileClicked(LevelData level)
         {
-            // Определить StateId на основе LevelId
             string stateId = DetermineStateId(level.LevelId);
-            LevelManager.StartLevel(level, stateId);
+
+            // Delegate to the state machine instead of LevelManager directly
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            if (sm != null)
+            {
+                sm.StartLevel(level, stateId);
+            }
+            else
+            {
+                LevelManager.StartLevel(level, stateId);
+            }
         }
 
-        /// <summary>
-        /// Определяет StateId на основе LevelId.
-        /// Можно настроить логику определения состояния здесь.
-        /// </summary>
         private string DetermineStateId(string levelId)
         {
-            // Простая логика: если LevelId содержит имя состояния
             string id = levelId.ToLower();
 
             if (id.Contains("warmup") || id.Contains("warm") || id.Contains("1"))
-                return LevelStateIds.Warmup;
+                return GameStateIds.Warmup;
             else if (id.Contains("miqat") || id.Contains("2"))
-                return LevelStateIds.Miqat;
+                return GameStateIds.Miqat;
             else if (id.Contains("tawaf") || id.Contains("3"))
-                return LevelStateIds.Tawaf;
+                return GameStateIds.Tawaf;
 
-            // По умолчанию warmup
-            Debug.LogWarning($"[LevelSelectionUI] Unknown level id '{levelId}', defaulting to warmup");
-            return LevelStateIds.Warmup;
+            Debug.LogWarning($"[UIService] Unknown level id '{levelId}', defaulting to warmup");
+            return GameStateIds.Warmup;
         }
 
         private void OnBackClicked()
         {
-            LevelManager.GoToMainMenu();
-        }
-
-        public void WarmUpLevelShow()
-        {
-            _mainMenuScreen.SetActive(true);
-            _gameStartScree.SetActive(false);
-            _levelSelect.SetActive(false);
-
-            ShowLevel(1);
-        }
-
-        public void MiqatLevelShow()
-        {
-            _mainMenuScreen.SetActive(true);
-            _gameStartScree.SetActive(false);
-            _levelSelect.SetActive(false);
-
-            ShowLevel(2);
-        }
-
-        public void TawafLevelShow()
-        {
-            _mainMenuScreen.SetActive(true);
-            _gameStartScree.SetActive(false);
-            _levelSelect.SetActive(false);
-
-            ShowLevel(3);
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            if (sm != null)
+                sm.ChangeState(GameStateIds.MainMenu);
+            else
+                LevelManager.GoToMainMenu();
         }
     }
 }

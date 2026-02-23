@@ -5,22 +5,27 @@ using HajjFlow.Data;
 namespace HajjFlow.Core.States
 {
     /// <summary>
-    /// Состояние уровня Warmup (Разминка/Подготовка).
-    /// Первый уровень для ознакомления с механикой игры.
+    /// Gameplay state for the Warmup (introductory) level.
+    /// Handles quiz flow and progress tracking.
+    /// UI is switched on Enter and cleaned up on Exit.
     /// </summary>
     public class WarmupLevelState : BaseLevelState
     {
-        public override string StateId => "warmup";
+        public override string StateId => GameStateIds.Warmup;
 
         private QuizSystem _quizSystem;
         private int _questionsAnswered;
         private int _totalQuestions;
+        private float _lastScorePercent;
 
         public override void Enter()
         {
             base.Enter();
 
-            // Найти QuizSystem в сцене
+            // Show level UI via UIService (all UI switching happens inside states)
+            GameManager.Instance?.uiService?.WarmUpLevelShow();
+
+            // Find QuizSystem in scene
             _quizSystem = Object.FindObjectOfType<QuizSystem>();
             if (_quizSystem == null)
             {
@@ -28,34 +33,30 @@ namespace HajjFlow.Core.States
                 return;
             }
 
-            // Подписаться на события
+            // Subscribe to events
             _quizSystem.OnQuestionReady += OnQuestionReady;
             _quizSystem.OnAnswerResult += OnAnswerResult;
             _quizSystem.OnQuizComplete += OnQuizComplete;
 
-            // Инициализировать викторину
+            // Initialize quiz
             _quizSystem.Initialise(_levelData);
             _questionsAnswered = 0;
+            _lastScorePercent = 0f;
             _totalQuestions = _levelData?.Questions?.Length ?? 0;
-
-            
-            GameManager.Instance.uiService.WarmUpLevelShow();
 
             Debug.Log($"[WarmupLevelState] Starting warmup level with {_totalQuestions} questions");
         }
 
         public override void Update()
         {
-            base.Update();
-            // Дополнительная логика для warmup уровня
-            // Например, подсказки для новичков, анимации и т.д.
         }
 
         public override void Exit()
         {
-            base.Exit();
+            // Save progress on exit (progress is tracked in the state machine flow)
+            SaveProgress();
 
-            // Отписаться от событий
+            // Unsubscribe from events
             if (_quizSystem != null)
             {
                 _quizSystem.OnQuestionReady -= OnQuestionReady;
@@ -63,50 +64,48 @@ namespace HajjFlow.Core.States
                 _quizSystem.OnQuizComplete -= OnQuizComplete;
             }
 
-            Debug.Log("[WarmupLevelState] Warmup level completed");
+            base.Exit();
         }
 
-        // ── Обработчики событий ──────────────────────────────────────────────────
+        // ── Progress tracking ────────────────────────────────────────────────────
+
+        private void SaveProgress()
+        {
+            var progressService = GameManager.Instance?.ProgressService;
+            if (progressService == null || _levelData == null) return;
+
+            progressService.RecordLevelProgress(_levelData.LevelId, _lastScorePercent, _levelData.PassThreshold);
+
+            Debug.Log($"[WarmupLevelState] Progress saved: {_lastScorePercent:F1}%");
+        }
+
+        // ── Event handlers ───────────────────────────────────────────────────────
 
         private void OnQuestionReady(QuizQuestion question, int questionNumber)
         {
             Debug.Log($"[WarmupLevelState] Question {questionNumber}/{_totalQuestions}: {question.QuestionText}");
-            // Здесь можно добавить специфичную логику для warmup (подсказки, анимации)
         }
 
         private void OnAnswerResult(bool wasCorrect, string explanation)
         {
             _questionsAnswered++;
-            
+
             if (wasCorrect)
             {
                 Debug.Log($"[WarmupLevelState] Correct answer! {explanation}");
-                // Специальная награда или анимация для warmup
             }
             else
             {
                 Debug.Log($"[WarmupLevelState] Wrong answer. {explanation}");
-                // Можно показать дополнительную помощь для новичков
             }
         }
 
         private void OnQuizComplete(float scorePercent)
         {
+            _lastScorePercent = scorePercent;
             Debug.Log($"[WarmupLevelState] Quiz completed with score: {scorePercent:F1}%");
-            
-            // Сохранить прогресс
-            if (GameManager.Instance?.ProgressService != null && _levelData != null)
-            {
-                //GameManager.Instance.ProgressService.UpdateLevelProgress(_levelData.LevelId, scorePercent);
-                
-                // Разблокировать следующий уровень если прошли
-                if (scorePercent >= _levelData.PassThreshold)
-                {
-                   // GameManager.Instance.ProgressService.UnlockLevel("miqat");
-                }
-            }
 
-            // Уведомить машину состояний о завершении
+            // Notify the state machine (will trigger transition to Results)
             _stateMachine?.CompleteLevel(scorePercent);
         }
     }
