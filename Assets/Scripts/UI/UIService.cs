@@ -25,6 +25,7 @@ namespace HajjFlow.UI
 
         [SerializeField] private GameObject _levelButtonPrefab;
         [SerializeField] private Button _backButton;
+        [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _gameStartButton;
 
         [SerializeField] private GameObject _gameStartScree;
@@ -47,7 +48,15 @@ namespace HajjFlow.UI
 
             _gameStartButton.onClick.AddListener(GameStartUI);
 
+
+            _nextLevelButton.onClick.AddListener(NextLevel);
+
             BuildLevelGrid();
+        }
+
+        private void NextLevel()
+        {
+
         }
 
         private void GameStartUI()
@@ -90,13 +99,20 @@ namespace HajjFlow.UI
         public void ShowLevel(int level)
         {
             level--;
+            
+            Debug.Log($"[LevelSelectionUI] Showing level {level}");
+
+            foreach (var lvl in _levelsUI)
+            {
+                lvl.SetActive(false);
+            }
 
             if (level < _levelsUI.Length)
             {
-                _levelsUI[level].SetActive(true);   
-            } 
+                _levelsUI[level].SetActive(true);
+            }
         }
-        
+
 
         private void OnLevelTileClicked(LevelData level)
         {
@@ -132,12 +148,30 @@ namespace HajjFlow.UI
         }
 
         public void WarmUpLevelShow()
-        { 
+        {
             _mainMenuScreen.SetActive(true);
-                _gameStartScree.SetActive(false);
-                _levelsScreen.SetActive(false);
-                
-                ShowLevel(1);
+            _gameStartScree.SetActive(false);
+            _levelsScreen.SetActive(false);
+
+            ShowLevel(1);
+        }
+
+        public void MiqatLevelShow()
+        {
+            _mainMenuScreen.SetActive(true);
+            _gameStartScree.SetActive(false);
+            _levelsScreen.SetActive(false);
+
+            ShowLevel(2);
+        }
+
+        public void TawafLevelShow()
+        {
+            _mainMenuScreen.SetActive(true);
+            _gameStartScree.SetActive(false);
+            _levelsScreen.SetActive(false);
+
+            ShowLevel(3);
         }
     }
 }

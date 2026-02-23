@@ -45,6 +45,9 @@ namespace HajjFlow.Core.States
             _totalQuestions = _levelData?.Questions?.Length ?? 0;
             _startTime = Time.time;
 
+            
+            
+            GameManager.Instance.uiService.MiqatLevelShow();
             Debug.Log($"[MiqatLevelState] Starting Miqat level with {_totalQuestions} questions");
         }
 
@@ -151,6 +154,7 @@ namespace HajjFlow.Core.States
                 }
             }
 
+            
             // Уведомить машину состояний о завершении
             _stateMachine?.CompleteLevel(scorePercent);
         }

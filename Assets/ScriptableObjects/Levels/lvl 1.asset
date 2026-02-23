@@ -20,30 +20,144 @@ MonoBehaviour:
     \u0443\u0440\u043E\u0432\u043D\u0435"
   Thumbnail: {fileID: -181533402, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
   Questions:
-  - QuestionText: 
-    Options: []
+  - QuestionText: Who is obligated to perform Hajj?
+    Options:
+    - Every Muslim
+    - Every adult Muslim regardless of conditions
+    - A Muslim who is physically and financially capable
+    - Only men
+    CorrectAnswerIndex: 2
+    Explanation: Hajj is obligatory once in a lifetime for those who are physically
+      and financially capable (istita'ah).
+    GemsReward: 5
+  - QuestionText: How many times is Hajj obligatory?
+    Options:
+    - Every year
+    - Once in a lifetime
+    - Three times
+    - As long as one lives
+    CorrectAnswerIndex: 1
+    Explanation: Hajj is obligatory once in a lifetime for those who are able.
+    GemsReward: 5
+  - QuestionText: What is Ihram?
+    Options:
+    - A special prayer
+    - A state of intention and restrictions
+    - Clothing only for men
+    - A location
+    CorrectAnswerIndex: 1
+    Explanation: Ihram is a sacred state entered with intention that includes specific
+      restrictions.
+    GemsReward: 5
+  - QuestionText: Can perfume be used after entering Ihram?
+    Options:
+    - Yes
+    - Only a little
+    - No
+    - Only for women
+    CorrectAnswerIndex: 2
+    Explanation: Using perfume after entering Ihram is prohibited.
+    GemsReward: 5
+  - QuestionText: Which of the following is prohibited in Ihram?
+    Options:
+    - Sandals
+    - Razor
+    - Perfume
+    - Documents
+    CorrectAnswerIndex: 2
+    Explanation: Applying perfume is prohibited after entering Ihram.
+    GemsReward: 5
+  - QuestionText: What is Miqat?
+    Options:
+    - A mountain
+    - A prayer
+    - A boundary for entering Ihram
+    - A market
+    CorrectAnswerIndex: 2
+    Explanation: Miqat is the designated boundary where pilgrims must enter Ihram
+      before crossing.
+    GemsReward: 5
+  - QuestionText: What must be done before crossing Miqat?
+    Options:
+    - Perform Tawaf
+    - Wear Ihram and make intention
+    - Read the entire Quran
+    - Drink Zamzam water
+    CorrectAnswerIndex: 1
+    Explanation: Pilgrims must enter Ihram and make intention before crossing Miqat.
+    GemsReward: 5
+  - QuestionText: Can a pilgrim cross Miqat without Ihram?
+    Options:
+    - Yes
+    - No
+    - Only at night
+    - Only by mistake
+    CorrectAnswerIndex: 1
+    Explanation: It is not permissible to cross Miqat with intention of Hajj without
+      Ihram.
+    GemsReward: 5
+  - QuestionText: When is Talbiyah recited?
+    Options:
+    - After Arafat
+    - After entering Ihram
+    - Before sleep
+    - "After Sa\u2019i"
+    CorrectAnswerIndex: 1
+    Explanation: Talbiyah is recited after entering Ihram.
+    GemsReward: 5
+  - QuestionText: What should someone do if they crossed Miqat without Ihram?
+    Options:
+    - Continue the journey
+    - Return to Miqat and enter Ihram
+    - Ignore it
+    - Wait until arrival in Makkah
+    CorrectAnswerIndex: 1
+    Explanation: The pilgrim must return to Miqat and enter Ihram properly.
+    GemsReward: 5
+  - QuestionText: How many circles are performed in Tawaf?
+    Options:
+    - Five
+    - Six
+    - Seven
+    - Eight
+    CorrectAnswerIndex: 2
+    Explanation: Tawaf consists of seven complete circuits around the Kaaba.
+    GemsReward: 5
+  - QuestionText: Where does Tawaf begin?
+    Options:
+    - At the Kaaba door
+    - At the Black Stone
+    - Anywhere around the Kaaba
+    - At Zamzam well
+    CorrectAnswerIndex: 1
+    Explanation: Tawaf begins at the Black Stone (Hajar al-Aswad).
+    GemsReward: 5
+  - QuestionText: In which direction is Tawaf performed?
+    Options:
+    - Clockwise
+    - Counterclockwise
+    - Any direction
+    - Zigzag
+    CorrectAnswerIndex: 1
+    Explanation: Tawaf is performed counterclockwise.
+    GemsReward: 5
+  - QuestionText: What counts as one complete circuit?
+    Options:
+    - Half circle
+    - From Black Stone back to Black Stone
+    - Three steps
+    - Any path
+    CorrectAnswerIndex: 1
+    Explanation: One circuit is completed when returning to the Black Stone.
+    GemsReward: 5
+  - QuestionText: Is wudu required for Tawaf?
+    Options:
+    - Yes
+    - No
+    - Only for women
+    - Only for the first circle
     CorrectAnswerIndex: 0
-    Explanation: 
-    GemsReward: 0
-  - QuestionText: 
-    Options: []
-    CorrectAnswerIndex: 0
-    Explanation: 
-    GemsReward: 0
-  - QuestionText: 
-    Options: []
-    CorrectAnswerIndex: 0
-    Explanation: 
-    GemsReward: 0
-  - QuestionText: 
-    Options: []
-    CorrectAnswerIndex: 0
-    Explanation: 
-    GemsReward: 0
-  - QuestionText: 
-    Options: []
-    CorrectAnswerIndex: 0
-    Explanation: 
-    GemsReward: 0
+    Explanation: Being in a state of wudu is required for Tawaf.
+    GemsReward: 5
   CompletionBonusGems: 20
   PassThreshold: 60

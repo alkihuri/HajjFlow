@@ -46,6 +46,8 @@ namespace HajjFlow.Core.States
             _totalQuestions = _levelData?.Questions?.Length ?? 0;
             _consecutiveCorrect = 0;
             _startTime = Time.time;
+            
+            GameManager.Instance.uiService.TawafLevelShow();
 
             Debug.Log($"[TawafLevelState] Starting Tawaf level - the sacred circumambulation with {_totalQuestions} questions");
         }
