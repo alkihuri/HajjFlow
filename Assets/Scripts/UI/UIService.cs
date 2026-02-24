@@ -29,6 +29,8 @@ namespace HajjFlow.UI
         
         [SerializeField] private GameObject _levelsUiRoot;
         [SerializeField] private GameObject[] _levelsUI;
+        
+        [SerializeField] private TextMeshProUGUI _levelTitleText;
 
         [Header("Level Configuration")] [SerializeField]
         private LevelData[] _levels;
@@ -171,6 +173,8 @@ namespace HajjFlow.UI
         private void OnLevelTileClicked(LevelData level)
         {
             string stateId = DetermineStateId(level.LevelId);
+            
+            _levelTitleText.text = $"{level.Description}";
 
             // Delegate to the state machine instead of LevelManager directly
             var sm = GameManager.Instance?.GetService<GameStateMachine>();
