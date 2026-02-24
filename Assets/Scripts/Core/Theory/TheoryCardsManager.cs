@@ -27,12 +27,19 @@ namespace Core.Theory
                     cardInstance.Initialize(card);
                     cardInstance.gameObject.SetActive(true);
              }
+              
              
              foreach (var theoryCardBase in _cardsPool)
              {
                  theoryCardBase.gameObject.SetActive(false);    
              }
-
+ 
+             // subscribe to swipe event showing next card
+             foreach (var card in _cardsPool)             {
+                 card.SwipeLeft += () => ShowCard((_data.IndexOf(card.Data) + 1) % _data.Count);
+                 card.SwipeRight += () => ShowCard((_data.IndexOf(card.Data) - 1 + _data.Count) % _data.Count);
+             }
+             
              
              ShowCard(1);
          }
@@ -48,10 +55,20 @@ namespace Core.Theory
              
              var cardData = _data[index];
              var cardInstance = GetFromPool();
+             HideAllCards();
              cardInstance.Initialize(cardData);
              cardInstance.gameObject.SetActive(true);
          }
-         
+
+         private void HideAllCards()
+         {
+             foreach (var card in _cardsPool)
+             {
+                 card.gameObject.SetActive(false);  
+             }
+             
+         }
+
          private TheoryCardBase GetFromPool()
          { 
              // Try to find an inactive card in the pool
