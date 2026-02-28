@@ -10,7 +10,7 @@ namespace HajjFlow.UI
     /// </summary>
     public class StageGameplayController : MonoBehaviour
     {
-        private WarmupLevelController levelController;
+        [SerializeField] private WarmupLevelController levelController;
 
         private void Start()
         {
@@ -37,7 +37,7 @@ namespace HajjFlow.UI
             Debug.Log("[StageGameplayController] Stage gameplay completed, notifying level controller...");
             
             // Уведомляем контроллер уровня о завершении
-            levelController.OnStageGameplayCompleted();
+            levelController.OnStageGameplayCompleted(); 
 
             // Можно отключить/скрыть этот GameObject
             gameObject.SetActive(false);

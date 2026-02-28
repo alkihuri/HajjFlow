@@ -1,3 +1,4 @@
+using HajjFlow.UI;
 using UnityEngine;
 
 namespace HajjFlow.Core.States
@@ -27,6 +28,8 @@ namespace HajjFlow.Core.States
         public virtual void Enter()
         {
             Debug.Log($"[{StateId}] Enter");
+
+            GameManager.Instance.GetService<UIService>().ResetUI();
         }
 
         /// <summary>Called every frame while the state is active.</summary>

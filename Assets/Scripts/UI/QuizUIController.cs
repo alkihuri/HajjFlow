@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using HajjFlow.Data;
 using HajjFlow.Services;
 using HajjFlow.Core;
+using HajjFlow.Core.States;
 using TMPro;
+using Unity.VisualScripting;
 
 namespace HajjFlow.UI
 {
@@ -21,6 +23,11 @@ namespace HajjFlow.UI
 
         [SerializeField] private QuizService quizService;
 
+        
+        [SerializeField] private GameObject _resultsPanel;
+        [SerializeField] private TextMeshProUGUI _resultsText;
+        [SerializeField] private Button _retryButton;
+        
         private void OnEnable()
         {
             Init();
@@ -28,13 +35,7 @@ namespace HajjFlow.UI
 
         private void OnDisable()
         {
-            if (quizService != null)
-            {
-                quizService.OnQuestionDisplayed -= HandleQuestionDisplayed;
-                quizService.OnAnswerCorrect -= HandleAnswerCorrect;
-                quizService.OnAnswerIncorrect -= HandleAnswerIncorrect;
-                quizService.OnQuizCompleted -= HandleQuizCompleted;
-            }
+            UnsubscribeFromQuizService();
         }
 
         private void Start()
@@ -54,6 +55,8 @@ namespace HajjFlow.UI
         {
             if (question == null)
                 return;
+            
+            Debug.Log("[QuizUIController] Displaying question: " + question.QuestionText);
 
             // Отображаем текст вопроса
             questionText.text = question.QuestionText;
@@ -61,7 +64,7 @@ namespace HajjFlow.UI
             // Отображаем варианты ответов
             for (int i = 0; i < answerButtons.Length && i < question.Options.Length; i++)
             {
-                Text buttonText = answerButtons[i].GetComponentInChildren<Text>();
+                var  buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
                 if (buttonText != null)
                 {
                     buttonText.text = question.Options[i];
@@ -147,13 +150,35 @@ namespace HajjFlow.UI
 
             // TODO: Показать экран результатов
             // Можно открыть отдельный UI с результатами, кнопкой "Retry" или "Next Level"
-            gameObject.SetActive(false);
+            
+            _resultsPanel.SetActive(true);  
+            _resultsText.text = $"Your Score: {correctAnswers} / {totalQuestions} ({percentage}%)";
+                
+            //gameObject.SetActive(false);
         }
 
         [ContextMenu("Init")]
         public void Init()
         {
-            quizService = GameManager.Instance.quizService;
+            Init(GameManager.Instance.quizService);
+            _retryButton.onClick.AddListener(() =>
+            {
+                
+                    GameManager.Instance.GetService<GameStateMachine>().ChangeState(GameStateIds.LevelSelect);
+                
+            });
+        }
+        
+        /// <summary>
+        /// Инициализирует UI контроллер с переданным QuizService.
+        /// Вызывается перед InitializeQuiz, чтобы события были подписаны.
+        /// </summary>
+        public void Init(QuizService service)
+        {
+            // Отписываемся от старого сервиса если был
+            UnsubscribeFromQuizService();
+            
+            quizService = service;
 
             if (quizService != null)
             {
@@ -161,10 +186,25 @@ namespace HajjFlow.UI
                 quizService.OnAnswerCorrect += HandleAnswerCorrect;
                 quizService.OnAnswerIncorrect += HandleAnswerIncorrect;
                 quizService.OnQuizCompleted += HandleQuizCompleted;
+                Debug.Log("[QuizUIController] Subscribed to QuizService events");
+            }
+            else
+            {
+                Debug.LogError("[QuizUIController] QuizService is null!");
             }
             
-            // show first question
-            quizService.DisplayCurrentQuestion();
+            // НЕ вызываем DisplayCurrentQuestion здесь - это сделает InitializeQuiz
+        }
+        
+        private void UnsubscribeFromQuizService()
+        {
+            if (quizService != null)
+            {
+                quizService.OnQuestionDisplayed -= HandleQuestionDisplayed;
+                quizService.OnAnswerCorrect -= HandleAnswerCorrect;
+                quizService.OnAnswerIncorrect -= HandleAnswerIncorrect;
+                quizService.OnQuizCompleted -= HandleQuizCompleted;
+            }
         }
 
         

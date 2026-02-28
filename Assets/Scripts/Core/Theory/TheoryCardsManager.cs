@@ -4,6 +4,7 @@ using System.Linq;
 using HajjFlow.Core;
 using HajjFlow.Services;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.Theory
 {
@@ -18,7 +19,7 @@ namespace Core.Theory
 
 
         public event Action<int> OnCardChanged;
-        public event Action OnTheoryCardsCompleted;
+        public UnityEvent OnTheoryCardsCompleted = new UnityEvent();
 
         public int CurentCardIndex = 0;
 
@@ -64,9 +65,17 @@ namespace Core.Theory
         public void ShowCard(int index)
         {
             Debug.Log($"ShowCard({index})");
-
+            // when last card is shown, invoke completion event
+            if (index == _cardsPool.Count )
+            {
+                OnTheoryCardsCompleted?.Invoke();
+            }
             index = Math.Clamp(index, 0, _cardsPool.Count - 1);
             OnCardChanged?.Invoke(index);
+            
+          
+            
+            
             if (index < 0 || index >= _cardsPool.Count)
             {
                 Debug.LogError($"[TheoryCardsManager] Invalid card index: {index}");
@@ -77,13 +86,8 @@ namespace Core.Theory
 
             _cardsPool[index].Show();
             CurentCardIndex = index;
-
-            if (CurentCardIndex == _cardsPool.Count - 1)
-            { 
-                OnTheoryCardsCompleted?.Invoke(); 
-                var gm = GameManager.Instance.GetService<StageCompletionService>();
-                gm.CompleteStage(_cardsPool.First().Data.LevelId, index);
-            }
+ 
+            
         }
  
 

@@ -220,12 +220,21 @@ namespace HajjFlow.UI
                 return;
             }
 
-            _mainMenuScreen?.SetActive(false);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(false);
-            _levelsUiRoot?.SetActive(false);
+            //_mainMenuScreen?.SetActive(false);
+            //_gameStartScree?.SetActive(false);
+            //_levelSelect?.SetActive(false);
+            //_levelsUiRoot?.SetActive(false);
 
             quizUIController.gameObject.SetActive(true);
+        }
+
+        public void ResetUI()
+        { 
+            /// сброс к главному меню (вызывается при завершении уровня или при нажатии "назад")
+            /// сбросить состяоние всех экранов, чтобы при возвращении на главный экран не было "залипания" предыдущих экранов
+            _mainMenuScreen?.SetActive(false);
+            _gameStartScree?.SetActive(false);
+            _levelSelect?.SetActive(true);
         }
     }
 }

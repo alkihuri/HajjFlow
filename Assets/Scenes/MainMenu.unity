@@ -140,6 +140,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &300398899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+  m_PrefabInstance: {fileID: 718052292907740996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24606b961ac8471692f12f801cf7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.WarmupLevelController
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,10 +842,22 @@ PrefabInstance:
       propertyPath: '_data.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: bbdabd3e5aa9f421d81b336628c7f86a, type: 2}
-    - target: {fileID: 3973274033992367023, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+    - target: {fileID: 2116441607558497106, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200504649824874172, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3973274033992367023, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142398677901565514, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 300398899}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

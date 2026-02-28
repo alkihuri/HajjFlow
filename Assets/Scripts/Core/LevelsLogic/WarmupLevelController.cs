@@ -12,14 +12,13 @@ namespace HajjFlow.Core.LevelsLogic
     /// </summary>
     public class WarmupLevelController : MonoBehaviour
     {
-        [SerializeField]
-        private LevelData levelData;
+        [SerializeField] private LevelData levelData;
 
         private StageCompletionService stageCompletionService;
         private QuizService quizService;
-        
+
         [SerializeField] private QuizUIController _quizUIController;
-        
+
         private int currentStageIndex = 0;
         private const string LEVEL_ID = "Warmup";
 
@@ -81,29 +80,12 @@ namespace HajjFlow.Core.LevelsLogic
         /// Начинает прохождение уровня.
         /// Запускает первый блок теории.
         /// </summary>
-        public void StartLevel()
-        {
-            if (levelData == null)
-            {
-                Debug.LogError("[WarmupLevelController] LevelData is not assigned!");
-                return;
-            }
-
-            currentStageIndex = 0;
-            Debug.Log($"[WarmupLevelController] Starting level: {levelData.LevelName}");
-            
-            StartCurrentStage();
-        }
-
         /// <summary>
         /// Запускает текущий блок теории (мини-игра/интерактивный контент).
         /// </summary>
         private void StartCurrentStage()
         {
             Debug.Log($"[WarmupLevelController] Starting stage {currentStageIndex}");
-
-
-           
         }
 
         /// <summary>
@@ -113,12 +95,14 @@ namespace HajjFlow.Core.LevelsLogic
         public void OnStageGameplayCompleted()
         {
             Debug.Log($"[WarmupLevelController] Stage {currentStageIndex} gameplay completed");
-            
+
             // Верифицируем завершение блока через сервис
             if (stageCompletionService != null)
             {
                 stageCompletionService.CompleteStage(LEVEL_ID, currentStageIndex);
             }
+            
+            StartQuiz();
         }
 
         /// <summary>
@@ -133,11 +117,11 @@ namespace HajjFlow.Core.LevelsLogic
             }
 
             Debug.Log($"[WarmupLevelController] Stage {stageIndex} verified and completed");
-            
+
             // Проверяем, остались ли ещё блоки теории
             currentStageIndex++;
-            
-            if (currentStageIndex < 3) // 3 блока теории для Warmup
+
+            if (currentStageIndex <= 3) // 3 блока теории для Warmup
             {
                 // Переходим к следующему блоку теории
                 StartCurrentStage();
@@ -169,28 +153,29 @@ namespace HajjFlow.Core.LevelsLogic
                 return;
             }
 
-            Debug.Log($"[WarmupLevelController] Starting quiz with {levelData.Questions.Length} questions");
-            
-            if (quizService != null)
-            {
-                quizService.InitializeQuiz(levelData.Questions);
-            }
-            
-            GameManager.Instance.GetService<UIService>().ShowUpQuizUI(_quizUIController);
-            
-            
+            // 1. Проверяем QuizUIController
             if (_quizUIController == null)
             {
-                _quizUIController = FindObjectOfType<QuizUIController>();
+                _quizUIController = FindFirstObjectByType<QuizUIController>();
             }
+
             if (_quizUIController == null)
             {
                 Debug.LogError("[WarmupLevelController] QuizUIController not found in scene!");
                 return;
             }
-            
-            _quizUIController.Init();
-            // TODO: Переключить UI на экран квиза
+
+            Debug.Log($"[WarmupLevelController] Starting quiz with {levelData.Questions.Length} questions");
+
+            // 2. Показываем UI квиза (активируем GameObject)
+            var uiService = GameManager.Instance.GetService<UIService>();
+            uiService?.ShowUpQuizUI(_quizUIController);
+
+            // 3. Инициализируем UI контроллер и подписываем события ДО инициализации квиза
+            _quizUIController.Init(quizService);
+
+            // 4. Инициализируем квиз с вопросами (это вызовет первое событие OnQuestionDisplayed)
+            quizService.InitializeQuiz(levelData.Questions);
         }
 
         /// <summary>
@@ -199,11 +184,11 @@ namespace HajjFlow.Core.LevelsLogic
         private void HandleQuizCompleted(int totalQuestions, int correctAnswers)
         {
             Debug.Log($"[WarmupLevelController] Quiz completed! Score: {correctAnswers}/{totalQuestions}");
-            
+
             // Проверяем, пройден ли уровень (минимум passThreshold%)
             int percentage = (correctAnswers * 100) / totalQuestions;
             bool levelPassed = percentage >= levelData.PassThreshold;
-            
+
             if (levelPassed)
             {
                 Debug.Log($"[WarmupLevelController] Level PASSED! Score: {percentage}%");
@@ -211,7 +196,8 @@ namespace HajjFlow.Core.LevelsLogic
             }
             else
             {
-                Debug.Log($"[WarmupLevelController] Level FAILED! Score: {percentage}% (need {levelData.PassThreshold}%)");
+                Debug.Log(
+                    $"[WarmupLevelController] Level FAILED! Score: {percentage}% (need {levelData.PassThreshold}%)");
                 // TODO: Показать экран повтора
             }
         }
