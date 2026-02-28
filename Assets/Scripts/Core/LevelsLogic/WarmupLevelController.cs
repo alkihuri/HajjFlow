@@ -1,6 +1,7 @@
 using UnityEngine;
 using HajjFlow.Data;
 using HajjFlow.Services;
+using HajjFlow.UI;
 
 namespace HajjFlow.Core.LevelsLogic
 {
@@ -16,6 +17,8 @@ namespace HajjFlow.Core.LevelsLogic
 
         private StageCompletionService stageCompletionService;
         private QuizService quizService;
+        
+        [SerializeField] private QuizUIController _quizUIController;
         
         private int currentStageIndex = 0;
         private const string LEVEL_ID = "Warmup";
@@ -98,9 +101,9 @@ namespace HajjFlow.Core.LevelsLogic
         private void StartCurrentStage()
         {
             Debug.Log($"[WarmupLevelController] Starting stage {currentStageIndex}");
-            
-            // TODO: Инициализировать UI для показа блока теории
-            // Здесь будет загружаться геймифицированный контент для текущего блока
+
+
+           
         }
 
         /// <summary>
@@ -173,6 +176,20 @@ namespace HajjFlow.Core.LevelsLogic
                 quizService.InitializeQuiz(levelData.Questions);
             }
             
+            GameManager.Instance.GetService<UIService>().ShowUpQuizUI(_quizUIController);
+            
+            
+            if (_quizUIController == null)
+            {
+                _quizUIController = FindObjectOfType<QuizUIController>();
+            }
+            if (_quizUIController == null)
+            {
+                Debug.LogError("[WarmupLevelController] QuizUIController not found in scene!");
+                return;
+            }
+            
+            _quizUIController.Init();
             // TODO: Переключить UI на экран квиза
         }
 

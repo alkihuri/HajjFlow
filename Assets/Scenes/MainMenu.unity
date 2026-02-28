@@ -553,6 +553,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1414502102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3858279563846927446, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+  m_PrefabInstance: {fileID: 718052292907740996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955904e78dec4480ab3df84363bb5d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.QuizService
 --- !u!1 &1492122549 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 598177499248548596, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -643,6 +654,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _quizUIController
+      value: 
+      objectReference: {fileID: 6574980487578156796}
     - target: {fileID: 6335978810760529491, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_Name
       value: App
@@ -695,6 +710,10 @@ PrefabInstance:
       propertyPath: '_levelsUI.Array.data[2]'
       value: 
       objectReference: {fileID: 141046626}
+    - target: {fileID: 9025308636688837120, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -708,6 +727,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1280970156809126209, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: quizService
+      value: 
+      objectReference: {fileID: 1414502102}
     - target: {fileID: 1696791376022195048, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -808,11 +831,26 @@ PrefabInstance:
       propertyPath: '_data.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: bbdabd3e5aa9f421d81b336628c7f86a, type: 2}
+    - target: {fileID: 3973274033992367023, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+--- !u!114 &6574980487578156796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1280970156809126209, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+  m_PrefabInstance: {fileID: 6574980487578156792}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f9de0434bd4d8bb431a4b6dbfcdd31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.QuizUIController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

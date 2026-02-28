@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using HajjFlow.Data;
 using HajjFlow.Services;
 using HajjFlow.Core;
+using TMPro;
 
 namespace HajjFlow.UI
 {
@@ -12,25 +13,17 @@ namespace HajjFlow.UI
     /// </summary>
     public class QuizUIController : MonoBehaviour
     {
-        [SerializeField] private Text questionText;
+        [SerializeField] private TextMeshProUGUI questionText;
         [SerializeField] private Button[] answerButtons = new Button[4];
-        [SerializeField] private Text progressText;
+        [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private Image correctIndicator;
         [SerializeField] private Image incorrectIndicator;
 
-        private QuizService quizService;
+        [SerializeField] private QuizService quizService;
 
         private void OnEnable()
         {
-            quizService = GameManager.Instance.quizService;
-            
-            if (quizService != null)
-            {
-                quizService.OnQuestionDisplayed += HandleQuestionDisplayed;
-                quizService.OnAnswerCorrect += HandleAnswerCorrect;
-                quizService.OnAnswerIncorrect += HandleAnswerIncorrect;
-                quizService.OnQuizCompleted += HandleQuizCompleted;
-            }
+            Init();
         }
 
         private void OnDisable()
@@ -73,7 +66,7 @@ namespace HajjFlow.UI
                 {
                     buttonText.text = question.Options[i];
                 }
-                
+
                 // Включаем кнопку
                 answerButtons[i].interactable = true;
             }
@@ -109,7 +102,7 @@ namespace HajjFlow.UI
         private void HandleAnswerCorrect(int gemsReward)
         {
             Debug.Log($"✓ Correct! +{gemsReward} gems");
-            
+
             // Показываем индикатор успеха
             if (correctIndicator != null)
             {
@@ -126,7 +119,7 @@ namespace HajjFlow.UI
         private void HandleAnswerIncorrect(int correctIndex)
         {
             Debug.Log($"✗ Incorrect! Correct answer index: {correctIndex}");
-            
+
             // Показываем индикатор ошибки
             if (incorrectIndicator != null)
             {
@@ -149,13 +142,31 @@ namespace HajjFlow.UI
         private void HandleQuizCompleted(int totalQuestions, int correctAnswers)
         {
             int percentage = (correctAnswers * 100) / totalQuestions;
-            
+
             Debug.Log($"Quiz Completed! Score: {correctAnswers}/{totalQuestions} ({percentage}%)");
-            
+
             // TODO: Показать экран результатов
             // Можно открыть отдельный UI с результатами, кнопкой "Retry" или "Next Level"
             gameObject.SetActive(false);
         }
+
+        [ContextMenu("Init")]
+        public void Init()
+        {
+            quizService = GameManager.Instance.quizService;
+
+            if (quizService != null)
+            {
+                quizService.OnQuestionDisplayed += HandleQuestionDisplayed;
+                quizService.OnAnswerCorrect += HandleAnswerCorrect;
+                quizService.OnAnswerIncorrect += HandleAnswerIncorrect;
+                quizService.OnQuizCompleted += HandleQuizCompleted;
+            }
+            
+            // show first question
+            quizService.DisplayCurrentQuestion();
+        }
+
+        
     }
 }
-

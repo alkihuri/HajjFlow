@@ -44,7 +44,7 @@ namespace HajjFlow.Services
         }
 
         /// <summary>Отображает текущий вопрос</summary>
-        private void DisplayCurrentQuestion()
+        public void DisplayCurrentQuestion()
         {
             if (currentQuestions == null || currentQuestionIndex >= currentQuestions.Length)
             {

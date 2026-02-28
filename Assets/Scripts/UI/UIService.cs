@@ -211,5 +211,21 @@ namespace HajjFlow.UI
             else
                 LevelManager.GoToMainMenu();
         }
+
+        public void ShowUpQuizUI(QuizUIController quizUIController)
+        { 
+            if (quizUIController == null)
+            {
+                Debug.LogError("[UIService] Cannot show quiz UI: QuizUIController reference is null!");
+                return;
+            }
+
+            _mainMenuScreen?.SetActive(false);
+            _gameStartScree?.SetActive(false);
+            _levelSelect?.SetActive(false);
+            _levelsUiRoot?.SetActive(false);
+
+            quizUIController.gameObject.SetActive(true);
+        }
     }
 }
