@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.WarmUpTheoryCard
   <Data>k__BackingField: {fileID: 0}
-  _minSwipeDistance: 60
-  _maxSwipeTime: 0.4
+  _minSwipeDistance: 400
+  _maxSwipeTime: 1
   _swipeAnimationDuration: 0.3
   _swipeDistanceMultiplier: 1.5
   _rotationAngle: 15

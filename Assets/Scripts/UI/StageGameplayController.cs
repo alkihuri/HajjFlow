@@ -1,51 +1,44 @@
 using UnityEngine;
-using HajjFlow.Core.LevelsLogic;
+using HajjFlow.Core;
+using HajjFlow.Core.States;
 
 namespace HajjFlow.UI
 {
     /// <summary>
-    /// Пример компонента для управления блоком теории/мини-игры.
-    /// Этот компонент должен быть прикреплён к GameObject блока теории.
-    /// Когда блок завершён, вызывает контроллер уровня для регистрации завершения.
+    /// Component for managing a theory block / mini-game stage.
+    /// Attach to the theory block GameObject.
+    /// When the block is completed, notifies the current level state via the state machine.
+    /// Works with any level state (not tied to a specific controller).
     /// </summary>
     public class StageGameplayController : MonoBehaviour
     {
-        private WarmupLevelController levelController;
-
-        private void Start()
-        {
-            // Находим контроллер уровня в сцене
-            levelController = FindFirstObjectByType<WarmupLevelController>();
-            
-            if (levelController == null)
-            {
-                Debug.LogError("[StageGameplayController] WarmupLevelController not found!");
-            }
-        }
-
         /// <summary>
-        /// Вызывается когда блок теории завершён (например, по нажатию кнопки "Next" или по условию)
+        /// Called when the theory block is completed (e.g. "Next" button or condition).
+        /// Notifies the current BaseLevelState through the state machine.
         /// </summary>
         public void CompleteStage()
         {
-            if (levelController == null)
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            if (sm == null)
             {
-                Debug.LogError("[StageGameplayController] Level controller is not set!");
+                Debug.LogError("[StageGameplayController] GameStateMachine not available!");
                 return;
             }
 
-            Debug.Log("[StageGameplayController] Stage gameplay completed, notifying level controller...");
-            
-            // Уведомляем контроллер уровня о завершении
-            levelController.OnStageGameplayCompleted();
+            var levelState = sm.CurrentState as BaseLevelState;
+            if (levelState == null)
+            {
+                Debug.LogError("[StageGameplayController] Current state is not a level state!");
+                return;
+            }
 
-            // Можно отключить/скрыть этот GameObject
-            gameObject.SetActive(false);
+            Debug.Log("[StageGameplayController] Stage gameplay completed, notifying level state...");
+            levelState.CompleteTheoryStage();
         }
 
         /// <summary>
-        /// Пример кнопки для завершения блока теории
-        /// Подключить этот метод к кнопке "Next" в UI
+        /// Button handler for completing the block.
+        /// Connect to the "Next" button in the UI.
         /// </summary>
         public void OnNextButtonClicked()
         {
@@ -54,7 +47,7 @@ namespace HajjFlow.UI
         }
 
         /// <summary>
-        /// Пример автоматического завершения через N секунд (для тестирования)
+        /// Auto-completes after a delay (for testing).
         /// </summary>
         public void CompleteAfterDelay(float delay)
         {

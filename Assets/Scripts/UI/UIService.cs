@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using HajjFlow.Core;
+using HajjFlow.Core.LevelsLogic;
 using HajjFlow.Core.States;
 using HajjFlow.Data;
 using HajjFlow.Services;
@@ -31,6 +32,13 @@ namespace HajjFlow.UI
         [SerializeField] private GameObject[] _levelsUI;
         
         [SerializeField] private TextMeshProUGUI _levelTitleText;
+
+        
+        // - level Controllers 
+        [Header("Level Controllers")]
+        [SerializeField] private WarmupLevelController _warmupLevelController;
+        [SerializeField] private MiqatLevelController _miqatLevelController;
+        [SerializeField] private TawafLevelController _tawafLevelController;
 
         [Header("Level Configuration")] [SerializeField]
         private LevelData[] _levels;
@@ -119,32 +127,38 @@ namespace HajjFlow.UI
             }
         }
 
-        public void WarmUpLevelShow()
+        /// <summary>
+        /// Shows the UI for a level by its state ID.
+        /// Replaces the per-level WarmUpLevelShow/MiqatLevelShow/TawafLevelShow methods.
+        /// </summary>
+        public void ShowLevelByStateId(string stateId)
         {
             _mainMenuScreen?.SetActive(true);
             _gameStartScree?.SetActive(false);
             _levelSelect?.SetActive(false);
 
-            ShowLevel(1);
+            int levelNumber = stateId switch
+            {
+                GameStateIds.Warmup => 1,
+                GameStateIds.Miqat  => 2,
+                GameStateIds.Tawaf  => 3,
+                _ => 0
+            };
+
+            if (levelNumber > 0)
+            {
+                ShowLevel(levelNumber);
+            }
+            else
+            {
+                Debug.LogWarning($"[UIService] Unknown state id for level UI: {stateId}");
+            }
         }
 
-        public void MiqatLevelShow()
-        {
-            _mainMenuScreen?.SetActive(true);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(false);
-
-            ShowLevel(2);
-        }
-
-        public void TawafLevelShow()
-        {
-            _mainMenuScreen?.SetActive(true);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(false);
-
-            ShowLevel(3);
-        }
+        // Backward-compatible wrappers
+        public void WarmUpLevelShow() => ShowLevelByStateId(GameStateIds.Warmup);
+        public void MiqatLevelShow() => ShowLevelByStateId(GameStateIds.Miqat);
+        public void TawafLevelShow() => ShowLevelByStateId(GameStateIds.Tawaf);
 
         // ── Private ──────────────────────────────────────────────────────────────
 
@@ -210,6 +224,49 @@ namespace HajjFlow.UI
                 sm.ChangeState(GameStateIds.MainMenu);
             else
                 LevelManager.GoToMainMenu();
+        }
+
+        public void ShowUpQuizUI(QuizUIController quizUIController)
+        { 
+            if (quizUIController == null)
+            {
+                Debug.LogError("[UIService] Cannot show quiz UI: QuizUIController reference is null!");
+                return;
+            }
+
+            quizUIController.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Сбрасывает состояние всех уровней.
+        /// </summary>
+        public void ResetUI()
+        {
+            Debug.Log("[UIService] Resetting all level UIs");
+            
+            if (_warmupLevelController != null)
+            {
+                _warmupLevelController.ResetLevel();
+            }
+            
+            // Add other level controllers here when needed
+            // if (_miqatLevelController != null) _miqatLevelController.ResetLevel();
+            // if (_tawafLevelController != null) _tawafLevelController.ResetLevel();
+        }
+
+        /// <summary>
+        /// Показывает блок теории для текущего уровня.
+        /// </summary>
+        public void ShowTheoryUI()
+        {
+            if (_warmupLevelController != null)
+            {
+                _warmupLevelController.ShowTheory();
+            }
+            else
+            {
+                Debug.LogWarning("[UIService] WarmupLevelController is null!");
+            }
         }
     }
 }

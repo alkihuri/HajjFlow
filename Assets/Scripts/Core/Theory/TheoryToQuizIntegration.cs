@@ -11,7 +11,7 @@ namespace Core.Theory
     public class TheoryToQuizIntegration : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private TheoryCardManager _cardManager;
+        [SerializeField] private TheoryCardsManager _cardManager;
         [SerializeField] private QuizService _quizService;
         
         [Header("Quiz Data")]

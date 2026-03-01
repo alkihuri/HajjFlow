@@ -5,6 +5,7 @@ namespace Core.Theory
     [CreateAssetMenu(menuName = "Theory/CardData")]
     public class TheoryCardData : ScriptableObject
     {
+        public string LevelId;
         public string Title;
         public string Description;
         public Sprite Image;

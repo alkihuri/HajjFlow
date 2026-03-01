@@ -1,3 +1,4 @@
+using HajjFlow.UI;
 using UnityEngine;
 
 namespace HajjFlow.Core.States
@@ -7,6 +8,7 @@ namespace HajjFlow.Core.States
     /// Each state has a lifecycle: Initialize → Enter → Update → Exit.
     /// All UI switching and logic should happen inside Enter / Exit.
     /// </summary>
+    [System.Serializable]
     public abstract class BaseGameState
     {
         protected GameStateMachine _stateMachine;
@@ -27,6 +29,7 @@ namespace HajjFlow.Core.States
         public virtual void Enter()
         {
             Debug.Log($"[{StateId}] Enter");
+            GameManager.Instance.GetService<UIService>().ResetUI();
         }
 
         /// <summary>Called every frame while the state is active.</summary>

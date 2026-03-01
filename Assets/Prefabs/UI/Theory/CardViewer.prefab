@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8309858314822060394}
   - component: {fileID: 4385317277040619973}
   - component: {fileID: 5664308788833925944}
+  - component: {fileID: 1484445024655697440}
   m_Layer: 5
   m_Name: CardViewer
   m_TagString: Untagged
@@ -88,9 +89,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheoryCardsManager
-  _cards: []
   _data:
   - {fileID: 11400000, guid: a4665bc4ac04c4fe3bf65a0ab16b5a5a, type: 2}
   - {fileID: 11400000, guid: ca6cc68540782466e89f748a9e1e58e6, type: 2}
   - {fileID: 11400000, guid: bbdabd3e5aa9f421d81b336628c7f86a, type: 2}
   _cardPrefab: {fileID: 5937014707127103986, guid: cb8901afe905e47e98189d883ee15ebd, type: 3}
+  _cardsPool: []
+  OnTheoryCardsCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1484445024655697440}
+        m_TargetAssemblyTypeName: HajjFlow.UI.StageGameplayController, Assembly-CSharp
+        m_MethodName: CompleteStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CurentCardIndex: 0
+--- !u!114 &1484445024655697440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158186930175862129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c1bbfefb414212b6f77471457b5f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.StageGameplayController

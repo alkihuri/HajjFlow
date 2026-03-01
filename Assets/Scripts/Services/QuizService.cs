@@ -44,7 +44,7 @@ namespace HajjFlow.Services
         }
 
         /// <summary>Отображает текущий вопрос</summary>
-        private void DisplayCurrentQuestion()
+        public void DisplayCurrentQuestion()
         {
             if (currentQuestions == null || currentQuestionIndex >= currentQuestions.Length)
             {
@@ -114,6 +114,7 @@ namespace HajjFlow.Services
         {
             Debug.Log($"[QuizService] Quiz completed! Correct: {correctAnswerCount}/{currentQuestions.Length}");
             OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount);
+            ResetQuiz();
         }
 
         /// <summary>Возвращает текущий вопрос</summary>

@@ -330,5 +330,12 @@ namespace Core.Theory
             
             returnSequence.OnComplete(() => _isAnimating = false);
         }
+
+        public void Show()
+        { 
+            _canvasGroup.DOFade(1f, _swipeAnimationDuration);
+            transform.DOLocalMove(_originalPosition, _swipeAnimationDuration);
+            gameObject.SetActive(true); 
+        }
     }
 }
