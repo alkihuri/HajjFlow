@@ -18,6 +18,7 @@ namespace HajjFlow.Core.States
             var ui = GameManager.Instance?.uiService;
             if (ui != null)
             {
+                ui.ResetUI();
                 ui.ShowLevelSelect();
             }
         }

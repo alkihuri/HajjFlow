@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using HajjFlow.Core.LevelsLogic;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -12,6 +13,7 @@ namespace HajjFlow.Core.States
     /// </summary>
     public class GameStateMachine : MonoBehaviour
     {
+        
         // ── Events ──────────────────────────────────────────────────────────────
 
         /// <summary>Fired whenever the active state changes.</summary>
@@ -25,7 +27,7 @@ namespace HajjFlow.Core.States
         private readonly Dictionary<string, BaseGameState> _states =
             new Dictionary<string, BaseGameState>();
 
-        private BaseGameState _currentState;
+        [SerializeField] private BaseGameState _currentState;
         private bool _isPaused;
 
         /// <summary>The level data for the currently active (or last-selected) level.</summary>

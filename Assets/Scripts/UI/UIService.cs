@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using HajjFlow.Core;
+using HajjFlow.Core.LevelsLogic;
 using HajjFlow.Core.States;
 using HajjFlow.Data;
 using HajjFlow.Services;
@@ -31,6 +32,13 @@ namespace HajjFlow.UI
         [SerializeField] private GameObject[] _levelsUI;
         
         [SerializeField] private TextMeshProUGUI _levelTitleText;
+
+        
+        // - level Controllers 
+        [Header("Level Controllers")]
+        [SerializeField] private WarmupLevelController _warmupLevelController;
+        [SerializeField] private MiqatLevelController _miqatLevelController;
+        [SerializeField] private TawafLevelController _tawafLevelController;
 
         [Header("Level Configuration")] [SerializeField]
         private LevelData[] _levels;
@@ -226,21 +234,39 @@ namespace HajjFlow.UI
                 return;
             }
 
-            //_mainMenuScreen?.SetActive(false);
-            //_gameStartScree?.SetActive(false);
-            //_levelSelect?.SetActive(false);
-            //_levelsUiRoot?.SetActive(false);
-
             quizUIController.gameObject.SetActive(true);
         }
 
+        /// <summary>
+        /// Сбрасывает состояние всех уровней.
+        /// </summary>
         public void ResetUI()
-        { 
-            /// сброс к главному меню (вызывается при завершении уровня или при нажатии "назад")
-            /// сбросить состяоние всех экранов, чтобы при возвращении на главный экран не было "залипания" предыдущих экранов
-            _mainMenuScreen?.SetActive(false);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(true);
+        {
+            Debug.Log("[UIService] Resetting all level UIs");
+            
+            if (_warmupLevelController != null)
+            {
+                _warmupLevelController.ResetLevel();
+            }
+            
+            // Add other level controllers here when needed
+            // if (_miqatLevelController != null) _miqatLevelController.ResetLevel();
+            // if (_tawafLevelController != null) _tawafLevelController.ResetLevel();
+        }
+
+        /// <summary>
+        /// Показывает блок теории для текущего уровня.
+        /// </summary>
+        public void ShowTheoryUI()
+        {
+            if (_warmupLevelController != null)
+            {
+                _warmupLevelController.ShowTheory();
+            }
+            else
+            {
+                Debug.LogWarning("[UIService] WarmupLevelController is null!");
+            }
         }
     }
 }

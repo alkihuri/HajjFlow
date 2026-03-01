@@ -106,9 +106,10 @@ namespace HajjFlow.Core.States
             {
                 Debug.Log($"[{StateId}] All theory blocks completed, starting quiz");
                 StartQuiz();
-            }
+            } 
         }
-
+ 
+        
         /// <summary>Starts the quiz portion of the level.</summary>
         protected virtual void StartQuiz()
         {

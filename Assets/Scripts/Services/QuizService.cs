@@ -114,6 +114,7 @@ namespace HajjFlow.Services
         {
             Debug.Log($"[QuizService] Quiz completed! Correct: {correctAnswerCount}/{currentQuestions.Length}");
             OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount);
+            ResetQuiz();
         }
 
         /// <summary>Возвращает текущий вопрос</summary>
