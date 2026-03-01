@@ -1,130 +1,61 @@
-using Core.Theory;
 using UnityEngine;
-using HajjFlow.Data;
 using HajjFlow.Core.States;
-using HajjFlow.UI;
-using HajjFlow.Services;
 
 namespace HajjFlow.Core.LevelsLogic
 {
     /// <summary>
     /// Контроллер уровня "Warmup" (Подготовка к Хаджу).
-    /// Управляет блоком теории и квизом для первого уровня.
     /// </summary>
-    public class WarmupLevelController : MonoBehaviour
+    public class WarmupLevelController : LevelControllerBase
     {
-        [SerializeField] private LevelData levelData;
-        [SerializeField] private QuizUIController _quizUIController;
-        [SerializeField] private TheoryCardsManager _theoryCardsManager;
+        protected override string StateId => GameStateIds.Warmup;
 
-        private QuizService _quizService;
-
-        private void Awake()
+        protected override void Awake()
         {
-            // Подписываемся на завершение теории
-            if (_theoryCardsManager != null)
-            {
-                _theoryCardsManager.OnTheoryCardsCompleted.AddListener(OnTheoryCompleted);
-            }
+            Debug.Log("[WarmupLevelController] Awake");
+            base.Awake();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
-            if (_theoryCardsManager != null)
-            {
-                _theoryCardsManager.OnTheoryCardsCompleted.RemoveListener(OnTheoryCompleted);
-            }
+            Debug.Log("[WarmupLevelController] OnDestroy");
+            base.OnDestroy();
         }
 
-        /// <summary>
-        /// Сбрасывает состояние уровня к начальному.
-        /// Вызывается при входе/выходе из WarmupState.
-        /// </summary>
-        public void ResetLevel()
+        public override void StartLevel()
         {
-            Debug.Log("[WarmupLevelController] Resetting level state");
-            
-            // Reset quiz UI
-            if (_quizUIController != null)
-            {
-                _quizUIController.ResetUI();
-            }
-            
-            // Reset theory cards and show them
-            if (_theoryCardsManager != null)
-            {
-                _theoryCardsManager.ResetToStart();
-                _theoryCardsManager.gameObject.SetActive(true);
-            }
+            Debug.Log("[WarmupLevelController] StartLevel");
+            base.StartLevel();
         }
 
-        /// <summary>
-        /// Показывает блок теории.
-        /// </summary>
-        public void ShowTheory()
-        { 
-            if (_theoryCardsManager != null)
-            {
-                _theoryCardsManager.gameObject.SetActive(true);
-                _theoryCardsManager.ShowCard(0);
-            }
+        public override void ResetLevel()
+        {
+            Debug.Log("[WarmupLevelController] ResetLevel");
+            base.ResetLevel();
         }
 
-        /// <summary>
-        /// Вызывается когда все карточки теории просмотрены.
-        /// </summary>
-        private void OnTheoryCompleted()
+        public override void ShowTheory()
         {
-            Debug.Log("[WarmupLevelController] Theory completed, starting quiz");
-            StartQuiz();
+            Debug.Log("[WarmupLevelController] ShowTheory");
+            base.ShowTheory();
         }
 
-        /// <summary>
-        /// Начинает квиз после прохождения теории.
-        /// </summary>
-        private void StartQuiz()
+        protected override void OnTheoryCompleted()
         {
-            if (levelData == null || levelData.Questions == null || levelData.Questions.Length == 0)
-            {
-                Debug.LogError("[WarmupLevelController] No questions loaded for quiz!");
-                return;
-            }
+            Debug.Log("[WarmupLevelController] OnTheoryCompleted - Theory completed, starting quiz");
+            base.OnTheoryCompleted();
+        }
 
-            // Скрываем теорию
-            if (_theoryCardsManager != null)
-            {
-                _theoryCardsManager.gameObject.SetActive(false);
-            }
+        protected override void StartQuiz()
+        {
+            Debug.Log($"[WarmupLevelController] StartQuiz - Questions: {levelData?.Questions?.Length ?? 0}");
+            base.StartQuiz();
+        }
 
-            // Получаем QuizService
-            _quizService = GameManager.Instance?.quizService;
-            if (_quizService == null)
-            {
-                Debug.LogError("[WarmupLevelController] QuizService not found!");
-                return;
-            }
-
-            // Проверяем QuizUIController
-            if (_quizUIController == null)
-            {
-                _quizUIController = FindFirstObjectByType<QuizUIController>();
-            }
-            if (_quizUIController == null)
-            {
-                Debug.LogError("[WarmupLevelController] QuizUIController not found!");
-                return;
-            }
-
-            Debug.Log($"[WarmupLevelController] Starting quiz with {levelData.Questions.Length} questions");
-
-            // 1. Активируем UI квиза
-            _quizUIController.gameObject.SetActive(true);
-            
-            // 2. Инициализируем UI и подписываем события
-            _quizUIController.Init(_quizService);
-            
-            // 3. Инициализируем квиз с вопросами (вызовет OnQuestionDisplayed)
-            _quizService.InitializeQuiz(levelData.Questions);
+        public override void OnStageGameplayCompleted()
+        {
+            Debug.Log("[WarmupLevelController] OnStageGameplayCompleted");
+            base.OnStageGameplayCompleted();
         }
     }
 }

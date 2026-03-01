@@ -29,7 +29,7 @@ namespace HajjFlow.Core.States
             
             // Показываем UI уровня и начинаем с теории
             uiService.ShowLevelByStateId(StateId);
-            uiService.ShowTheoryUI();
+            uiService.ShowWarmUpTheoryUI();
             
             // Квиз запустится автоматически после завершения теории 
             // через WarmupLevelController.OnTheoryCompleted

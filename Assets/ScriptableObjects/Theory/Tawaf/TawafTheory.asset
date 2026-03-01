@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: TawafTheory
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: 
+  Cards:
+  - {fileID: 11400000, guid: f5f680b2ab8974c729795cb4b32c3abf, type: 2}
+  - {fileID: 11400000, guid: 4ca783670cd3b4bd2a2a009c96c6a364, type: 2}
+  - {fileID: 11400000, guid: 8d27abae28fd34c6c9eb26a3d5a7698d, type: 2}
+  - {fileID: 11400000, guid: 08a6dfb8c1b334749a54aff05d5e401e, type: 2}
+  - {fileID: 11400000, guid: 7bada9ff333c34c57bbdc511f0ade985, type: 2}
+  - {fileID: 11400000, guid: 942ff21a23a394076b37828c6f25d0a8, type: 2}
+  - {fileID: 11400000, guid: 448477379508e454cb39ebdad6faf2df, type: 2}

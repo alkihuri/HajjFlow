@@ -21,17 +21,36 @@ namespace HajjFlow.Core.States
         public override void Enter()
         {
             base.Enter();
+            
+            var uiService = GameManager.Instance?.uiService;
+            if (uiService == null)
+            {
+                Debug.LogError($"[{StateId}] UIService not found!");
+                return;
+            }
+            
+            // Показываем UI уровня и начинаем с теории
+            uiService.ShowLevelByStateId(StateId);
+            uiService.ShowMiqatTheoryUI();
+            
+            // Запоминаем время старта для бонусов
             _startTime = Time.time;
+            
+            // Квиз запустится автоматически после завершения теории 
+            // через MiqatLevelController.OnTheoryCompleted
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            
+            // Сбрасываем состояние при выходе
+            GameManager.Instance?.uiService?.ResetUI();
         }
 
         public override void Update()
         {
-            float elapsedTime = Time.time - _startTime;
-
-            if (elapsedTime > 300f) // 5 minutes
-            {
-                // Time warning placeholder
-            }
+           
         }
 
         public override void OnPause()
@@ -64,8 +83,7 @@ namespace HajjFlow.Core.States
         }
 
         protected override void HandleQuizComplete(float scorePercent)
-        {
-            // Excellence bonus
+        { 
             if (scorePercent >= 90f && _levelData != null)
             {
                 _rewardSystem?.AwardGems(_levelData.CompletionBonusGems / 2);

@@ -23,8 +23,31 @@ namespace HajjFlow.Core.States
         public override void Enter()
         {
             base.Enter();
+            
+            var uiService = GameManager.Instance?.uiService;
+            if (uiService == null)
+            {
+                Debug.LogError($"[{StateId}] UIService not found!");
+                return;
+            }
+            
+            // Показываем UI уровня и начинаем с теории
+            uiService.ShowLevelByStateId(StateId);
+            uiService.ShowTawafTheoryUI();
+            
             _consecutiveCorrect = 0;
             _startTime = Time.time;
+            
+            // Квиз запустится автоматически после завершения теории 
+            // через TawafLevelController.OnTheoryCompleted
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            
+            // Сбрасываем состояние при выходе
+            GameManager.Instance?.uiService?.ResetUI();
         }
 
         public override void Update()

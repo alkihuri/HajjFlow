@@ -1,49 +1,61 @@
 using UnityEngine;
-using HajjFlow.Data;
 using HajjFlow.Core.States;
 
 namespace HajjFlow.Core.LevelsLogic
 {
     /// <summary>
     /// Контроллер уровня "Tawaf" (Таваф).
-    /// Thin wrapper that delegates to the state machine.
-    /// All quiz/stage logic lives in TawafLevelState.
     /// </summary>
-    public class TawafLevelController : MonoBehaviour
+    public class TawafLevelController : LevelControllerBase
     {
-        [SerializeField] private LevelData levelData;
+        protected override string StateId => GameStateIds.Tawaf;
 
-        /// <summary>
-        /// Starts the level via the state machine.
-        /// </summary>
-        public void StartLevel()
+        protected override void Awake()
         {
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            if (sm == null || levelData == null)
-            {
-                Debug.LogError("[TawafLevelController] StateMachine or LevelData missing!");
-                return;
-            }
-
-            sm.StartLevel(levelData, GameStateIds.Tawaf);
+            Debug.Log("[TawafLevelController] Awake");
+            base.Awake();
         }
 
-        /// <summary>
-        /// Called from scene when a theory block is completed.
-        /// Delegates to the current level state.
-        /// </summary>
-        public void OnStageGameplayCompleted()
+        protected override void OnDestroy()
         {
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            var levelState = sm?.CurrentState as BaseLevelState;
-            if (levelState != null)
-            {
-                levelState.CompleteTheoryStage();
-            }
-            else
-            {
-                Debug.LogWarning("[TawafLevelController] No active level state to notify.");
-            }
+            Debug.Log("[TawafLevelController] OnDestroy");
+            base.OnDestroy();
+        }
+
+        public override void StartLevel()
+        {
+            Debug.Log("[TawafLevelController] StartLevel");
+            base.StartLevel();
+        }
+
+        public override void ResetLevel()
+        {
+            Debug.Log("[TawafLevelController] ResetLevel");
+            base.ResetLevel();
+        }
+
+        public override void ShowTheory()
+        {
+            Debug.Log("[TawafLevelController] ShowTheory");
+            base.ShowTheory();
+        }
+
+        protected override void OnTheoryCompleted()
+        {
+            Debug.Log("[TawafLevelController] OnTheoryCompleted - Theory completed, starting quiz");
+            base.OnTheoryCompleted();
+        }
+
+        protected override void StartQuiz()
+        {
+            Debug.Log($"[TawafLevelController] StartQuiz - Questions: {levelData?.Questions?.Length ?? 0}");
+            base.StartQuiz();
+        }
+
+        public override void OnStageGameplayCompleted()
+        {
+            Debug.Log("[TawafLevelController] OnStageGameplayCompleted");
+            base.OnStageGameplayCompleted();
         }
     }
 }

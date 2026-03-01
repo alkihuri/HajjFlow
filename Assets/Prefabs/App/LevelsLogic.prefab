@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3631699177018110496}
-  - component: {fileID: 2203013055032257986}
+  - component: {fileID: 4577271256718868066}
   m_Layer: 0
   m_Name: Tawaf
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2181708323534004151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2203013055032257986
+--- !u!114 &4577271256718868066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3213454088050367559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24606b961ac8471692f12f801cf7348, type: 3}
+  m_Script: {fileID: 11500000, guid: b000803387774a63bbdbf56968215707, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.WarmupLevelController
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.TawafLevelController
   levelData: {fileID: 11400000, guid: be0243a2fc69c44f98d6c4faa5924fdd, type: 2}
+  quizUIController: {fileID: 0}
+  theoryCardsManager: {fileID: 0}
 --- !u!1 &4084713615764576130
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.WarmupLevelController
   levelData: {fileID: 11400000, guid: 8371e9012378c4e92b96aedebc3602db, type: 2}
+  quizUIController: {fileID: 0}
+  theoryCardsManager: {fileID: 0}
 --- !u!1 &5745222653863713779
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2302892697140991581}
-  - component: {fileID: 7408173385411959832}
+  - component: {fileID: 4722296188260448067}
   m_Layer: 0
   m_Name: Miqat
   m_TagString: Untagged
@@ -122,7 +126,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2181708323534004151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7408173385411959832
+--- !u!114 &4722296188260448067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,10 +135,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5745222653863713779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24606b961ac8471692f12f801cf7348, type: 3}
+  m_Script: {fileID: 11500000, guid: bb5abe211916442faa66ee7a99f6309f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.WarmupLevelController
-  levelData: {fileID: 11400000, guid: 4320602a9c5a34425a0af7e89de55d7b, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.MiqatLevelController
+  levelData: {fileID: 0}
+  quizUIController: {fileID: 0}
+  theoryCardsManager: {fileID: 0}
 --- !u!1 &6596397757753787248
 GameObject:
   m_ObjectHideFlags: 0

@@ -249,15 +249,21 @@ namespace HajjFlow.UI
                 _warmupLevelController.ResetLevel();
             }
             
-            // Add other level controllers here when needed
-            // if (_miqatLevelController != null) _miqatLevelController.ResetLevel();
-            // if (_tawafLevelController != null) _tawafLevelController.ResetLevel();
+            if (_miqatLevelController != null)
+            {
+                _miqatLevelController.ResetLevel();
+            }
+            
+            if (_tawafLevelController != null)
+            {
+                _tawafLevelController.ResetLevel();
+            }
         }
 
         /// <summary>
-        /// Показывает блок теории для текущего уровня.
+        /// Показывает блок теории для Warmup уровня.
         /// </summary>
-        public void ShowTheoryUI()
+        public void ShowWarmUpTheoryUI()
         {
             if (_warmupLevelController != null)
             {
@@ -266,6 +272,36 @@ namespace HajjFlow.UI
             else
             {
                 Debug.LogWarning("[UIService] WarmupLevelController is null!");
+            }
+        }
+
+        /// <summary>
+        /// Показывает блок теории для Miqat уровня.
+        /// </summary>
+        public void ShowMiqatTheoryUI()
+        {
+            if (_miqatLevelController != null)
+            {
+                _miqatLevelController.ShowTheory();
+            }
+            else
+            {
+                Debug.LogWarning("[UIService] MiqatLevelController is null!");
+            }
+        }
+
+        /// <summary>
+        /// Показывает блок теории для Tawaf уровня.
+        /// </summary>
+        public void ShowTawafTheoryUI()
+        {
+            if (_tawafLevelController != null)
+            {
+                _tawafLevelController.ShowTheory();
+            }
+            else
+            {
+                Debug.LogWarning("[UIService] TawafLevelController is null!");
             }
         }
     }

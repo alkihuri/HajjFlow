@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5510729111978046499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -303,6 +303,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 11400000, guid: 506d546bf8396453790820edcd394ff6, type: 2}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1261877294517639559}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
       propertyPath: m_Name
       value: CardViewer
@@ -312,6 +344,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+--- !u!1 &1261877294517639559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+  m_PrefabInstance: {fileID: 6968376478421957878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8152220832147504421 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1267240869228429779, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}

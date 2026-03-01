@@ -1,49 +1,61 @@
 using UnityEngine;
-using HajjFlow.Data;
 using HajjFlow.Core.States;
 
 namespace HajjFlow.Core.LevelsLogic
 {
     /// <summary>
     /// Контроллер уровня "Miqat" (Микат).
-    /// Thin wrapper that delegates to the state machine.
-    /// All quiz/stage logic lives in MiqatLevelState.
     /// </summary>
-    public class MiqatLevelController : MonoBehaviour
+    public class MiqatLevelController : LevelControllerBase
     {
-        [SerializeField] private LevelData levelData;
+        protected override string StateId => GameStateIds.Miqat;
 
-        /// <summary>
-        /// Starts the level via the state machine.
-        /// </summary>
-        public void StartLevel()
+        protected override void Awake()
         {
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            if (sm == null || levelData == null)
-            {
-                Debug.LogError("[MiqatLevelController] StateMachine or LevelData missing!");
-                return;
-            }
-
-            sm.StartLevel(levelData, GameStateIds.Miqat);
+            Debug.Log("[MiqatLevelController] Awake");
+            base.Awake();
         }
 
-        /// <summary>
-        /// Called from scene when a theory block is completed.
-        /// Delegates to the current level state.
-        /// </summary>
-        public void OnStageGameplayCompleted()
+        protected override void OnDestroy()
         {
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            var levelState = sm?.CurrentState as BaseLevelState;
-            if (levelState != null)
-            {
-                levelState.CompleteTheoryStage();
-            }
-            else
-            {
-                Debug.LogWarning("[MiqatLevelController] No active level state to notify.");
-            }
+            Debug.Log("[MiqatLevelController] OnDestroy");
+            base.OnDestroy();
+        }
+
+        public override void StartLevel()
+        {
+            Debug.Log("[MiqatLevelController] StartLevel");
+            base.StartLevel();
+        }
+
+        public override void ResetLevel()
+        {
+            Debug.Log("[MiqatLevelController] ResetLevel");
+            base.ResetLevel();
+        }
+
+        public override void ShowTheory()
+        {
+            Debug.Log("[MiqatLevelController] ShowTheory");
+            base.ShowTheory();
+        }
+
+        protected override void OnTheoryCompleted()
+        {
+            Debug.Log("[MiqatLevelController] OnTheoryCompleted - Theory completed, starting quiz");
+            base.OnTheoryCompleted();
+        }
+
+        protected override void StartQuiz()
+        {
+            Debug.Log($"[MiqatLevelController] StartQuiz - Questions: {levelData?.Questions?.Length ?? 0}");
+            base.StartQuiz();
+        }
+
+        public override void OnStageGameplayCompleted()
+        {
+            Debug.Log("[MiqatLevelController] OnStageGameplayCompleted");
+            base.OnStageGameplayCompleted();
         }
     }
 }
