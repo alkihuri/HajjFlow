@@ -59,7 +59,7 @@ namespace HajjFlow.Core.States
             }
 
             // Subscribe to quiz events
-            _quizSystem.OnQuestionReady += OnQuestionReady;
+            _quizSystem.OnQuestionReady += HandleQuestionReady;
             _quizSystem.OnAnswerResult += HandleAnswerResult;
             _quizSystem.OnQuizComplete += HandleQuizComplete;
 
@@ -160,7 +160,7 @@ namespace HajjFlow.Core.States
 
         // ── Quiz event handlers (overridable for bonuses) ────────────────────────
 
-        protected virtual void OnQuestionReady(QuizQuestion question, int questionNumber)
+        protected virtual void HandleQuestionReady(QuizQuestion question, int questionNumber)
         {
             Debug.Log($"[{StateId}] Question {questionNumber}/{_totalQuestions}: {question.QuestionText}");
         }
@@ -201,7 +201,7 @@ namespace HajjFlow.Core.States
         {
             if (_quizSystem != null)
             {
-                _quizSystem.OnQuestionReady -= OnQuestionReady;
+                _quizSystem.OnQuestionReady -= HandleQuestionReady;
                 _quizSystem.OnAnswerResult -= HandleAnswerResult;
                 _quizSystem.OnQuizComplete -= HandleQuizComplete;
             }

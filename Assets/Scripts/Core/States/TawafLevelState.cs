@@ -50,9 +50,9 @@ namespace HajjFlow.Core.States
             _startTime += Time.unscaledDeltaTime;
         }
 
-        protected override void OnQuestionReady(QuizQuestion question, int questionNumber)
+        protected override void HandleQuestionReady(QuizQuestion question, int questionNumber)
         {
-            base.OnQuestionReady(question, questionNumber);
+            base.HandleQuestionReady(question, questionNumber);
 
             // Show Tawaf circle number (every 7 questions = 1 circle)
             int currentCircle = (questionNumber - 1) / 7 + 1;

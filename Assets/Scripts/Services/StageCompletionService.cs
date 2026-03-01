@@ -162,6 +162,7 @@ namespace HajjFlow.Services
     {
         public string LevelId;
         public float ScorePercent;
+        /// <summary>Completion timestamp in UTC.</summary>
         public DateTime CompletedAt;
     }
 }
