@@ -7,7 +7,11 @@ namespace Core.Theory
 {
     public class TheoryCardsManager : MonoBehaviour
     {
+        [Header("Data Source (use one)")]
+        [SerializeField] private TheoryCardContainer _cardContainer;
         [SerializeField] private List<TheoryCardData> _data = new();
+        
+        [Header("Prefab")]
         [SerializeField] private TheoryCardBase _cardPrefab;
         
         private List<TheoryCardBase> _cards = new List<TheoryCardBase>();
@@ -20,6 +24,21 @@ namespace Core.Theory
         
         private bool _isInitialized;
         private bool _theoryCompleted;
+
+        /// <summary>
+        /// Возвращает список данных карточек (из контейнера или напрямую)
+        /// </summary>
+        private List<TheoryCardData> CardDataList
+        {
+            get
+            {
+                if (_cardContainer != null && _cardContainer.Cards.Count > 0)
+                {
+                    return _cardContainer.Cards;
+                }
+                return _data;
+            }
+        }
 
         private void Awake()
         {
@@ -37,7 +56,8 @@ namespace Core.Theory
                 return;
             }
 
-            if (_data == null || _data.Count == 0)
+            var dataList = CardDataList;
+            if (dataList == null || dataList.Count == 0)
             {
                 Debug.LogWarning("[TheoryCardsManager] No data to create cards!");
                 return;
@@ -51,20 +71,22 @@ namespace Core.Theory
         }
 
         /// <summary>
-        /// Создаёт карточки для каждого элемента _data
+        /// Создаёт карточки для каждого элемента данных
         /// </summary>
         private void CreateCards()
         {
             _cards.Clear();
             
-            for (int i = 0; i < _data.Count; i++)
+            var dataList = CardDataList;
+            
+            for (int i = 0; i < dataList.Count; i++)
             {
                 var cardObj = Instantiate(_cardPrefab, transform);
                 var card = cardObj.GetComponent<TheoryCardBase>();
                 
                 if (card != null)
                 {
-                    card.Initialize(_data[i]);
+                    card.Initialize(dataList[i]);
                     card.gameObject.SetActive(false);
                     
                     // Подписываемся на события свайпа
