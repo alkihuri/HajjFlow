@@ -160,6 +160,22 @@ namespace HajjFlow.Core.States
             Invoke(nameof(GoToResults), 2f);
         }
 
+        /// <summary>
+        /// Replays the current level: re-enters the same level state with the same data.
+        /// Resets quiz, score, and stage progress without reloading the scene.
+        /// </summary>
+        public void ReplayCurrentLevel()
+        {
+            if (ActiveLevelData == null || string.IsNullOrEmpty(ActiveLevelStateId))
+            {
+                Debug.LogWarning("[GameStateMachine] Cannot replay — no active level.");
+                return;
+            }
+
+            Debug.Log($"[GameStateMachine] Replaying level '{ActiveLevelStateId}'");
+            ChangeState(ActiveLevelStateId, ActiveLevelData);
+        }
+
         private void GoToResults()
         {
             ChangeState(GameStateIds.Results);

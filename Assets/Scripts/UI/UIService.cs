@@ -119,32 +119,38 @@ namespace HajjFlow.UI
             }
         }
 
-        public void WarmUpLevelShow()
+        /// <summary>
+        /// Shows the UI for a level by its state ID.
+        /// Replaces the per-level WarmUpLevelShow/MiqatLevelShow/TawafLevelShow methods.
+        /// </summary>
+        public void ShowLevelByStateId(string stateId)
         {
             _mainMenuScreen?.SetActive(true);
             _gameStartScree?.SetActive(false);
             _levelSelect?.SetActive(false);
 
-            ShowLevel(1);
+            int levelNumber = stateId switch
+            {
+                GameStateIds.Warmup => 1,
+                GameStateIds.Miqat  => 2,
+                GameStateIds.Tawaf  => 3,
+                _ => 0
+            };
+
+            if (levelNumber > 0)
+            {
+                ShowLevel(levelNumber);
+            }
+            else
+            {
+                Debug.LogWarning($"[UIService] Unknown state id for level UI: {stateId}");
+            }
         }
 
-        public void MiqatLevelShow()
-        {
-            _mainMenuScreen?.SetActive(true);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(false);
-
-            ShowLevel(2);
-        }
-
-        public void TawafLevelShow()
-        {
-            _mainMenuScreen?.SetActive(true);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(false);
-
-            ShowLevel(3);
-        }
+        // Backward-compatible wrappers
+        public void WarmUpLevelShow() => ShowLevelByStateId(GameStateIds.Warmup);
+        public void MiqatLevelShow() => ShowLevelByStateId(GameStateIds.Miqat);
+        public void TawafLevelShow() => ShowLevelByStateId(GameStateIds.Tawaf);
 
         // ── Private ──────────────────────────────────────────────────────────────
 

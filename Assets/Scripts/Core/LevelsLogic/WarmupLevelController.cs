@@ -1,214 +1,49 @@
 using UnityEngine;
 using HajjFlow.Data;
-using HajjFlow.Services;
-using HajjFlow.UI;
+using HajjFlow.Core.States;
 
 namespace HajjFlow.Core.LevelsLogic
 {
     /// <summary>
     /// Контроллер уровня "Warmup" (Подготовка к Хаджу).
-    /// Управляет прохождением блоков теории и запуском квиза.
-    /// Регистрируется как точка входа для первого уровня.
+    /// Thin wrapper that delegates to the state machine.
+    /// All quiz/stage logic lives in WarmupLevelState.
     /// </summary>
     public class WarmupLevelController : MonoBehaviour
     {
         [SerializeField] private LevelData levelData;
 
-        private StageCompletionService stageCompletionService;
-        private QuizService quizService;
-
-        [SerializeField] private QuizUIController _quizUIController;
-
-        private int currentStageIndex = 0;
-        private const string LEVEL_ID = "Warmup";
-
-        private void Awake()
-        {
-            // Получаем сервисы из GameManager или ищем в сцене
-            if (!TryGetService<StageCompletionService>(out stageCompletionService))
-            {
-                stageCompletionService = GetComponent<StageCompletionService>();
-            }
-
-            if (!TryGetService<QuizService>(out quizService))
-            {
-                quizService = GetComponent<QuizService>();
-            }
-
-            if (stageCompletionService == null)
-            {
-                Debug.LogError("[WarmupLevelController] StageCompletionService not found!");
-            }
-
-            if (quizService == null)
-            {
-                Debug.LogError("[WarmupLevelController] QuizService not found!");
-            }
-        }
-
-        private void OnEnable()
-        {
-            // Подписываемся на события сервисов
-            if (stageCompletionService != null)
-            {
-                stageCompletionService.OnStageCompleted += HandleStageCompleted;
-                stageCompletionService.OnStageCompletionFailed += HandleStageCompletionFailed;
-            }
-
-            if (quizService != null)
-            {
-                quizService.OnQuizCompleted += HandleQuizCompleted;
-            }
-        }
-
-        private void OnDisable()
-        {
-            // Отписываемся от событий
-            if (stageCompletionService != null)
-            {
-                stageCompletionService.OnStageCompleted -= HandleStageCompleted;
-                stageCompletionService.OnStageCompletionFailed -= HandleStageCompletionFailed;
-            }
-
-            if (quizService != null)
-            {
-                quizService.OnQuizCompleted -= HandleQuizCompleted;
-            }
-        }
-
         /// <summary>
-        /// Начинает прохождение уровня.
-        /// Запускает первый блок теории.
+        /// Starts the level via the state machine.
         /// </summary>
-        /// <summary>
-        /// Запускает текущий блок теории (мини-игра/интерактивный контент).
-        /// </summary>
-        private void StartCurrentStage()
+        public void StartLevel()
         {
-            Debug.Log($"[WarmupLevelController] Starting stage {currentStageIndex}");
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            if (sm == null || levelData == null)
+            {
+                Debug.LogError("[WarmupLevelController] StateMachine or LevelData missing!");
+                return;
+            }
+
+            sm.StartLevel(levelData, GameStateIds.Warmup);
         }
 
         /// <summary>
-        /// Вызывается из мини-игры/блока теории когда он завершён.
-        /// Верифицирует блок через сервис.
+        /// Called from scene when a theory block is completed.
+        /// Delegates to the current level state.
         /// </summary>
         public void OnStageGameplayCompleted()
         {
-            Debug.Log($"[WarmupLevelController] Stage {currentStageIndex} gameplay completed");
-
-            // Верифицируем завершение блока через сервис
-            if (stageCompletionService != null)
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            var levelState = sm?.CurrentState as BaseLevelState;
+            if (levelState != null)
             {
-                stageCompletionService.CompleteStage(LEVEL_ID, currentStageIndex);
-            }
-            
-            StartQuiz();
-        }
-
-        /// <summary>
-        /// Обработчик события завершения блока теории.
-        /// Переходит к следующему блоку или к квизу.
-        /// </summary>
-        private void HandleStageCompleted(string levelId, int stageIndex)
-        {
-            if (levelId != LEVEL_ID)
-            {
-                return; // Событие от другого уровня
-            }
-
-            Debug.Log($"[WarmupLevelController] Stage {stageIndex} verified and completed");
-
-            // Проверяем, остались ли ещё блоки теории
-            currentStageIndex++;
-
-            if (currentStageIndex <= 3) // 3 блока теории для Warmup
-            {
-                // Переходим к следующему блоку теории
-                StartCurrentStage();
+                levelState.CompleteTheoryStage();
             }
             else
             {
-                // Все блоки теории пройдены, начинаем квиз
-                StartQuiz();
+                Debug.LogWarning("[WarmupLevelController] No active level state to notify.");
             }
-        }
-
-        /// <summary>
-        /// Обработчик события ошибки при завершении блока.
-        /// </summary>
-        private void HandleStageCompletionFailed(string reason)
-        {
-            Debug.LogWarning($"[WarmupLevelController] Stage completion failed: {reason}");
-            // TODO: Показать ошибку пользователю или повторить попытку
-        }
-
-        /// <summary>
-        /// Начинает квиз после прохождения всех блоков теории.
-        /// </summary>
-        private void StartQuiz()
-        {
-            if (levelData == null || levelData.Questions == null || levelData.Questions.Length == 0)
-            {
-                Debug.LogError("[WarmupLevelController] No questions loaded for quiz!");
-                return;
-            }
-
-            // 1. Проверяем QuizUIController
-            if (_quizUIController == null)
-            {
-                _quizUIController = FindFirstObjectByType<QuizUIController>();
-            }
-
-            if (_quizUIController == null)
-            {
-                Debug.LogError("[WarmupLevelController] QuizUIController not found in scene!");
-                return;
-            }
-
-            Debug.Log($"[WarmupLevelController] Starting quiz with {levelData.Questions.Length} questions");
-
-            // 2. Показываем UI квиза (активируем GameObject)
-            var uiService = GameManager.Instance.GetService<UIService>();
-            uiService?.ShowUpQuizUI(_quizUIController);
-
-            // 3. Инициализируем UI контроллер и подписываем события ДО инициализации квиза
-            _quizUIController.Init(quizService);
-
-            // 4. Инициализируем квиз с вопросами (это вызовет первое событие OnQuestionDisplayed)
-            quizService.InitializeQuiz(levelData.Questions);
-        }
-
-        /// <summary>
-        /// Обработчик события завершения квиза.
-        /// </summary>
-        private void HandleQuizCompleted(int totalQuestions, int correctAnswers)
-        {
-            Debug.Log($"[WarmupLevelController] Quiz completed! Score: {correctAnswers}/{totalQuestions}");
-
-            // Проверяем, пройден ли уровень (минимум passThreshold%)
-            int percentage = (correctAnswers * 100) / totalQuestions;
-            bool levelPassed = percentage >= levelData.PassThreshold;
-
-            if (levelPassed)
-            {
-                Debug.Log($"[WarmupLevelController] Level PASSED! Score: {percentage}%");
-                // TODO: Показать экран успеха, начислить награды
-            }
-            else
-            {
-                Debug.Log(
-                    $"[WarmupLevelController] Level FAILED! Score: {percentage}% (need {levelData.PassThreshold}%)");
-                // TODO: Показать экран повтора
-            }
-        }
-
-        /// <summary>
-        /// Вспомогательный метод для поиска сервиса в сцене.
-        /// </summary>
-        private bool TryGetService<T>(out T service) where T : MonoBehaviour
-        {
-            service = FindFirstObjectByType<T>();
-            return service != null;
         }
     }
 }
