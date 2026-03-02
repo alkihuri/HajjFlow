@@ -12,8 +12,13 @@ namespace Core.Theory
         [SerializeField] private TheoryCardContainer _cardContainer;
         [SerializeField] private List<TheoryCardData> _data = new();
         [SerializeField] private TextMeshProUGUI _counterText;
+        
         [Header("Prefab")]
         [SerializeField] private TheoryCardBase _cardPrefab;
+        
+        [Header("Stack Settings")]
+        [SerializeField] private float _stackOffsetX = 8f;
+        [SerializeField] private float _stackOffsetY = -8f;
         
         private List<TheoryCardBase> _cards = new List<TheoryCardBase>();
 
@@ -21,14 +26,11 @@ namespace Core.Theory
         public UnityEvent OnTheoryCardsCompleted = new UnityEvent();
 
         public int CurrentCardIndex { get; private set; }
-        public int TotalCards => _cards.Count;
+        public int TotalCards => CardDataList?.Count ?? 0;
         
         private bool _isInitialized;
         private bool _theoryCompleted;
 
-        /// <summary>
-        /// Возвращает список данных карточек (из контейнера или напрямую)
-        /// </summary>
         private List<TheoryCardData> CardDataList
         {
             get
@@ -44,6 +46,11 @@ namespace Core.Theory
         private void Awake()
         {
             Initialize();
+        }
+
+        public void SkipTheory()
+        {
+            OnTheoryCardsCompleted?.Invoke();
         }
 
         private void Initialize()
@@ -63,25 +70,22 @@ namespace Core.Theory
                 Debug.LogWarning("[TheoryCardsManager] No data to create cards!");
                 return;
             }
- 
             
-            // Создаём карточки сразу под все данные
+            Debug.Log($"[TheoryCardsManager] Initializing with {dataList.Count} cards from config");
+            
             CreateCards();
-            
-            // Скрываем все карточки
-            HideAllCards();
+            UpdateCounter();
         }
 
-        /// <summary>
-        /// Создаёт карточки для каждого элемента данных
-        /// </summary>
         private void CreateCards()
         {
             _cards.Clear();
             
             var dataList = CardDataList;
+            int totalCount = dataList.Count;
             
-            for (int i = 0; i < dataList.Count; i++)
+            // Создаём карточки - последняя в данных будет внизу стека
+            for (int i = 0; i < totalCount; i++)
             {
                 var cardObj = Instantiate(_cardPrefab, transform);
                 var card = cardObj.GetComponent<TheoryCardBase>();
@@ -89,43 +93,84 @@ namespace Core.Theory
                 if (card != null)
                 {
                     card.Initialize(dataList[i]);
-                    card.gameObject.SetActive(false);
+                    card.gameObject.SetActive(true);
                     
-                    // Подписываемся на события свайпа
-                    card.SwipeLeft += OnSwipeLeft;
-                    card.SwipeRight += OnSwipeRight;
+                    // Устанавливаем индекс карточки
+                    card.CardIndex = i;
+                    
+                    // Позиция в стеке: первая карта сверху (index 0), остальные смещены
+                    int stackPosition = i;
+                    card.SetStackPosition(stackPosition, _stackOffsetX, _stackOffsetY);
+                    
+                    // Порядок в иерархии: первая карта поверх всех
+                    card.transform.SetSiblingIndex(totalCount - 1 - i);
+                    
+                    // Только первая карта активна для свайпа
+                    if (i == 0)
+                    {
+                        card.SetAsActiveCard();
+                    }
+                    else
+                    {
+                        card.SetAsInactiveCard();
+                    }
+                    
+                    // Подписываемся на событие свайпа
+                    card.SwipeLeft += () => OnCardSwiped(card);
                     
                     _cards.Add(card);
                 }
             }
             
-            Debug.Log($"[TheoryCardsManager] Created {_cards.Count} cards");
+            Debug.Log($"[TheoryCardsManager] Created {_cards.Count} cards as deck");
         }
 
-        private void HideAllCards()
+        private void OnCardSwiped(TheoryCardBase swipedCard)
         {
-            foreach (var card in _cards)
+            int swipedIndex = swipedCard.CardIndex;
+            int nextIndex = swipedIndex + 1;
+            
+            Debug.Log($"[TheoryCardsManager] Card {swipedIndex} swiped, next: {nextIndex}, total: {TotalCards}");
+            
+            // Деактивируем свайпнутую карту
+            swipedCard.SetAsInactiveCard();
+            
+            // Проверяем завершение теории
+            if (nextIndex >= TotalCards)
             {
-                if (card != null)
+                if (!_theoryCompleted)
                 {
-                    card.gameObject.SetActive(false);
+                    _theoryCompleted = true;
+                    CurrentCardIndex = TotalCards;
+                    UpdateCounter();
+                    Debug.Log($"[TheoryCardsManager] Theory completed! Viewed all {TotalCards} cards.");
+                    OnTheoryCardsCompleted?.Invoke();
                 }
+                return;
+            }
+            
+            // Активируем следующую карту
+            if (nextIndex < _cards.Count)
+            {
+                _cards[nextIndex].SetAsActiveCard();
+                _cards[nextIndex].transform.SetAsLastSibling();
+            }
+            
+            CurrentCardIndex = nextIndex;
+            UpdateCounter();
+            OnCardChanged?.Invoke(nextIndex);
+        }
+
+        private void UpdateCounter()
+        {
+            if (_counterText != null)
+            {
+                int total = TotalCards;
+                int current = Mathf.Min(CurrentCardIndex + 1, total);
+                _counterText.text = $"{current}/{total}";
             }
         }
 
-        private void OnSwipeLeft()
-        {
-            ShowNextCard();
-        }
-
-        private void OnSwipeRight()
-        {
-            ShowPreviousCard();
-        }
-
-        /// <summary>
-        /// Сбрасывает состояние карточек к начальному.
-        /// </summary>
         public void ResetToStart()
         {
             Debug.Log("[TheoryCardsManager] Resetting to start");
@@ -133,85 +178,75 @@ namespace Core.Theory
             _theoryCompleted = false;
             CurrentCardIndex = 0;
             
-            HideAllCards();
+            int totalCount = _cards.Count;
             
-            if (_cards.Count > 0)
+            for (int i = 0; i < totalCount; i++)
             {
-                ShowCard(0);
+                var card = _cards[i];
+                if (card == null) continue;
+                
+                card.gameObject.SetActive(true);
+                card.ResetCardState();
+                
+                // Восстанавливаем позицию в стеке
+                card.SetStackPosition(i, _stackOffsetX, _stackOffsetY);
+                card.transform.SetSiblingIndex(totalCount - 1 - i);
+                
+                if (i == 0)
+                {
+                    card.SetAsActiveCard();
+                }
+                else
+                {
+                    card.SetAsInactiveCard();
+                }
             }
+            
+            UpdateCounter();
         }
 
         public void ShowNextCard()
         {
-            int nextIndex = CurrentCardIndex + 1;
-            
-            // Проверяем достигли ли конца
-            if (nextIndex >= _cards.Count)
+            if (CurrentCardIndex < _cards.Count)
             {
-                if (!_theoryCompleted)
-                {
-                    _theoryCompleted = true;
-                    Debug.Log("[TheoryCardsManager] Theory completed!");
-                    OnTheoryCardsCompleted?.Invoke();
-                }
-                return;
+                // Симулируем свайп текущей карты
+                OnCardSwiped(_cards[CurrentCardIndex]);
             }
-            
-            ShowCard(nextIndex);
-        }
-
-        public void ShowPreviousCard()
-        {
-            int prevIndex = CurrentCardIndex - 1;
-            if (prevIndex < 0) return; // Не идём в минус
-            ShowCard(prevIndex);
         }
 
         public void ShowCard(int index)
         {
-            if (_cards.Count == 0)
-            {
-                Debug.LogWarning("[TheoryCardsManager] No cards available!");
-                return;
-            }
-
-            if (index < 0 || index >= _cards.Count)
+            if (index < 0 || index >= TotalCards)
             {
                 Debug.LogWarning($"[TheoryCardsManager] Invalid index: {index}");
                 return;
             }
 
-            Debug.Log($"[TheoryCardsManager] ShowCard({index}/{_cards.Count - 1})");
-
-            _counterText.text = $"{index+1}/{_cards.Count}";
+            // Деактивируем все карты до нужного индекса
+            for (int i = 0; i < index; i++)
+            {
+                if (i < _cards.Count)
+                {
+                    _cards[i].SetAsInactiveCard();
+                    _cards[i].gameObject.SetActive(false);
+                }
+            }
             
-            // Скрываем текущую карточку
-            if (CurrentCardIndex >= 0 && CurrentCardIndex < _cards.Count && CurrentCardIndex != index)
+            // Активируем нужную карту
+            if (index < _cards.Count)
             {
-                _cards[CurrentCardIndex]?.gameObject.SetActive(false);
+                _cards[index].SetAsActiveCard();
+                _cards[index].transform.SetAsLastSibling();
             }
-
-            // Показываем новую карточку
-            var targetCard = _cards[index];
-            if (targetCard != null)
-            {
-                targetCard.Show();
-            }
-
+            
             CurrentCardIndex = index;
+            UpdateCounter();
             OnCardChanged?.Invoke(index);
         }
 
         private void OnDestroy()
         {
-            foreach (var card in _cards)
-            {
-                if (card != null)
-                {
-                    card.SwipeLeft -= OnSwipeLeft;
-                    card.SwipeRight -= OnSwipeRight;
-                }
-            }
+            _cards.Clear();
         }
     }
 }
