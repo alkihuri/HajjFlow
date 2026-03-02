@@ -169,7 +169,7 @@ namespace HajjFlow.UI
             // Можно открыть отдельный UI с результатами, кнопкой "Retry" или "Next Level"
              
             _resultsPanel.SetActive(true);  
-            _resultsText.text = $"Your Score: {correctAnswers} / {totalQuestions} ({percentage}%)";
+            _resultsText.text = $"Ты ответил правильно на  {correctAnswers} из {totalQuestions}  это ({percentage}%)";
                 
             //gameObject.SetActive(false);
         }
