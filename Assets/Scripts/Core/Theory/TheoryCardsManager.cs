@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 namespace Core.Theory
 {
@@ -19,6 +20,7 @@ namespace Core.Theory
         [Header("Stack Settings")]
         [SerializeField] private float _stackOffsetX = 8f;
         [SerializeField] private float _stackOffsetY = -8f;
+        [SerializeField] private float _animationDuration = 0.25f;
         
         private List<TheoryCardBase> _cards = new List<TheoryCardBase>();
 
@@ -84,10 +86,11 @@ namespace Core.Theory
             var dataList = CardDataList;
             int totalCount = dataList.Count;
             
-            // Создаём карточки - последняя в данных будет внизу стека
             for (int i = 0; i < totalCount; i++)
             {
                 var cardObj = Instantiate(_cardPrefab, transform);
+                cardObj.name = $"Card_{i:D2}_{dataList[i].Title}";
+                
                 var card = cardObj.GetComponent<TheoryCardBase>();
                 
                 if (card != null)
@@ -95,17 +98,9 @@ namespace Core.Theory
                     card.Initialize(dataList[i]);
                     card.gameObject.SetActive(true);
                     
-                    // Устанавливаем индекс карточки
                     card.CardIndex = i;
+                    card.SetStackPosition(i, _stackOffsetX, _stackOffsetY);
                     
-                    // Позиция в стеке: первая карта сверху (index 0), остальные смещены
-                    int stackPosition = i;
-                    card.SetStackPosition(stackPosition, _stackOffsetX, _stackOffsetY);
-                    
-                    // Порядок в иерархии: первая карта поверх всех
-                    card.transform.SetSiblingIndex(totalCount - 1 - i);
-                    
-                    // Только первая карта активна для свайпа
                     if (i == 0)
                     {
                         card.SetAsActiveCard();
@@ -115,11 +110,15 @@ namespace Core.Theory
                         card.SetAsInactiveCard();
                     }
                     
-                    // Подписываемся на событие свайпа
                     card.SwipeLeft += () => OnCardSwiped(card);
                     
                     _cards.Add(card);
                 }
+            }
+            
+            for (int i = totalCount - 1; i >= 0; i--)
+            {
+                _cards[i].transform.SetAsLastSibling();
             }
             
             Debug.Log($"[TheoryCardsManager] Created {_cards.Count} cards as deck");
@@ -132,10 +131,8 @@ namespace Core.Theory
             
             Debug.Log($"[TheoryCardsManager] Card {swipedIndex} swiped, next: {nextIndex}, total: {TotalCards}");
             
-            // Деактивируем свайпнутую карту
             swipedCard.SetAsInactiveCard();
             
-            // Проверяем завершение теории
             if (nextIndex >= TotalCards)
             {
                 if (!_theoryCompleted)
@@ -149,16 +146,36 @@ namespace Core.Theory
                 return;
             }
             
-            // Активируем следующую карту
-            if (nextIndex < _cards.Count)
-            {
-                _cards[nextIndex].SetAsActiveCard();
-                _cards[nextIndex].transform.SetAsLastSibling();
-            }
+            // Анимируем все оставшиеся карточки - сдвигаем их на одну позицию вверх в стеке
+            AnimateStackShift(nextIndex);
             
             CurrentCardIndex = nextIndex;
             UpdateCounter();
             OnCardChanged?.Invoke(nextIndex);
+        }
+
+        /// <summary>
+        /// Плавно сдвигает все карточки начиная с nextIndex на одну позицию вверх в стеке
+        /// </summary>
+        private void AnimateStackShift(int nextIndex)
+        {
+            for (int i = nextIndex; i < _cards.Count; i++)
+            {
+                var card = _cards[i];
+                if (card == null) continue;
+                
+                int newStackPosition = i - nextIndex; // Новая позиция в стеке (0 для следующей карты)
+                
+                // Анимируем перемещение на новую позицию
+                card.AnimateToStackPosition(newStackPosition, _stackOffsetX, _stackOffsetY, _animationDuration);
+                
+                // Первая карта становится активной
+                if (newStackPosition == 0)
+                {
+                    card.SetAsActiveCard();
+                    card.transform.SetAsLastSibling();
+                }
+            }
         }
 
         private void UpdateCounter()
@@ -187,10 +204,7 @@ namespace Core.Theory
                 
                 card.gameObject.SetActive(true);
                 card.ResetCardState();
-                
-                // Восстанавливаем позицию в стеке
                 card.SetStackPosition(i, _stackOffsetX, _stackOffsetY);
-                card.transform.SetSiblingIndex(totalCount - 1 - i);
                 
                 if (i == 0)
                 {
@@ -202,6 +216,11 @@ namespace Core.Theory
                 }
             }
             
+            for (int i = totalCount - 1; i >= 0; i--)
+            {
+                _cards[i].transform.SetAsLastSibling();
+            }
+            
             UpdateCounter();
         }
 
@@ -209,7 +228,6 @@ namespace Core.Theory
         {
             if (CurrentCardIndex < _cards.Count)
             {
-                // Симулируем свайп текущей карты
                 OnCardSwiped(_cards[CurrentCardIndex]);
             }
         }
@@ -222,7 +240,6 @@ namespace Core.Theory
                 return;
             }
 
-            // Деактивируем все карты до нужного индекса
             for (int i = 0; i < index; i++)
             {
                 if (i < _cards.Count)
@@ -232,7 +249,6 @@ namespace Core.Theory
                 }
             }
             
-            // Активируем нужную карту
             if (index < _cards.Count)
             {
                 _cards[index].SetAsActiveCard();

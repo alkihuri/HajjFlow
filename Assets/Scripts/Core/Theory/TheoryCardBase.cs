@@ -319,17 +319,32 @@ namespace Core.Theory
         {
             if (_rectTransform == null) return;
             
-            // Смещаем карточки вправо и вниз для создания эффекта колоды
             Vector2 stackOffset = new Vector2(indexFromTop * offsetX, indexFromTop * offsetY);
             _rectTransform.anchoredPosition = _originalAnchoredPosition + stackOffset;
             _rectTransform.localRotation = _originalRotation;
             
-            // Чуть уменьшаем масштаб для глубины
             float scaleFactor = 1f - (indexFromTop * 0.03f);
             scaleFactor = Mathf.Max(scaleFactor, 0.85f);
             _rectTransform.localScale = _originalScale * scaleFactor;
+        }
+
+        /// <summary>
+        /// Плавно анимирует карточку на новую позицию в стеке
+        /// </summary>
+        public void AnimateToStackPosition(int indexFromTop, float offsetX, float offsetY, float duration)
+        {
+            if (_rectTransform == null) return;
             
-            Debug.Log($"[TheoryCardBase] Card {CardIndex} stack position: index={indexFromTop}, offset=({stackOffset.x}, {stackOffset.y}), pos={_rectTransform.anchoredPosition}");
+            Vector2 targetPosition = _originalAnchoredPosition + new Vector2(indexFromTop * offsetX, indexFromTop * offsetY);
+            
+            float scaleFactor = 1f - (indexFromTop * 0.03f);
+            scaleFactor = Mathf.Max(scaleFactor, 0.85f);
+            Vector3 targetScale = _originalScale * scaleFactor;
+            
+            // Анимируем позицию и масштаб
+            _rectTransform.DOAnchorPos(targetPosition, duration).SetEase(Ease.OutCubic);
+            _rectTransform.DOScale(targetScale, duration).SetEase(Ease.OutCubic);
+            _rectTransform.DOLocalRotate(Vector3.zero, duration).SetEase(Ease.OutCubic);
         }
     }
 }
