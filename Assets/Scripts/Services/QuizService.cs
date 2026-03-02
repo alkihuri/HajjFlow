@@ -21,10 +21,14 @@ namespace HajjFlow.Services
         
         /// <summary>Событие срабатывает при завершении всех вопросов</summary>
         public event Action<int, int> OnQuizCompleted; // totalQuestions, correctAnswers
+        
+        /// <summary>Событие вызывается когда UI должен перейти к следующему вопросу</summary>
+        public event Action OnReadyForNextQuestion;
 
         private QuizQuestion[] currentQuestions;
         private int currentQuestionIndex = 0;
         private int correctAnswerCount = 0;
+        private bool _waitingForNextQuestion = false;
 
         /// <summary>Инициализирует квиз с массивом вопросов</summary>
         public void InitializeQuiz(QuizQuestion[] questions)
@@ -38,6 +42,7 @@ namespace HajjFlow.Services
             currentQuestions = questions;
             currentQuestionIndex = 0;
             correctAnswerCount = 0;
+            _waitingForNextQuestion = false;
 
             Debug.Log($"[QuizService] Quiz initialized with {questions.Length} questions");
             DisplayCurrentQuestion();
@@ -58,7 +63,8 @@ namespace HajjFlow.Services
         }
 
         /// <summary>
-        /// Проверяет ответ пользователя и переходит к следующему вопросу.
+        /// Проверяет ответ пользователя. НЕ переходит автоматически к следующему вопросу.
+        /// После проверки вызовите MoveToNextQuestion() для перехода.
         /// </summary>
         /// <param name="selectedAnswerIndex">Индекс выбранного ответа (0-3)</param>
         /// <returns>True если ответ правильный, False если неправильный</returns>
@@ -93,7 +99,25 @@ namespace HajjFlow.Services
                 OnAnswerIncorrect?.Invoke(currentQuestion.CorrectAnswerIndex);
             }
 
-            // Переход к следующему вопросу
+            // Помечаем что ждём перехода к следующему вопросу
+            _waitingForNextQuestion = true;
+
+            return isCorrect;
+        }
+
+        /// <summary>
+        /// Переходит к следующему вопросу или завершает квиз.
+        /// Вызывается из UI после задержки на показ фидбека.
+        /// </summary>
+        public void MoveToNextQuestion()
+        {
+            if (!_waitingForNextQuestion)
+            {
+                Debug.LogWarning("[QuizService] MoveToNextQuestion called but not waiting for next question");
+                return;
+            }
+            
+            _waitingForNextQuestion = false;
             currentQuestionIndex++;
 
             if (currentQuestionIndex >= currentQuestions.Length)
@@ -105,8 +129,6 @@ namespace HajjFlow.Services
             {
                 DisplayCurrentQuestion();
             }
-
-            return isCorrect;
         }
 
         /// <summary>Завершает квиз и отправляет события</summary>
@@ -114,7 +136,6 @@ namespace HajjFlow.Services
         {
             Debug.Log($"[QuizService] Quiz completed! Correct: {correctAnswerCount}/{currentQuestions.Length}");
             OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount);
-            ResetQuiz();
         }
 
         /// <summary>Возвращает текущий вопрос</summary>
@@ -151,6 +172,7 @@ namespace HajjFlow.Services
             currentQuestions = null;
             currentQuestionIndex = 0;
             correctAnswerCount = 0;
+            _waitingForNextQuestion = false;
             Debug.Log("[QuizService] Quiz reset");
         }
     }

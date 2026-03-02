@@ -5,6 +5,8 @@ using HajjFlow.Services;
 using HajjFlow.Core;
 using HajjFlow.Core.States;
 using TMPro;
+using System.Collections;
+using DG.Tweening;
 
 namespace HajjFlow.UI
 {
@@ -26,8 +28,16 @@ namespace HajjFlow.UI
         [SerializeField] private TextMeshProUGUI _resultsText;
         [SerializeField] private Button _retryButton;
         
+        [Header("Feedback Settings")]
+        [SerializeField] private float _feedbackDelay = 1.5f;
+        [SerializeField] private Color _correctColor = Color.green;
+        [SerializeField] private Color _incorrectColor = Color.red;
+        [SerializeField] private Color _defaultColor = Color.white;
+        
         private bool _isInitialized;
         private bool _buttonsInitialized;
+        private int _lastClickedButtonIndex = -1;
+        private Color[] _originalColors;
 
         private void OnDisable()
         {
@@ -44,10 +54,16 @@ namespace HajjFlow.UI
             if (_buttonsInitialized) return;
             _buttonsInitialized = true;
             
+            // Сохраняем оригинальные цвета кнопок
+            _originalColors = new Color[answerButtons.Length];
+            
             // Инициализируем кнопки ответов
             for (int i = 0; i < answerButtons.Length; i++)
             {
                 if (answerButtons[i] == null) continue;
+                
+                _originalColors[i] = answerButtons[i].colors.normalColor;
+                
                 int answerIndex = i;
                 answerButtons[i].onClick.AddListener(() => OnAnswerButtonClicked(answerIndex));
             }
@@ -106,6 +122,8 @@ namespace HajjFlow.UI
         /// </summary>
         private void OnAnswerButtonClicked(int answerIndex)
         {
+            _lastClickedButtonIndex = answerIndex;
+            
             // Отключаем все кнопки во время проверки
             foreach (Button btn in answerButtons)
             {
@@ -129,8 +147,44 @@ namespace HajjFlow.UI
                 correctIndicator.gameObject.SetActive(true);
             }
 
+            // Подсвечиваем правильный ответ зелёным
+            if (_lastClickedButtonIndex >= 0 && _lastClickedButtonIndex < answerButtons.Length)
+            {
+                var correctButton = answerButtons[_lastClickedButtonIndex];
+                
+                ColorBlock colors = correctButton.colors;
+                colors.normalColor = _correctColor;
+                colors.disabledColor = _correctColor;
+                correctButton.colors = colors;
+                
+                // Анимация успеха
+                correctButton.transform.DOScale(1.15f, 0.2f).SetLoops(2, LoopType.Yoyo);
+            }
+
             // Добавляем геммы в профиль
             GameManager.Instance.AddGems(gemsReward);
+            
+            // Задержка перед следующим вопросом
+            StartCoroutine(WaitAndProceedCorrect());
+        }
+        
+        /// <summary>
+        /// Ждёт задержку после правильного ответа
+        /// </summary>
+        private IEnumerator WaitAndProceedCorrect()
+        {
+            yield return new WaitForSeconds(_feedbackDelay * 0.7f); // Чуть меньше задержки для правильного ответа
+            
+            // Сбрасываем цвета кнопок
+            ResetButtonColors();
+            
+            // Скрываем индикаторы
+            if (correctIndicator != null) correctIndicator.gameObject.SetActive(false);
+            
+            _lastClickedButtonIndex = -1;
+            
+            // Переходим к следующему вопросу
+            quizService?.MoveToNextQuestion();
         }
 
         /// <summary>
@@ -146,13 +200,77 @@ namespace HajjFlow.UI
                 incorrectIndicator.gameObject.SetActive(true);
             }
 
-            // Можно подсветить правильный ответ
+            // Подсвечиваем неправильный ответ красным и трясём кнопку
+            if (_lastClickedButtonIndex >= 0 && _lastClickedButtonIndex < answerButtons.Length)
+            {
+                var wrongButton = answerButtons[_lastClickedButtonIndex];
+                
+                // Красный цвет для неправильного ответа
+                ColorBlock wrongColors = wrongButton.colors;
+                wrongColors.normalColor = _incorrectColor;
+                wrongColors.disabledColor = _incorrectColor;
+                wrongButton.colors = wrongColors;
+                
+                // Анимация тряски неправильной кнопки
+                wrongButton.transform.DOShakePosition(0.5f, new Vector3(10f, 0f, 0f), 10, 90f, false, true);
+            }
+
+            // Подсвечиваем правильный ответ зелёным
             if (correctIndex >= 0 && correctIndex < answerButtons.Length)
             {
-                // Например, изменить цвет кнопки
-                ColorBlock colors = answerButtons[correctIndex].colors;
-                colors.normalColor = Color.green;
-                answerButtons[correctIndex].colors = colors;
+                var correctButton = answerButtons[correctIndex];
+                
+                ColorBlock correctColors = correctButton.colors;
+                correctColors.normalColor = _correctColor;
+                correctColors.disabledColor = _correctColor;
+                correctButton.colors = correctColors;
+                
+                // Пульсация правильной кнопки
+                correctButton.transform.DOScale(1.1f, 0.3f).SetLoops(2, LoopType.Yoyo);
+            }
+
+            // Задержка перед следующим вопросом
+            StartCoroutine(WaitAndProceed());
+        }
+
+        /// <summary>
+        /// Ждёт задержку и разрешает переход к следующему вопросу
+        /// </summary>
+        private IEnumerator WaitAndProceed()
+        {
+            yield return new WaitForSeconds(_feedbackDelay);
+            
+            // Сбрасываем цвета кнопок
+            ResetButtonColors();
+            
+            // Скрываем индикаторы
+            if (correctIndicator != null) correctIndicator.gameObject.SetActive(false);
+            if (incorrectIndicator != null) incorrectIndicator.gameObject.SetActive(false);
+            
+            _lastClickedButtonIndex = -1;
+            
+            // Переходим к следующему вопросу
+            quizService?.MoveToNextQuestion();
+        }
+
+        /// <summary>
+        /// Сбрасывает цвета всех кнопок к оригинальным
+        /// </summary>
+        private void ResetButtonColors()
+        {
+            for (int i = 0; i < answerButtons.Length; i++)
+            {
+                if (answerButtons[i] == null) continue;
+                
+                ColorBlock colors = answerButtons[i].colors;
+                colors.normalColor = _originalColors != null && i < _originalColors.Length 
+                    ? _originalColors[i] 
+                    : _defaultColor;
+                colors.disabledColor = colors.normalColor;
+                answerButtons[i].colors = colors;
+                
+                // Сбрасываем scale
+                answerButtons[i].transform.localScale = Vector3.one;
             }
         }
 
