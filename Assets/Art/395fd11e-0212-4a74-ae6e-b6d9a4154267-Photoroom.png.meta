@@ -245,13 +245,13 @@ TextureImporter:
       name: 395fd11e-0212-4a74-ae6e-b6d9a4154267-Photoroom_6
       rect:
         serializedVersion: 2
-        x: 701
-        y: 76
-        width: 236
-        height: 129
+        x: 714
+        y: 88
+        width: 219
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 13, y: 17, z: 13, w: 17}
       customData: 
       outline: []
       physicsShape: []
@@ -267,13 +267,13 @@ TextureImporter:
       name: 395fd11e-0212-4a74-ae6e-b6d9a4154267-Photoroom_7
       rect:
         serializedVersion: 2
-        x: 949
-        y: 72
-        width: 254
-        height: 141
+        x: 955
+        y: 87
+        width: 220
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 14, y: 20, z: 13, w: 13}
       customData: 
       outline: []
       physicsShape: []

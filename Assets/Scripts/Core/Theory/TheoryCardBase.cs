@@ -78,6 +78,11 @@ namespace Core.Theory
             _title.text = Data.Title;
             _description.text = Data.Description;
             _image.sprite = Data?.Image;
+
+            if (_image.sprite == null)
+            {
+                _image.gameObject.SetActive(false); 
+            }
             
             // Reset position and alpha
             if (_rectTransform != null)

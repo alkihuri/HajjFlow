@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ namespace Core.Theory
         [Header("Data Source (use one)")]
         [SerializeField] private TheoryCardContainer _cardContainer;
         [SerializeField] private List<TheoryCardData> _data = new();
-        
+        [SerializeField] private TextMeshProUGUI _counterText;
         [Header("Prefab")]
         [SerializeField] private TheoryCardBase _cardPrefab;
         
@@ -62,7 +63,8 @@ namespace Core.Theory
                 Debug.LogWarning("[TheoryCardsManager] No data to create cards!");
                 return;
             }
-
+ 
+            
             // Создаём карточки сразу под все данные
             CreateCards();
             
@@ -181,6 +183,8 @@ namespace Core.Theory
 
             Debug.Log($"[TheoryCardsManager] ShowCard({index}/{_cards.Count - 1})");
 
+            _counterText.text = $"{index+1}/{_cards.Count}";
+            
             // Скрываем текущую карточку
             if (CurrentCardIndex >= 0 && CurrentCardIndex < _cards.Count && CurrentCardIndex != index)
             {

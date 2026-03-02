@@ -27,16 +27,18 @@ namespace HajjFlow.UI
         [SerializeField] private GameObject _gameStartScree;
         [SerializeField] private GameObject _mainMenuScreen;
         [SerializeField] private GameObject _levelSelect;
-        
+
         [SerializeField] private GameObject _levelsUiRoot;
         [SerializeField] private GameObject[] _levelsUI;
-        
+
         [SerializeField] private TextMeshProUGUI _levelTitleText;
 
-        
+        [SerializeField] private TextMeshProUGUI _gemsCounterText;
+
         // - level Controllers 
-        [Header("Level Controllers")]
-        [SerializeField] private WarmupLevelController _warmupLevelController;
+        [Header("Level Controllers")] [SerializeField]
+        private WarmupLevelController _warmupLevelController;
+
         [SerializeField] private MiqatLevelController _miqatLevelController;
         [SerializeField] private TawafLevelController _tawafLevelController;
 
@@ -110,10 +112,10 @@ namespace HajjFlow.UI
         public void ShowLevel(int levelNumber)
         {
             int levelIndex = levelNumber - 1;
-            
+
             Debug.Log($"[UIService] Showing level index {levelIndex}");
-            
-            if(!_levelsUiRoot.activeInHierarchy)
+
+            if (!_levelsUiRoot.activeInHierarchy)
                 _levelsUiRoot.SetActive(true);
 
             foreach (var lvl in _levelsUI)
@@ -140,8 +142,8 @@ namespace HajjFlow.UI
             int levelNumber = stateId switch
             {
                 GameStateIds.Warmup => 1,
-                GameStateIds.Miqat  => 2,
-                GameStateIds.Tawaf  => 3,
+                GameStateIds.Miqat => 2,
+                GameStateIds.Tawaf => 3,
                 _ => 0
             };
 
@@ -187,8 +189,8 @@ namespace HajjFlow.UI
         private void OnLevelTileClicked(LevelData level)
         {
             string stateId = DetermineStateId(level.LevelId);
-            
-            _levelTitleText.text = $"{level.Description}";
+
+            _levelTitleText.text = $"{level.LevelName}";
 
             // Delegate to the state machine instead of LevelManager directly
             var sm = GameManager.Instance?.GetService<GameStateMachine>();
@@ -227,7 +229,7 @@ namespace HajjFlow.UI
         }
 
         public void ShowUpQuizUI(QuizUIController quizUIController)
-        { 
+        {
             if (quizUIController == null)
             {
                 Debug.LogError("[UIService] Cannot show quiz UI: QuizUIController reference is null!");
@@ -243,17 +245,17 @@ namespace HajjFlow.UI
         public void ResetUI()
         {
             Debug.Log("[UIService] Resetting all level UIs");
-            
+
             if (_warmupLevelController != null)
             {
                 _warmupLevelController.ResetLevel();
             }
-            
+
             if (_miqatLevelController != null)
             {
                 _miqatLevelController.ResetLevel();
             }
-            
+
             if (_tawafLevelController != null)
             {
                 _tawafLevelController.ResetLevel();
@@ -302,6 +304,17 @@ namespace HajjFlow.UI
             else
             {
                 Debug.LogWarning("[UIService] TawafLevelController is null!");
+            }
+        }
+
+        public void UpdateGemsCounter(int gems, int totalGems = 0)
+        {
+            if (_gemsCounterText != null)
+            {
+                if (totalGems > 0)
+                    _gemsCounterText.text = $"{gems} / {totalGems}";
+                else
+                    _gemsCounterText.text = $"{gems}";
             }
         }
     }

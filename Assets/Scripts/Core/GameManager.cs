@@ -79,9 +79,14 @@ namespace HajjFlow.Core
         /// </summary>
         public void AddGems(int amount)
         {
+            
+            
             var profileService = ProfileService;
             if (profileService == null) return;
             profileService.UpdateProfile(p => p.Gems += amount);
+            
+            uiService.UpdateGemsCounter(profileService.GetProfile().Gems);
+            
             Debug.Log($"[GameManager] +{amount} gems. Total: {profileService.GetProfile().Gems}");
         }
     }
