@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
   LevelId: 
   Cards:
-  - {fileID: 11400000, guid: f5f680b2ab8974c729795cb4b32c3abf, type: 2}
-  - {fileID: 11400000, guid: 4ca783670cd3b4bd2a2a009c96c6a364, type: 2}
-  - {fileID: 11400000, guid: 8d27abae28fd34c6c9eb26a3d5a7698d, type: 2}
-  - {fileID: 11400000, guid: 08a6dfb8c1b334749a54aff05d5e401e, type: 2}
-  - {fileID: 11400000, guid: 7bada9ff333c34c57bbdc511f0ade985, type: 2}
-  - {fileID: 11400000, guid: 942ff21a23a394076b37828c6f25d0a8, type: 2}
-  - {fileID: 11400000, guid: 448477379508e454cb39ebdad6faf2df, type: 2}
+  - {fileID: 11400000, guid: ca2f7d83fc2994a33bbe0559d92795f5, type: 2}
+  - {fileID: 11400000, guid: 563bd67785f9344b2b1b9c0cfdf0f856, type: 2}
+  - {fileID: 11400000, guid: 5bd0855288738422ba8960921201c04c, type: 2}
+  - {fileID: 11400000, guid: a2fce09c49c9e45b8a9334b2ed705da8, type: 2}
+  - {fileID: 11400000, guid: 47bf0af0a672e49a5994130d418926d5, type: 2}
+  - {fileID: 11400000, guid: 7b8e12f4c7712493b8bf5e1728f5d2ab, type: 2}
+  - {fileID: 11400000, guid: f8c1d197ec8434f9b87f35b0de639ef7, type: 2}
