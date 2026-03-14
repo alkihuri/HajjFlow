@@ -1,30 +1,30 @@
 [
   {
-    "Title": "Обязательность хаджа",
-    "Text": "Хадж обязателен один раз в жизни для способных мусульман."
+    "Title": "THEORY_L1_HAJJ_OBLIGATION_TITLE",
+    "Text": "THEORY_L1_HAJJ_OBLIGATION_TEXT"
   },
   {
-    "Title": "Намерение (Нийя)",
-    "Text": "Любое поклонение начинается с искреннего намерения ради Аллаха."
+    "Title": "THEORY_L1_NIYYAH_TITLE",
+    "Text": "THEORY_L1_NIYYAH_TEXT"
   },
   {
-    "Title": "Финансовая готовность",
-    "Text": "Паломник должен иметь средства без вреда семье и долгам."
+    "Title": "THEORY_L1_FINANCIAL_READINESS_TITLE",
+    "Text": "THEORY_L1_FINANCIAL_READINESS_TEXT"
   },
   {
-    "Title": "Физическая способность",
-    "Text": "Хадж обязателен при физической возможности его совершить."
+    "Title": "THEORY_L1_PHYSICAL_ABILITY_TITLE",
+    "Text": "THEORY_L1_PHYSICAL_ABILITY_TEXT"
   },
   {
-    "Title": "Ихрам",
-    "Text": "Ихрам — священное состояние с особыми правилами и ограничениями."
+    "Title": "THEORY_L1_IHRAM_TITLE",
+    "Text": "THEORY_L1_IHRAM_TEXT"
   },
   {
-    "Title": "Микат",
-    "Text": "Микат — граница, где паломник вступает в состояние ихрама."
+    "Title": "THEORY_L1_MIQAT_TITLE",
+    "Text": "THEORY_L1_MIQAT_TEXT"
   },
   {
-    "Title": "Тальбия",
-    "Text": "После вступления в ихрам паломник произносит тальбию."
+    "Title": "THEORY_L1_TALBIYAH_TITLE",
+    "Text": "THEORY_L1_TALBIYAH_TEXT"
   }
 ]
