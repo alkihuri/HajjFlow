@@ -38,12 +38,7 @@ namespace Core.Theory
             // Find all cards in the manager's container
             TheoryCardBase[] cards = _cardManager.GetComponentsInChildren<TheoryCardBase>(true);
             
-            foreach (var card in cards)
-            {
-                // Subscribe to swipe events
-                card.SwipeRight += () => OnCardCompleted(card);
-                card.SwipeUp += () => OnCardCompleted(card);
-            }
+            
         }
 
         private void OnCardCompleted(TheoryCardBase card)

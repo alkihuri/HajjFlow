@@ -16,10 +16,13 @@ namespace HajjFlow.Core.States
             base.Enter();
 
             var ui = GameManager.Instance?.uiService;
+            var profileService = GameManager.Instance?.ProfileService;
             if (ui != null)
             {
                 ui.ResetUI();
                 ui.ShowLevelSelect();
+                ui.UpdateGemsCounter(profileService.GetProfile().Gems);
+                ui.UpdateLevelTileButtons();
             }
         }
 

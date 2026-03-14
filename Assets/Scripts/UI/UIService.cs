@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -46,6 +47,7 @@ namespace HajjFlow.UI
         private LevelData[] _levels;
 
         private ProgressService _progressService;
+        private List<LevelTileUI> _levelSelectButtons = new  List<LevelTileUI>();
 
         private void Start()
         {
@@ -182,6 +184,7 @@ namespace HajjFlow.UI
                     bool completed = _progressService?.IsLevelCompleted(levelData.LevelId) ?? false;
                     float progress = _progressService?.GetLevelProgress(levelData.LevelId) ?? 0f;
                     tileUI.Setup(levelData, completed, progress, OnLevelTileClicked);
+                    _levelSelectButtons.Add(tileUI);
                 }
             }
         }
@@ -315,6 +318,14 @@ namespace HajjFlow.UI
                     _gemsCounterText.text = $"{gems} / {totalGems}";
                 else
                     _gemsCounterText.text = $"{gems}";
+            }
+        }
+        
+        public void  UpdateLevelTileButtons()
+        {
+            foreach (var tile in _levelSelectButtons)
+            {
+                tile.UpdateUiData();
             }
         }
     }

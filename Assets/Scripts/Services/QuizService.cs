@@ -19,8 +19,8 @@ namespace HajjFlow.Services
         /// <summary>Событие срабатывает при неправильном ответе</summary>
         public event Action<int> OnAnswerIncorrect;
         
-        /// <summary>Событие срабатывает при завершении всех вопросов</summary>
-        public event Action<int, int> OnQuizCompleted; // totalQuestions, correctAnswers
+        /// <summary>Событие срабатывает при завершении всех вопросов (totalQuestions, correctAnswers, scorePercent)</summary>
+        public event Action<int, int, float> OnQuizCompleted; // totalQuestions, correctAnswers, scorePercent
         
         /// <summary>Событие вызывается когда UI должен перейти к следующему вопросу</summary>
         public event Action OnReadyForNextQuestion;
@@ -135,7 +135,8 @@ namespace HajjFlow.Services
         private void CompleteQuiz()
         {
             Debug.Log($"[QuizService] Quiz completed! Correct: {correctAnswerCount}/{currentQuestions.Length}");
-            OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount);
+            float scorePercent = (float)correctAnswerCount / currentQuestions.Length * 100;
+            OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount, scorePercent);
         }
 
         /// <summary>Возвращает текущий вопрос</summary>
@@ -175,6 +176,11 @@ namespace HajjFlow.Services
             _waitingForNextQuestion = false;
             Debug.Log("[QuizService] Quiz reset");
         }
+
+        public float GetLastScorePercent()
+        { 
+            if (currentQuestions == null || currentQuestions.Length == 0) return 0f;
+            return (float)correctAnswerCount / currentQuestions.Length * 100f;
+        }
     }
 }
-

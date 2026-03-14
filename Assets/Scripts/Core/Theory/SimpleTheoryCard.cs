@@ -18,7 +18,7 @@ namespace Core.Theory
         private void Start()
         {
             // Subscribe to swipe events for additional effects
-            SwipeDetected += OnSwipeDetected;
+          //  SwipeDetected += OnSwipeDetected;
             
             _audioSource = GetComponent<AudioSource>();
             if (_audioSource == null)
@@ -29,7 +29,7 @@ namespace Core.Theory
 
         private void OnDestroy()
         {
-            SwipeDetected -= OnSwipeDetected;
+           // SwipeDetected -= OnSwipeDetected;
         }
 
         private void OnSwipeDetected(SwipeDirection direction)

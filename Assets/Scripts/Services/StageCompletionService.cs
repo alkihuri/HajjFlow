@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -23,6 +24,10 @@ namespace HajjFlow.Services
         /// <summary>Stored level results keyed by levelId.</summary>
         private readonly Dictionary<string, LevelResult> _levelResults = new Dictionary<string, LevelResult>();
 
+        
+        //  DEBUG PURPOSE LEVEL RESUL SHOW IN INPECTOR
+        [Header("Debug: Level Results")]
+        public List<LevelResult> DebugLevelResults = new List<LevelResult>();
         /// <summary>
         /// Проверяет и завершает блок теории по уровню и номеру блока.
         /// </summary>
@@ -79,6 +84,8 @@ namespace HajjFlow.Services
                 ScorePercent = scorePercent,
                 CompletedAt = DateTime.UtcNow
             };
+            
+            DebugLevelResults = _levelResults.Values.ToList(); // For inspector debugging
 
             Debug.Log($"[StageCompletionService] Level result recorded: {levelId} = {scorePercent:F1}%");
         }
@@ -89,7 +96,11 @@ namespace HajjFlow.Services
         public LevelResult GetLevelResult(string levelId)
         {
             if (string.IsNullOrEmpty(levelId)) return null;
-            _levelResults.TryGetValue(levelId, out var result);
+            if (!_levelResults.TryGetValue(levelId, out var result))
+            { 
+                Debug.LogError($"[StageCompletionService] Level result not found: {levelId}");
+            }
+            
             return result;
         }
 
@@ -151,6 +162,15 @@ namespace HajjFlow.Services
         private bool VerifyTawafStage(int stageIndex)
         {
             return stageIndex >= 0 && stageIndex < 2;
+        }
+
+        public float GetLevelPercent(string dataLevelId)
+        {
+            if (_levelResults.TryGetValue(dataLevelId, out var result))
+            {
+                return result.ScorePercent;
+            }
+            return 0f;
         }
     }
 
