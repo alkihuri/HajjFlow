@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -22,6 +23,13 @@ namespace HajjFlow.Data
         /// <summary>Short description shown on the level-selection map.</summary>
         [TextArea(2, 4)]
         public string Description = "";
+
+        [Header("Localization Keys")]
+        /// <summary>Localization key used to look up the level description via LocalizationService.</summary>
+        public string LevelDescriptionKey = "";
+
+        /// <summary>Localization keys for quiz question texts (parallel to Questions array).</summary>
+        public List<string> QuestionTextKeys = new List<string>();
 
         [Header("Visuals")]
         /// <summary>Thumbnail displayed on the level-selection map tile.</summary>
