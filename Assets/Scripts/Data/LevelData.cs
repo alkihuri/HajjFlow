@@ -31,6 +31,8 @@ namespace HajjFlow.Data
         /// <summary>Questions the player must answer to complete this level.</summary>
         public QuizQuestion[] Questions;
 
+        /// <summary>Total number of questions configured for this level.</summary>
+        public int QuestionCount => Questions != null ? Questions.Length : 0;
 
         [Header("Rewards")]
         /// <summary>Bonus gems awarded when the player completes the level for the first time.</summary>
