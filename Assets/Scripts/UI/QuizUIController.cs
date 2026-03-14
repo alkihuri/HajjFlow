@@ -277,17 +277,15 @@ namespace HajjFlow.UI
         /// <summary>
         /// Обработчик при завершении квиза
         /// </summary>
-        private void HandleQuizCompleted(int totalQuestions, int correctAnswers)
+        private void HandleQuizCompleted(int totalQuestions, int correctAnswers, float scorePercent)
         {
-            int percentage = (correctAnswers * 100) / totalQuestions;
-
-            Debug.Log($"Quiz Completed! Score: {correctAnswers}/{totalQuestions} ({percentage}%)");
+            Debug.Log($"Quiz Completed! Score: {correctAnswers}/{totalQuestions} ({scorePercent:F1}%)");
 
             // TODO: Показать экран результатов
             // Можно открыть отдельный UI с результатами, кнопкой "Retry" или "Next Level"
              
             _resultsPanel.SetActive(true);  
-            _resultsText.text = $"Ты ответил правильно на  {correctAnswers} из {totalQuestions}  это ({percentage}%)";
+            _resultsText.text = $"Ты ответил правильно на  {correctAnswers} из {totalQuestions}  это ({scorePercent:F1}%)";
                 
             //gameObject.SetActive(false);
         }

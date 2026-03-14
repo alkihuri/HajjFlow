@@ -147,6 +147,7 @@ namespace HajjFlow.Core.States
         protected virtual void SaveProgress()
         {
             var progressService = GameManager.Instance?.ProgressService;
+             var quizService = GameManager.Instance?.quizService;
             if (progressService == null || _levelData == null) return;
 
             progressService.RecordLevelProgress(
@@ -154,6 +155,7 @@ namespace HajjFlow.Core.States
 
             // Store in StageCompletionService for query by level key
             var stageService = GameManager.Instance?.stageCompletionService;
+            _lastScorePercent = quizService.GetLastScorePercent();
             stageService?.RecordLevelResult(_levelData.LevelId, _lastScorePercent);
 
             Debug.Log($"[{StateId}] Progress saved: {_lastScorePercent:F1}%");
