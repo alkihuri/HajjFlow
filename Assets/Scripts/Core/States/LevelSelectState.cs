@@ -22,6 +22,7 @@ namespace HajjFlow.Core.States
                 ui.ResetUI();
                 ui.ShowLevelSelect();
                 ui.UpdateGemsCounter(profileService.GetProfile().Gems);
+                ui.UpdateLevelTileButtons();
             }
         }
 

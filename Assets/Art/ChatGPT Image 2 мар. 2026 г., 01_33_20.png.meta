@@ -206,7 +206,7 @@ TextureImporter:
         width: 355
         height: 133
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 28, y: 31, z: 30, w: 21}
       customData: 
       outline: []
@@ -215,6 +215,28 @@ TextureImporter:
       bones: []
       spriteID: 9eba6a0e3468a43ffa860f5ccd81a796
       internalID: 2057882273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 2 \u043C\u0430\u0440. 2026 \u0433., 01_33_20_5"
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 82
+        width: 186
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7cecf29c3434835ac2da80d0417631
+      internalID: -1323530081
       vertices: []
       indices: 
       edges: []
@@ -238,6 +260,7 @@ TextureImporter:
       "ChatGPT Image 2 \u043C\u0430\u0440. 2026 \u0433., 01_33_20_2": 1025043332
       "ChatGPT Image 2 \u043C\u0430\u0440. 2026 \u0433., 01_33_20_3": 1023977090
       "ChatGPT Image 2 \u043C\u0430\u0440. 2026 \u0433., 01_33_20_4": 2057882273
+      "ChatGPT Image 2 \u043C\u0430\u0440. 2026 \u0433., 01_33_20_5": -1323530081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

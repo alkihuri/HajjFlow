@@ -1,8 +1,10 @@
 using System;
+using HajjFlow.Core;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using HajjFlow.Data;
+using HajjFlow.Services;
 
 namespace HajjFlow.UI
 {
@@ -21,18 +23,39 @@ namespace HajjFlow.UI
     {
         [SerializeField] private TextMeshProUGUI _levelNameText;
         [SerializeField] private TextMeshProUGUI _progressText;
-        [SerializeField] private Image           _thumbnail;
-        [SerializeField] private GameObject      _completedBadge;
-        [SerializeField] private Button          _selectButton;
+        [SerializeField] private Image _thumbnail;
+        [SerializeField] private GameObject _completedBadge;
+        [SerializeField] private Button _selectButton;
+
+        [SerializeField] private Image _progressImage;
 
         private Action<LevelData> _onSelected;
-        private LevelData         _levelData;
+        private LevelData _levelData;
+
+
+        [ContextMenu("Update UI Data")]
+        public void UpdateUiData()
+        { 
+            var stageCompletionService = GameManager.Instance?.GetService<StageCompletionService>();
+            if (stageCompletionService != null && _levelData != null)
+            {
+                var levelResult = stageCompletionService.GetLevelPercent(_levelData.LevelId);
+                Debug.Log($"[LevelTileUI] Updated Level '{_levelData.LevelName}' progress: {levelResult}%");
+                if (_progressImage != null)
+                {
+                    _progressImage.fillAmount = levelResult / 100f;
+                }
+                _progressText.text = $"{levelResult:F1}%";
+            }
+        }
 
         /// <summary>Populates the tile with level information.</summary>
         public void Setup(LevelData data, bool isCompleted, float progressPercent,
-                          Action<LevelData> onSelected)
+            Action<LevelData> onSelected)
         {
-            _levelData  = data;
+           
+
+            _levelData = data;
             _onSelected = onSelected;
 
             if (_levelNameText != null)
@@ -48,6 +71,8 @@ namespace HajjFlow.UI
                 _completedBadge.SetActive(isCompleted);
 
             _selectButton?.onClick.AddListener(OnSelectClicked);
+
+             
         }
 
         private void OnDestroy()
