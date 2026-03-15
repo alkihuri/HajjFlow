@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -344}
+  m_AnchoredPosition: {x: 0, y: -244}
   m_SizeDelta: {x: 612.8226, y: 176.6214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5903516161113062049
@@ -134,8 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
-  _scaleUp: 1.1
-  _animationDuration: 0.1
 --- !u!1 &877488621613761352
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +147,7 @@ GameObject:
   - component: {fileID: 3994815808175619716}
   - component: {fileID: 6280283743095878097}
   - component: {fileID: 8899382873803255304}
+  - component: {fileID: 8745206550696486675}
   m_Layer: 5
   m_Name: LanRu (3)
   m_TagString: Untagged
@@ -282,6 +281,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8d14327255e45ad9ccbf35baa20193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.LanguageSelectController
+--- !u!114 &8745206550696486675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877488621613761352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
 --- !u!1 &1142207268650313748
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +655,7 @@ GameObject:
   - component: {fileID: 2441943718564483151}
   - component: {fileID: 6069229817043442262}
   - component: {fileID: 4336354594855085748}
+  - component: {fileID: 306575056883754625}
   m_Layer: 5
   m_Name: LanRu (4)
   m_TagString: Untagged
@@ -777,6 +789,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8d14327255e45ad9ccbf35baa20193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.LanguageSelectController
+--- !u!114 &306575056883754625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722475131857660766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
+--- !u!1 &2233280683096831457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6985265765841645173}
+  - component: {fileID: 3820979333060077129}
+  - component: {fileID: 7206728484764989484}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6985265765841645173
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233280683096831457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9138364052380495490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -542}
+  m_SizeDelta: {x: 408.0892, y: 272.0571}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3820979333060077129
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233280683096831457}
+  m_CullTransparentMesh: 1
+--- !u!114 &7206728484764989484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233280683096831457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6503aa6f3d8b2461595f7ef0772bf26d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2737704966634626942
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15116176, g: 1, b: 0.10849059, a: 1}
+  m_Color: {r: 0.5058824, g: 0.46666667, b: 0.3882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -865,6 +964,7 @@ GameObject:
   - component: {fileID: 1514525838892653770}
   - component: {fileID: 3942784029461407754}
   - component: {fileID: 6206044740234754074}
+  - component: {fileID: 5070743950551808040}
   m_Layer: 5
   m_Name: LanRu
   m_TagString: Untagged
@@ -998,6 +1098,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8d14327255e45ad9ccbf35baa20193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.LanguageSelectController
+--- !u!114 &5070743950551808040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646185479030975348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
 --- !u!1 &5222789873162971672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1280,7 @@ RectTransform:
   - {fileID: 5990758897875933477}
   - {fileID: 3768376326382707083}
   - {fileID: 3907547491834378487}
+  - {fileID: 6985265765841645173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1347,6 +1460,7 @@ GameObject:
   - component: {fileID: 6101033891874489857}
   - component: {fileID: 6830062414252528972}
   - component: {fileID: 687843594915455496}
+  - component: {fileID: 3282422221328134270}
   m_Layer: 5
   m_Name: LanRu (1)
   m_TagString: Untagged
@@ -1480,6 +1594,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8d14327255e45ad9ccbf35baa20193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.LanguageSelectController
+--- !u!114 &3282422221328134270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524194728990119697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
 --- !u!1 &6585901761440993691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1686,7 @@ GameObject:
   - component: {fileID: 1309725791054847815}
   - component: {fileID: 1672199958679898376}
   - component: {fileID: 4315799799441894659}
+  - component: {fileID: 4054690413185716458}
   m_Layer: 5
   m_Name: LanRu (2)
   m_TagString: Untagged
@@ -1693,6 +1820,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8d14327255e45ad9ccbf35baa20193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.LanguageSelectController
+--- !u!114 &4054690413185716458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277122727032772167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
 --- !u!1 &7961356517417047067
 GameObject:
   m_ObjectHideFlags: 0

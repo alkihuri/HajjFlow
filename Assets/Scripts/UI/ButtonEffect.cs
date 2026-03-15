@@ -30,6 +30,13 @@ public class ButtonEffect : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        // appear from 0 to 1 alpha 
+        _button.gameObject.transform.localScale = Vector3.zero;
+        _button.gameObject.transform.DOScale(1f, 0.6f).SetEase(Ease.OutBack);
+    }
+
     private void Effect()
     {
         _button.gameObject.transform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
