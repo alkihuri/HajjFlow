@@ -21,7 +21,7 @@ namespace HajjFlow.UI
     /// </summary>
     public class LevelTileUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _levelNameText;
+        [SerializeField] private GameTextController _levelNameText;
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField] private Image _thumbnail;
         [SerializeField] private GameObject _completedBadge;

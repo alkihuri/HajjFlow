@@ -218,3 +218,6 @@ UI_TITLE_QUIZ,Викторина,KViz,Kuiz,Quiz,مسابقة,Quiz,Quiz
 UI_TITLE_THEORY,Теория,Teorija,Teoria,Teori,نظرية,Teori,Theory
 UI_GO_TO_TEST,Перейти к тесту,Idi na test,Shko te testi,Teste git,الذهاب إلى الاختبار,Menuju test,Go to the test
 UI_GO_TO_THEORY,Перейти к теории,Idi na teoriju,Shko te teoria,Teoriye git,الذهاب إلى النظرية,Menuju teori,Go to theory
+UI_TITLE_LEVEL_1,Подгтотовка к хаджу,Priprema za hadž,Përgatitja për haxh,Hac hazırlıkları,الاستعداد للحج,Persiapan Haji,Preparation for Hajj
+UI_TITLE_LEVEL_2,Микат,Mikat,Mikat,Mikat,ميكات,Mikat,Mikat
+UI_TITLE_LEVEL_3,Таваф уль кудум,Tavaf ul kudum,Tavaf ul kudum,Tawaf ul qudum,طواف القدوم,Tawaf ul qudum,Tawaf ul qudum

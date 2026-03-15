@@ -219,6 +219,7 @@ MonoBehaviour:
   _stageCompletionService: {fileID: 7427348976528674981}
   _quizService: {fileID: 3858279563846927446}
   _gameStateMachine: {fileID: 1111066742607158676}
+  _audioService: {fileID: 212813746283494078}
 --- !u!1 &8187556108474220264
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +476,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
+--- !u!114 &212813746283494078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5267323216226562087, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
+  m_PrefabInstance: {fileID: 5471128590593952409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28213fb6f1254ebca0c0df54e631eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioService
 --- !u!4 &2776345946652989014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7884348957232389327, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
