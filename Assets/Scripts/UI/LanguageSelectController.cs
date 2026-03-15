@@ -17,8 +17,10 @@ namespace HajjFlow.UI
         public void OnTurkishSelected()    => ChangeLanguage(Language.Turkish);
         public void OnArabicSelected()     => ChangeLanguage(Language.Arabic);
         public void OnIndonesianSelected() => ChangeLanguage(Language.Indonesian);
+        
+        public void OnEnglishSelected()     => ChangeLanguage(Language.English);
 
-        private void ChangeLanguage(Language language)
+        public  void ChangeLanguage(Language language)
         {
             var service = GameManager.Instance?.GetService<LocalizationService>();
             if (service != null)

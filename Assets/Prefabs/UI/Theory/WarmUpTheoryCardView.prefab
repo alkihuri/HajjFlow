@@ -571,7 +571,6 @@ GameObject:
   - component: {fileID: 4908312347346679909}
   - component: {fileID: 4748584283927126868}
   - component: {fileID: 8029173374865561404}
-  - component: {fileID: 3024854569260886619}
   m_Layer: 5
   m_Name: Tittle
   m_TagString: Untagged
@@ -636,19 +635,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3024854569260886619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7374121600660389800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
-  _localizationKey: 
 --- !u!1 &7586145816838504480
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,8 +701,8 @@ MonoBehaviour:
   _rotationAngle: 15
   _minScale: 0.3
   _swipeEase: 6
-  _title: {fileID: 3024854569260886619}
-  _description: {fileID: 8657527187063393095}
+  _title: {fileID: 8657527187063393095}
+  _description: {fileID: 5522631270329409935}
   _image: {fileID: 554294603828338462}
 --- !u!1 &8987533958318112250
 GameObject:

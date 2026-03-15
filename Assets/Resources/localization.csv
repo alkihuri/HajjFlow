@@ -1,4 +1,4 @@
-key,ru,bs,al,tr,ar,id
+key,ru,bs,al,tr,ar,id,en
 # === LEVEL DESCRIPTIONS ===
 MIQAT_LEVEL_DESCRIPTION_KEY,Микат — место вхождения в ихрам,Miqat — mjesto ulaska u ihram,Miqat — vendi i hyrjes në ihram,Miqat — ihrama giriş yeri,الميقات — مكان الدخول في الإحرام,Miqat — tempat masuk ihram
 WARMUP_LEVEL_DESCRIPTION_KEY,Подготовка к Хаджу,Priprema za Hadž,Përgatitja për Haxh,Hacca Hazırlık,الاستعداد للحج,Persiapan Haji
@@ -201,3 +201,12 @@ Q_L3_OPT_KAABA,Кааба,Kaba,Qabeja,Kâbe,الكعبة,Ka'bah
 Q_L3_OPT_MEDINA_MOSQUE,Мечеть в Медине,Džamija u Medini,Xhamia në Medine,Medine'deki Mescid,المسجد في المدينة,Masjid di Madinah
 Q_L3_OPT_ZAMZAM,Замзам,Zemzem,Zemzemi,Zemzem,زمزم,Zamzam
 Q_L3_TAWAF_OBJECT_EXPLANATION,Таваф совершается вокруг Каабы.,Tavaf se obavlja oko Kabe.,Tavafi kryhet rreth Qabes.,Tavaf Kâbe etrafında yapılır.,يُؤدى الطواف حول الكعبة.,Tawaf dilakukan mengelilingi Ka'bah.
+
+
+# === UI ===
+
+UI_START_BUTTON,Начать,Početak,Fillimi,Başla,ابدأ,Mulai
+UI_NEXT_BUTTON,Далее,Naprijed,Vazhdoni,Sonraki,التالي,Selanjutnya
+UI_BACK_BUTTON,Назад,Nazad,Kthehu,Geri,السابق,Kembali
+UI_SUBMIT_BUTTON,Отправить,Pošalji,Dërgoj,Gönder,إرسال,Kirim
+UI_RETRY_BUTTON,Попробовать снова

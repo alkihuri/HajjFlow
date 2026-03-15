@@ -7,6 +7,7 @@ namespace HajjFlow.Data
         Albanian,
         Turkish,
         Arabic,
-        Indonesian
+        Indonesian,
+        English
     }
 }
