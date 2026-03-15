@@ -18,12 +18,13 @@ namespace HajjFlow.Core
     {
         // ── Inspector references ─────────────────────────────────────────────────
 
-        [Header("MonoBehaviour Services (assign in Inspector)")]
-        [SerializeField] private UIService _uiService;
+        [Header("MonoBehaviour Services (assign in Inspector)")] [SerializeField]
+        private UIService _uiService;
+
         [SerializeField] private StageCompletionService _stageCompletionService;
         [SerializeField] private QuizService _quizService;
         [SerializeField] private GameStateMachine _gameStateMachine;
-
+        [SerializeField] private AudioService _audioService;
         // ── Lifecycle ────────────────────────────────────────────────────────────
 
         private void Awake()
@@ -59,6 +60,12 @@ namespace HajjFlow.Core
         private void RegisterServices(GameManager gm)
         {
             // Plain-C# services (created here)
+            
+            gm.RegisterService(_audioService);
+            
+            var localizationService = new LocalizationService();
+            gm.RegisterService(localizationService);
+
             var profileService = new UserProfileService();
             gm.RegisterService(profileService);
 

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
   m_Name: TawafTheory
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
-  LevelId: 
+  LevelId: Tawaf
   Cards:
-  - {fileID: 11400000, guid: f5f680b2ab8974c729795cb4b32c3abf, type: 2}
-  - {fileID: 11400000, guid: 4ca783670cd3b4bd2a2a009c96c6a364, type: 2}
-  - {fileID: 11400000, guid: 8d27abae28fd34c6c9eb26a3d5a7698d, type: 2}
-  - {fileID: 11400000, guid: 08a6dfb8c1b334749a54aff05d5e401e, type: 2}
-  - {fileID: 11400000, guid: 7bada9ff333c34c57bbdc511f0ade985, type: 2}
-  - {fileID: 11400000, guid: 942ff21a23a394076b37828c6f25d0a8, type: 2}
-  - {fileID: 11400000, guid: 448477379508e454cb39ebdad6faf2df, type: 2}
+  - {fileID: 11400000, guid: 9a25391505829499f9903a36aa6520a2, type: 2}
+  - {fileID: 11400000, guid: 3c39767fb6aa147d4a95f8e18093e3a8, type: 2}
+  - {fileID: 11400000, guid: dbe2e619f65eb48d38a81d7dfd4ddaa8, type: 2}
+  - {fileID: 11400000, guid: 7cbd5dd70a69e4da796e40cfec6ae6a2, type: 2}
+  - {fileID: 11400000, guid: f500142db6d4d4a8e948610e1eab3de7, type: 2}
+  - {fileID: 11400000, guid: 6ffeb8b2628344ebaa8f183e8f543c74, type: 2}
+  - {fileID: 11400000, guid: 0bc4cc4d36f304832a01b3207c552892, type: 2}

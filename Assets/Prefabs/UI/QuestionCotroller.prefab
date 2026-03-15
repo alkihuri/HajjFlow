@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 1464938137274005111}
   - component: {fileID: 2985327999861229124}
   - component: {fileID: 697643757042468864}
+  - component: {fileID: 5865730832666672728}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -274,6 +275,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5865730832666672728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917017960688838585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: 
 --- !u!1 &965383610906180638
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +299,7 @@ GameObject:
   - component: {fileID: 7166075813099569343}
   - component: {fileID: 2976524561316204394}
   - component: {fileID: 967656795507844048}
+  - component: {fileID: 5706049557090394487}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -411,6 +426,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5706049557090394487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965383610906180638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: 
 --- !u!1 &1170178580154657396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f9de0434bd4d8bb431a4b6dbfcdd31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.QuizUIController
-  questionText: {fileID: 864639825375744331}
+  questionText: {fileID: 1324412792396123103}
   answerButtons:
   - {fileID: 4141987945960933242}
   - {fileID: 9123654113520315432}
@@ -1067,6 +1095,10 @@ MonoBehaviour:
   _resultsPanel: {fileID: 1345251790738911947}
   _resultsText: {fileID: 5807534728411437713}
   _retryButton: {fileID: 1069828470719536098}
+  _feedbackDelay: 1.5
+  _correctColor: {r: 0, g: 1, b: 0, a: 1}
+  _incorrectColor: {r: 1, g: 0, b: 0, a: 1}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3772082077720360506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1110,7 @@ GameObject:
   - component: {fileID: 2117529407422447894}
   - component: {fileID: 2268390993460397604}
   - component: {fileID: 1891900207972401176}
+  - component: {fileID: 2925755624940859784}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1204,6 +1237,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2925755624940859784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772082077720360506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: 
 --- !u!1 &4376430528228802775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1337,7 @@ GameObject:
   - component: {fileID: 4550209260805573908}
   - component: {fileID: 2904082883842826416}
   - component: {fileID: 194175498903703097}
+  - component: {fileID: 8437206271191323626}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1417,6 +1464,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8437206271191323626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425982852140581046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: 
 --- !u!1 &5141814547411179404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,8 +1793,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2020,6 +2080,7 @@ GameObject:
   - component: {fileID: 4046158944670716601}
   - component: {fileID: 2872989238110390218}
   - component: {fileID: 864639825375744331}
+  - component: {fileID: 1324412792396123103}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2146,6 +2207,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1324412792396123103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639381805114450124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: 
 --- !u!1 &7821417019421043009
 GameObject:
   m_ObjectHideFlags: 0

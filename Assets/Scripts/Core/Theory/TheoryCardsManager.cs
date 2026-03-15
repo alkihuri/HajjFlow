@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using HajjFlow.Core;
 
 namespace Core.Theory
 {
@@ -32,6 +33,7 @@ namespace Core.Theory
         
         private bool _isInitialized;
         private bool _theoryCompleted;
+        private AudioService _audioService;
 
         private List<TheoryCardData> CardDataList
         {
@@ -57,6 +59,9 @@ namespace Core.Theory
 
         private void Initialize()
         {
+            
+            
+            _audioService = GameManager.Instance?.GetService<AudioService>();
             if (_isInitialized) return;
             _isInitialized = true;
 
@@ -152,6 +157,8 @@ namespace Core.Theory
             CurrentCardIndex = nextIndex;
             UpdateCounter();
             OnCardChanged?.Invoke(nextIndex);
+            _audioService?.PlayWhoosh();
+            
         }
 
         /// <summary>
@@ -257,7 +264,7 @@ namespace Core.Theory
             
             CurrentCardIndex = index;
             UpdateCounter();
-            OnCardChanged?.Invoke(index);
+            OnCardChanged?.Invoke(index);  
         }
 
         private void OnDestroy()

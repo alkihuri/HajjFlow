@@ -1,30 +1,30 @@
 [
   {
-    "Title": "Что такое микат",
-    "Text": "Микат — установленная граница для вступления в ихрам."
+    "Title": "THEORY_L2_WHAT_IS_MIQAT_TITLE",
+    "Text": "THEORY_L2_WHAT_IS_MIQAT_TEXT"
   },
   {
-    "Title": "Пересечение границы",
-    "Text": "Нельзя пересекать микат без намерения и ихрама."
+    "Title": "THEORY_L2_CROSSING_BOUNDARY_TITLE",
+    "Text": "THEORY_L2_CROSSING_BOUNDARY_TEXT"
   },
   {
-    "Title": "Намерение",
-    "Text": "Перед микатом паломник делает намерение на хадж."
+    "Title": "THEORY_L2_NIYYAH_TITLE",
+    "Text": "THEORY_L2_NIYYAH_TEXT"
   },
   {
-    "Title": "Одежда ихрама",
-    "Text": "Мужчины надевают два белых куска ткани без швов."
+    "Title": "THEORY_L2_IHRAM_CLOTHING_TITLE",
+    "Text": "THEORY_L2_IHRAM_CLOTHING_TEXT"
   },
   {
-    "Title": "Женщины в ихраме",
-    "Text": "Женщины надевают обычную скромную одежду без украшений."
+    "Title": "THEORY_L2_WOMEN_IN_IHRAM_TITLE",
+    "Text": "THEORY_L2_WOMEN_IN_IHRAM_TEXT"
   },
   {
-    "Title": "Тальбия",
-    "Text": "После вступления в ихрам произносится тальбия."
+    "Title": "THEORY_L2_TALBIYAH_TITLE",
+    "Text": "THEORY_L2_TALBIYAH_TEXT"
   },
   {
-    "Title": "Ошибка при пересечении",
-    "Text": "Если микат пересечён без ихрама, нужно вернуться."
+    "Title": "THEORY_L2_CROSSING_ERROR_TITLE",
+    "Text": "THEORY_L2_CROSSING_ERROR_TEXT"
   }
 ]

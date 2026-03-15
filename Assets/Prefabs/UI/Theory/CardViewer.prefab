@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 708012140242095701}
   - component: {fileID: 8183226697045876212}
   - component: {fileID: 1928570393609892965}
+  - component: {fileID: 3962095110966169163}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3962095110966169163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706472418819565797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
 --- !u!1 &4371311391360907666
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +233,7 @@ GameObject:
   - component: {fileID: 2674699880085223748}
   - component: {fileID: 2808855632992810278}
   - component: {fileID: 2568809106111785772}
+  - component: {fileID: 5705342179521556989}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -346,6 +360,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5705342179521556989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484170493149194843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: UI_GO_TO_TEST
 --- !u!1 &7965855798942641636
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +579,7 @@ MonoBehaviour:
   _cardPrefab: {fileID: 5937014707127103986, guid: cb8901afe905e47e98189d883ee15ebd, type: 3}
   _stackOffsetX: 50
   _stackOffsetY: 0
+  _animationDuration: 0.25
   OnTheoryCardsCompleted:
     m_PersistentCalls:
       m_Calls:

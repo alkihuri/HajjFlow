@@ -32,7 +32,7 @@ namespace HajjFlow.UI
         [SerializeField] private GameObject _levelsUiRoot;
         [SerializeField] private GameObject[] _levelsUI;
 
-        [SerializeField] private TextMeshProUGUI _levelTitleText;
+        [SerializeField] private GameTextController _levelTitleText;
 
         [SerializeField] private TextMeshProUGUI _gemsCounterText;
 

@@ -1,86 +1,86 @@
 [
   {
-    "QuestionText": "Что такое микат?",
+    "QuestionText": "Q_L2_WHAT_IS_MIQAT",
     "Options": [
-      "Священная гора",
-      "Граница для вступления в ихрам",
-      "Молитва",
-      "Город"
+      "Q_L2_OPT_SACRED_MOUNTAIN",
+      "Q_L2_OPT_IHRAM_BOUNDARY",
+      "Q_L2_OPT_PRAYER",
+      "Q_L2_OPT_CITY"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Микат — это установленная граница, где паломник должен вступить в ихрам.",
+    "Explanation": "Q_L2_MIQAT_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Можно ли пересекать микат без ихрама?",
+    "QuestionText": "Q_L2_CAN_CROSS_MIQAT_WITHOUT_IHRAM",
     "Options": [
-      "Да",
-      "Нет",
-      "Только ночью",
-      "Иногда можно"
+      "Q_L2_OPT_YES",
+      "Q_L2_OPT_NO",
+      "Q_L2_OPT_ONLY_AT_NIGHT",
+      "Q_L2_OPT_SOMETIMES"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Пересекать микат без вступления в ихрам нельзя при намерении хаджа.",
+    "Explanation": "Q_L2_CROSS_MIQAT_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Что нужно сделать перед пересечением миката?",
+    "QuestionText": "Q_L2_WHAT_TO_DO_BEFORE_MIQAT",
     "Options": [
-      "Сделать таваф",
-      "Сделать намерение и вступить в ихрам",
-      "Прочитать Коран",
-      "Посетить Замзам"
+      "Q_L2_OPT_PERFORM_TAWAF",
+      "Q_L2_OPT_MAKE_NIYYAH_ENTER_IHRAM",
+      "Q_L2_OPT_READ_QURAN",
+      "Q_L2_OPT_VISIT_ZAMZAM"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Перед микатом необходимо сделать намерение и вступить в ихрам.",
+    "Explanation": "Q_L2_BEFORE_MIQAT_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Что надевают мужчины в ихраме?",
+    "QuestionText": "Q_L2_WHAT_MEN_WEAR_IN_IHRAM",
     "Options": [
-      "Обычную одежду",
-      "Два белых куска ткани",
-      "Костюм",
-      "Любую удобную одежду"
+      "Q_L2_OPT_REGULAR_CLOTHES",
+      "Q_L2_OPT_TWO_WHITE_CLOTHS",
+      "Q_L2_OPT_SUIT",
+      "Q_L2_OPT_ANY_COMFORTABLE"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Мужчины надевают два белых куска ткани без швов.",
+    "Explanation": "Q_L2_MEN_IHRAM_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Что делают после вступления в ихрам?",
+    "QuestionText": "Q_L2_WHAT_AFTER_ENTERING_IHRAM",
     "Options": [
-      "Начинают таваф",
-      "Произносят тальбию",
-      "Возвращаются домой",
-      "Снимают обувь"
+      "Q_L2_OPT_START_TAWAF",
+      "Q_L2_OPT_RECITE_TALBIYAH",
+      "Q_L2_OPT_RETURN_HOME",
+      "Q_L2_OPT_REMOVE_SHOES"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "После вступления в ихрам паломник произносит тальбию.",
+    "Explanation": "Q_L2_AFTER_IHRAM_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Если человек пересёк микат без ихрама, что нужно сделать?",
+    "QuestionText": "Q_L2_IF_CROSSED_MIQAT_WITHOUT_IHRAM",
     "Options": [
-      "Продолжить путь",
-      "Вернуться к микату",
-      "Игнорировать это",
-      "Начать саи"
+      "Q_L2_OPT_CONTINUE_PATH",
+      "Q_L2_OPT_RETURN_TO_MIQAT",
+      "Q_L2_OPT_IGNORE",
+      "Q_L2_OPT_START_SAI"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Необходимо вернуться к микату и правильно вступить в ихрам.",
+    "Explanation": "Q_L2_CROSSED_WITHOUT_IHRAM_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Когда произносится тальбия?",
+    "QuestionText": "Q_L2_WHEN_TALBIYAH_RECITED",
     "Options": [
-      "До ихрама",
-      "После вступления в ихрам",
-      "После Арафата",
-      "После хаджа"
+      "Q_L2_OPT_BEFORE_IHRAM",
+      "Q_L2_OPT_AFTER_ENTERING_IHRAM",
+      "Q_L2_OPT_AFTER_ARAFAT",
+      "Q_L2_OPT_AFTER_HAJJ"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Тальбия читается после вступления в состояние ихрама.",
+    "Explanation": "Q_L2_TALBIYAH_EXPLANATION",
     "GemsReward": 5
   }
 ]

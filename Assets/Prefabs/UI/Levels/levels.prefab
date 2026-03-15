@@ -1679,6 +1679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2lvl
       objectReference: {fileID: 0}
+    - target: {fileID: 3724916667903773211, guid: d73a58dbbf7ff4a1d9ae576b0b6adc58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4352290037632115711, guid: d73a58dbbf7ff4a1d9ae576b0b6adc58, type: 3}
       propertyPath: m_Name
       value: preview
@@ -1876,6 +1880,10 @@ PrefabInstance:
     - target: {fileID: 7362182643672200057, guid: 31f9f9bcff5b4481a913b6ebd10a1cf5, type: 3}
       propertyPath: m_Name
       value: 1lvl
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362182643672200057, guid: 31f9f9bcff5b4481a913b6ebd10a1cf5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8152220832147504421, guid: 31f9f9bcff5b4481a913b6ebd10a1cf5, type: 3}
       propertyPath: m_AnchoredPosition.x

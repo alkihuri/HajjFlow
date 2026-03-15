@@ -1,86 +1,86 @@
 [
   {
-    "QuestionText": "Кто обязан совершать хадж?",
+    "QuestionText": "Q1_WHO_MUST_PERFORM_HAJJ",
     "Options": [
-      "Каждый человек",
-      "Только мужчины",
-      "Физически и финансово способный мусульманин",
-      "Только пожилые"
+      "Q1_OPT_EVERYONE",
+      "Q1_OPT_ONLY_MEN",
+      "Q1_OPT_ABLE_MUSLIM",
+      "Q1_OPT_ONLY_ELDERLY"
     ],
     "CorrectAnswerIndex": 2,
-    "Explanation": "Хадж обязателен для мусульманина, который физически и финансово способен.",
+    "Explanation": "Q1_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Сколько раз хадж обязателен в жизни?",
+    "QuestionText": "Q2_HOW_MANY_TIMES_HAJJ_REQUIRED",
     "Options": [
-      "Каждый год",
-      "Один раз",
-      "Три раза",
-      "Не ограничено"
+      "Q2_OPT_EVERY_YEAR",
+      "Q2_OPT_ONCE",
+      "Q2_OPT_THREE_TIMES",
+      "Q2_OPT_UNLIMITED"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Хадж обязателен один раз в жизни при наличии возможности.",
+    "Explanation": "Q2_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Что такое ихрам?",
+    "QuestionText": "Q3_WHAT_IS_IHRAM",
     "Options": [
-      "Одежда",
-      "Место",
-      "Состояние поклонения с ограничениями",
-      "Молитва"
+      "Q3_OPT_CLOTHING",
+      "Q3_OPT_PLACE",
+      "Q3_OPT_WORSHIP_STATE",
+      "Q3_OPT_PRAYER"
     ],
     "CorrectAnswerIndex": 2,
-    "Explanation": "Ихрам — это священное состояние, включающее намерение и ограничения.",
+    "Explanation": "Q3_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Можно ли использовать духи в ихраме?",
+    "QuestionText": "Q4_CAN_USE_PERFUME_IN_IHRAM",
     "Options": [
-      "Да",
-      "Нет",
-      "Только мужчинам",
-      "Немного можно"
+      "Q4_OPT_YES",
+      "Q4_OPT_NO",
+      "Q4_OPT_ONLY_MEN",
+      "Q4_OPT_LITTLE_BIT"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Использование духов после вступления в ихрам запрещено.",
+    "Explanation": "Q4_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Что такое микат?",
+    "QuestionText": "Q5_WHAT_IS_MIQAT",
     "Options": [
-      "Гора",
-      "Граница для вступления в ихрам",
-      "Рынок",
-      "Молитва"
+      "Q5_OPT_MOUNTAIN",
+      "Q5_OPT_IHRAM_BOUNDARY",
+      "Q5_OPT_MARKET",
+      "Q5_OPT_PRAYER"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Микат — установленная граница для вступления в ихрам.",
+    "Explanation": "Q5_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Что нужно сделать перед пересечением миката?",
+    "QuestionText": "Q6_WHAT_TO_DO_BEFORE_MIQAT",
     "Options": [
-      "Совершить таваф",
-      "Надеть ихрам и сделать намерение",
-      "Прочитать весь Коран",
-      "Посетить Замзам"
+      "Q6_OPT_PERFORM_TAWAF",
+      "Q6_OPT_WEAR_IHRAM_MAKE_NIYYAH",
+      "Q6_OPT_READ_QURAN",
+      "Q6_OPT_VISIT_ZAMZAM"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Перед пересечением миката нужно вступить в ихрам и сделать намерение.",
+    "Explanation": "Q6_EXPLANATION",
     "GemsReward": 5
   },
   {
-    "QuestionText": "Когда произносится тальбия?",
+    "QuestionText": "Q7_WHEN_TALBIYAH_RECITED",
     "Options": [
-      "После Арафата",
-      "После вступления в ихрам",
-      "Перед сном",
-      "После тавафа"
+      "Q7_OPT_AFTER_ARAFAT",
+      "Q7_OPT_AFTER_IHRAM",
+      "Q7_OPT_BEFORE_SLEEP",
+      "Q7_OPT_AFTER_TAWAF"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Тальбия читается после вступления в состояние ихрама.",
+    "Explanation": "Q7_EXPLANATION",
     "GemsReward": 5
   }
 ]
