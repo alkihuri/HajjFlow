@@ -38,7 +38,8 @@ namespace HajjFlow.Services
                 { "al", Language.Albanian },
                 { "tr", Language.Turkish },
                 { "ar", Language.Arabic },
-                { "id", Language.Indonesian }
+                { "id", Language.Indonesian },
+                { "en", Language.English }
             };
 
         // ── Constructor ──────────────────────────────────────────────────────
