@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 163771060114789722}
   - component: {fileID: 1731117987899587896}
   - component: {fileID: 1934906815569256564}
-  - component: {fileID: 796984040478719398}
   m_Layer: 5
   m_Name: LevelBtn
   m_TagString: Untagged
@@ -35,7 +34,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8828135698763044401}
-  - {fileID: 7757458206313888231}
   - {fileID: 1835326675323160183}
   - {fileID: 4038733970459181897}
   m_Father: {fileID: 0}
@@ -73,7 +71,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1599168904, guid: 003dff844341e415d9d8730494feead2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -142,7 +140,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 1063
+  m_PreferredWidth: 1000
   m_PreferredHeight: 700
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -165,18 +163,6 @@ MonoBehaviour:
   _completedBadge: {fileID: 6313105397561956842}
   _selectButton: {fileID: 163771060114789722}
   _progressImage: {fileID: 5078947279390191860}
---- !u!114 &796984040478719398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626002330827049359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
 --- !u!1 &1623428237399068666
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,18 +402,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3743078078790830818}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 211225151688700848}
-  m_Father: {fileID: 7286010834411751814}
+  m_Father: {fileID: 8828135698763044401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.5434, y: -285.97803}
-  m_SizeDelta: {x: 744.7291, y: 130.3374}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 38}
+  m_SizeDelta: {x: 1039.9642, y: 182.0074}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7510608091630644155
 CanvasRenderer:
@@ -571,7 +557,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7757458206313888231}
   m_Father: {fileID: 7286010834411751814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -609,7 +596,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -181533402, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -785,7 +772,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.45
+  m_fontSize: 97.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
