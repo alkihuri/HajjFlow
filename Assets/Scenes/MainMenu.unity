@@ -140,6 +140,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &304886530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8926699268615755146, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+  m_PrefabInstance: {fileID: 6574980487578156792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,17 +479,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1167036871 stripped
+--- !u!114 &1167036874
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3230488869686871181, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 304886530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
+  _localizationKey: 
 --- !u!1 &1180895278
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +798,7 @@ PrefabInstance:
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelTitleText
       value: 
-      objectReference: {fileID: 1167036871}
+      objectReference: {fileID: 1167036874}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _mainMenuScreen
       value: 
@@ -1261,6 +1268,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8926699268615755146, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1167036874}
     - targetCorrespondingSourceObject: {fileID: 2741049199269040676, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1354111884}

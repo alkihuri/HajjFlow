@@ -210,3 +210,11 @@ UI_NEXT_BUTTON,Далее,Naprijed,Vazhdoni,Sonraki,التالي,Selanjutnya
 UI_BACK_BUTTON,Назад,Nazad,Kthehu,Geri,السابق,Kembali
 UI_SUBMIT_BUTTON,Отправить,Pošalji,Dërgoj,Gönder,إرسال,Kirim
 UI_RETRY_BUTTON,Попробовать снова
+UI_TIITLE_WARMUP,Подготовка к хаджу,Priprema za hadž,Ngrohje për haxh,Hac hazırlığı,التحضير للحج,Persiapan untuk haji
+UI_TITLE_LEVEL_1,Уровень 1: Микат,Level 1: Miqat,Niveli 1: Mikat,Seviye 1: Mîkât,المستوى 1: الميقات,Level 1: Miqat
+UI_TITLE_LEVEL_2,Уровень 2: Подготовка к микату,Level 2: Priprema za mikat,Niveli 2: Përgatitja për mikat,Seviye 2: Mîkât hazırlığı,المستوى 2: التحضير للميقات,Level 2: Persiapan untuk miqat
+UI_TITLE_LEVEL_3,Уровень 3: Таваф,Level 3: Tavaf,Niveli 3: Tavaf,Seviye 3: Tavaf,المستوى 3: الطواف,Level 3: Tawaf
+UI_TITLE_QUIZ,Викторина,KViz,Kuiz,Quiz,مسابقة,Quiz
+UI_TITLE_THEORY,Теория,Teorija,Teoria,Teori,نظرية,Teori 
+UI_GO_TO_TEST,Перейти к тесту,Idi na test,Shko te testi,Teste git,الذهاب إلى الاختبار,Menuju test
+UI_GO_TO_THEORY,Перейти к теории,Idi na teoriju,Shko te teoria,Teoriye git,الذهاب إلى النظرية,Menuju teori
