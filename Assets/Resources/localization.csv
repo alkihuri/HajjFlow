@@ -1,4 +1,203 @@
 key,ru,bs,al,tr,ar,id
+# === LEVEL DESCRIPTIONS ===
 MIQAT_LEVEL_DESCRIPTION_KEY,Микат — место вхождения в ихрам,Miqat — mjesto ulaska u ihram,Miqat — vendi i hyrjes në ihram,Miqat — ihrama giriş yeri,الميقات — مكان الدخول في الإحرام,Miqat — tempat masuk ihram
 WARMUP_LEVEL_DESCRIPTION_KEY,Подготовка к Хаджу,Priprema za Hadž,Përgatitja për Haxh,Hacca Hazırlık,الاستعداد للحج,Persiapan Haji
 TAWAF_LEVEL_DESCRIPTION_KEY,Обход Каабы,Obilazak Kabe,Tavafi i Qabes,Kâbe Tavafı,الطواف حول الكعبة,Tawaf Kabah
+
+# === LEVEL 1 THEORY ===
+THEORY_L1_HAJJ_OBLIGATION_TITLE,Обязательность хаджа,Obaveza hadža,Detyrimi i Haxhit,Hac Farziyeti,فرضية الحج,Kewajiban Haji
+THEORY_L1_HAJJ_OBLIGATION_TEXT,Хадж обязателен один раз в жизни для способных мусульман.,Hadž je obavezan jednom u životu za sposobne muslimane.,Haxhi është i detyrueshëm një herë në jetë për myslimanët e aftë.,Hac hayatta bir kez yapılması gereken bir farzdır.,الحج فرض مرة واحدة في العمر للمسلم القادر.,Haji wajib sekali seumur hidup bagi muslim yang mampu.
+THEORY_L1_NIYYAH_TITLE,Намерение (Нийя),Namjera (Nijjet),Qëllimi (Nijeti),Niyet,النية,Niat
+THEORY_L1_NIYYAH_TEXT,Любое поклонение начинается с искреннего намерения ради Аллаха.,Svaki ibadet počinje iskrenom namjerom radi Allaha.,Çdo adhurim fillon me qëllim të sinqertë për hir të Allahut.,Her ibadet Allah için samimi bir niyetle başlar.,كل عبادة تبدأ بنية خالصة لله.,Setiap ibadah dimulai dengan niat yang ikhlas karena Allah.
+THEORY_L1_FINANCIAL_READINESS_TITLE,Финансовая готовность,Finansijska spremnost,Gatishmëria financiare,Mali Hazırlık,الاستطاعة المالية,Kesiapan Finansial
+THEORY_L1_FINANCIAL_READINESS_TEXT,Паломник должен иметь средства без вреда семье и долгам.,Hodočasnik mora imati sredstva bez štete porodici i dugovima.,Pelegrinit duhet të ketë mjete pa dëmtuar familjen dhe borxhet.,Hacı ailesine ve borçlarına zarar vermeden imkânlara sahip olmalıdır.,يجب أن يملك الحاج المال دون الإضرار بعائلته وديونه.,Jamaah harus memiliki dana tanpa merugikan keluarga dan hutang.
+THEORY_L1_PHYSICAL_ABILITY_TITLE,Физическая способность,Fizička sposobnost,Aftësia fizike,Fiziksel Yeterlilik,القدرة البدنية,Kemampuan Fisik
+THEORY_L1_PHYSICAL_ABILITY_TEXT,Хадж обязателен при физической возможности его совершить.,Hadž je obavezan ako postoji fizička mogućnost za njegovo obavljanje.,Haxhi është i detyrueshëm kur ka mundësi fizike për ta kryer.,Hac fiziksel olarak yapılabilir olduğunda farzdır.,الحج واجب عند القدرة البدنية على أدائه.,Haji wajib jika mampu secara fisik untuk melaksanakannya.
+THEORY_L1_IHRAM_TITLE,Ихрам,Ihram,Ihrami,İhram,الإحرام,Ihram
+THEORY_L1_IHRAM_TEXT,Ихрам — священное состояние с особыми правилами и ограничениями.,Ihram je sveto stanje sa posebnim pravilima i ograničenjima.,Ihrami është gjendje e shenjtë me rregulla dhe kufizime të veçanta.,İhram özel kuralları ve kısıtlamaları olan kutsal bir haldir.,الإحرام حالة مقدسة لها قواعد وقيود خاصة.,Ihram adalah keadaan suci dengan aturan dan larangan khusus.
+THEORY_L1_MIQAT_TITLE,Микат,Mikat,Mikati,Mîkât,الميقات,Miqat
+THEORY_L1_MIQAT_TEXT,Микат — граница где паломник вступает в состояние ихрама.,Mikat je granica gdje hodočasnik ulazi u stanje ihrama.,Mikati është kufiri ku pelegrinët hyjnë në gjendjen e ihramit.,Mîkât hacının ihram haline girdiği sınırdır.,الميقات هو الحد الذي يدخل فيه الحاج في حالة الإحرام.,Miqat adalah batas di mana jamaah memasuki keadaan ihram.
+THEORY_L1_TALBIYAH_TITLE,Тальбия,Telbija,Telbija,Telbiye,التلبية,Talbiyah
+THEORY_L1_TALBIYAH_TEXT,После вступления в ихрам паломник произносит тальбию.,Nakon ulaska u ihram hodočasnik izgovara telbiju.,Pas hyrjes në ihram pelegrinët thonë telbijen.,İhrama girdikten sonra hacı telbiye okur.,بعد الدخول في الإحرام يردد الحاج التلبية.,Setelah memasuki ihram jamaah mengucapkan talbiyah.
+
+# === LEVEL 1 QUIZ ===
+Q1_WHO_MUST_PERFORM_HAJJ,Кто обязан совершать хадж?,Ko je obavezan obaviti hadž?,Kush është i detyruar të kryejë Haxhin?,Hac kimlere farzdır?,من الذي يجب عليه أداء الحج؟,Siapa yang wajib menunaikan haji?
+Q1_OPT_EVERYONE,Каждый человек,Svaka osoba,Çdo person,Herkes,كل شخص,Setiap orang
+Q1_OPT_ONLY_MEN,Только мужчины,Samo muškarci,Vetëm burrat,Sadece erkekler,الرجال فقط,Hanya laki-laki
+Q1_OPT_ABLE_MUSLIM,Физически и финансово способный мусульманин,Fizički i finansijski sposoban musliman,Mysliman i aftë fizikisht dhe financiarisht,Fiziksel ve mali açıdan gücü yeten Müslüman,المسلم القادر بدنياً ومالياً,Muslim yang mampu secara fisik dan finansial
+Q1_OPT_ONLY_ELDERLY,Только пожилые,Samo stariji,Vetëm të moshuarit,Sadece yaşlılar,كبار السن فقط,Hanya orang tua
+Q1_EXPLANATION,Хадж обязателен для мусульманина который физически и финансово способен.,Hadž je obavezan za muslimana koji je fizički i finansijski sposoban.,Haxhi është i detyrueshëm për myslimanin që është i aftë fizikisht dhe financiarisht.,Hac fiziksel ve mali açıdan gücü yeten Müslümana farzdır.,الحج فرض على المسلم القادر بدنياً ومالياً.,Haji wajib bagi muslim yang mampu secara fisik dan finansial.
+
+Q2_HOW_MANY_TIMES_HAJJ_REQUIRED,Сколько раз хадж обязателен в жизни?,Koliko puta je hadž obavezan u životu?,Sa herë është i detyrueshëm Haxhi në jetë?,Hayatta kaç kez hac farzdır?,كم مرة يجب الحج في العمر؟,Berapa kali haji wajib dalam seumur hidup?
+Q2_OPT_EVERY_YEAR,Каждый год,Svake godine,Çdo vit,Her yıl,كل سنة,Setiap tahun
+Q2_OPT_ONCE,Один раз,Jednom,Një herë,Bir kez,مرة واحدة,Sekali
+Q2_OPT_THREE_TIMES,Три раза,Tri puta,Tre herë,Üç kez,ثلاث مرات,Tiga kali
+Q2_OPT_UNLIMITED,Не ограничено,Neograničeno,Pa kufi,Sınırsız,غير محدود,Tidak terbatas
+Q2_EXPLANATION,Хадж обязателен один раз в жизни при наличии возможности.,Hadž je obavezan jednom u životu ako postoji mogućnost.,Haxhi është i detyrueshëm një herë në jetë nëse ka mundësi.,Hac imkân olduğunda hayatta bir kez farzdır.,الحج واجب مرة واحدة في العمر عند الاستطاعة.,Haji wajib sekali seumur hidup jika mampu.
+
+Q3_WHAT_IS_IHRAM,Что такое ихрам?,Šta je ihram?,Çfarë është ihrimi?,İhram nedir?,ما هو الإحرام؟,Apa itu ihram?
+Q3_OPT_CLOTHING,Одежда,Odjeća,Veshje,Giysi,ملابس,Pakaian
+Q3_OPT_PLACE,Место,Mjesto,Vend,Yer,مكان,Tempat
+Q3_OPT_WORSHIP_STATE,Состояние поклонения с ограничениями,Stanje ibadeta sa ograničenjima,Gjendje adhurimi me kufizime,İbadet hali ve kısıtlamalar,حالة عبادة مع قيود,Keadaan ibadah dengan larangan
+Q3_OPT_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Sholat
+Q3_EXPLANATION,Ихрам — это священное состояние включающее намерение и ограничения.,Ihram je sveto stanje koje uključuje namjeru i ograničenja.,Ihrami është gjendje e shenjtë që përfshin qëllimin dhe kufizimet.,İhram niyet ve kısıtlamaları içeren kutsal bir haldir.,الإحرام حالة مقدسة تشمل النية والقيود.,Ihram adalah keadaan suci yang mencakup niat dan larangan.
+
+Q4_CAN_USE_PERFUME_IN_IHRAM,Можно ли использовать духи в ихраме?,Može li se koristiti parfem u ihramu?,A mund të përdoret parfum në ihram?,İhramda parfüm kullanılabilir mi?,هل يمكن استخدام العطر في الإحرام؟,Bolehkah menggunakan parfum saat ihram?
+Q4_OPT_YES,Да,Da,Po,Evet,نعم,Ya
+Q4_OPT_NO,Нет,Ne,Jo,Hayır,لا,Tidak
+Q4_OPT_ONLY_MEN,Только мужчинам,Samo muškarcima,Vetëm burrave,Sadece erkeklere,للرجال فقط,Hanya laki-laki
+Q4_OPT_LITTLE_BIT,Немного можно,Malo može,Pak mund,Biraz olabilir,قليلاً يجوز,Sedikit boleh
+Q4_EXPLANATION,Использование духов после вступления в ихрам запрещено.,Korištenje parfema nakon ulaska u ihram je zabranjeno.,Përdorimi i parfumit pas hyrjes në ihram është i ndaluar.,İhrama girdikten sonra parfüm kullanmak yasaktır.,استخدام العطر بعد الدخول في الإحرام محرم.,Penggunaan parfum setelah memasuki ihram dilarang.
+
+Q5_WHAT_IS_MIQAT,Что такое микат?,Šta je mikat?,Çfarë është mikati?,Mîkât nedir?,ما هو الميقات؟,Apa itu miqat?
+Q5_OPT_MOUNTAIN,Гора,Planina,Mal,Dağ,جبل,Gunung
+Q5_OPT_IHRAM_BOUNDARY,Граница для вступления в ихрам,Granica za ulazak u ihram,Kufiri për të hyrë në ihram,İhrama giriş sınırı,حد الدخول في الإحرام,Batas untuk memasuki ihram
+Q5_OPT_MARKET,Рынок,Pijaca,Treg,Pazar,سوق,Pasar
+Q5_OPT_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Sholat
+Q5_EXPLANATION,Микат — установленная граница для вступления в ихрам.,Mikat je određena granica za ulazak u ihram.,Mikati është kufiri i caktuar për të hyrë në ihram.,Mîkât ihrama giriş için belirlenen sınırdır.,الميقات هو الحد المعين للدخول في الإحرام.,Miqat adalah batas yang ditetapkan untuk memasuki ihram.
+
+Q6_WHAT_TO_DO_BEFORE_MIQAT,Что нужно сделать перед пересечением миката?,Šta treba učiniti prije prelaska mikata?,Çfarë duhet bërë para kalimit të mikatit?,Mîkâtı geçmeden önce ne yapılmalı?,ماذا يجب فعله قبل عبور الميقات؟,Apa yang harus dilakukan sebelum melewati miqat?
+Q6_OPT_PERFORM_TAWAF,Совершить таваф,Obaviti tavaf,Kryej tavafin,Tavaf yapmak,أداء الطواف,Melakukan tawaf
+Q6_OPT_WEAR_IHRAM_MAKE_NIYYAH,Надеть ихрам и сделать намерение,Obući ihram i učiniti nijjet,Vesh ihramin dhe bëj nijetin,İhram giymek ve niyet etmek,لبس الإحرام وعقد النية,Mengenakan ihram dan berniat
+Q6_OPT_READ_QURAN,Прочитать весь Коран,Pročitati cijeli Kuran,Lexo tërë Kuranin,Tüm Kuran'ı okumak,قراءة القرآن كاملاً,Membaca seluruh Al-Quran
+Q6_OPT_VISIT_ZAMZAM,Посетить Замзам,Posjetiti Zemzem,Vizito Zemzemin,Zemzem'i ziyaret etmek,زيارة زمزم,Mengunjungi Zamzam
+Q6_EXPLANATION,Перед пересечением миката нужно вступить в ихрам и сделать намерение.,Prije prelaska mikata treba ući u ihram i učiniti nijjet.,Para kalimit të mikatit duhet të hysh në ihram dhe të bësh nijetin.,Mîkâtı geçmeden önce ihrama girmek ve niyet etmek gerekir.,قبل عبور الميقات يجب الدخول في الإحرام وعقد النية.,Sebelum melewati miqat harus memasuki ihram dan berniat.
+
+Q7_WHEN_TALBIYAH_RECITED,Когда произносится тальбия?,Kada se izgovara telbija?,Kur thuhet telbija?,Telbiye ne zaman okunur?,متى تُقال التلبية؟,Kapan talbiyah diucapkan?
+Q7_OPT_AFTER_ARAFAT,После Арафата,Nakon Arafata,Pas Arafatit,Arafat'tan sonra,بعد عرفة,Setelah Arafah
+Q7_OPT_AFTER_IHRAM,После вступления в ихрам,Nakon ulaska u ihram,Pas hyrjes në ihram,İhrama girdikten sonra,بعد الدخول في الإحرام,Setelah memasuki ihram
+Q7_OPT_BEFORE_SLEEP,Перед сном,Prije spavanja,Para gjumit,Uyumadan önce,قبل النوم,Sebelum tidur
+Q7_OPT_AFTER_TAWAF,После тавафа,Nakon tavafa,Pas tavafit,Tavaftan sonra,بعد الطواف,Setelah tawaf
+Q7_EXPLANATION,Тальбия читается после вступления в состояние ихрама.,Telbija se izgovara nakon ulaska u stanje ihrama.,Telbija thuhet pas hyrjes në gjendjen e ihramit.,Telbiye ihram haline girdikten sonra okunur.,التلبية تُقال بعد الدخول في حالة الإحرام.,Talbiyah diucapkan setelah memasuki keadaan ihram.
+
+# === LEVEL 2 THEORY ===
+THEORY_L2_WHAT_IS_MIQAT_TITLE,Что такое микат,Šta je mikat,Çfarë është mikati,Mîkât nedir,ما هو الميقات,Apa itu Miqat
+THEORY_L2_WHAT_IS_MIQAT_TEXT,Микат — установленная граница для вступления в ихрам.,Mikat je određena granica za ulazak u ihram.,Mikati është kufiri i caktuar për të hyrë në ihram.,Mîkât ihrama giriş için belirlenen sınırdır.,الميقات هو الحد المعين للدخول في الإحرام.,Miqat adalah batas yang ditetapkan untuk memasuki ihram.
+THEORY_L2_CROSSING_BOUNDARY_TITLE,Пересечение границы,Prelazak granice,Kalimi i kufirit,Sınırı Geçmek,عبور الحد,Melewati Batas
+THEORY_L2_CROSSING_BOUNDARY_TEXT,Нельзя пересекать микат без намерения и ихрама.,Nije dozvoljeno preći mikat bez nijjeta i ihrama.,Nuk lejohet të kalohet mikati pa nijet dhe ihram.,Mîkât niyet ve ihram olmadan geçilemez.,لا يجوز عبور الميقات بدون نية وإحرام.,Tidak boleh melewati miqat tanpa niat dan ihram.
+THEORY_L2_NIYYAH_TITLE,Намерение,Nijjet,Nijeti,Niyet,النية,Niat
+THEORY_L2_NIYYAH_TEXT,Перед микатом паломник делает намерение на хадж.,Prije mikata hodočasnik čini nijjet za hadž.,Para mikatit pelegrinët bëjnë nijetin për haxh.,Mîkâttan önce hacı hac için niyet eder.,قبل الميقات يعقد الحاج نية الحج.,Sebelum miqat jamaah berniat untuk haji.
+THEORY_L2_IHRAM_CLOTHING_TITLE,Одежда ихрама,Odjeća ihrama,Veshja e ihramit,İhram Giysisi,ملابس الإحرام,Pakaian Ihram
+THEORY_L2_IHRAM_CLOTHING_TEXT,Мужчины надевают два белых куска ткани без швов.,Muškarci oblače dva bijela komada tkanine bez šavova.,Burrat veshin dy copë pëlhure të bardha pa qepje.,Erkekler dikişsiz iki beyaz parça kumaş giyer.,يرتدي الرجال قطعتين من القماش الأبيض بدون خياطة.,Laki-laki mengenakan dua lembar kain putih tanpa jahitan.
+THEORY_L2_WOMEN_IN_IHRAM_TITLE,Женщины в ихраме,Žene u ihramu,Gratë në ihram,İhramda Kadınlar,المرأة في الإحرام,Wanita dalam Ihram
+THEORY_L2_WOMEN_IN_IHRAM_TEXT,Женщины надевают обычную скромную одежду без украшений.,Žene oblače običnu skromnu odjeću bez ukrasa.,Gratë veshin rroba të thjeshta modeste pa zbukurime.,Kadınlar süssüz sade kıyafetler giyer.,ترتدي النساء ملابس عادية محتشمة بدون زينة.,Wanita mengenakan pakaian biasa yang sopan tanpa perhiasan.
+THEORY_L2_TALBIYAH_TITLE,Тальбия,Telbija,Telbija,Telbiye,التلبية,Talbiyah
+THEORY_L2_TALBIYAH_TEXT,После вступления в ихрам произносится тальбия.,Nakon ulaska u ihram izgovara se telbija.,Pas hyrjes në ihram thuhet telbija.,İhrama girdikten sonra telbiye okunur.,بعد الدخول في الإحرام تُقال التلبية.,Setelah memasuki ihram diucapkan talbiyah.
+THEORY_L2_CROSSING_ERROR_TITLE,Ошибка при пересечении,Greška pri prelasku,Gabimi gjatë kalimit,Geçiş Hatası,خطأ عند العبور,Kesalahan saat Melewati
+THEORY_L2_CROSSING_ERROR_TEXT,Если микат пересечён без ихрама нужно вернуться.,Ako je mikat pređen bez ihrama treba se vratiti.,Nëse mikati është kaluar pa ihram duhet të ktheheni.,Mîkât ihramsız geçildiyse geri dönülmelidir.,إذا عُبر الميقات بدون إحرام يجب الرجوع.,Jika miqat dilewati tanpa ihram harus kembali.
+
+# === LEVEL 2 QUIZ ===
+Q_L2_WHAT_IS_MIQAT,Что такое микат?,Šta je mikat?,Çfarë është mikati?,Mîkât nedir?,ما هو الميقات؟,Apa itu miqat?
+Q_L2_OPT_SACRED_MOUNTAIN,Священная гора,Sveta planina,Mal i shenjtë,Kutsal dağ,جبل مقدس,Gunung suci
+Q_L2_OPT_IHRAM_BOUNDARY,Граница для вступления в ихрам,Granica za ulazak u ihram,Kufiri për të hyrë në ihram,İhrama giriş sınırı,حد الدخول في الإحرام,Batas untuk memasuki ihram
+Q_L2_OPT_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Sholat
+Q_L2_OPT_CITY,Город,Grad,Qytet,Şehir,مدينة,Kota
+Q_L2_MIQAT_EXPLANATION,Микат — это установленная граница где паломник должен вступить в ихрам.,Mikat je određena granica gdje hodočasnik mora ući u ihram.,Mikati është kufiri i caktuar ku pelegrinët duhet të hyjnë në ihram.,Mîkât hacının ihrama girmesi gereken belirlenen sınırdır.,الميقات هو الحد المعين حيث يجب على الحاج الدخول في الإحرام.,Miqat adalah batas yang ditetapkan di mana jamaah harus memasuki ihram.
+
+Q_L2_CAN_CROSS_MIQAT_WITHOUT_IHRAM,Можно ли пересекать микат без ихрама?,Može li se preći mikat bez ihrama?,A mund të kalohet mikati pa ihram?,Mîkât ihramsız geçilebilir mi?,هل يمكن عبور الميقات بدون إحرام؟,Bolehkah melewati miqat tanpa ihram?
+Q_L2_OPT_YES,Да,Da,Po,Evet,نعم,Ya
+Q_L2_OPT_NO,Нет,Ne,Jo,Hayır,لا,Tidak
+Q_L2_OPT_ONLY_AT_NIGHT,Только ночью,Samo noću,Vetëm natën,Sadece gece,فقط ليلاً,Hanya malam hari
+Q_L2_OPT_SOMETIMES,Иногда можно,Ponekad može,Ndonjëherë mund,Bazen olabilir,أحياناً يجوز,Kadang boleh
+Q_L2_CROSS_MIQAT_EXPLANATION,Пересекать микат без вступления в ихрам нельзя при намерении хаджа.,Preći mikat bez ulaska u ihram nije dozvoljeno pri namjeri hadža.,Kalimi i mikatit pa hyrë në ihram nuk lejohet kur ke nijet për haxh.,Hac niyetiyle mîkâtı ihramsız geçmek caiz değildir.,لا يجوز عبور الميقات بدون الدخول في الإحرام عند نية الحج.,Tidak boleh melewati miqat tanpa memasuki ihram jika berniat haji.
+
+Q_L2_WHAT_TO_DO_BEFORE_MIQAT,Что нужно сделать перед пересечением миката?,Šta treba učiniti prije prelaska mikata?,Çfarë duhet bërë para kalimit të mikatit?,Mîkâtı geçmeden önce ne yapılmalı?,ماذا يجب فعله قبل عبور الميقات؟,Apa yang harus dilakukan sebelum melewati miqat?
+Q_L2_OPT_PERFORM_TAWAF,Сделать таваф,Obaviti tavaf,Bëj tavafin,Tavaf yapmak,أداء الطواف,Melakukan tawaf
+Q_L2_OPT_MAKE_NIYYAH_ENTER_IHRAM,Сделать намерение и вступить в ихрам,Učiniti nijjet i ući u ihram,Bëj nijetin dhe hyj në ihram,Niyet edip ihrama girmek,عقد النية والدخول في الإحرام,Berniat dan memasuki ihram
+Q_L2_OPT_READ_QURAN,Прочитать Коран,Pročitati Kuran,Lexo Kuranin,Kuran okumak,قراءة القرآن,Membaca Al-Quran
+Q_L2_OPT_VISIT_ZAMZAM,Посетить Замзам,Posjetiti Zemzem,Vizito Zemzemin,Zemzem'i ziyaret etmek,زيارة زمزم,Mengunjungi Zamzam
+Q_L2_BEFORE_MIQAT_EXPLANATION,Перед микатом необходимо сделать намерение и вступить в ихрам.,Prije mikata potrebno je učiniti nijjet i ući u ihram.,Para mikatit duhet të bësh nijetin dhe të hysh në ihram.,Mîkâttan önce niyet edip ihrama girmek gerekir.,قبل الميقات يجب عقد النية والدخول في الإحرام.,Sebelum miqat harus berniat dan memasuki ihram.
+
+Q_L2_WHAT_MEN_WEAR_IN_IHRAM,Что надевают мужчины в ихраме?,Šta oblače muškarci u ihramu?,Çfarë veshin burrat në ihram?,Erkekler ihramda ne giyer?,ماذا يرتدي الرجال في الإحرام؟,Apa yang dipakai pria saat ihram?
+Q_L2_OPT_REGULAR_CLOTHES,Обычную одежду,Običnu odjeću,Rroba të zakonshme,Normal kıyafet,ملابس عادية,Pakaian biasa
+Q_L2_OPT_TWO_WHITE_CLOTHS,Два белых куска ткани,Dva bijela komada tkanine,Dy copë pëlhure të bardhë,İki beyaz parça kumaş,قطعتين من القماش الأبيض,Dua lembar kain putih
+Q_L2_OPT_SUIT,Костюм,Odijelo,Kostum,Takım elbise,بدلة,Jas
+Q_L2_OPT_ANY_COMFORTABLE,Любую удобную одежду,Bilo koju udobnu odjeću,Çdo veshje të rehatshme,Herhangi rahat bir kıyafet,أي ملابس مريحة,Pakaian nyaman apa saja
+Q_L2_MEN_IHRAM_EXPLANATION,Мужчины надевают два белых куска ткани без швов.,Muškarci oblače dva bijela komada tkanine bez šavova.,Burrat veshin dy copë pëlhure të bardha pa qepje.,Erkekler dikişsiz iki beyaz parça kumaş giyer.,يرتدي الرجال قطعتين من القماش الأبيض بدون خياطة.,Laki-laki mengenakan dua lembar kain putih tanpa jahitan.
+
+Q_L2_WHAT_AFTER_ENTERING_IHRAM,Что делают после вступления в ихрам?,Šta se radi nakon ulaska u ihram?,Çfarë bëhet pas hyrjes në ihram?,İhrama girdikten sonra ne yapılır?,ماذا يُفعل بعد الدخول في الإحرام؟,Apa yang dilakukan setelah memasuki ihram?
+Q_L2_OPT_START_TAWAF,Начинают таваф,Započinju tavaf,Fillojnë tavafin,Tavafa başlanır,البدء بالطواف,Memulai tawaf
+Q_L2_OPT_RECITE_TALBIYAH,Произносят тальбию,Izgovaraju telbiju,Thonë telbija,Telbiye okunur,ترديد التلبية,Mengucapkan talbiyah
+Q_L2_OPT_RETURN_HOME,Возвращаются домой,Vraćaju se kući,Kthehen në shtëpi,Eve dönülür,العودة للبيت,Pulang ke rumah
+Q_L2_OPT_REMOVE_SHOES,Снимают обувь,Skidaju obuću,Heqin këpucët,Ayakkabılar çıkarılır,خلع الأحذية,Melepas sepatu
+Q_L2_AFTER_IHRAM_EXPLANATION,После вступления в ихрам паломник произносит тальбию.,Nakon ulaska u ihram hodočasnik izgovara telbiju.,Pas hyrjes në ihram pelegrinët thonë telbija.,İhrama girdikten sonra hacı telbiye okur.,بعد الدخول في الإحرام يردد الحاج التلبية.,Setelah memasuki ihram jamaah mengucapkan talbiyah.
+
+Q_L2_IF_CROSSED_MIQAT_WITHOUT_IHRAM,Если человек пересёк микат без ихрама что нужно сделать?,Ako je osoba prešla mikat bez ihrama šta treba učiniti?,Nëse personi ka kaluar mikatin pa ihram çfarë duhet bërë?,Kişi mîkâtı ihramsız geçtiyse ne yapmalı?,إذا عبر الشخص الميقات بدون إحرام ماذا يجب أن يفعل؟,Jika seseorang melewati miqat tanpa ihram apa yang harus dilakukan?
+Q_L2_OPT_CONTINUE_PATH,Продолжить путь,Nastaviti put,Vazhdoni rrugën,Yola devam etmek,استمر في الطريق,Melanjutkan perjalanan
+Q_L2_OPT_RETURN_TO_MIQAT,Вернуться к микату,Vratiti se na mikat,Kthehu te mikati,Mîkâta geri dönmek,العودة إلى الميقات,Kembali ke miqat
+Q_L2_OPT_IGNORE,Игнорировать это,Ignorisati to,Injoro këtë,Bunu görmezden gelmek,تجاهل ذلك,Mengabaikannya
+Q_L2_OPT_START_SAI,Начать саи,Započeti sai,Fillo sa'in,Sa'ye başlamak,البدء بالسعي,Memulai sa'i
+Q_L2_CROSSED_WITHOUT_IHRAM_EXPLANATION,Необходимо вернуться к микату и правильно вступить в ихрам.,Potrebno je vratiti se na mikat i pravilno ući u ihram.,Duhet të ktheheni te mikati dhe të hyni siç duhet në ihram.,Mîkâta geri dönüp doğru şekilde ihrama girmek gerekir.,يجب العودة إلى الميقات والدخول في الإحرام بشكل صحيح.,Harus kembali ke miqat dan memasuki ihram dengan benar.
+
+Q_L2_WHEN_TALBIYAH_RECITED,Когда произносится тальбия?,Kada se izgovara telbija?,Kur thuhet telbija?,Telbiye ne zaman okunur?,متى تُقال التلبية؟,Kapan talbiyah diucapkan?
+Q_L2_OPT_BEFORE_IHRAM,До ихрама,Prije ihrama,Para ihramit,İhramdan önce,قبل الإحرام,Sebelum ihram
+Q_L2_OPT_AFTER_ENTERING_IHRAM,После вступления в ихрам,Nakon ulaska u ihram,Pas hyrjes në ihram,İhrama girdikten sonra,بعد الدخول في الإحرام,Setelah memasuki ihram
+Q_L2_OPT_AFTER_ARAFAT,После Арафата,Nakon Arafata,Pas Arafatit,Arafat'tan sonra,بعد عرفة,Setelah Arafah
+Q_L2_OPT_AFTER_HAJJ,После хаджа,Nakon hadža,Pas haxhit,Hacdan sonra,بعد الحج,Setelah haji
+Q_L2_TALBIYAH_EXPLANATION,Тальбия читается после вступления в состояние ихрама.,Telbija se izgovara nakon ulaska u stanje ihrama.,Telbija thuhet pas hyrjes në gjendjen e ihramit.,Telbiye ihram haline girdikten sonra okunur.,التلبية تُقال بعد الدخول في حالة الإحرام.,Talbiyah diucapkan setelah memasuki keadaan ihram.
+
+# === LEVEL 3 THEORY ===
+THEORY_L3_WHAT_IS_TAWAF_TITLE,Что такое таваф,Šta je tavaf,Çfarë është tavafi,Tavaf nedir,ما هو الطواف,Apa itu Tawaf
+THEORY_L3_WHAT_IS_TAWAF_TEXT,Таваф — это обход Каабы семь раз.,Tavaf je obilazak Kabe sedam puta.,Tavafi është të sillesh rreth Qabes shtatë herë.,Tavaf Kâbe'nin yedi kez etrafında dönmektir.,الطواف هو الدوران حول الكعبة سبع مرات.,Tawaf adalah mengelilingi Ka'bah tujuh kali.
+THEORY_L3_NUMBER_OF_CIRCLES_TITLE,Количество кругов,Broj krugova,Numri i rrathëve,Devir Sayısı,عدد الأشواط,Jumlah Putaran
+THEORY_L3_NUMBER_OF_CIRCLES_TEXT,Во время тавафа совершается семь полных кругов.,Tokom tavafa se obavi sedam punih krugova.,Gjatë tavafit kryhen shtatë rrathë të plota.,Tavaf sırasında yedi tam devir yapılır.,يُؤدى الطواف بسبعة أشواط كاملة.,Selama tawaf dilakukan tujuh putaran penuh.
+THEORY_L3_START_POINT_TITLE,Начало обхода,Početak obilaska,Fillimi i silljes,Başlangıç Noktası,بداية الطواف,Titik Mulai
+THEORY_L3_START_POINT_TEXT,Таваф начинается у Чёрного камня.,Tavaf počinje kod Crnog kamena.,Tavafi fillon te Guri i Zi.,Tavaf Hacerü'l-Esved'den başlar.,يبدأ الطواف من الحجر الأسود.,Tawaf dimulai dari Hajar Aswad.
+THEORY_L3_DIRECTION_TITLE,Направление,Smjer,Drejtimi,Yön,الاتجاه,Arah
+THEORY_L3_DIRECTION_TEXT,Обход совершается против часовой стрелки.,Obilazak se vrši suprotno od kazaljke na satu.,Sjellja bëhet në drejtim të kundërt me akrepat e orës.,Tavaf saat yönünün tersine yapılır.,يُؤدى الطواف عكس عقارب الساعة.,Tawaf dilakukan berlawanan arah jarum jam.
+THEORY_L3_RITUAL_PURITY_TITLE,Ритуальная чистота,Ritualna čistoća,Pastërtia rituale,Abdest,الطهارة,Kesucian Ritual
+THEORY_L3_RITUAL_PURITY_TEXT,Для тавафа необходимо находиться в состоянии вуду.,Za tavaf je potrebno biti u stanju abdesta.,Për tavafin duhet të jeni në gjendje të abdestit.,Tavaf için abdestli olmak gerekir.,للطواف يجب أن تكون على وضوء.,Untuk tawaf harus dalam keadaan wudhu.
+THEORY_L3_CIRCLE_COMPLETION_TITLE,Завершение круга,Završetak kruga,Përfundimi i rrathit,Devrin Tamamlanması,إتمام الشوط,Penyelesaian Putaran
+THEORY_L3_CIRCLE_COMPLETION_TEXT,Круг считается завершённым при возвращении к Чёрному камню.,Krug se smatra završenim pri povratku do Crnog kamena.,Rrethi konsiderohet i përfunduar kur ktheheni te Guri i Zi.,Devir Hacerü'l-Esved'e dönüldüğünde tamamlanmış sayılır.,يُعتبر الشوط مكتملاً عند العودة إلى الحجر الأسود.,Putaran dianggap selesai saat kembali ke Hajar Aswad.
+THEORY_L3_DUA_DURING_TAWAF_TITLE,Дуа во время тавафа,Dova tokom tavafa,Duaja gjatë tavafit,Tavafta Dua,الدعاء أثناء الطواف,Doa selama Tawaf
+THEORY_L3_DUA_DURING_TAWAF_TEXT,Во время тавафа читаются дуа и поминание Аллаха.,Tokom tavafa se čitaju dove i spominje Allah.,Gjatë tavafit lexohen dua dhe përmendet Allahu.,Tavaf sırasında dua okunur ve Allah zikredilir.,أثناء الطواف تُقرأ الأدعية ويُذكر الله.,Selama tawaf dibacakan doa dan dzikir kepada Allah.
+
+# === LEVEL 3 QUIZ ===
+Q_L3_HOW_MANY_TAWAF_CIRCLES,Сколько кругов совершается во время тавафа?,Koliko krugova se obavi tokom tavafa?,Sa rrathë kryhen gjatë tavafit?,Tavafta kaç devir yapılır?,كم شوطاً يُؤدى في الطواف؟,Berapa putaran yang dilakukan saat tawaf?
+Q_L3_OPT_FIVE,Пять,Pet,Pesë,Beş,خمسة,Lima
+Q_L3_OPT_SIX,Шесть,Šest,Gjashtë,Altı,ستة,Enam
+Q_L3_OPT_SEVEN,Семь,Sedam,Shtatë,Yedi,سبعة,Tujuh
+Q_L3_OPT_EIGHT,Восемь,Osam,Tetë,Sekiz,ثمانية,Delapan
+Q_L3_TAWAF_CIRCLES_EXPLANATION,Таваф состоит из семи полных обходов вокруг Каабы.,Tavaf se sastoji od sedam punih obilazaka oko Kabe.,Tavafi përbëhet nga shtatë sjellje të plota rreth Qabes.,Tavaf Kâbe etrafında yedi tam devirden oluşur.,يتكون الطواف من سبعة أشواط كاملة حول الكعبة.,Tawaf terdiri dari tujuh putaran penuh mengelilingi Ka'bah.
+
+Q_L3_WHERE_TAWAF_STARTS,Где начинается таваф?,Gdje počinje tavaf?,Ku fillon tavafi?,Tavaf nereden başlar?,من أين يبدأ الطواف؟,Di mana tawaf dimulai?
+Q_L3_OPT_KAABA_DOOR,У двери Каабы,Kod vrata Kabe,Te dera e Qabes,Kâbe kapısında,عند باب الكعبة,Di pintu Ka'bah
+Q_L3_OPT_BLACK_STONE,У Чёрного камня,Kod Crnog kamena,Te Guri i Zi,Hacerü'l-Esved'de,عند الحجر الأسود,Di Hajar Aswad
+Q_L3_OPT_ANYWHERE,В любом месте,Na bilo kojem mjestu,Në çdo vend,Herhangi bir yerde,في أي مكان,Di mana saja
+Q_L3_OPT_ZAMZAM,У Замзам,Kod Zemzema,Te Zemzemi,Zemzem'de,عند زمزم,Di Zamzam
+Q_L3_TAWAF_START_EXPLANATION,Таваф начинается у Чёрного камня (Хаджар аль-Асвад).,Tavaf počinje kod Crnog kamena (Hadžerul-Esved).,Tavafi fillon te Guri i Zi (Haxherul-Esved).,Tavaf Hacerü'l-Esved'den başlar.,يبدأ الطواف من الحجر الأسود (الحجر الأسود).,Tawaf dimulai dari Hajar Aswad.
+
+Q_L3_TAWAF_DIRECTION,В каком направлении совершается таваф?,U kom smjeru se obavlja tavaf?,Në cilën drejtim kryhet tavafi?,Tavaf hangi yönde yapılır?,في أي اتجاه يُؤدى الطواف؟,Ke arah mana tawaf dilakukan?
+Q_L3_OPT_CLOCKWISE,По часовой стрелке,U smjeru kazaljke na satu,Në drejtim të akrepave të orës,Saat yönünde,مع عقارب الساعة,Searah jarum jam
+Q_L3_OPT_COUNTER_CLOCKWISE,Против часовой стрелки,Suprotno od kazaljke na satu,Në drejtim të kundërt me akrepat e orës,Saat yönünün tersine,عكس عقارب الساعة,Berlawanan arah jarum jam
+Q_L3_OPT_ANY_DIRECTION,В любом направлении,U bilo kojem smjeru,Në çdo drejtim,Herhangi bir yönde,في أي اتجاه,Ke arah mana saja
+Q_L3_OPT_DIAGONAL,По диагонали,Dijagonalno,Diagonalisht,Çapraz,بشكل قطري,Secara diagonal
+Q_L3_TAWAF_DIRECTION_EXPLANATION,Таваф совершается против часовой стрелки.,Tavaf se obavlja suprotno od kazaljke na satu.,Tavafi kryhet në drejtim të kundërt me akrepat e orës.,Tavaf saat yönünün tersine yapılır.,يُؤدى الطواف عكس عقارب الساعة.,Tawaf dilakukan berlawanan arah jarum jam.
+
+Q_L3_TAWAF_REQUIREMENT,Что необходимо для совершения тавафа?,Šta je potrebno za obavljanje tavafa?,Çfarë nevojitet për të kryer tavafin?,Tavaf için ne gereklidir?,ما المطلوب لأداء الطواف؟,Apa yang diperlukan untuk melakukan tawaf?
+Q_L3_OPT_REGULAR_CLOTHES,Обычная одежда,Obična odjeća,Rroba të zakonshme,Normal kıyafet,ملابس عادية,Pakaian biasa
+Q_L3_OPT_RITUAL_PURITY,Ритуальная чистота (вуду),Ritualna čistoća (abdest),Pastërtia rituale (abdesti),Abdest,الطهارة (الوضوء),Kesucian ritual (wudhu)
+Q_L3_OPT_FASTING,Пост,Post,Agjërimi,Oruç,الصيام,Puasa
+Q_L3_OPT_LOUD_READING,Громкое чтение,Glasno čitanje,Lexim me zë të lartë,Yüksek sesle okuma,القراءة بصوت عالٍ,Membaca dengan keras
+Q_L3_TAWAF_REQUIREMENT_EXPLANATION,Для тавафа необходимо находиться в состоянии ритуальной чистоты.,Za tavaf je potrebno biti u stanju ritualne čistoće.,Për tavafin duhet të jeni në gjendje të pastërtisë rituale.,Tavaf için abdestli olmak gerekir.,للطواف يجب أن تكون على طهارة.,Untuk tawaf harus dalam keadaan suci secara ritual.
+
+Q_L3_WHEN_CIRCLE_COMPLETE,Когда круг считается завершённым?,Kada se krug smatra završenim?,Kur rrathi konsiderohet i përfunduar?,Devir ne zaman tamamlanmış sayılır?,متى يُعتبر الشوط مكتملاً؟,Kapan putaran dianggap selesai?
+Q_L3_OPT_HALFWAY,После половины пути,Nakon pola puta,Pas gjysmës së rrugës,Yolun yarısında,بعد نصف الطريق,Setelah setengah jalan
+Q_L3_OPT_RETURN_TO_BLACK_STONE,При возвращении к Чёрному камню,Pri povratku do Crnog kamena,Kur ktheheni te Guri i Zi,Hacerü'l-Esved'e dönüldüğünde,عند العودة إلى الحجر الأسود,Saat kembali ke Hajar Aswad
+Q_L3_OPT_THREE_STEPS,После трёх шагов,Nakon tri koraka,Pas tre hapave,Üç adım sonra,بعد ثلاث خطوات,Setelah tiga langkah
+Q_L3_OPT_AFTER_PRAYER,После молитвы,Nakon molitve,Pas lutjes,Namazdan sonra,بعد الصلاة,Setelah sholat
+Q_L3_CIRCLE_COMPLETE_EXPLANATION,Круг завершается при возвращении к Чёрному камню.,Krug se završava pri povratku do Crnog kamena.,Rrethi përfundon kur ktheheni te Guri i Zi.,Devir Hacerü'l-Esved'e dönüldüğünde tamamlanır.,يكتمل الشوط عند العودة إلى الحجر الأسود.,Putaran selesai saat kembali ke Hajar Aswad.
+
+Q_L3_WHAT_TO_READ_DURING_TAWAF,Что читается во время тавафа?,Šta se čita tokom tavafa?,Çfarë lexohet gjatë tavafit?,Tavafta ne okunur?,ماذا يُقرأ أثناء الطواف؟,Apa yang dibaca selama tawaf?
+Q_L3_OPT_ONLY_TALBIYAH,Только тальбия,Samo telbija,Vetëm telbija,Sadece telbiye,التلبية فقط,Hanya talbiyah
+Q_L3_OPT_DUA_AND_DHIKR,Дуа и поминание Аллаха,Dove i spominjanje Allaha,Dua dhe përmendja e Allahut,Dua ve zikir,الدعاء والذكر,Doa dan dzikir
+Q_L3_OPT_ONLY_ADHAN,Только азан,Samo ezan,Vetëm ezani,Sadece ezan,الأذان فقط,Hanya adzan
+Q_L3_OPT_NOTHING,Ничего,Ništa,Asgjë,Hiçbir şey,لا شيء,Tidak ada
+Q_L3_TAWAF_READING_EXPLANATION,Во время тавафа читаются дуа и совершается поминание Аллаха.,Tokom tavafa se čitaju dove i spominje Allah.,Gjatë tavafit lexohen dua dhe përmendet Allahu.,Tavafta dua okunur ve Allah zikredilir.,أثناء الطواف تُقرأ الأدعية ويُذكر الله.,Selama tawaf dibacakan doa dan dzikir kepada Allah.
+
+Q_L3_TAWAF_OBJECT,Что является объектом обхода во время тавафа?,Šta je objekat obilaska tokom tavafa?,Cili është objekti i silljes gjatë tavafit?,Tavafta etrafında dönülen nesne nedir?,ما هو موضع الطواف؟,Apa objek yang dikelilingi saat tawaf?
+Q_L3_OPT_SAFA_MOUNT,Гора Сафа,Brdo Safa,Mali Safa,Safa tepesi,جبل الصفا,Bukit Safa
+Q_L3_OPT_KAABA,Кааба,Kaba,Qabeja,Kâbe,الكعبة,Ka'bah
+Q_L3_OPT_MEDINA_MOSQUE,Мечеть в Медине,Džamija u Medini,Xhamia në Medine,Medine'deki Mescid,المسجد في المدينة,Masjid di Madinah
+Q_L3_OPT_ZAMZAM,Замзам,Zemzem,Zemzemi,Zemzem,زمزم,Zamzam
+Q_L3_TAWAF_OBJECT_EXPLANATION,Таваф совершается вокруг Каабы.,Tavaf se obavlja oko Kabe.,Tavafi kryhet rreth Qabes.,Tavaf Kâbe etrafında yapılır.,يُؤدى الطواف حول الكعبة.,Tawaf dilakukan mengelilingi Ka'bah.

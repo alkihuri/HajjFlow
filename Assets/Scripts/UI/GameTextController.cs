@@ -17,6 +17,16 @@ namespace HajjFlow.UI
 
         private TMP_Text _textComponent;
 
+        public string text
+        {
+            set
+            { 
+                _localizationKey = value;
+                UpdateText();
+            }
+        }
+        
+
         private void Awake()
         {
             _textComponent = GetComponent<TMP_Text>();
