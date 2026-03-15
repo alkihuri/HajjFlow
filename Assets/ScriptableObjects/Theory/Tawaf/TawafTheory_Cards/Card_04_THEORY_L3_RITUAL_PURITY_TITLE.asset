@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1a5995c106f4313954d5cbe1f2e8746, type: 3}
-  m_Name: Card_02_
+  m_Name: Card_04_THEORY_L3_RITUAL_PURITY_TITLE
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardData
-  LevelId: 
-  Title: 
-  Description: 
+  LevelId: Tawaf
+  Title: THEORY_L3_RITUAL_PURITY_TITLE
+  Description: THEORY_L3_RITUAL_PURITY_TEXT
   Image: {fileID: 0}

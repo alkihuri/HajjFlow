@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
   m_Name: MiqatTheoryContainer
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
-  LevelId: 
+  LevelId: Miqat
   Cards:
   - {fileID: 11400000, guid: a3104aabe30ee46c7b4f5608278209ef, type: 2}
   - {fileID: 11400000, guid: 29a9871587a3f44d8b24820c41ccbc48, type: 2}
