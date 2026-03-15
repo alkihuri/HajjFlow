@@ -30,4 +30,24 @@ public class LocalizationServiceLoader : MonoBehaviour
             Debug.LogWarning("[LocalizationServiceLoader] LocalizationService not found.");
         }
     }
+    
+    
+    [ContextMenu("Log list of game text controllers")]
+    public void LogGameTextControllers()
+    {
+        var service = GameManager.Instance?.GetService<LocalizationService>();
+        if (service != null)
+        {
+            var controllers = service.GetRegisteredControllers();
+            Debug.Log($"[LocalizationServiceLoader] Registered GameTextControllers ({controllers.Count}):");
+            foreach (var controller in controllers)
+            {
+                Debug.Log($"-  {controller.text} on{controller.gameObject.name}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[LocalizationServiceLoader] LocalizationService not found.");
+        }
+    }
 }

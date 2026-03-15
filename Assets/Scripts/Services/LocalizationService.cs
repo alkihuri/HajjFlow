@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using HajjFlow.Data;
 using HajjFlow.UI;
+using NUnit.Framework;
 
 namespace HajjFlow.Services
 {
@@ -25,8 +26,8 @@ namespace HajjFlow.Services
         private readonly Dictionary<string, Dictionary<Language, string>> _table
             = new Dictionary<string, Dictionary<Language, string>>();
 
-        private readonly HashSet<GameTextController> _registeredTexts
-            = new HashSet<GameTextController>();
+        private readonly List<GameTextController> _registeredTexts
+            = new List<GameTextController>();
 
         private Language _currentLanguage;
 
@@ -76,6 +77,7 @@ namespace HajjFlow.Services
             }
 
             OnLanguageChanged?.Invoke();
+            Debug.Log($"[LocalizationService] Changed language to {_currentLanguage}");
         }
 
         /// <summary>
@@ -101,6 +103,7 @@ namespace HajjFlow.Services
         {
             if (text != null)
                 _registeredTexts.Add(text);
+            Debug.Log($"[LocalizationService] Registered game text {text}");
         }
 
         /// <summary>Unregisters a <see cref="GameTextController"/>.</summary>
@@ -108,6 +111,7 @@ namespace HajjFlow.Services
         {
             if (text != null)
                 _registeredTexts.Remove(text);
+                Debug.Log($"[LocalizationService] Unregistered game text {text}");
         }
 
         /// <summary>
@@ -283,6 +287,11 @@ namespace HajjFlow.Services
 
             result.Add(current.ToString());
             return result.ToArray();
+        }
+
+        public List<GameTextController> GetRegisteredControllers()
+        { 
+            return _registeredTexts;
         }
     }
 }

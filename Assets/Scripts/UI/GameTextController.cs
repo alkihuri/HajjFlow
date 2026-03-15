@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using HajjFlow.Core;
@@ -16,27 +17,35 @@ namespace HajjFlow.UI
         private string _localizationKey;
 
         private TMP_Text _textComponent;
+        private LocalizationService _service;
 
         public string text
         {
             set
-            { 
+            {
                 _localizationKey = value;
                 UpdateText();
             }
+            get => _localizationKey;
         }
-        
+
 
         private void Awake()
         {
             _textComponent = GetComponent<TMP_Text>();
-            var service = GameManager.Instance?.GetService<LocalizationService>();
-            if (service != null)
+            _service = GameManager.Instance?.GetService<LocalizationService>();
+            if (_service != null)
             {
-                service.Register(this);
-                UpdateText();
+                _service.Register(this);
             }
+        } 
+
+        private void OnEnable()
+        {
+            UpdateText();
         }
+
+        
 
         private void OnDestroy()
         {
@@ -48,6 +57,7 @@ namespace HajjFlow.UI
         /// Refreshes the displayed text from the <see cref="LocalizationService"/>.
         /// Called automatically on language change and during Awake.
         /// </summary>
+        [ContextMenu("UpdateText")]
         public void UpdateText()
         {
             if (_textComponent == null)

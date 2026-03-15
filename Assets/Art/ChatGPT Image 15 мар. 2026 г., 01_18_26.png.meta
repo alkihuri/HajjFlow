@@ -118,7 +118,7 @@ TextureImporter:
         width: 269
         height: 188
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -140,7 +140,7 @@ TextureImporter:
         width: 263
         height: 171
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,7 +162,7 @@ TextureImporter:
         width: 265
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,7 +184,7 @@ TextureImporter:
         width: 276
         height: 181
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,7 +206,7 @@ TextureImporter:
         width: 264
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,6 +215,28 @@ TextureImporter:
       bones: []
       spriteID: 55fd59d44addf425ebdf25b1b2a326f7
       internalID: 6560808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 15 \u043C\u0430\u0440. 2026 \u0433., 01_18_26_5"
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 318
+        width: 273
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2c66cd5f9a1044a5bfc1c7d708c2a4c
+      internalID: 1367056135
       vertices: []
       indices: 
       edges: []
@@ -238,6 +260,7 @@ TextureImporter:
       "ChatGPT Image 15 \u043C\u0430\u0440. 2026 \u0433., 01_18_26_2": -717994466
       "ChatGPT Image 15 \u043C\u0430\u0440. 2026 \u0433., 01_18_26_3": -1051615816
       "ChatGPT Image 15 \u043C\u0430\u0440. 2026 \u0433., 01_18_26_4": 6560808
+      "ChatGPT Image 15 \u043C\u0430\u0440. 2026 \u0433., 01_18_26_5": 1367056135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
