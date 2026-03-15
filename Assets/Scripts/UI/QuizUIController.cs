@@ -16,7 +16,7 @@ namespace HajjFlow.UI
     /// </summary>
     public class QuizUIController : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI questionText;
+        [SerializeField] private GameTextController questionText;
         [SerializeField] private Button[] answerButtons = new Button[4];
         [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private Image correctIndicator;
@@ -97,7 +97,7 @@ namespace HajjFlow.UI
             // Отображаем варианты ответов
             for (int i = 0; i < answerButtons.Length && i < question.Options.Length; i++)
             {
-                var  buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                var  buttonText = answerButtons[i].GetComponentInChildren<GameTextController>();
                 if (buttonText != null)
                 {
                     buttonText.text = question.Options[i];

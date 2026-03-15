@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using HajjFlow.UI;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -32,8 +33,8 @@ namespace Core.Theory
         [SerializeField] private Ease _swipeEase = Ease.OutQuad;
         
         [Header("Base UI")]
-        [SerializeField] private TextMeshProUGUI _title;
-        [SerializeField] private TextMeshProUGUI _description;
+        [SerializeField] private GameTextController _title;
+        [SerializeField] private GameTextController _description;
         [SerializeField] private Image _image;
         
         /// <summary>

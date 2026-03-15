@@ -59,6 +59,9 @@ namespace HajjFlow.Core
         private void RegisterServices(GameManager gm)
         {
             // Plain-C# services (created here)
+            var localizationService = new LocalizationService();
+            gm.RegisterService(localizationService);
+
             var profileService = new UserProfileService();
             gm.RegisterService(profileService);
 

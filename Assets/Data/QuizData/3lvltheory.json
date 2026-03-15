@@ -1,30 +1,30 @@
 [
   {
-    "Title": "Что такое таваф",
-    "Text": "Таваф — это обход Каабы семь раз."
+    "Title": "THEORY_L3_WHAT_IS_TAWAF_TITLE",
+    "Text": "THEORY_L3_WHAT_IS_TAWAF_TEXT"
   },
   {
-    "Title": "Количество кругов",
-    "Text": "Во время тавафа совершается семь полных кругов."
+    "Title": "THEORY_L3_NUMBER_OF_CIRCLES_TITLE",
+    "Text": "THEORY_L3_NUMBER_OF_CIRCLES_TEXT"
   },
   {
-    "Title": "Начало обхода",
-    "Text": "Таваф начинается у Чёрного камня."
+    "Title": "THEORY_L3_START_POINT_TITLE",
+    "Text": "THEORY_L3_START_POINT_TEXT"
   },
   {
-    "Title": "Направление",
-    "Text": "Обход совершается против часовой стрелки."
+    "Title": "THEORY_L3_DIRECTION_TITLE",
+    "Text": "THEORY_L3_DIRECTION_TEXT"
   },
   {
-    "Title": "Ритуальная чистота",
-    "Text": "Для тавафа необходимо находиться в состоянии вуду."
+    "Title": "THEORY_L3_RITUAL_PURITY_TITLE",
+    "Text": "THEORY_L3_RITUAL_PURITY_TEXT"
   },
   {
-    "Title": "Завершение круга",
-    "Text": "Круг считается завершённым при возвращении к Чёрному камню."
+    "Title": "THEORY_L3_CIRCLE_COMPLETION_TITLE",
+    "Text": "THEORY_L3_CIRCLE_COMPLETION_TEXT"
   },
   {
-    "Title": "Дуа во время тавафа",
-    "Text": "Во время тавафа читаются дуа и поминание Аллаха."
+    "Title": "THEORY_L3_DUA_DURING_TAWAF_TITLE",
+    "Text": "THEORY_L3_DUA_DURING_TAWAF_TEXT"
   }
 ]

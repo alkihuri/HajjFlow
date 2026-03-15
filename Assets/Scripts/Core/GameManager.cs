@@ -70,6 +70,7 @@ namespace HajjFlow.Core
         public UIService uiService => GetService<UIService>();
         public StageCompletionService stageCompletionService => GetService<StageCompletionService>();
         public QuizService quizService => GetService<QuizService>();
+        public LocalizationService localizationService => GetService<LocalizationService>();
 
         // ── Convenience helpers ──────────────────────────────────────────────────
 

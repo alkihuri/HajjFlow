@@ -59,7 +59,13 @@ namespace HajjFlow.UI
             _onSelected = onSelected;
 
             if (_levelNameText != null)
-                _levelNameText.text = data.LevelName;
+            {
+                var locService = GameManager.Instance?.GetService<LocalizationService>();
+                if (locService != null && !string.IsNullOrEmpty(data.LevelDescriptionKey))
+                    _levelNameText.text = locService.GetText(data.LevelDescriptionKey);
+                else
+                    _levelNameText.text = data.LevelName;
+            }
 
             if (_progressText != null)
                 _progressText.text = $"{progressPercent:F0}%";
