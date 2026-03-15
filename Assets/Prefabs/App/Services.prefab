@@ -57,6 +57,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _levelTitleText: {fileID: 0}
+  _gemsCounterText: {fileID: 0}
+  _warmupLevelController: {fileID: 0}
+  _miqatLevelController: {fileID: 0}
+  _tawafLevelController: {fileID: 0}
   _levels:
   - {fileID: 11400000, guid: 8371e9012378c4e92b96aedebc3602db, type: 2}
   - {fileID: 11400000, guid: 4320602a9c5a34425a0af7e89de55d7b, type: 2}
@@ -93,6 +98,7 @@ Transform:
   - {fileID: 4669391353117038272}
   - {fileID: 6103171255801114062}
   - {fileID: 1432145871885380368}
+  - {fileID: 8284062466420967236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4546231062010623777
@@ -139,6 +145,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a984f8bf3dd49c1aae7af554483ae87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.StageCompletionService
+  DebugLevelResults: []
+--- !u!1 &4594940150718573218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8284062466420967236}
+  - component: {fileID: 3546327951108325177}
+  m_Layer: 0
+  m_Name: LocalizationServiceHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8284062466420967236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594940150718573218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7884348957232389327}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3546327951108325177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594940150718573218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1584af667434054a1a56ce7b2fad14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizationServiceLoader
 --- !u!1 &8582478364807932652
 GameObject:
   m_ObjectHideFlags: 0
