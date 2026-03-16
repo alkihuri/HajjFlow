@@ -1054,7 +1054,7 @@ class LeaderboardEntry(BaseModel):
 @router.get("/leaderboard", response_model=list[LeaderboardEntry])
 def get_leaderboard(
     limit: int = Query(default=50, le=100),
-    sort_by: str = Query(default="progress", regex="^(progress|gems)$"),
+    sort_by: str = Query(default="progress", pattern="^(progress|gems)$"),
     db: Session = Depends(get_db),
 ):
     """Таблица лидеров: по прогрессу или по гемам."""
