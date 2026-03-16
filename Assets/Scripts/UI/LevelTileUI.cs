@@ -33,6 +33,11 @@ namespace HajjFlow.UI
         private LevelData _levelData;
 
 
+        private void OnEnable()
+        {
+            UpdateUiData();
+        }
+
         [ContextMenu("Update UI Data")]
         public void UpdateUiData()
         { 
@@ -95,10 +100,13 @@ namespace HajjFlow.UI
                 _progressText.text = $"{levelResult:F0}%";
             }
             
+            
+            /*
             if (_completedBadge != null)
             {
-                _completedBadge.SetActive(isCompleted || levelResult >= 60f);
+                _completedBadge.SetActive(isCompleted || levelResult >= 99f);
             }
+            */
         }
 
         /// <summary>Populates the tile with level information.</summary>
