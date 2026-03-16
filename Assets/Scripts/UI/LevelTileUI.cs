@@ -45,42 +45,45 @@ namespace HajjFlow.UI
             float levelResult = 0f;
             bool isCompleted = false;
             
-            // Сначала пробуем получить данные из StageCompletionService (in-memory, текущая сессия)
-            var stageCompletionService = GameManager.Instance?.GetService<StageCompletionService>();
-            if (stageCompletionService != null && stageCompletionService.HasLevelResult(_levelData.LevelId))
+            // Загружаем напрямую из ProfileLoaderService
+            var profileLoaderService = GameManager.Instance?.GetService<ProfileLoaderService>();
+            if (profileLoaderService != null)
             {
-                levelResult = stageCompletionService.GetLevelPercent(_levelData.LevelId);
-                Debug.Log($"[LevelTileUI] Got progress from StageCompletionService: {levelResult}%");
+                var profile = profileLoaderService.GetProfile();
+                if (profile != null)
+                {
+                    // Получаем прогресс по levelId
+                    if (profile.LevelProgress.TryGetValue(_levelData.LevelId, out float savedProgress))
+                    {
+                        levelResult = savedProgress;
+                        Debug.Log($"[LevelTileUI] Got progress from ProfileLoaderService: {_levelData.LevelId} = {levelResult}%");
+                    }
+                    
+                    // Проверяем завершён ли уровень
+                    isCompleted = profile.CompletedLevelIds.Contains(_levelData.LevelId);
+                }
             }
             else
             {
-                // Fallback: загружаем из ProgressService (persisted data)
-                var progressService = GameManager.Instance?.GetService<ProgressService>();
-                if (progressService != null)
+                // Fallback: UserProfileService
+                var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
+                if (userProfileService != null)
                 {
-                    levelResult = progressService.GetLevelProgress(_levelData.LevelId);
-                    isCompleted = progressService.IsLevelCompleted(_levelData.LevelId);
-                    Debug.Log($"[LevelTileUI] Got progress from ProgressService: {levelResult}%, completed: {isCompleted}");
-                }
-                else
-                {
-                    // Последний fallback: UserProfileService напрямую
-                    var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
-                    if (userProfileService != null)
+                    var profile = userProfileService.GetProfile();
+                    if (profile != null)
                     {
-                        var profile = userProfileService.GetProfile();
-                        if (profile != null && profile.LevelProgress.TryGetValue(_levelData.LevelId, out float savedProgress))
+                        if (profile.LevelProgress.TryGetValue(_levelData.LevelId, out float savedProgress))
                         {
                             levelResult = savedProgress;
-                            isCompleted = profile.CompletedLevelIds.Contains(_levelData.LevelId);
-                            Debug.Log($"[LevelTileUI] Got progress from UserProfileService: {levelResult}%");
+                            Debug.Log($"[LevelTileUI] Got progress from UserProfileService: {_levelData.LevelId} = {levelResult}%");
                         }
+                        isCompleted = profile.CompletedLevelIds.Contains(_levelData.LevelId);
                     }
                 }
             }
             
             // Обновляем UI
-            Debug.Log($"[LevelTileUI] Updated Level '{_levelData.LevelName}' progress: {levelResult}%");
+            Debug.Log($"[LevelTileUI] Updated Level '{_levelData.LevelName}' (ID: {_levelData.LevelId}) progress: {levelResult}%");
             
             if (_progressImage != null)
             {
@@ -89,7 +92,7 @@ namespace HajjFlow.UI
             
             if (_progressText != null)
             {
-                _progressText.text = $"{levelResult:F1}%";
+                _progressText.text = $"{levelResult:F0}%";
             }
             
             if (_completedBadge != null)

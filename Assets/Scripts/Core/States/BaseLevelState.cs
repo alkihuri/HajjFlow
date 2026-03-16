@@ -150,30 +150,45 @@ namespace HajjFlow.Core.States
             var quizService = GameManager.Instance?.quizService;
             if (progressService == null || _levelData == null) return;
 
+            // Сначала получаем актуальный процент из QuizService
+            if (quizService != null)
+            {
+                _lastScorePercent = quizService.GetLastScorePercent();
+            }
+            
+            Debug.Log($"[{StateId}] Saving progress: LevelId={_levelData.LevelId}, Score={_lastScorePercent:F1}%");
+
+            // Сохраняем в ProgressService (и в profile)
             progressService.RecordLevelProgress(
                 _levelData.LevelId, _lastScorePercent, _levelData.PassThreshold);
 
             // Store in StageCompletionService for query by level key
             var stageService = GameManager.Instance?.stageCompletionService;
-            _lastScorePercent = quizService.GetLastScorePercent();
             stageService?.RecordLevelResult(_levelData.LevelId, _lastScorePercent);
 
-
+            // Также сохраняем через ProfileLoaderService
             var profileLoader = GameManager.Instance?.profileLoaderService;
-            var profile = GameManager.Instance?.ProfileService.GetProfile();
-
-            // get current level id from StageCompletionService or fallback to ProgressService
-
-            profile.CompletedLevelIds.Add(_levelData.LevelId);
-
             if (profileLoader != null)
             {
-                profileLoader.Save(profile); 
-                Debug.Log($"[{StateId}] Profile saved: {profile.CompletedLevelIds.Count}");
+                var profile = profileLoader.GetProfile();
+                if (profile != null)
+                {
+                    // Записываем прогресс
+                    profile.LevelProgress.Set(_levelData.LevelId, _lastScorePercent);
+                    
+                    // Добавляем в завершённые если ещё нет
+                    if (!profile.CompletedLevelIds.Contains(_levelData.LevelId))
+                    {
+                        profile.CompletedLevelIds.Add(_levelData.LevelId);
+                    }
+                    
+                    profileLoader.Save(profile);
+                    Debug.Log($"[{StateId}] Profile saved via ProfileLoaderService: {_levelData.LevelId} = {_lastScorePercent:F1}%");
+                }
             }
             else
             {
-                 Debug.Log($"[{StateId}] No profile loaded");
+                Debug.LogWarning($"[{StateId}] ProfileLoaderService not found");
             }
 
 
