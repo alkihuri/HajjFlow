@@ -35,11 +35,11 @@ namespace HajjFlow.UI
 
         private void OnEnable()
         {
-            UpdateUiData();
+            UpdateUiData(true);
         }
 
         [ContextMenu("Update UI Data")]
-        public void UpdateUiData()
+        public void UpdateUiData(bool forceRefresh = false)
         { 
             if (_levelData == null)
             {
@@ -54,7 +54,13 @@ namespace HajjFlow.UI
             var profileLoaderService = GameManager.Instance?.GetService<ProfileLoaderService>();
             if (profileLoaderService != null)
             {
+                
                 var profile = profileLoaderService.GetProfile();
+                if (forceRefresh)
+                {
+                    profile = profileLoaderService.GetNotCashProfile();
+                }
+                
                 if (profile != null)
                 {
                     // Получаем прогресс по levelId
@@ -133,9 +139,10 @@ namespace HajjFlow.UI
             if (_thumbnail != null && data.Thumbnail != null)
                 _thumbnail.sprite = data.Thumbnail;
 
+            /*
             if (_completedBadge != null)
                 _completedBadge.SetActive(isCompleted);
-
+*/
             _selectButton?.onClick.AddListener(OnSelectClicked);
 
              

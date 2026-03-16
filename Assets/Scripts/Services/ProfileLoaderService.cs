@@ -338,6 +338,32 @@ namespace HajjFlow.Services
                 Debug.Log("[ProfileLoaderService] Pushed local data to backend");
             }
         }
+
+        public UserProfile GetNotCashProfile()
+        { 
+            foreach (var provider in _providers)
+            {
+                try
+                {
+                    if (provider.HasData())
+                    {
+                        var profile = provider.Load();
+                        if (profile != null)
+                        {
+                            Debug.Log($"[ProfileLoaderService] Loaded from {provider.ProviderName} without cache");
+                            return profile;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning($"[ProfileLoaderService] Provider {provider.ProviderName} failed: {ex.Message}");
+                }
+            }
+
+            Debug.Log("[ProfileLoaderService] No profile found without cache - returning new default");
+            return new UserProfile();
+        }
     }
 }
 

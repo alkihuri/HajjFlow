@@ -22,9 +22,11 @@ namespace HajjFlow.UI
 
         [SerializeField] private GameObject _levelButtonPrefab;
         [SerializeField] private Button _backButton;
+        [SerializeField] private Button _backFromLevelsButton;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _gameStartButton;
-
+        [SerializeField] private Button _resetProgressButton;
+        
         [SerializeField] private GameObject _gameStartScree;
         [SerializeField] private GameObject _mainMenuScreen;
         [SerializeField] private GameObject _levelSelect;
@@ -54,12 +56,30 @@ namespace HajjFlow.UI
             _progressService = GameManager.Instance?.ProgressService;
 
             _backButton?.onClick.AddListener(OnBackClicked);
+            
+            _backFromLevelsButton.onClick.AddListener(OnBackClicked);
 
             _gameStartButton?.onClick.AddListener(GameStartUI);
+            
+            _resetProgressButton?.onClick.AddListener(ResetGameProgress);
 
             _nextLevelButton?.onClick.AddListener(NextLevel);
 
             BuildLevelGrid();
+        }
+
+        private void ResetGameProgress()
+        {
+             var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
+             if (userProfileService == null)
+             {
+                 Debug.LogWarning("[UIService] UserProfileService not found, cannot reset progress");
+                 return;
+             }
+             
+             userProfileService.ResetProgress();  
+              
+             UpdateLevelTileButtons(true);
         }
 
         private void NextLevel()
@@ -321,11 +341,11 @@ namespace HajjFlow.UI
             }
         }
         
-        public void  UpdateLevelTileButtons()
+        public void  UpdateLevelTileButtons(bool forceRefresh = false)
         {
             foreach (var tile in _levelSelectButtons)
             {
-                tile.UpdateUiData();
+                tile.UpdateUiData(forceRefresh);
             }
         }
     }

@@ -190,5 +190,12 @@ namespace HajjFlow.Services
             _profile = null;
             Debug.Log("[UserProfileService] All profile data cleared");
         }
+
+        public void ResetProgress()
+        { 
+            var profile = GetProfile();
+            profile.ResetProgress();
+            Save();
+        }
     }
 }
