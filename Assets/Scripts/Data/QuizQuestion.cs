@@ -43,6 +43,25 @@ namespace HajjFlow.Data
             QuizQuestionWrapper wrapper = JsonUtility.FromJson<QuizQuestionWrapper>(wrapped);
             return wrapper?.items ?? new QuizQuestion[0];
         }
+
+        public void ShuffleOptions()
+        { 
+            // Простая реализация тасования Фишера-Йетса
+            for (int i = Options.Length - 1; i > 0; i--)
+            {
+                int j = UnityEngine.Random.Range(0, i + 1);
+                // Поменять местами Options[i] и Options[j]
+                string tempOption = Options[i];
+                Options[i] = Options[j];
+                Options[j] = tempOption;
+
+                // Если перемешиваем правильный ответ, нужно обновить индекс
+                if (i == CorrectAnswerIndex)
+                    CorrectAnswerIndex = j;
+                else if (j == CorrectAnswerIndex)
+                    CorrectAnswerIndex = i;
+            }
+        }
     }
 
     /// <summary>

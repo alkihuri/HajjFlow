@@ -58,7 +58,9 @@ namespace HajjFlow.Services
                 return;
             }
 
-            QuizQuestion question = currentQuestions[currentQuestionIndex];
+            QuizQuestion question = currentQuestions[currentQuestionIndex]; 
+            // shuffle options to prevent memorization of correct answer position
+            question.ShuffleOptions();
             Debug.Log($"[QuizService] Question {currentQuestionIndex + 1}/{currentQuestions.Length}: {question.QuestionText}");
             OnQuestionDisplayed?.Invoke(question);
         }
