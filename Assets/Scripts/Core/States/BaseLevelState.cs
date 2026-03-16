@@ -106,10 +106,10 @@ namespace HajjFlow.Core.States
             {
                 Debug.Log($"[{StateId}] All theory blocks completed, starting quiz");
                 StartQuiz();
-            } 
+            }
         }
- 
-        
+
+
         /// <summary>Starts the quiz portion of the level.</summary>
         protected virtual void StartQuiz()
         {
@@ -147,7 +147,7 @@ namespace HajjFlow.Core.States
         protected virtual void SaveProgress()
         {
             var progressService = GameManager.Instance?.ProgressService;
-             var quizService = GameManager.Instance?.quizService;
+            var quizService = GameManager.Instance?.quizService;
             if (progressService == null || _levelData == null) return;
 
             progressService.RecordLevelProgress(
@@ -157,6 +157,25 @@ namespace HajjFlow.Core.States
             var stageService = GameManager.Instance?.stageCompletionService;
             _lastScorePercent = quizService.GetLastScorePercent();
             stageService?.RecordLevelResult(_levelData.LevelId, _lastScorePercent);
+
+
+            var profileLoader = GameManager.Instance?.profileLoaderService;
+            var profile = GameManager.Instance?.ProfileService.GetProfile();
+
+            // get current level id from StageCompletionService or fallback to ProgressService
+
+            profile.CompletedLevelIds.Add(_levelData.LevelId);
+
+            if (profileLoader != null)
+            {
+                profileLoader.Save(profile); 
+                Debug.Log($"[{StateId}] Profile saved: {profile.CompletedLevelIds.Count}");
+            }
+            else
+            {
+                 Debug.Log($"[{StateId}] No profile loaded");
+            }
+
 
             Debug.Log($"[{StateId}] Progress saved: {_lastScorePercent:F1}%");
         }
@@ -211,4 +230,3 @@ namespace HajjFlow.Core.States
         }
     }
 }
-

@@ -1,4 +1,5 @@
 using System;
+using HajjFlow.Core;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -137,6 +138,7 @@ namespace HajjFlow.Services
             Debug.Log($"[QuizService] Quiz completed! Correct: {correctAnswerCount}/{currentQuestions.Length}");
             float scorePercent = (float)correctAnswerCount / currentQuestions.Length * 100;
             OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount, scorePercent);
+ 
         }
 
         /// <summary>Возвращает текущий вопрос</summary>

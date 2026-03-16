@@ -63,6 +63,10 @@ namespace HajjFlow.Core
             
             gm.RegisterService(_audioService);
             
+            
+            var profileLoaderService = new ProfileLoaderService();
+            gm.RegisterService(profileLoaderService);
+            
             var localizationService = new LocalizationService();
             gm.RegisterService(localizationService);
 
@@ -77,7 +81,11 @@ namespace HajjFlow.Core
                 gm.RegisterService(_uiService);
 
             if (_stageCompletionService != null)
+            {
                 gm.RegisterService(_stageCompletionService);
+                // Загружаем сохранённые результаты уровней из профиля
+                _stageCompletionService.LoadSavedResults();
+            }
 
             if (_quizService != null)
                 gm.RegisterService(_quizService);

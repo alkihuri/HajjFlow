@@ -36,16 +36,65 @@ namespace HajjFlow.UI
         [ContextMenu("Update UI Data")]
         public void UpdateUiData()
         { 
-            var stageCompletionService = GameManager.Instance?.GetService<StageCompletionService>();
-            if (stageCompletionService != null && _levelData != null)
+            if (_levelData == null)
             {
-                var levelResult = stageCompletionService.GetLevelPercent(_levelData.LevelId);
-                Debug.Log($"[LevelTileUI] Updated Level '{_levelData.LevelName}' progress: {levelResult}%");
-                if (_progressImage != null)
+                Debug.LogWarning("[LevelTileUI] Cannot update - LevelData is null");
+                return;
+            }
+            
+            float levelResult = 0f;
+            bool isCompleted = false;
+            
+            // Сначала пробуем получить данные из StageCompletionService (in-memory, текущая сессия)
+            var stageCompletionService = GameManager.Instance?.GetService<StageCompletionService>();
+            if (stageCompletionService != null && stageCompletionService.HasLevelResult(_levelData.LevelId))
+            {
+                levelResult = stageCompletionService.GetLevelPercent(_levelData.LevelId);
+                Debug.Log($"[LevelTileUI] Got progress from StageCompletionService: {levelResult}%");
+            }
+            else
+            {
+                // Fallback: загружаем из ProgressService (persisted data)
+                var progressService = GameManager.Instance?.GetService<ProgressService>();
+                if (progressService != null)
                 {
-                    _progressImage.fillAmount = levelResult / 100f;
+                    levelResult = progressService.GetLevelProgress(_levelData.LevelId);
+                    isCompleted = progressService.IsLevelCompleted(_levelData.LevelId);
+                    Debug.Log($"[LevelTileUI] Got progress from ProgressService: {levelResult}%, completed: {isCompleted}");
                 }
+                else
+                {
+                    // Последний fallback: UserProfileService напрямую
+                    var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
+                    if (userProfileService != null)
+                    {
+                        var profile = userProfileService.GetProfile();
+                        if (profile != null && profile.LevelProgress.TryGetValue(_levelData.LevelId, out float savedProgress))
+                        {
+                            levelResult = savedProgress;
+                            isCompleted = profile.CompletedLevelIds.Contains(_levelData.LevelId);
+                            Debug.Log($"[LevelTileUI] Got progress from UserProfileService: {levelResult}%");
+                        }
+                    }
+                }
+            }
+            
+            // Обновляем UI
+            Debug.Log($"[LevelTileUI] Updated Level '{_levelData.LevelName}' progress: {levelResult}%");
+            
+            if (_progressImage != null)
+            {
+                _progressImage.fillAmount = levelResult / 100f;
+            }
+            
+            if (_progressText != null)
+            {
                 _progressText.text = $"{levelResult:F1}%";
+            }
+            
+            if (_completedBadge != null)
+            {
+                _completedBadge.SetActive(isCompleted || levelResult >= 60f);
             }
         }
 

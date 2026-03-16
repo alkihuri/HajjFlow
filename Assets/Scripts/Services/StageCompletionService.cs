@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using HajjFlow.Data;
+using HajjFlow.Core;
 
 namespace HajjFlow.Services
 {
@@ -28,6 +29,50 @@ namespace HajjFlow.Services
         //  DEBUG PURPOSE LEVEL RESUL SHOW IN INPECTOR
         [Header("Debug: Level Results")]
         public List<LevelResult> DebugLevelResults = new List<LevelResult>();
+        
+        /// <summary>
+        /// Загружает сохранённые результаты уровней из UserProfileService.
+        /// Вызывается при инициализации сервиса.
+        /// </summary>
+        public void LoadSavedResults()
+        {
+            var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
+            if (userProfileService == null)
+            {
+                Debug.LogWarning("[StageCompletionService] UserProfileService not found, cannot load saved results");
+                return;
+            }
+            
+            var profile = userProfileService.GetProfile();
+            if (profile == null)
+            {
+                Debug.LogWarning("[StageCompletionService] Profile is null");
+                return;
+            }
+            
+            // Загружаем все сохранённые результаты уровней
+            for (int i = 0; i < profile.LevelProgress.Keys.Count; i++)
+            {
+                string levelId = profile.LevelProgress.Keys[i];
+                float progress = profile.LevelProgress.Values[i];
+                
+                // Добавляем только если ещё нет в памяти
+                if (!_levelResults.ContainsKey(levelId))
+                {
+                    _levelResults[levelId] = new LevelResult
+                    {
+                        LevelId = levelId,
+                        ScorePercent = progress,
+                        CompletedAt = DateTime.MinValue // Нет точной даты из профиля
+                    };
+                    Debug.Log($"[StageCompletionService] Loaded saved result: {levelId} = {progress:F1}%");
+                }
+            }
+            
+            DebugLevelResults = _levelResults.Values.ToList();
+            Debug.Log($"[StageCompletionService] Loaded {_levelResults.Count} saved level results");
+        }
+        
         /// <summary>
         /// Проверяет и завершает блок теории по уровню и номеру блока.
         /// </summary>
