@@ -72,17 +72,26 @@ namespace HajjFlow.Data
                 // Читаем содержимое файла
                 string jsonContent = System.IO.File.ReadAllText(path);
                 
-                // Оборачиваем в объект с массивом для JsonUtility
-                string wrapped = "{\"items\":" + jsonContent + "}";
-                QuizQuestionWrapper wrapper = JsonUtility.FromJson<QuizQuestionWrapper>(wrapped);
+                // Извлекаем метаданные уровня из первого элемента
+                var metadata = QuizQuestion.ExtractLevelMetadata(jsonContent);
+                if (metadata != null)
+                {
+                    LevelId = metadata.LevelId;
+                    LevelName = metadata.LevelName;
+                    Description = metadata.Description;
+                    LevelDescriptionKey = metadata.Description; // Используем Description как ключ локализации
+                    Debug.Log($"[{name}] Loaded level metadata: Id={LevelId}, Name={LevelName}");
+                }
                 
-                if (wrapper?.items == null || wrapper.items.Length == 0)
+                // Парсим вопросы (метод автоматически пропускает элементы без QuestionText)
+                Questions = QuizQuestion.FromJsonArray(jsonContent);
+                
+                if (Questions == null || Questions.Length == 0)
                 {
                     Debug.LogWarning($"[{name}] No questions loaded from file: {path}");
                     return;
                 }
 
-                Questions = wrapper.items;
                 Debug.Log($"[{name}] Successfully loaded {Questions.Length} questions from:\n{path}");
                 
                 // Выводим для проверки

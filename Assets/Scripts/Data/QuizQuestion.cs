@@ -1,8 +1,21 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HajjFlow.Data
 {
+    /// <summary>
+    /// Метаданные уровня, хранящиеся в первом элементе JSON файла.
+    /// </summary>
+    [Serializable]
+    public class LevelMetadata
+    {
+        public string LevelId = "";
+        public string LevelName = "";
+        public string Description = "";
+        public string imagePath = null;
+    }
+
     /// <summary>
     /// A single multiple-choice quiz question used inside a level.
     /// Stored as plain data so it can live inside a LevelData ScriptableObject.
@@ -34,14 +47,49 @@ namespace HajjFlow.Data
         }
 
         /// <summary>
-        /// Десериализует массив вопросов из JSON строки.
+        /// Десериализует массив вопросов из JSON строки (пропуская первый элемент с метаданными уровня).
         /// </summary>
         public static QuizQuestion[] FromJsonArray(string jsonArray)
         {
             // JsonUtility не поддерживает массивы напрямую, оборачиваем в объект
             string wrapped = "{\"items\":" + jsonArray + "}";
             QuizQuestionWrapper wrapper = JsonUtility.FromJson<QuizQuestionWrapper>(wrapped);
-            return wrapper?.items ?? new QuizQuestion[0];
+            
+            if (wrapper?.items == null || wrapper.items.Length == 0)
+                return new QuizQuestion[0];
+            
+            // Фильтруем только вопросы (у которых есть QuestionText)
+            var questions = new List<QuizQuestion>();
+            foreach (var item in wrapper.items)
+            {
+                if (!string.IsNullOrEmpty(item.QuestionText))
+                {
+                    questions.Add(item);
+                }
+            }
+            
+            return questions.ToArray();
+        }
+
+        /// <summary>
+        /// Десериализует метаданные уровня из первого элемента JSON массива.
+        /// </summary>
+        public static LevelMetadata ExtractLevelMetadata(string jsonArray)
+        {
+            string wrapped = "{\"items\":" + jsonArray + "}";
+            LevelMetadataWrapper wrapper = JsonUtility.FromJson<LevelMetadataWrapper>(wrapped);
+            
+            if (wrapper?.items == null || wrapper.items.Length == 0)
+                return null;
+            
+            // Первый элемент должен содержать метаданные уровня
+            var firstItem = wrapper.items[0];
+            if (!string.IsNullOrEmpty(firstItem.LevelId))
+            {
+                return firstItem;
+            }
+            
+            return null;
         }
 
         public void ShuffleOptions()
@@ -67,9 +115,18 @@ namespace HajjFlow.Data
     /// <summary>
     /// Вспомогательный класс для десериализации массива вопросов.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class QuizQuestionWrapper
     {
         public QuizQuestion[] items = new QuizQuestion[0];
+    }
+
+    /// <summary>
+    /// Вспомогательный класс для десериализации массива метаданных уровня.
+    /// </summary>
+    [Serializable]
+    public class LevelMetadataWrapper
+    {
+        public LevelMetadata[] items = new LevelMetadata[0];
     }
 }

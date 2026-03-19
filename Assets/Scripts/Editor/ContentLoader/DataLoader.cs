@@ -54,9 +54,11 @@ namespace HajjFlow.Editor.ContentLoader
             }
 
             QuizQuestion[] questions;
+            LevelMetadata metadata;
             try
             {
                 questions = QuizQuestion.FromJsonArray(jsonContent);
+                metadata = QuizQuestion.ExtractLevelMetadata(jsonContent);
             }
             catch (Exception ex)
             {
@@ -85,6 +87,16 @@ namespace HajjFlow.Editor.ContentLoader
                 levelData = ScriptableObject.CreateInstance<LevelData>();
                 AssetDatabase.CreateAsset(levelData, assetPath);
                 Debug.Log($"[DataLoader] Created new LevelData asset at {assetPath}");
+            }
+
+            // Заполняем метаданные уровня
+            if (metadata != null)
+            {
+                levelData.LevelId = metadata.LevelId;
+                levelData.LevelName = metadata.LevelName;
+                levelData.Description = metadata.Description;
+                levelData.LevelDescriptionKey = metadata.Description;
+                Debug.Log($"[DataLoader] Loaded level metadata: Id={metadata.LevelId}, Name={metadata.LevelName}");
             }
 
             levelData.Questions = questions;

@@ -1,4 +1,10 @@
 [
+
+  {"LevelId" : "Tawaf",
+    "LevelName" : "UI_TITLE_LEVEL_3",
+    "Description" : "TAWAF_LEVEL_DESCRIPTION_KEY",
+    "imagePath" : null
+  },
   {
     "QuestionText": "Q_L3_HOW_MANY_TAWAF_CIRCLES",
     "Options": [
