@@ -1,4 +1,10 @@
 [
+
+  {"LevelId" : "Warup",
+    "LevelName" : "UI_TITLE_LEVEL_1",
+    "Description" : "WARMUP_LEVEL_DESCRIPTION_KEY",
+    "imagePath" : null
+  },
   {
     "QuestionText": "Q1_WHO_MUST_PERFORM_HAJJ",
     "Options": [

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: Warmup_TheoryContainer
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: Warmup
+  Cards:
+  - {fileID: 11400000, guid: db3dde3c4df554a40bace60bc7124c82, type: 2}
+  - {fileID: 11400000, guid: 9756e227eb2754590a11f5b09f83e09d, type: 2}
+  - {fileID: 11400000, guid: 6e1a9e7e06e704f29bc1695dbc552d44, type: 2}
+  - {fileID: 11400000, guid: aac5b5b1c59974606bf195cab7871327, type: 2}
+  - {fileID: 11400000, guid: 930b70b1cabf34c64abdb0722556018f, type: 2}
+  - {fileID: 11400000, guid: 464766cce9c9a45859570da2585fad72, type: 2}
+  - {fileID: 11400000, guid: 9b60bac6a5b00434ca22be15fd06843b, type: 2}
