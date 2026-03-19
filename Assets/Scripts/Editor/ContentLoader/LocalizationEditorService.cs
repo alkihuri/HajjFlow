@@ -32,6 +32,11 @@ namespace HajjFlow.Editor.ContentLoader
         /// <summary>Raw CSV content currently loaded.</summary>
         private static string _rawCsv = "";
 
+        private static readonly HttpClient SharedHttpClient = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(30)
+        };
+
         // Column header → Language mapping (matches LocalizationService)
         private static readonly Dictionary<string, Language> ColumnToLanguage
             = new Dictionary<string, Language>
@@ -68,25 +73,21 @@ namespace HajjFlow.Editor.ContentLoader
 
             try
             {
-                using (var client = new HttpClient())
+                string csvContent = await SharedHttpClient.GetStringAsync(GoogleSheetsCsvUrl);
+
+                if (string.IsNullOrWhiteSpace(csvContent))
                 {
-                    client.Timeout = TimeSpan.FromSeconds(30);
-                    string csvContent = await client.GetStringAsync(GoogleSheetsCsvUrl);
-
-                    if (string.IsNullOrWhiteSpace(csvContent))
-                    {
-                        Debug.LogError("[LocalizationEditorService] Downloaded CSV is empty.");
-                        return;
-                    }
-
-                    EditorUtility.DisplayProgressBar("Localization", "Parsing CSV...", 0.7f);
-
-                    _rawCsv = csvContent;
-                    ParseCsv(csvContent);
-                    SaveCsvToResources(csvContent);
-
-                    Debug.Log($"[LocalizationEditorService] Loaded {_table.Count} keys from Google Sheets.");
+                    Debug.LogError("[LocalizationEditorService] Downloaded CSV is empty.");
+                    return;
                 }
+
+                EditorUtility.DisplayProgressBar("Localization", "Parsing CSV...", 0.7f);
+
+                _rawCsv = csvContent;
+                ParseCsv(csvContent);
+                SaveCsvToResources(csvContent);
+
+                Debug.Log($"[LocalizationEditorService] Loaded {_table.Count} keys from Google Sheets.");
             }
             catch (Exception ex)
             {

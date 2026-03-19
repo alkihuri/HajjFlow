@@ -162,7 +162,7 @@ namespace HajjFlow.Editor.ContentLoader
             if (!string.IsNullOrEmpty(assetPath))
             {
                 string fullPath = Path.GetFullPath(assetPath);
-                Application.OpenURL("file:///" + fullPath);
+                Application.OpenURL(new Uri(fullPath).AbsoluteUri);
                 Debug.Log($"[ContentLoader] Opened: {fullPath}");
             }
         }
@@ -255,7 +255,7 @@ namespace HajjFlow.Editor.ContentLoader
             if (!string.IsNullOrEmpty(assetPath))
             {
                 string fullPath = Path.GetFullPath(assetPath);
-                Application.OpenURL("file:///" + fullPath);
+                Application.OpenURL(new Uri(fullPath).AbsoluteUri);
                 Debug.Log($"[ContentLoader] Opened: {fullPath}");
             }
         }
