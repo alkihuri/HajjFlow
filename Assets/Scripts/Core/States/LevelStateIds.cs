@@ -16,9 +16,9 @@ namespace HajjFlow.Core.States
 
         // ── Level-gameplay states ────────────────────────────────────────────────
 
-        public const string Warmup = "warmup";
-        public const string Miqat  = "miqat";
-        public const string Tawaf  = "tawaf";
+        public const string Warmup = "Warmup";
+        public const string Miqat  = "Miqat";
+        public const string Tawaf  = "Tawaf";
 
         /// <summary>All level state IDs in progression order.</summary>
         public static readonly List<string> LevelStates = new List<string>

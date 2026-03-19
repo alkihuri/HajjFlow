@@ -1,3 +1,4 @@
+using System;
 using Core.Theory;
 using UnityEngine;
 using HajjFlow.Data;
@@ -11,7 +12,7 @@ namespace HajjFlow.Core.LevelsLogic
     /// Базовый класс для контроллеров уровней.
     /// Управляет блоком теории и квизом.
     /// </summary>
-    public abstract class LevelControllerBase : MonoBehaviour
+    public class LevelController : MonoBehaviour
     {
         [Header("Level Data")]
         [SerializeField] protected LevelData levelData;
@@ -21,21 +22,56 @@ namespace HajjFlow.Core.LevelsLogic
         [SerializeField] protected TheoryCardsManager theoryCardsManager;
 
         protected QuizService quizService;
+        
+        public string LevelId => levelData.LevelId;
+        
 
-        /// <summary>
-        /// Возвращает идентификатор состояния уровня
-        /// </summary>
-        protected abstract string StateId { get; }
+        [SerializeField] private UIService _uiService;
+        
+        
+        #if UNITY_EDITOR
 
+        private void OnValidate()
+        {
+            quizUIController??= GetComponentInChildren<QuizUIController>(true);
+            theoryCardsManager??= GetComponentInChildren<TheoryCardsManager>(true);
+            
+            var levelId = levelData != null ? levelData.LevelId : "null";
+            
+            // load form Resource/SO/Theory/ scriptabel object with name matching levelId
+            var container = Resources.Load<TheoryCardContainer>($"SO/Theory/{levelId}/{levelId}_TheoryContainer");
+            if (container == null)
+            {
+                Debug.LogWarning($"[{GetType().Name}] No TheoryCardContainer found for levelId '{levelId}' at path 'SO/Theory/{levelId}/{levelId}_TheoryContainer.asset'. " +
+                                 $"Make sure to create and assign a TheoryCardContainer for this level.");
+            }
+            else
+            {
+                theoryCardsManager.CardContainer = container;
+            }
+            
+           
+            if (_uiService != null)
+            {
+                _uiService.RegisterLevelData(levelData);
+            } 
+             
+        }
+#endif
+        
+        
         protected virtual void Awake()
         {
+          
             // Подписываемся на завершение теории
             if (theoryCardsManager != null)
             {
                 theoryCardsManager.OnTheoryCardsCompleted.AddListener(OnTheoryCompleted);
-            }
+            } 
+             
         }
 
+        
         protected virtual void OnDestroy()
         {
             if (theoryCardsManager != null)
@@ -44,20 +80,7 @@ namespace HajjFlow.Core.LevelsLogic
             }
         }
 
-        /// <summary>
-        /// Запускает уровень через state machine.
-        /// </summary>
-        public virtual void StartLevel()
-        {
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            if (sm == null || levelData == null)
-            {
-                Debug.LogError($"[{GetType().Name}] StateMachine or LevelData missing!");
-                return;
-            }
-
-            sm.StartLevel(levelData, StateId);
-        }
+         
 
         /// <summary>
         /// Сбрасывает состояние уровня к начальному.

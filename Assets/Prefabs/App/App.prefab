@@ -122,7 +122,6 @@ Transform:
   - {fileID: 703171155358270478}
   - {fileID: 3326556807140435426}
   - {fileID: 2776345946652989014}
-  - {fileID: 6604945768044487221}
   - {fileID: 4170950412732643458}
   - {fileID: 2777828645922543483}
   m_Father: {fileID: 0}
@@ -308,105 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee20b1b3f174efd9395871eef9e877c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.GameplaySceneInitializer
---- !u!1001 &5039394973305486722
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2182031863676940137}
-    m_Modifications:
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4722296188260448067, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: levelData
-      value: 
-      objectReference: {fileID: 11400000, guid: 4320602a9c5a34425a0af7e89de55d7b, type: 2}
-    - target: {fileID: 6596397757753787248, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-      propertyPath: m_Name
-      value: LevelsLogic
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
---- !u!114 &317345831872285377 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4722296188260448067, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-  m_PrefabInstance: {fileID: 5039394973305486722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb5abe211916442faa66ee7a99f6309f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.MiqatLevelController
---- !u!114 &6004215739750074608 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1638401380838274418, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-  m_PrefabInstance: {fileID: 5039394973305486722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24606b961ac8471692f12f801cf7348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.WarmupLevelController
---- !u!4 &6604945768044487221 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2181708323534004151, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-  m_PrefabInstance: {fileID: 5039394973305486722}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8820929837277791200 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4577271256718868066, guid: 919ad95aad9fb4effa215e64fb1f9a01, type: 3}
-  m_PrefabInstance: {fileID: 5039394973305486722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b000803387774a63bbdbf56968215707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.TawafLevelController
 --- !u!1001 &5471128590593952409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,18 +319,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Services
       objectReference: {fileID: 0}
-    - target: {fileID: 2473768481819674452, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
-      propertyPath: _miqatLevelController
-      value: 
-      objectReference: {fileID: 317345831872285377}
-    - target: {fileID: 2473768481819674452, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
-      propertyPath: _tawafLevelController
-      value: 
-      objectReference: {fileID: 8820929837277791200}
-    - target: {fileID: 2473768481819674452, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
-      propertyPath: _warmupLevelController
-      value: 
-      objectReference: {fileID: 6004215739750074608}
     - target: {fileID: 7884348957232389327, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

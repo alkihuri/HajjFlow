@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5510729111978046499}
+  - component: {fileID: 5619453307015987227}
   m_Layer: 5
   m_Name: 1lvl
   m_TagString: Untagged
@@ -37,6 +38,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5619453307015987227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7362182643672200057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b347524c10444df48448501c29dfebf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Core.LevelsLogic.LevelController
+  levelData: {fileID: 11400000, guid: 5bc7f9916f2464dcbaebd49f2dc5532a, type: 2}
+  quizUIController: {fileID: 2501459692292343261}
+  theoryCardsManager: {fileID: 3327895870742366158}
+  _uiService: {fileID: 0}
 --- !u!1001 &2018085946193826545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,6 +159,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
+--- !u!114 &2501459692292343261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4519175515082086188, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
+  m_PrefabInstance: {fileID: 2018085946193826545}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f9de0434bd4d8bb431a4b6dbfcdd31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.QuizUIController
 --- !u!224 &4852285549217525774 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6870075782178824959, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
@@ -285,6 +313,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
   m_PrefabInstance: {fileID: 6968376478421957878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3327895870742366158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+  m_PrefabInstance: {fileID: 6968376478421957878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261877294517639559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TheoryCardsManager
 --- !u!224 &8152220832147504421 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1267240869228429779, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
