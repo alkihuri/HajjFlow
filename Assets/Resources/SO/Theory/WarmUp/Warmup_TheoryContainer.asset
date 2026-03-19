@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
   m_Name: Warmup_TheoryContainer
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
-  LevelId: Warmup
+  LevelId: 
   Cards:
   - {fileID: 11400000, guid: db3dde3c4df554a40bace60bc7124c82, type: 2}
   - {fileID: 11400000, guid: 9756e227eb2754590a11f5b09f83e09d, type: 2}

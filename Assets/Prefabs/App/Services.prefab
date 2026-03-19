@@ -47,25 +47,23 @@ MonoBehaviour:
   _levelButtonsContainer: {fileID: 0}
   _levelButtonPrefab: {fileID: 626002330827049359, guid: b3332834bc9204a36afec18f659599c2, type: 3}
   _backButton: {fileID: 0}
+  _backFromLevelsButton: {fileID: 0}
   _nextLevelButton: {fileID: 0}
   _gameStartButton: {fileID: 0}
+  _resetProgressButton: {fileID: 0}
   _gameStartScree: {fileID: 0}
   _mainMenuScreen: {fileID: 0}
   _levelSelect: {fileID: 0}
   _levelsUiRoot: {fileID: 0}
-  _levelsUI:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _levelsUI: []
   _levelTitleText: {fileID: 0}
   _gemsCounterText: {fileID: 0}
-  _warmupLevelController: {fileID: 0}
-  _miqatLevelController: {fileID: 0}
-  _tawafLevelController: {fileID: 0}
+  _levelsControllersContainer: {fileID: 0}
+  _levelControllerPrefab: {fileID: 5619453307015987227, guid: 31f9f9bcff5b4481a913b6ebd10a1cf5, type: 3}
   _levels:
-  - {fileID: 11400000, guid: 8371e9012378c4e92b96aedebc3602db, type: 2}
-  - {fileID: 11400000, guid: 4320602a9c5a34425a0af7e89de55d7b, type: 2}
-  - {fileID: 11400000, guid: be0243a2fc69c44f98d6c4faa5924fdd, type: 2}
+  - {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
+  - {fileID: 11400000, guid: 46ef0d55b4578435085c1fa8db7ba6ba, type: 2}
+  - {fileID: 11400000, guid: c5bb5ab803ff043c6b266c95ac422e16, type: 2}
 --- !u!1 &2203383776885654323
 GameObject:
   m_ObjectHideFlags: 0

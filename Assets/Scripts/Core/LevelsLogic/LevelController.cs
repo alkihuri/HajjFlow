@@ -15,7 +15,7 @@ namespace HajjFlow.Core.LevelsLogic
     public class LevelController : MonoBehaviour
     {
         [Header("Level Data")]
-        [SerializeField] protected LevelData levelData;
+        [SerializeField] public LevelData levelData;
         
         [Header("UI References")]
         [SerializeField] protected QuizUIController quizUIController;
@@ -25,19 +25,25 @@ namespace HajjFlow.Core.LevelsLogic
         
         public string LevelId => levelData.LevelId;
         
-
-        [SerializeField] private UIService _uiService;
+ 
         
-        
-        #if UNITY_EDITOR
 
-        private void OnValidate()
-        {
+        public void Init(LevelData level)
+        { 
+            levelData = level;
             quizUIController??= GetComponentInChildren<QuizUIController>(true);
             theoryCardsManager??= GetComponentInChildren<TheoryCardsManager>(true);
+            if (theoryCardsManager != null)
+            {
+                theoryCardsManager.OnTheoryCardsCompleted.AddListener(OnTheoryCompleted);
+            } 
             
+            
+            
+            // TBD : вынести логику на уровень SO 
             var levelId = levelData != null ? levelData.LevelId : "null";
             
+            gameObject.name = $"Level {levelId} Controller";
             // load form Resource/SO/Theory/ scriptabel object with name matching levelId
             var container = Resources.Load<TheoryCardContainer>($"SO/Theory/{levelId}/{levelId}_TheoryContainer");
             if (container == null)
@@ -47,29 +53,15 @@ namespace HajjFlow.Core.LevelsLogic
             }
             else
             {
-                theoryCardsManager.CardContainer = container;
+               
             }
+
+            theoryCardsManager.CardContainer = container;
             
-           
-            if (_uiService != null)
-            {
-                _uiService.RegisterLevelData(levelData);
-            } 
-             
         }
-#endif
         
         
-        protected virtual void Awake()
-        {
-          
-            // Подписываемся на завершение теории
-            if (theoryCardsManager != null)
-            {
-                theoryCardsManager.OnTheoryCardsCompleted.AddListener(OnTheoryCompleted);
-            } 
-             
-        }
+      
 
         
         protected virtual void OnDestroy()

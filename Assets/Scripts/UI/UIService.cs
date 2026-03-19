@@ -44,7 +44,8 @@ namespace HajjFlow.UI
         [Header("Level Controllers")] [SerializeField]
         private Transform _levelsControllersContainer;
 
-        [SerializeField] private List<LevelController> _levelControllers = new List<LevelController>();
+        [SerializeField] private LevelController _levelControllerPrefab;
+        private List<LevelController> _levelControllers = new List<LevelController>();
 
         [Header("Level Configuration")] [SerializeField]
         private List<LevelData> _levels = new List<LevelData>();
@@ -52,292 +53,297 @@ namespace HajjFlow.UI
         private ProgressService _progressService;
         private List<LevelTileUI> _levelSelectButtons = new List<LevelTileUI>();
 
-        private void Start()
+
+        private void Awake()
         {
-            _progressService = GameManager.Instance?.ProgressService;
-
-            _backButton?.onClick.AddListener(OnBackClicked);
-
-            _backFromLevelsButton.onClick.AddListener(OnBackClicked);
-
-            _gameStartButton?.onClick.AddListener(GameStartUI);
-
-            _resetProgressButton?.onClick.AddListener(ResetGameProgress);
-
-            _nextLevelButton?.onClick.AddListener(NextLevel);
-
-            BuildLevelGrid();
-        }
-
-        public void RegisterLevelData(LevelData levelData)
-        {
-            if (levelData == null)
+            foreach (var level in _levels)
             {
-                Debug.LogWarning("[UIService] Attempted to register null LevelData");
-                return;
-            }
-
-            if (!_levels.Contains(levelData))
-                _levels.Add(levelData);
-        }
-
-        private void ResetGameProgress()
-        {
-            var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
-            if (userProfileService == null)
-            {
-                Debug.LogWarning("[UIService] UserProfileService not found, cannot reset progress");
-                return;
-            }
-
-            userProfileService.ResetProgress();
-
-            UpdateLevelTileButtons(true);
-        }
-
-        private void NextLevel()
-        {
-        }
-
-        private void GameStartUI()
-        {
-            // Delegate to the state machine
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            sm?.ChangeState(GameStateIds.LevelSelect);
-        }
-
-        private void OnDestroy()
-        {
-            _backButton?.onClick.RemoveListener(OnBackClicked);
-        }
-
-        // ── Screen switching (called from game states) ───────────────────────────
-
-        /// <summary>Shows the main-menu / game-start screen.</summary>
-        public void ShowMainMenu()
-        {
-            _gameStartScree?.SetActive(true);
-            _mainMenuScreen?.SetActive(true);
-            _levelSelect?.SetActive(false);
-            _levelsUiRoot?.SetActive(false);
-        }
-
-        /// <summary>Shows the level-selection screen.</summary>
-        public void ShowLevelSelect()
-        {
-            _gameStartScree?.SetActive(false);
-            _mainMenuScreen?.SetActive(false);
-            _levelSelect?.SetActive(true);
-            _levelsUiRoot?.SetActive(false);
-        }
-
-        /// <summary>Shows the results screen (placeholder — actual results UI is on a separate panel).</summary>
-        public void ShowResults()
-        {
-            _gameStartScree?.SetActive(false);
-            _mainMenuScreen?.SetActive(false);
-            _levelSelect?.SetActive(false);
-            _levelsUiRoot?.SetActive(false);
-
-            Debug.Log("[UIService] Results screen shown");
-        }
-
-        // ── Level-specific screens ───────────────────────────────────────────────
-
-        public void ShowLevel(int levelNumber)
-        {
-            int levelIndex = levelNumber - 1;
-
-            Debug.Log($"[UIService] Showing level index {levelIndex}");
-
-            if (!_levelsUiRoot.activeInHierarchy)
-                _levelsUiRoot.SetActive(true);
-
-            foreach (var lvl in _levelsUI)
-            {
-                lvl.SetActive(false);
-            }
-
-            if (levelIndex >= 0 && levelIndex < _levelsUI.Length)
-            {
-                _levelsUI[levelIndex].SetActive(true);
-            }
-        }
-
-        /// <summary>
-        /// Shows the UI for a level by its state ID.
-        /// Replaces the per-level WarmUpLevelShow/MiqatLevelShow/TawafLevelShow methods.
-        /// </summary>
-        public void ShowLevelByStateId(string stateId)
-        {
-            _mainMenuScreen?.SetActive(true);
-            _gameStartScree?.SetActive(false);
-            _levelSelect?.SetActive(false);
-
-            int levelNumber = stateId switch
-            {
-                GameStateIds.Warmup => 1,
-                GameStateIds.Miqat => 2,
-                GameStateIds.Tawaf => 3,
-                _ => 0
-            };
-
-            if (levelNumber > 0)
-            {
-                ShowLevel(levelNumber);
-            }
-            else
-            {
-                Debug.LogWarning($"[UIService] Unknown state id for level UI: {stateId}");
-            }
-        }
-
-
-        // ── Private ──────────────────────────────────────────────────────────────
-
-        /// <summary>Instantiates one tile button per LevelData entry.</summary>
-        private void BuildLevelGrid()
-        {
-            if (_levels == null || _levelButtonPrefab == null || _levelButtonsContainer == null)
-            {
-                Debug.LogWarning("[UIService] Missing references — cannot build level grid.");
-                return;
-            }
-
-            foreach (var levelData in _levels)
-            {
-                GameObject tile = Instantiate(_levelButtonPrefab, _levelButtonsContainer);
-                var tileUI = tile.GetComponent<LevelTileUI>();
-                if (tileUI != null)
+                // Instantiate a LevelController for each level and parent it under _levelsControllersContainer
+                if (_levelControllerPrefab != null && _levelsControllersContainer != null)
                 {
-                    bool completed = _progressService?.IsLevelCompleted(levelData.LevelId) ?? false;
-                    float progress = _progressService?.GetLevelProgress(levelData.LevelId) ?? 0f;
-                    tileUI.Setup(levelData, completed, progress, OnLevelTileClicked);
-                    _levelSelectButtons.Add(tileUI);
+                    var controllerObj = Instantiate(_levelControllerPrefab, _levelsControllersContainer);
+                    var controller = controllerObj.GetComponent<LevelController>();
+                    if (controller != null)
+                    { 
+                        controller.Init(level);
+                        _levelControllers.Add(controller);
+                    }
                 }
             }
         }
 
-        private void OnLevelTileClicked(LevelData level)
-        {
-            string stateId = level.LevelId;
-
-            _levelTitleText.text = $"{level.LevelName}";
-
-            // Delegate to the state machine instead of LevelManager directly
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            if (sm != null)
+        private void Start()
             {
-                sm.StartLevel(level, stateId);
+                _progressService = GameManager.Instance?.ProgressService;
+
+                _backButton?.onClick.AddListener(OnBackClicked);
+
+                _backFromLevelsButton.onClick.AddListener(OnBackClicked);
+
+                _gameStartButton?.onClick.AddListener(GameStartUI);
+
+                _resetProgressButton?.onClick.AddListener(ResetGameProgress);
+
+                _nextLevelButton?.onClick.AddListener(NextLevel);
+
+                BuildLevelGrid();
             }
-            else
+
+            
+
+            private void ResetGameProgress()
             {
-                LevelManager.StartLevel(level, stateId);
+                var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
+                if (userProfileService == null)
+                {
+                    Debug.LogWarning("[UIService] UserProfileService not found, cannot reset progress");
+                    return;
+                }
+
+                userProfileService.ResetProgress();
+
+                UpdateLevelTileButtons(true);
             }
-        }
 
-        private void OnBackClicked()
-        {
-            var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            if (sm != null)
-                sm.ChangeState(GameStateIds.MainMenu);
-            else
-                LevelManager.GoToMainMenu();
-        }
-
-        /// <summary>
-        /// Сбрасывает состояние всех уровней.
-        /// </summary>
-        public void ResetUI()
-        {
-            Debug.Log("[UIService] Resetting all level UIs");
-
-            foreach (var levelController in _levelControllers)
+            private void NextLevel()
             {
-                levelController.ResetLevel();
             }
-        }
+
+            private void GameStartUI()
+            {
+                // Delegate to the state machine
+                var sm = GameManager.Instance?.GetService<GameStateMachine>();
+                sm?.ChangeState(GameStateIds.LevelSelect);
+            }
+
+            private void OnDestroy()
+            {
+                _backButton?.onClick.RemoveListener(OnBackClicked);
+            }
+
+            // ── Screen switching (called from game states) ───────────────────────────
+
+            /// <summary>Shows the main-menu / game-start screen.</summary>
+            public void ShowMainMenu()
+            {
+                _gameStartScree?.SetActive(true);
+                _mainMenuScreen?.SetActive(true);
+                _levelSelect?.SetActive(false);
+                _levelsUiRoot?.SetActive(false);
+            }
+
+            /// <summary>Shows the level-selection screen.</summary>
+            public void ShowLevelSelect()
+            {
+                _gameStartScree?.SetActive(false);
+                _mainMenuScreen?.SetActive(false);
+                _levelSelect?.SetActive(true);
+                _levelsUiRoot?.SetActive(false);
+            }
+
+            /// <summary>Shows the results screen (placeholder — actual results UI is on a separate panel).</summary>
+            public void ShowResults()
+            {
+                _gameStartScree?.SetActive(false);
+                _mainMenuScreen?.SetActive(false);
+                _levelSelect?.SetActive(false);
+                _levelsUiRoot?.SetActive(false);
+
+                Debug.Log("[UIService] Results screen shown");
+            }
+
+            // ── Level-specific screens ───────────────────────────────────────────────
+
+            public void ShowLevel(int levelNumber)
+            {
+                int levelIndex = levelNumber - 1;
+
+                Debug.Log($"[UIService] Showing level index {levelIndex}");
+
+                if (!_levelsUiRoot.activeInHierarchy)
+                    _levelsUiRoot.SetActive(true);
+
+                foreach (var lvl in _levelsUI)
+                {
+                    lvl.SetActive(false);
+                }
+
+                if (levelIndex >= 0 && levelIndex < _levelsUI.Length)
+                {
+                    _levelsUI[levelIndex].SetActive(true);
+                }
+            }
+
+            /// <summary>
+            /// Shows the UI for a level by its state ID.
+            /// Replaces the per-level WarmUpLevelShow/MiqatLevelShow/TawafLevelShow methods.
+            /// </summary>
+            public void ShowLevelByStateId(string stateId)
+            {
+                _mainMenuScreen?.SetActive(true);
+                _gameStartScree?.SetActive(false);
+                _levelSelect?.SetActive(false);
+
+                int levelNumber = stateId switch
+                {
+                    GameStateIds.Warmup => 1,
+                    GameStateIds.Miqat => 2,
+                    GameStateIds.Tawaf => 3,
+                    _ => 0
+                };
+
+                if (levelNumber > 0)
+                {
+                    ShowLevel(levelNumber);
+                }
+                else
+                {
+                    Debug.LogWarning($"[UIService] Unknown state id for level UI: {stateId}");
+                }
+            }
+
+
+            // ── Private ──────────────────────────────────────────────────────────────
+
+            /// <summary>Instantiates one tile button per LevelData entry.</summary>
+            private void BuildLevelGrid()
+            {
+                if (_levels == null || _levelButtonPrefab == null || _levelButtonsContainer == null)
+                {
+                    Debug.LogWarning("[UIService] Missing references — cannot build level grid.");
+                    return;
+                }
+
+                foreach (var levelData in _levels)
+                {
+                    GameObject tile = Instantiate(_levelButtonPrefab, _levelButtonsContainer);
+                    var tileUI = tile.GetComponent<LevelTileUI>();
+                    if (tileUI != null)
+                    {
+                        bool completed = _progressService?.IsLevelCompleted(levelData.LevelId) ?? false;
+                        float progress = _progressService?.GetLevelProgress(levelData.LevelId) ?? 0f;
+                        tileUI.Setup(levelData, completed, progress, OnLevelTileClicked);
+                        _levelSelectButtons.Add(tileUI);
+                    }
+                }
+            }
+
+            private void OnLevelTileClicked(LevelData level)
+            {
+                string stateId = level.LevelId;
+
+                _levelTitleText.text = $"{level.LevelName}";
+
+                // Delegate to the state machine instead of LevelManager directly
+                var sm = GameManager.Instance?.GetService<GameStateMachine>();
+                if (sm != null)
+                {
+                    sm.StartLevel(level, stateId);
+                }
+                else
+                {
+                    LevelManager.StartLevel(level, stateId);
+                }
+            }
+
+            private void OnBackClicked()
+            {
+                var sm = GameManager.Instance?.GetService<GameStateMachine>();
+                if (sm != null)
+                    sm.ChangeState(GameStateIds.MainMenu);
+                else
+                    LevelManager.GoToMainMenu();
+            }
+
+            /// <summary>
+            /// Сбрасывает состояние всех уровней.
+            /// </summary>
+            public void ResetUI()
+            {
+                Debug.Log("[UIService] Resetting all level UIs");
+
+                foreach (var levelController in _levelControllers)
+                {
+                    levelController.ResetLevel();
+                }
+            }
 
 
 #if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if (_levelControllers.Count == 0 && _levelsControllersContainer != null)
-            {
-                _levelControllers = _levelsControllersContainer.GetComponentsInChildren<LevelController>(true)
-                    .ToList();
+            private void OnValidate()
+            { 
+                // remove null entries that may have been left by prefab changes
+                _levels = _levels.Where(l => l != null).ToList();
             }
-            // remove null entries that may have been left by prefab changes
-            _levels = _levels.Where(l => l != null).ToList();
-        }
 #endif
 
-        /// <summary>
-        /// Получает контроллер уровня по его ID с ленивой инициализацией.
-        /// </summary>
-        private LevelController GetLevelController(string levelId)
-        {
-            // Ленивая инициализация - получаем контроллеры, если список пуст или контроллер не найден
-            var controller = _levelControllers.Find(lc => lc.LevelId == levelId);
-
-            if (controller == null && _levelsControllersContainer != null)
+            /// <summary>
+            /// Получает контроллер уровня по его ID с ленивой инициализацией.
+            /// </summary>
+            private LevelController GetLevelController(string levelId)
             {
-                _levelControllers = _levelsControllersContainer.GetComponentsInChildren<LevelController>().ToList();
-                controller = _levelControllers.Find(lc => lc.LevelId == levelId);
+                // Ленивая инициализация - получаем контроллеры, если список пуст или контроллер не найден
+                var controller = _levelControllers.Find(lc => lc.LevelId == levelId);
+
+
+                if (controller == null && _levelsControllersContainer != null)
+                {
+                    _levelControllers = _levelsControllersContainer.GetComponentsInChildren<LevelController>().ToList();
+                    controller = _levelControllers.Find(lc => lc.LevelId == levelId);
+                }
+
+                return controller;
             }
 
-            return controller;
-        }
-
-        /// <summary>
-        /// Показывает блок теории для уровня по его ID.
-        /// </summary>
-        private void ShowTheoryUI(string levelId)
-        {
-            var controller = GetLevelController(levelId);
-
-            if (controller != null)
+            /// <summary>
+            /// Показывает блок теории для уровня по его ID.
+            /// </summary>
+            private void ShowTheoryUI(string levelId)
             {
-                controller.ShowTheory();
-            }
-            else
-            {
-                Debug.LogWarning($"[UIService] LevelController for '{levelId}' is null!");
-            }
-        }
+                var controller = GetLevelController(levelId);
 
-        /// <summary>
-        /// Показывает блок теории для Warmup уровня.
-        /// </summary>
-        public void ShowWarmUpTheoryUI() => ShowTheoryUI("Warmup");
-
-        /// <summary>
-        /// Показывает блок теории для Miqat уровня.
-        /// </summary>
-        public void ShowMiqatTheoryUI() => ShowTheoryUI("Miqat");
-
-        /// <summary>
-        /// Показывает блок теории для Tawaf уровня.
-        /// </summary>
-        public void ShowTawafTheoryUI() => ShowTheoryUI("Tawaf");
-
-        public void UpdateGemsCounter(int gems, int totalGems = 0)
-        {
-            if (_gemsCounterText != null)
-            {
-                if (totalGems > 0)
-                    _gemsCounterText.text = $"{gems} / {totalGems}";
+                if (controller != null)
+                {
+                    controller.ShowTheory();
+                }
                 else
-                    _gemsCounterText.text = $"{gems}";
+                {
+                    Debug.LogWarning($"[UIService] LevelController for '{levelId}' is null!");
+                }
             }
-        }
 
-        public void UpdateLevelTileButtons(bool forceRefresh = false)
-        {
-            foreach (var tile in _levelSelectButtons)
+            /// <summary>
+            /// Показывает блок теории для Warmup уровня.
+            /// </summary>
+            public void ShowWarmUpTheoryUI() => ShowTheoryUI("Warmup");
+
+            /// <summary>
+            /// Показывает блок теории для Miqat уровня.
+            /// </summary>
+            public void ShowMiqatTheoryUI() => ShowTheoryUI("Miqat");
+
+            /// <summary>
+            /// Показывает блок теории для Tawaf уровня.
+            /// </summary>
+            public void ShowTawafTheoryUI() => ShowTheoryUI("Tawaf");
+
+            public void UpdateGemsCounter(int gems, int totalGems = 0)
             {
-                tile.UpdateUiData(forceRefresh);
+                if (_gemsCounterText != null)
+                {
+                    if (totalGems > 0)
+                        _gemsCounterText.text = $"{gems} / {totalGems}";
+                    else
+                        _gemsCounterText.text = $"{gems}";
+                }
+            }
+
+            public void UpdateLevelTileButtons(bool forceRefresh = false)
+            {
+                foreach (var tile in _levelSelectButtons)
+                {
+                    tile.UpdateUiData(forceRefresh);
+                }
             }
         }
     }
-}
