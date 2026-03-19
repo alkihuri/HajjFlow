@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
+  m_Name: Tawaf_LevelData
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
+  LevelId: Tawaf
+  LevelName: UI_TITLE_LEVEL_3
+  Description: TAWAF_LEVEL_DESCRIPTION_KEY
+  LevelDescriptionKey: TAWAF_LEVEL_DESCRIPTION_KEY
+  QuestionTextKeys: []
+  Thumbnail: {fileID: 0}
+  Questions:
+  - QuestionText: Q_L3_HOW_MANY_TAWAF_CIRCLES
+    Options:
+    - Q_L3_OPT_FIVE
+    - Q_L3_OPT_SIX
+    - Q_L3_OPT_SEVEN
+    - Q_L3_OPT_EIGHT
+    CorrectAnswerIndex: 2
+    Explanation: Q_L3_TAWAF_CIRCLES_EXPLANATION
+    GemsReward: 5
+  - QuestionText: Q_L3_WHERE_TAWAF_STARTS
+    Options:
+    - Q_L3_OPT_KAABA_DOOR
+    - Q_L3_OPT_BLACK_STONE
+    - Q_L3_OPT_ANYWHERE
+    - Q_L3_OPT_ZAMZAM
+    CorrectAnswerIndex: 1
+    Explanation: Q_L3_TAWAF_START_EXPLANATION
+    GemsReward: 5
+  - QuestionText: Q_L3_TAWAF_DIRECTION
+    Options:
+    - Q_L3_OPT_CLOCKWISE
+    - Q_L3_OPT_COUNTER_CLOCKWISE
+    - Q_L3_OPT_ANY_DIRECTION
+    - Q_L3_OPT_DIAGONAL
+    CorrectAnswerIndex: 1
+    Explanation: Q_L3_TAWAF_DIRECTION_EXPLANATION
+    GemsReward: 5
+  - QuestionText: Q_L3_TAWAF_REQUIREMENT
+    Options:
+    - Q_L3_OPT_REGULAR_CLOTHES
+    - Q_L3_OPT_RITUAL_PURITY
+    - Q_L3_OPT_FASTING
+    - Q_L3_OPT_LOUD_READING
+    CorrectAnswerIndex: 1
+    Explanation: Q_L3_TAWAF_REQUIREMENT_EXPLANATION
+    GemsReward: 5
+  - QuestionText: Q_L3_WHEN_CIRCLE_COMPLETE
+    Options:
+    - Q_L3_OPT_HALFWAY
+    - Q_L3_OPT_RETURN_TO_BLACK_STONE
+    - Q_L3_OPT_THREE_STEPS
+    - Q_L3_OPT_AFTER_PRAYER
+    CorrectAnswerIndex: 1
+    Explanation: Q_L3_CIRCLE_COMPLETE_EXPLANATION
+    GemsReward: 5
+  - QuestionText: Q_L3_WHAT_TO_READ_DURING_TAWAF
+    Options:
+    - Q_L3_OPT_ONLY_TALBIYAH
+    - Q_L3_OPT_DUA_AND_DHIKR
+    - Q_L3_OPT_ONLY_ADHAN
+    - Q_L3_OPT_NOTHING
+    CorrectAnswerIndex: 1
+    Explanation: Q_L3_TAWAF_READING_EXPLANATION
+    GemsReward: 5
+  - QuestionText: Q_L3_TAWAF_OBJECT
+    Options:
+    - Q_L3_OPT_SAFA_MOUNT
+    - Q_L3_OPT_KAABA
+    - Q_L3_OPT_MEDINA_MOSQUE
+    - Q_L3_OPT_ZAMZAM
+    CorrectAnswerIndex: 1
+    Explanation: Q_L3_TAWAF_OBJECT_EXPLANATION
+    GemsReward: 5
+  CompletionBonusGems: 20
+  PassThreshold: 60

@@ -72,9 +72,14 @@ namespace HajjFlow.Editor.ContentLoader
                 return null;
             }
 
+            // Используем LevelId для именования файла, если он есть
+            string assetName = (metadata != null && !string.IsNullOrEmpty(metadata.LevelId)) 
+                ? $"{metadata.LevelId}_LevelData" 
+                : "LoadedLevelData";
+
             // Find or create a LevelData asset
             const string assetFolder = "Assets/ScriptableObjects/Levels";
-            const string assetPath = "Assets/ScriptableObjects/Levels/LoadedLevelData.asset";
+            string assetPath = $"{assetFolder}/{assetName}.asset";
 
             if (!AssetDatabase.IsValidFolder(assetFolder))
             {
@@ -163,10 +168,13 @@ namespace HajjFlow.Editor.ContentLoader
                 return null;
             }
 
+            // Извлекаем LevelId из первого элемента JSON
+            string levelId;
             TheoryCardJsonData[] jsonCards;
             try
             {
-                jsonCards = JsonHelper.FromJson<TheoryCardJsonData>(jsonContent);
+                levelId = JsonHelper.ExtractLevelId(jsonContent);
+                jsonCards = JsonHelper.GetTheoryCardsOnly(jsonContent);
             }
             catch (Exception ex)
             {
@@ -180,9 +188,12 @@ namespace HajjFlow.Editor.ContentLoader
                 return null;
             }
 
+            // Используем LevelId для именования файлов, если он есть
+            string assetName = !string.IsNullOrEmpty(levelId) ? $"{levelId}_TheoryContainer" : "LoadedTheoryContainer";
+            
             // Find or create a TheoryCardContainer asset
-            const string assetFolder = "Assets/ScriptableObjects/Theory";
-            const string containerPath = "Assets/ScriptableObjects/Theory/LoadedTheoryContainer.asset";
+             string assetFolder = $"Assets/ScriptableObjects/Theory/{levelId}";
+            string containerPath = $"{assetFolder}/{assetName}.asset";
 
             if (!AssetDatabase.IsValidFolder(assetFolder))
             {
@@ -197,11 +208,19 @@ namespace HajjFlow.Editor.ContentLoader
                 Debug.Log($"[DataLoader] Created new TheoryCardContainer at {containerPath}");
             }
 
+            // Устанавливаем LevelId для контейнера
+            if (!string.IsNullOrEmpty(levelId))
+            {
+                container.LevelId = levelId;
+                Debug.Log($"[DataLoader] Set LevelId: {levelId}");
+            }
+
             // Create cards folder for individual card assets
-            string cardsFolder = $"Assets/ScriptableObjects/Theory/{container.name}_Cards";
+            string folderName = !string.IsNullOrEmpty(levelId) ? $"{levelId}_Cards" : $"{container.name}_Cards";
+            string cardsFolder = $"{assetFolder}/{folderName}";
             if (!AssetDatabase.IsValidFolder(cardsFolder))
             {
-                AssetDatabase.CreateFolder("Assets/ScriptableObjects/Theory", $"{container.name}_Cards");
+                AssetDatabase.CreateFolder(assetFolder, folderName);
             }
 
             container.Cards.Clear();
@@ -210,12 +229,14 @@ namespace HajjFlow.Editor.ContentLoader
             {
                 var jsonCard = jsonCards[i];
                 var cardData = ScriptableObject.CreateInstance<TheoryCardData>();
-                cardData.LevelId = container.LevelId;
+                cardData.LevelId = levelId ?? container.LevelId ?? "";
                 cardData.Title = jsonCard.Title ?? "";
                 cardData.Description = jsonCard.Text ?? "";
                 cardData.Image = null;
 
-                string safeName = SanitizeFileName($"Card_{i:D2}_{cardData.Title}");
+                // Используем LevelId в имени файла
+                string prefix = !string.IsNullOrEmpty(levelId) ? levelId : "Card";
+                string safeName = SanitizeFileName($"{prefix}_Card_{i:D2}_{cardData.Title}");
                 string cardPath = Path.Combine(cardsFolder, $"{safeName}.asset");
                 cardPath = AssetDatabase.GenerateUniqueAssetPath(cardPath);
 
