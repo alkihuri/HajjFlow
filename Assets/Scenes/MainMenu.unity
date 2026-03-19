@@ -785,6 +785,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6574980487578156793}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bc7f9916f2464dcbaebd49f2dc5532a, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c5bb5ab803ff043c6b266c95ac422e16, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelButtonsContainer
       value: 
       objectReference: {fileID: 206397653}
@@ -897,6 +909,10 @@ PrefabInstance:
       propertyPath: quizService
       value: 
       objectReference: {fileID: 1414502102}
+    - target: {fileID: 1388309501306869676, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cff40337de9341a7a98881855b80cb8, type: 2}
     - target: {fileID: 1696791376022195048, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -981,6 +997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2116441607558497106, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 11400000, guid: 52b1f100259054696820e1ea5556d184, type: 2}
     - target: {fileID: 2307901602021259226, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -1021,6 +1041,10 @@ PrefabInstance:
       propertyPath: quizService
       value: 
       objectReference: {fileID: 1414502102}
+    - target: {fileID: 4996554571461285070, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6917408900780816908, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

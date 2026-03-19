@@ -78,7 +78,7 @@ namespace HajjFlow.Editor.ContentLoader
                 : "LoadedLevelData";
 
             // Find or create a LevelData asset
-            const string assetFolder = "Assets/ScriptableObjects/Levels";
+            const string assetFolder = "Assets/Resources/SO/Levels";
             string assetPath = $"{assetFolder}/{assetName}.asset";
 
             if (!AssetDatabase.IsValidFolder(assetFolder))
@@ -192,7 +192,7 @@ namespace HajjFlow.Editor.ContentLoader
             string assetName = !string.IsNullOrEmpty(levelId) ? $"{levelId}_TheoryContainer" : "LoadedTheoryContainer";
             
             // Find or create a TheoryCardContainer asset
-             string assetFolder = $"Assets/ScriptableObjects/Theory/{levelId}";
+             string assetFolder = $"Assets/Resources/SO/Theory/{levelId}";
             string containerPath = $"{assetFolder}/{assetName}.asset";
 
             if (!AssetDatabase.IsValidFolder(assetFolder))
