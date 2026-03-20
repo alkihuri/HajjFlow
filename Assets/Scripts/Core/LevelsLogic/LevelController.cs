@@ -166,7 +166,7 @@ namespace HajjFlow.Core.LevelsLogic
         public virtual void OnStageGameplayCompleted()
         {
             var sm = GameManager.Instance?.GetService<GameStateMachine>();
-            var levelState = sm?.CurrentState as BaseLevelState;
+            var levelState = sm?.CurrentState as LevelState;
             if (levelState != null)
             {
                 levelState.CompleteTheoryStage();

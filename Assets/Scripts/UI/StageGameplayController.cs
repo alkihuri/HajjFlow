@@ -14,7 +14,7 @@ namespace HajjFlow.UI
     {
         /// <summary>
         /// Called when the theory block is completed (e.g. "Next" button or condition).
-        /// Notifies the current BaseLevelState through the state machine.
+        /// Notifies the current LevelState through the state machine.
         /// </summary>
         public void CompleteStage()
         {
@@ -25,7 +25,7 @@ namespace HajjFlow.UI
                 return;
             }
 
-            var levelState = sm.CurrentState as BaseLevelState;
+            var levelState = sm.CurrentState as LevelState;
             if (levelState == null)
             {
                 Debug.LogError("[StageGameplayController] Current state is not a level state!");

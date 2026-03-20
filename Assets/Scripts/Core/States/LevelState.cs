@@ -6,12 +6,15 @@ using HajjFlow.Services;
 namespace HajjFlow.Core.States
 {
     /// <summary>
-    /// Base class for level-gameplay states (Warmup, Miqat, Tawaf).
+    /// Universal level-gameplay state.
     /// Manages the full level lifecycle: theory blocks → quiz → completion.
-    /// All common quiz/progress logic lives here; child states add only level-specific bonuses.
+    /// Level is identified by StateId which is set dynamically.
     /// </summary>
-    public abstract class BaseLevelState : BaseGameState
+    public class LevelState : BaseGameState
     {
+        private string _stateId;
+        public override string StateId => _stateId;
+
         protected LevelData _levelData;
 
         // ── Quiz tracking ────────────────────────────────────────────────────────
@@ -26,7 +29,18 @@ namespace HajjFlow.Core.States
         protected int _currentStageIndex;
 
         /// <summary>Number of theory blocks this level requires before the quiz.</summary>
-        protected abstract int TheoryBlockCount { get; }
+        protected int TheoryBlockCount { get; set; } = 2;
+
+        /// <summary>
+        /// Creates a new LevelState for the specified level.
+        /// </summary>
+        /// <param name="stateId">The unique state identifier (e.g., "Warmup", "Miqat", "Tawaf", "Sa3i")</param>
+        /// <param name="theoryBlockCount">Number of theory blocks before quiz starts</param>
+        public LevelState(string stateId, int theoryBlockCount = 2)
+        {
+            _stateId = stateId;
+            TheoryBlockCount = theoryBlockCount;
+        }
 
         /// <summary>
         /// Initializes the state with both the state machine and level-specific data.
@@ -80,7 +94,12 @@ namespace HajjFlow.Core.States
         // ── UI ───────────────────────────────────────────────────────────────────
 
         /// <summary>Called on Enter to show level-specific UI panels.</summary>
-        protected abstract void ShowLevelUI();
+        protected virtual void ShowLevelUI()
+        {
+            var uiService = GameManager.Instance?.uiService;
+            uiService?.ShowLevelByStateId(StateId);
+            uiService?.ShowTheoryUI(StateId);
+        }
 
         // ── Theory stages ────────────────────────────────────────────────────────
 
@@ -108,7 +127,6 @@ namespace HajjFlow.Core.States
                 StartQuiz();
             }
         }
-
 
         /// <summary>Starts the quiz portion of the level.</summary>
         protected virtual void StartQuiz()
@@ -191,11 +209,10 @@ namespace HajjFlow.Core.States
                 Debug.LogWarning($"[{StateId}] ProfileLoaderService not found");
             }
 
-
             Debug.Log($"[{StateId}] Progress saved: {_lastScorePercent:F1}%");
         }
 
-        // ── Quiz event handlers (overridable for bonuses) ────────────────────────
+        // ── Quiz event handlers ──────────────────────────────────────────────────
 
         protected virtual void HandleQuestionReady(QuizQuestion question, int questionNumber)
         {
@@ -203,8 +220,7 @@ namespace HajjFlow.Core.States
         }
 
         /// <summary>
-        /// Base handler for answer results. Tracks correct count.
-        /// Override in child states to add bonuses, but always call base.
+        /// Handler for answer results. Tracks correct count.
         /// </summary>
         protected virtual void HandleAnswerResult(bool wasCorrect, string explanation)
         {
@@ -222,8 +238,7 @@ namespace HajjFlow.Core.States
         }
 
         /// <summary>
-        /// Base handler for quiz completion. Saves score and signals state machine.
-        /// Override in child states for completion bonuses, but always call base.
+        /// Handler for quiz completion. Saves score and signals state machine.
         /// </summary>
         protected virtual void HandleQuizComplete(float scorePercent)
         {

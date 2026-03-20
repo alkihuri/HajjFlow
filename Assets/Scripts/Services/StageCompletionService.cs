@@ -117,7 +117,7 @@ namespace HajjFlow.Services
 
         /// <summary>
         /// Records (or overwrites) the completion result for a level.
-        /// Called from BaseLevelState.SaveProgress().
+        /// Called from LevelState.SaveProgress().
         /// </summary>
         public void RecordLevelResult(string levelId, float scorePercent)
         {

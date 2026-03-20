@@ -19,13 +19,15 @@ namespace HajjFlow.Core.States
         public const string Warmup = "Warmup";
         public const string Miqat  = "Miqat";
         public const string Tawaf  = "Tawaf";
+        public const string Sa3i   = "Sa3i";
 
         /// <summary>All level state IDs in progression order.</summary>
         public static readonly List<string> LevelStates = new List<string>
         {
             Warmup,
             Miqat,
-            Tawaf
+            Tawaf,
+            Sa3i
         };
 
         /// <summary>All state IDs.</summary>
@@ -36,6 +38,7 @@ namespace HajjFlow.Core.States
             Warmup,
             Miqat,
             Tawaf,
+            Sa3i,
             Results
         };
 
@@ -86,6 +89,7 @@ namespace HajjFlow.Core.States
         public const string Warmup = GameStateIds.Warmup;
         public const string Miqat  = GameStateIds.Miqat;
         public const string Tawaf  = GameStateIds.Tawaf;
+        public const string Sa3i   = GameStateIds.Sa3i;
 
         public static readonly List<string> AllStates = GameStateIds.LevelStates;
 

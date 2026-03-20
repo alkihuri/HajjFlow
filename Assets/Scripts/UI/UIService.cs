@@ -301,7 +301,7 @@ namespace HajjFlow.UI
         /// <summary>
         /// Показывает блок теории для уровня по его ID.
         /// </summary>
-        private void ShowTheoryUI(string levelId)
+        public void ShowTheoryUI(string levelId)
         {
             var controller = GetLevelController(levelId);
 
@@ -318,17 +318,22 @@ namespace HajjFlow.UI
         /// <summary>
         /// Показывает блок теории для Warmup уровня.
         /// </summary>
-        public void ShowWarmUpTheoryUI() => ShowTheoryUI("Warmup");
+        public void ShowWarmUpTheoryUI() => ShowTheoryUI(GameStateIds.Warmup);
 
         /// <summary>
         /// Показывает блок теории для Miqat уровня.
         /// </summary>
-        public void ShowMiqatTheoryUI() => ShowTheoryUI("Miqat");
+        public void ShowMiqatTheoryUI() => ShowTheoryUI(GameStateIds.Miqat);
 
         /// <summary>
         /// Показывает блок теории для Tawaf уровня.
         /// </summary>
-        public void ShowTawafTheoryUI() => ShowTheoryUI("Tawaf");
+        public void ShowTawafTheoryUI() => ShowTheoryUI(GameStateIds.Tawaf);
+
+        /// <summary>
+        /// Показывает блок теории для Sa3i уровня.
+        /// </summary>
+        public void ShowSa3iTheoryUI() => ShowTheoryUI(GameStateIds.Sa3i);
 
         public void UpdateGemsCounter(int gems, int totalGems = 0)
         {

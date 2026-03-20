@@ -12,19 +12,19 @@ namespace HajjFlow.Core.States
     [System.Obsolete("Use GameStateMachine instead. This class is kept for scene compatibility.")]
     public class LevelStateMachine : MonoBehaviour
     {
-        public event Action<BaseLevelState> OnStateChanged;
+        public event Action<LevelState> OnStateChanged;
         public event Action<string, float> OnLevelCompleted;
 
-        private Dictionary<string, BaseLevelState> _states;
-        private BaseLevelState _currentState;
+        private Dictionary<string, LevelState> _states;
+        private LevelState _currentState;
         private bool _isPaused;
 
-        public BaseLevelState CurrentState => _currentState;
+        public LevelState CurrentState => _currentState;
         public bool IsPaused => _isPaused;
 
         private void Awake()
         {
-            _states = new Dictionary<string, BaseLevelState>();
+            _states = new Dictionary<string, LevelState>();
         }
 
         public void ChangeState(string stateId, LevelData levelData)
