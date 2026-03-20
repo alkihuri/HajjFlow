@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
+  m_Name: Sa3i_LevelData
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
+  LevelId: Sa3i
+  LevelName: LEVEL_4_TITLE
+  Description: LEVEL_4_DESC
+  LevelDescriptionKey: LEVEL_4_DESC
+  QuestionTextKeys: []
+  Thumbnail: {fileID: 0}
+  Questions:
+  - QuestionText: Q1_SAY_LINGUISTIC_MEANING
+    Options:
+    - Q1_OPT_1_WALKING
+    - Q1_OPT_2_STRIVING_OR_EXERTION
+    - Q1_OPT_3_RUNNING
+    - Q1_OPT_4_PRAYER
+    CorrectAnswerIndex: 1
+    Explanation: Q1_EXPL_SAY_MEANING
+    GemsReward: 10
+  - QuestionText: Q2_SAY_STARTING_POINT
+    Options:
+    - Q2_OPT_1_MARWA
+    - Q2_OPT_2_KAABA
+    - Q2_OPT_3_SAFA
+    - Q2_OPT_4_ARAFAT
+    CorrectAnswerIndex: 2
+    Explanation: Q2_EXPL_START_SAFA
+    GemsReward: 10
+  - QuestionText: Q3_SAY_NUMBER_OF_LAPS
+    Options:
+    - Q3_OPT_1_THREE
+    - Q3_OPT_2_FIVE
+    - Q3_OPT_3_SEVEN
+    - Q3_OPT_4_TEN
+    CorrectAnswerIndex: 2
+    Explanation: Q3_EXPL_SEVEN_LAPS
+    GemsReward: 10
+  - QuestionText: Q4_SAY_HISTORICAL_ORIGIN
+    Options:
+    - Q4_OPT_1_PROPHET_MUHAMMAD
+    - Q4_OPT_2_PROPHET_IBRAHIM
+    - Q4_OPT_3_HAGAR_HAJAR
+    - Q4_OPT_4_PROPHET_ISMAIL
+    CorrectAnswerIndex: 2
+    Explanation: Q4_EXPL_HAGAR_STORY
+    GemsReward: 10
+  - QuestionText: Q5_SAY_RULING_STATUS
+    Options:
+    - Q5_OPT_1_SUNAH_ONLY
+    - Q5_OPT_2_RUKN_PILLAR
+    - Q5_OPT_3_WAJIB_OBLIGATORY
+    - Q5_OPT_4_MUSTAHAB_RECOMMENDED
+    CorrectAnswerIndex: 1
+    Explanation: Q5_EXPL_SAY_RUKN
+    GemsReward: 10
+  - QuestionText: Q6_SAY_GREEN_LIGHTS_SECTION
+    Options:
+    - Q6_OPT_1_WALK_NORMALLY
+    - Q6_OPT_2_RUN_RAPIDLY
+    - Q6_OPT_3_STOP_PRAY
+    - Q6_OPT_4_SIT_REST
+    CorrectAnswerIndex: 1
+    Explanation: Q6_EXPL_RUNNING_MEN
+    GemsReward: 10
+  - QuestionText: Q7_SAY_CONDITION_VALIDITY
+    Options:
+    - Q7_OPT_1_BE_IN_WUDU
+    - Q7_OPT_2_WEAR_IHram
+    - Q7_OPT_3_COMPLETE_SEVEN_LAPS
+    - Q7_OPT_4_FAST_BEFORE
+    CorrectAnswerIndex: 2
+    Explanation: Q7_EXPL_COMPLETION
+    GemsReward: 10
+  CompletionBonusGems: 20
+  PassThreshold: 60
