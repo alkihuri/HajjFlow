@@ -718,6 +718,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1770526467}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _levels.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _resetProgressButton
       value: 
       objectReference: {fileID: 1202411580}
@@ -725,6 +729,18 @@ PrefabInstance:
       propertyPath: _backFromLevelsButton
       value: 
       objectReference: {fileID: 6574980487578156793}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 993e03a64cfd34bf9b2299d7f937d10f, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c5bb5ab803ff043c6b266c95ac422e16, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelButtonsContainer
       value: 

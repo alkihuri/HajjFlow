@@ -34,8 +34,6 @@ namespace HajjFlow.UI
         [SerializeField] private GameObject _levelSelect;
 
         [SerializeField] private GameObject _levelsUiRoot;
-        [SerializeField] private GameObject[] _levelsUI;
-
         [SerializeField] private GameTextController _levelTitleText;
 
         [SerializeField] private TextMeshProUGUI _gemsCounterText;
@@ -45,7 +43,7 @@ namespace HajjFlow.UI
         private Transform _levelsControllersContainer;
 
         [SerializeField] private LevelController _levelControllerPrefab;
-        private List<LevelController> _levelControllers = new List<LevelController>();
+        [SerializeField] private List<LevelController> _levelControllers = new List<LevelController>();
 
         [Header("Level Configuration")] [SerializeField]
         private List<LevelData> _levels = new List<LevelData>();
@@ -89,7 +87,6 @@ namespace HajjFlow.UI
             BuildLevelGrid();
         }
 
- 
 
         private void ResetGameProgress()
         {
@@ -158,19 +155,26 @@ namespace HajjFlow.UI
         {
             int levelIndex = levelNumber - 1;
 
+            if (!(levelIndex >= 0 && levelIndex < _levels.Count))
+            {
+                Debug.LogWarning($"[UIService] Unknown level UI: {levelIndex}");
+                return;
+            }
+
+
             Debug.Log($"[UIService] Showing level index {levelIndex}");
 
             if (!_levelsUiRoot.activeInHierarchy)
                 _levelsUiRoot.SetActive(true);
 
-            foreach (var lvl in _levelsUI)
+            foreach (var lvl in _levelControllers)
             {
                 lvl.SetActive(false);
             }
 
-            if (levelIndex >= 0 && levelIndex < _levelsUI.Length)
+            if (!_levelControllers[levelIndex].activeInHierarchy)
             {
-                _levelsUI[levelIndex].SetActive(true);
+                _levelControllers[levelIndex].SetActive(true);
             }
         }
 
@@ -184,13 +188,9 @@ namespace HajjFlow.UI
             _gameStartScree?.SetActive(false);
             _levelSelect?.SetActive(false);
 
-            int levelNumber = stateId switch
-            {
-                GameStateIds.Warmup => 1,
-                GameStateIds.Miqat => 2,
-                GameStateIds.Tawaf => 3,
-                _ => 0
-            };
+            // Находим индекс уровня в списке по LevelId
+            int levelIndex = _levels.FindIndex(l => l.LevelId == stateId);
+            int levelNumber = levelIndex + 1; // levelNumber = 1-based
 
             if (levelNumber > 0)
             {
@@ -271,9 +271,9 @@ namespace HajjFlow.UI
 
 #if UNITY_EDITOR
         private void OnValidate()
-        { 
+        {
             // load all LEvelData assets from the Resources/Levels folder if the list is empty (for convenience)
-            if (  _levels.Count == 0)
+            if (_levels.Count == 0)
             {
                 _levels = Resources.LoadAll<LevelData>("SO/Levels").ToList();
             }

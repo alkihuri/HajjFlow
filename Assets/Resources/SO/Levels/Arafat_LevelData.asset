@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
+  m_Name: Arafat_LevelData
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
+  LevelId: Arafat
+  LevelName: LEVEL_5_TITLE
+  Description: LEVEL_5_DESC
+  LevelDescriptionKey: LEVEL_5_DESC
+  QuestionTextKeys: []
+  Thumbnail: {fileID: 0}
+  Questions:
+  - QuestionText: Q1_ARAFAT_RULING_STATUS
+    Options:
+    - Q1_OPT_1_SUNAH_RECOMMENDED
+    - Q1_OPT_2_WAJIB_OBLIGATORY
+    - Q1_OPT_3_RUKN_PILLAR
+    - Q1_OPT_4_MUSTAHAB_VOLUNTARY
+    CorrectAnswerIndex: 2
+    Explanation: Q1_EXPL_ARAFAT_RUKN
+    GemsReward: 10
+  - QuestionText: Q2_ARAFAT_DATE_HIJRI
+    Options:
+    - Q2_OPT_1_8_DHUL_HIJJAH
+    - Q2_OPT_2_9_DHUL_HIJJAH
+    - Q2_OPT_3_10_DHUL_HIJJAH
+    - Q2_OPT_4_11_DHUL_HIJJAH
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_ARAFAT_DATE
+    GemsReward: 10
+  - QuestionText: Q3_ARAFAT_TIME_DURATION
+    Options:
+    - Q3_OPT_1_FROM_FAJR_TO_SUNSET
+    - Q3_OPT_2_FROM_ZUHR_TO_MAGHRIB
+    - Q3_OPT_3_FROM_SUNRISE_TO_ZUHR
+    - Q3_OPT_4_ENTIRE_NIGHT
+    CorrectAnswerIndex: 0
+    Explanation: Q3_EXPL_ARAFAT_TIME
+    GemsReward: 10
+  - QuestionText: Q4_ARAFAT_LOCATION_MEANING
+    Options:
+    - Q4_OPT_1_PLACE_OF_SACRIFICE
+    - Q4_OPT_2_PLACE_OF_KNOWLEDGE
+    - Q4_OPT_3_PLACE_OF_STONING
+    - Q4_OPT_4_PLACE_OF_TALBIYAH
+    CorrectAnswerIndex: 1
+    Explanation: Q4_EXPL_ARAFAT_MEANING
+    GemsReward: 10
+  - QuestionText: Q5_ARAFAT_FAREWELL_SERMON
+    Options:
+    - Q5_OPT_1_PROPHET_MUSA
+    - Q5_OPT_2_PROPHET_IBRAHIM
+    - Q5_OPT_3_PROPHET_MUHAMMAD
+    - Q5_OPT_4_PROPHET_ADAM
+    CorrectAnswerIndex: 2
+    Explanation: Q5_EXPL_FAREWELL_SERMON
+    GemsReward: 10
+  - QuestionText: Q6_ARAFAT_MISSING_CONSEQUENCE
+    Options:
+    - Q6_OPT_1_SACRIFICE_ANIMAL
+    - Q6_OPT_2_FAST_THREE_DAYS
+    - Q6_OPT_3_HAJJ_INVALID
+    - Q6_OPT_4_PAY_FIDYAH
+    CorrectAnswerIndex: 2
+    Explanation: Q6_EXPL_MISSING_ARAFAT
+    GemsReward: 10
+  - QuestionText: Q7_ARAFAT_RECOMMENDED_SUPPLICATION
+    Options:
+    - Q7_OPT_1_TALBIYAH_ONLY
+    - Q7_OPT_2_LA_ILAHA_ILLALLAH
+    - Q7_OPT_3_SAYID_AL_ISTIGHFAR
+    - Q7_OPT_4_SURAH_AL_IKHLAS
+    CorrectAnswerIndex: 2
+    Explanation: Q7_EXPL_BEST_DUA
+    GemsReward: 10
+  CompletionBonusGems: 20
+  PassThreshold: 60

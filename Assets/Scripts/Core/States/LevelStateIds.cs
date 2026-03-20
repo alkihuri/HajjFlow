@@ -20,6 +20,7 @@ namespace HajjFlow.Core.States
         public const string Miqat  = "Miqat";
         public const string Tawaf  = "Tawaf";
         public const string Sa3i   = "Sa3i";
+        public const string Arafat  = "Arafat";
 
         /// <summary>All level state IDs in progression order.</summary>
         public static readonly List<string> LevelStates = new List<string>
@@ -39,6 +40,7 @@ namespace HajjFlow.Core.States
             Miqat,
             Tawaf,
             Sa3i,
+            Arafat,
             Results
         };
 

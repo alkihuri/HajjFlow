@@ -22,7 +22,13 @@ namespace HajjFlow.Core.LevelsLogic
         [SerializeField] protected TheoryCardsManager theoryCardsManager;
 
         protected QuizService quizService;
-        
+
+        public bool activeInHierarchy
+        {
+            
+            get => gameObject.activeInHierarchy;
+        }
+
         public string LevelId => levelData.LevelId;
         
  
@@ -175,6 +181,11 @@ namespace HajjFlow.Core.LevelsLogic
             {
                 Debug.LogWarning($"[{GetType().Name}] No active level state to notify.");
             }
+        }
+
+        public void SetActive(bool state)
+        {
+            gameObject.SetActive(state);
         }
     }
 }

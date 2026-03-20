@@ -58,10 +58,12 @@ namespace HajjFlow.Core.States
             RegisterState(new ResultsState());
 
             // Level-gameplay states - all use universal LevelState with different IDs
-            RegisterState(new LevelState(GameStateIds.Warmup, theoryBlockCount: 3));
-            RegisterState(new LevelState(GameStateIds.Miqat, theoryBlockCount: 2));
-            RegisterState(new LevelState(GameStateIds.Tawaf, theoryBlockCount: 2));
-            RegisterState(new LevelState(GameStateIds.Sa3i, theoryBlockCount: 2));
+            RegisterState(new LevelState(GameStateIds.Warmup, theoryBlockCount: 1));
+            RegisterState(new LevelState(GameStateIds.Miqat, theoryBlockCount: 1));
+            RegisterState(new LevelState(GameStateIds.Tawaf, theoryBlockCount: 1));
+            RegisterState(new LevelState(GameStateIds.Sa3i, theoryBlockCount: 1));
+            RegisterState(new LevelState(GameStateIds.Arafat, theoryBlockCount: 1)); 
+            
         }
 
         /// <summary>Registers a state in the machine.</summary>
