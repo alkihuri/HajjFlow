@@ -9,64 +9,66 @@
 <h1 align="center">🕋 HajjFlow</h1>
 
 <p align="center">
-  <b>Интерактивная образовательная игра, обучающая паломников основам Хаджа</b><br/>
+  <b>An interactive educational game that teaches pilgrims the fundamentals of Hajj</b><br/>
   <i>Learn. Practice. Be prepared.</i>
 </p>
 
 <p align="center">
-  Иммерсивные 2.5D-среды · Управляемые симуляции · Викторины · Аудио-обучение<br/>
-  Пользователи шаг за шагом осваивают каждый ритуал перед его реальным выполнением.
+  Immersive 2.5D environments · Guided simulations · Quizzes · Audio learning<br/>
+  Step by step — every ritual before its real performance.
 </p>
 
----
-
-## 📑 Оглавление
-
-- [Обзор проекта](#-обзор-проекта)
-- [Архитектура](#-архитектура)
-  - [Service Locator и Bootstrapper](#-service-locator-и-bootstrapper)
-  - [Конечный автомат состояний (FSM)](#-конечный-автомат-состояний-fsm)
-  - [Жизненный цикл уровня](#-жизненный-цикл-уровня)
-  - [Система локализации](#-система-локализации)
-  - [Система персистентности данных](#-система-персистентности-данных)
-  - [Система викторин](#-система-викторин)
-  - [Система вознаграждений](#-система-вознаграждений)
-- [Все сервисы](#-все-сервисы)
-- [Структура проекта](#-структура-проекта)
-- [Сцены](#-сцены)
-- [Префабы](#-префабы)
-- [Описание скриптов](#-описание-скриптов)
-- [Система вознаграждений по уровням](#-система-вознаграждений-по-уровням)
-- [Архитектурные паттерны](#-архитектурные-паттерны)
-- [Быстрый старт](#-быстрый-старт)
+> 🇷🇺 [Версия на русском (README_RUS.md)](README_RUS.md)
 
 ---
 
-## 🎯 Обзор проекта
+## 📑 Table of Contents
 
-**HajjFlow** — это Unity WebGL-приложение, обучающее паломников основам Хаджа через интерактивный геймплей. Проект построен по архитектуре **Service Locator + State Machine** и включает:
+- [Project Overview](#-project-overview)
+- [Architecture](#-architecture)
+  - [Service Locator & Bootstrapper](#-service-locator--bootstrapper)
+  - [Finite State Machine (FSM)](#-finite-state-machine-fsm)
+  - [Level Lifecycle](#-level-lifecycle)
+  - [Localization](#-localization)
+  - [Data Persistence](#-data-persistence)
+  - [Quiz System](#-quiz-system)
+  - [Reward System](#-reward-system)
+- [All Services](#-all-services)
+- [Project Structure](#-project-structure)
+- [Scenes](#-scenes)
+- [Prefabs](#-prefabs)
+- [Script Descriptions](#-script-descriptions)
+- [Level Rewards](#-level-rewards)
+- [Architectural Patterns](#-architectural-patterns)
+- [Quick Start](#-quick-start)
 
-| Характеристика | Значение |
+---
+
+## 🎯 Project Overview
+
+**HajjFlow** is a Unity WebGL application that teaches pilgrims the fundamentals of Hajj. Architecture: **Service Locator + State Machine**.
+
+| Feature | Value |
 |---|---|
-| **Уровней** | 3 (Warmup → Miqat → Tawaf) |
-| **Поддерживаемых языков** | 7 (🇷🇺 RU · 🇧🇦 BS · 🇦🇱 AL · 🇹🇷 TR · 🇸🇦 AR · 🇮🇩 ID · 🇬🇧 EN) |
-| **Сцен** | 4 (MainMenu + 3 уровня) |
-| **C# скриптов** | 65+ |
-| **Префабов** | 11 |
-| **Платформа** | WebGL (основная), Editor |
+| **Levels** | 3 (Warmup → Miqat → Tawaf) |
+| **Languages** | 7 (🇷🇺 RU · 🇧🇦 BS · 🇦🇱 AL · 🇹🇷 TR · 🇸🇦 AR · 🇮🇩 ID · 🇬🇧 EN) |
+| **Scenes** | 4 (MainMenu + 3 levels) |
+| **C# Scripts** | 65+ |
+| **Prefabs** | 11 |
+| **Platform** | WebGL, Editor |
 
-**Игровой цикл:** Главное меню → Выбор уровня → Теория (образовательные карточки) → Викторина → Результаты → Следующий уровень.
+**Game Loop:** Menu → Level Select → Theory (cards) → Quiz → Results → Next Level.
 
 ---
 
-## 🏗 Архитектура
+## 🏗 Architecture
 
-### 🔌 Service Locator и Bootstrapper
+### 🔌 Service Locator & Bootstrapper
 
-Проект использует паттерн **Service Locator** реализованный через синглтон `GameManager`:
+**Service Locator** pattern via the `GameManager` singleton:
 
 ```
-┌─ BOOTSTRAP (порядок запуска) ──────────────────────────────────────────┐
+┌─ BOOTSTRAP (startup order) ────────────────────────────────────────────┐
 │                                                                         │
 │  1. GameManager.Awake()  [ExecutionOrder = 0]                          │
 │     └── Singleton + DontDestroyOnLoad                                  │
@@ -77,37 +79,35 @@
 │     │   ├── ProfileLoaderService   (new, Plain C#)                     │
 │     │   ├── LocalizationService    (new, Plain C#)                     │
 │     │   ├── UserProfileService     (new, Plain C#)                     │
-│     │   ├── ProgressService        (new, зависит от UserProfile)       │
+│     │   ├── ProgressService        (new, depends on UserProfile)       │
 │     │   ├── UIService              (MonoBehaviour, Inspector)          │
 │     │   ├── StageCompletionService (MonoBehaviour, Inspector)          │
 │     │   ├── QuizService            (MonoBehaviour, Inspector)          │
 │     │   └── GameStateMachine       (MonoBehaviour, Inspector)          │
-│     ├── VerifyServices() → проверка наличия всех сервисов              │
-│     └── ChangeState("main_menu") → старт игры                         │
+│     ├── VerifyServices() → check all services                          │
+│     └── ChangeState("main_menu") → start                               │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-**`GameManager`** (`Assets/Scripts/Core/GameManager.cs`) — центральный синглтон:
-- `RegisterService<T>(service)` — регистрация сервиса по типу
-- `GetService<T>()` — получение сервиса (возвращает `null` если не найден)
-- `HasService<T>()` — проверка наличия сервиса
-- `AddGems(amount)` — удобный метод для начисления гемов
-- Backward-compatible свойства: `ProfileService`, `ProgressService`, `uiService`, `quizService`, `localizationService`, `profileLoaderService`
+**`GameManager`** (`Core/GameManager.cs`) — central singleton:
+- `RegisterService<T>()` / `GetService<T>()` / `HasService<T>()` — registration & access
+- `AddGems(amount)` — award gems
+- Backward-compatible properties: `ProfileService`, `ProgressService`, `uiService`, etc.
 
-**`Bootstrapper`** (`Assets/Scripts/Core/Bootstrapper.cs`) — точка входа, `[DefaultExecutionOrder(100)]`:
-- Через Inspector привязываются MonoBehaviour-сервисы: `UIService`, `StageCompletionService`, `QuizService`, `GameStateMachine`, `AudioService`
-- Plain C# сервисы создаются в коде: `ProfileLoaderService`, `LocalizationService`, `UserProfileService`, `ProgressService`
+**`Bootstrapper`** (`Core/Bootstrapper.cs`) — entry point `[DefaultExecutionOrder(100)]`:
+- MonoBehaviour services via Inspector
+- Plain C# services created in code
 
 ---
 
-### 🔄 Конечный автомат состояний (FSM)
+### 🔄 Finite State Machine (FSM)
 
-Вся игровая логика управляется единым конечным автоматом **`GameStateMachine`**:
+All game logic is driven by **`GameStateMachine`**:
 
 ```
                     ┌──────────────┐
-                    │  main_menu   │ ← точка входа
+                    │  main_menu   │ ← entry point
                     │ MainMenuState│
                     └──────┬───────┘
                            │ Start
@@ -116,13 +116,12 @@
                     │ level_select │
                     │LevelSelectSt.│
                     └──────┬───────┘
-                           │ Выбор уровня
+                           │ Select level
               ┌────────────┼────────────┐
               ▼            ▼            ▼
        ┌─────────┐  ┌─────────┐  ┌─────────┐
        │ Warmup  │  │  Miqat  │  │  Tawaf  │
-       │(Туториал│  │(Микат)  │  │(Таваф)  │
-       │3 блока) │  │2 блока  │  │2 блока  │
+       │3 blocks │  │2 blocks │  │2 blocks │
        └────┬────┘  └────┬────┘  └────┬────┘
             │            │            │
             └────────────┼────────────┘
@@ -137,29 +136,26 @@
                Replay    Level Select
 ```
 
-**Классы состояний:**
+**States:**
 
-| Класс | StateId | Описание |
+| Class | StateId | Description |
 |---|---|---|
-| `BaseGameState` | — | Абстрактный базовый: `Initialize()`, `Enter()`, `Update()`, `Exit()`, `OnPause()`, `OnResume()` |
-| `MainMenuState` | `"main_menu"` | Показ стартового экрана |
-| `LevelSelectState` | `"level_select"` | Показ экрана выбора уровней, обновление прогресса |
-| `BaseLevelState` | — | Абстрактный базовый для уровней: теория → квиз → прогресс |
-| `WarmupLevelState` | `"Warmup"` | Вводный уровень, 3 блока теории, без бонусов |
-| `MiqatLevelState` | `"Miqat"` | Уровень Микат, 2 блока теории, бонусы за скорость и отличие |
-| `TawafLevelState` | `"Tawaf"` | Уровень Таваф, 2 блока теории, стрик-бонусы и круги |
-| `ResultsState` | `"results"` | Экран результатов: счёт, гемы, кнопки «Далее»/«Повтор» |
+| `BaseGameState` | — | Abstract base: `Enter()`, `Update()`, `Exit()`, `OnPause()`, `OnResume()` |
+| `MainMenuState` | `"main_menu"` | Start screen |
+| `LevelSelectState` | `"level_select"` | Level selection, progress |
+| `BaseLevelState` | — | Base for levels: theory → quiz → progress |
+| `WarmupLevelState` | `"Warmup"` | 3 theory blocks, no bonuses |
+| `MiqatLevelState` | `"Miqat"` | 2 theory blocks, speed & excellence bonuses |
+| `TawafLevelState` | `"Tawaf"` | 2 theory blocks, streak bonuses & laps |
+| `ResultsState` | `"results"` | Score, gems, Next / Replay |
 
-**Управление FSM:**
-- `ChangeState(stateId)` — переход к состоянию (меню, результаты)
-- `ChangeState(stateId, levelData)` — переход к уровню с данными
-- `StartLevel(levelData, stateId)` — удобный метод запуска уровня
-- `CompleteLevel(scorePercent)` — завершение уровня → событие `OnLevelCompleted` → переход к Results через 2 сек
-- `ReplayCurrentLevel()` — повтор без перезагрузки сцены
-- `Pause()` / `Resume()` — пауза через `Time.timeScale`
-- **События:** `OnStateChanged`, `OnLevelCompleted`
+**Controls:**
+- `ChangeState(stateId)` / `ChangeState(stateId, levelData)` — transitions
+- `CompleteLevel(scorePercent)` — completion → `OnLevelCompleted` → Results
+- `ReplayCurrentLevel()` — replay
+- `Pause()` / `Resume()` — via `Time.timeScale`
 
-**Идентификаторы** хранятся в `GameStateIds` (`LevelStateIds.cs`):
+**Identifiers** in `GameStateIds` (`LevelStateIds.cs`):
 ```csharp
 GameStateIds.MainMenu    = "main_menu"
 GameStateIds.LevelSelect = "level_select"
@@ -171,34 +167,31 @@ GameStateIds.Tawaf       = "Tawaf"
 
 ---
 
-### 📚 Жизненный цикл уровня
+### 📚 Level Lifecycle
 
-`BaseLevelState` определяет единый жизненный цикл для всех игровых уровней:
+`BaseLevelState` defines a unified lifecycle for all levels:
 
 ```
   Enter()
     │
-    ├── ResetLevelState()            // Сброс счётчиков для чистого повтора
-    ├── ShowLevelUI()                // Абстрактный — каждый уровень свой UI
-    ├── FindObjectOfType<QuizSystem> // Поиск систем в сцене
+    ├── ResetLevelState()            // Reset counters
+    ├── ShowLevelUI()                // Abstract — each level has its own UI
+    ├── FindObjectOfType<QuizSystem>
     ├── FindObjectOfType<RewardSystem>
-    ├── Subscribe(QuizSystem events) // OnQuestionReady, OnAnswerResult, OnQuizComplete
+    ├── Subscribe(QuizSystem events)
     └── QuizSystem.Initialise(levelData)
          │
          ▼
-  Фаза теории: CompleteTheoryStage() × N
-    │  (StageCompletionService верифицирует каждый блок)
-    │  Количество блоков: TheoryBlockCount (abstract property)
-    │     Warmup = 3, Miqat = 2, Tawaf = 2
+  Theory phase: CompleteTheoryStage() × N
+    │  TheoryBlockCount: Warmup = 3, Miqat = 2, Tawaf = 2
     │
-    ▼  Когда _currentStageIndex >= TheoryBlockCount
+    ▼  When _currentStageIndex >= TheoryBlockCount
   StartQuiz()
-    │  QuizService.InitializeQuiz(questions)
     │
     ▼
-  Цикл вопросов:
-    HandleQuestionReady(question, num)  ← переопределяется в TawafLevelState
-    HandleAnswerResult(wasCorrect)      ← переопределяется в Miqat/Tawaf для бонусов
+  Question loop:
+    HandleQuestionReady(question, num)
+    HandleAnswerResult(wasCorrect)
     │
     ▼
   HandleQuizComplete(scorePercent)
@@ -206,443 +199,345 @@ GameStateIds.Tawaf       = "Tawaf"
     │
     ▼
   Exit()
-    ├── SaveProgress()               // ProgressService + StageCompletionService + ProfileLoaderService
+    ├── SaveProgress()
     └── UnsubscribeQuizEvents()
 ```
 
 ---
 
-### 🌍 Система локализации
+### 🌍 Localization
 
-HajjFlow использует собственную кастомную систему локализации на базе CSV:
-
-```
-┌─ ИСТОЧНИКИ ДАННЫХ ──────────────────────────────────────────────────────┐
-│                                                                          │
-│  Основной: Google Sheets (публичный CSV)                                │
-│  └── URL: docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv    │
-│                                                                          │
-│  Фоллбэк: Resources/localization.csv (TextAsset)                       │
-│                                                                          │
-└──────────────────────────────────────────────────────────────────────────┘
-
-┌─ CSV ФОРМАТ ────────────────────────────────────────────────────────────┐
-│  key          │ ru        │ bs       │ al       │ tr    │ ar   │ id │ en │
-│  WELCOME      │ Добро пож.│ Dobrodošli│ Mirësevini│ Hoş..│ مرحبا│ ...│ ...│
-│  START_BTN    │ Начать    │ Počni    │ Fillo    │ Başla│ ابدأ │ ...│ ...│
-└──────────────────────────────────────────────────────────────────────────┘
-```
-
-**Компоненты системы:**
-
-| Компонент | Тип | Роль |
-|---|---|---|
-| `Language` (enum) | `Data/Language.cs` | `Russian, Bosnian, Albanian, Turkish, Arabic, Indonesian, English` |
-| `LocalizationService` | Plain C# | Загрузка CSV, хранение таблицы `_table[key][language]`, смена языка, уведомление UI |
-| `GameTextController` | MonoBehaviour | Компонент на TMP_Text, авто-обновление при смене языка |
-| `LanguageSelectController` | MonoBehaviour | UI выбора языка, вызывает `LocalizationService.ChangeLanguage()` |
-| `LocalizationEditorService` | Editor | Инструменты редактора для локализации |
-
-**Поток данных:**
+Custom CSV-based system supporting 7 languages:
 
 ```
- Конструктор LocalizationService:
-   1. LoadSavedLanguage()   ← PlayerPrefs["SelectedLanguage"]
-   2. LoadCsv()             ← Resources.Load<TextAsset>("localization")
-   3. ParseCsv(csv)         ← Разбор заголовков (ru,bs,al,tr,ar,id,en) → Dictionary<string, Dictionary<Language, string>>
+┌─ SOURCES ───────────────────────────────────────────────────────────────┐
+│  Primary:  Google Sheets (public CSV)                                   │
+│  Fallback: Resources/localization.csv                                   │
+└─────────────────────────────────────────────────────────────────────────┘
 
- Смена языка: ChangeLanguage(Language)
-   1. Обновление _currentLanguage
-   2. PlayerPrefs.SetInt("SelectedLanguage", (int)language)
-   3. Обход всех зарегистрированных GameTextController → UpdateText()
-   4. Событие OnLanguageChanged
-
- Получение текста: GetText(key) → возвращает перевод или сам ключ как фоллбэк
-
- GameTextController (на каждом TMP_Text в сцене):
-   Awake()     → Register(this) в LocalizationService
-   OnEnable()  → UpdateText()
-   OnDestroy() → Unregister(this)
-   UpdateText() → _textComponent.text = service.GetText(_localizationKey)
-
- Загрузка из Google Sheets (Editor / Runtime):
-   LoadFromGoogleSheets() → UnityWebRequest.Get(URL) → ParseCsv() → обновить все тексты
-   В Editor → SaveCsvToResources() → File.WriteAllText("Resources/localization.csv")
+  CSV: key | ru | bs | al | tr | ar | id | en
 ```
 
----
-
-### 💾 Система персистентности данных
-
-Многоуровневая система сохранения с паттерном **Strategy**:
-
-```
-┌─ ProfileLoaderService (стратегия загрузки) ──────────────────────────────┐
-│                                                                           │
-│  Приоритет загрузки:  Backend (100) → PlayerPrefs (50) → File (10)      │
-│                                                                           │
-│  Провайдеры (IProfileDataProvider):                                      │
-│  ┌────────────────────────┬──────────┬──────────────────────────────────┐│
-│  │ Провайдер              │ Приоритет│ Описание                         ││
-│  ├────────────────────────┼──────────┼──────────────────────────────────┤│
-│  │ BackendProfileProvider │ 100      │ REST API (опционально)          ││
-│  │ PlayerPrefsProfileProvider│ 50    │ Unity PlayerPrefs (по умолчанию)││
-│  │ FileProfileProvider    │ 10       │ JSON-файл (отключён)            ││
-│  └────────────────────────┴──────────┴──────────────────────────────────┘│
-│                                                                           │
-│  Загрузка:  Load() / LoadAsync() → первый успешный провайдер → кеш      │
-│  Сохранение: Save() → все локальные; SaveAsync() → все включая Backend  │
-│  Кеш: _cachedProfile, InvalidateCache() для принудительной перезагрузки │
-│  Синхронизация: SyncWithBackendAsync() → двусторонняя синхронизация     │
-│                                                                           │
-└───────────────────────────────────────────────────────────────────────────┘
-
-┌─ UserProfileService (обёртка для профиля) ───────────────────────────────┐
-│  GetProfile() → загружает/возвращает UserProfile                         │
-│  UpdateProfile(Action<UserProfile>) → изменение + немедленное сохранение │
-│  Save() → файл + PlayerPrefs                                            │
-│  ResetProgress() → сброс всего прогресса                                │
-└───────────────────────────────────────────────────────────────────────────┘
-
-┌─ UserProfile (модель данных) ────────────────────────────────────────────┐
-│  FirstName, LastName → FullName                                          │
-│  TotalProgress (0–100%)                                                  │
-│  Gems (валюта)                                                           │
-│  CompletedLevelIds (List<string>)                                        │
-│  LevelProgress (SerializableDictionary<string, float>)                   │
-│  ResetProgress() → очистка всех данных                                   │
-└───────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-### ❓ Система викторин
-
-Проект содержит две независимые системы викторин:
-
-| Система | Тип | Роль |
-|---|---|---|
-| `QuizSystem` | MonoBehaviour (сцена) | Исполнение квиза: `Initialise(levelData)`, `SubmitAnswer()`, `Advance()`, события: `OnQuestionReady`, `OnAnswerResult`, `OnQuizComplete` |
-| `QuizService` | MonoBehaviour (сервис) | Сервис квиза: `InitializeQuiz(questions)`, `SubmitAnswer(index)`, `MoveToNextQuestion()`, события: `OnQuestionDisplayed`, `OnAnswerCorrect`, `OnAnswerIncorrect`, `OnQuizCompleted` |
-
-**`BaseLevelState`** подписывается на события **`QuizSystem`** (из сцены), но также инициализирует **`QuizService`** для передачи вопросов. Финальный счёт читается из `QuizService.GetLastScorePercent()`.
-
-**Модель вопроса (`QuizQuestion`):**
-```
-QuestionText    — текст вопроса
-Options[]       — 4 варианта ответа
-CorrectAnswerIndex — индекс правильного
-Explanation     — пояснение к ответу
-GemsReward      — награда за правильный ответ
-ShuffleOptions() — перемешивание вариантов
-```
-
----
-
-### 🏆 Система вознаграждений
-
-Реализована через `RewardSystem` (MonoBehaviour в сцене) + логику в состояниях уровней:
-
-| Уровень | Бонусы |
+| Component | Role |
 |---|---|
-| **Warmup** | Только базовые гемы за правильные ответы (`question.GemsReward`) |
-| **Miqat** | + **Бонус скорости:** +2 гема если ответ менее чем за 3 минуты<br/>+ **Бонус за отличие:** +50% от `CompletionBonusGems` при score ≥ 90% |
-| **Tawaf** | + **Стрик-бонус:** +`streak × 2` гемов начиная с 3-го подряд правильного<br/>+ **Идеальный круг:** +20 гемов за 7 подряд правильных<br/>+ **Идеальный Таваф:** +50 гемов за 100% прохождение |
+| `Language` (enum) | `Russian, Bosnian, Albanian, Turkish, Arabic, Indonesian, English` |
+| `LocalizationService` | Load CSV, `_table[key][language]`, switch language, notify UI |
+| `GameTextController` | Auto-update TMP_Text on language change |
+| `LanguageSelectController` | Language selection UI |
+
+**Flow:**
+```
+Constructor → LoadSavedLanguage() → LoadCsv() → ParseCsv()
+ChangeLanguage() → update all GameTextControllers → OnLanguageChanged
+GetText(key) → translation or key as fallback
+```
 
 ---
 
-## 🔧 Все сервисы
+### 💾 Data Persistence
 
-| Сервис | Тип | Файл | Описание |
+Multi-layer saving with the **Strategy** pattern:
+
+```
+┌─ ProfileLoaderService ───────────────────────────────────────────────────┐
+│  Priority: Backend (100) → PlayerPrefs (50) → File (10)                 │
+│  Load() → first successful provider → cache                             │
+│  Save() → all local; SaveAsync() → all including Backend                │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ UserProfileService ─────────────────────────────────────────────────────┐
+│  GetProfile() → load / return UserProfile                                │
+│  UpdateProfile() → modify + save                                         │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌─ UserProfile ────────────────────────────────────────────────────────────┐
+│  FirstName, LastName, TotalProgress, Gems, CompletedLevelIds,            │
+│  LevelProgress (SerializableDictionary)                                  │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### ❓ Quiz System
+
+Two components:
+
+| System | Role |
+|---|---|
+| `QuizSystem` (scene) | Execution: `Initialise()`, `SubmitAnswer()`, `Advance()`, events `OnQuestionReady`, `OnAnswerResult`, `OnQuizComplete` |
+| `QuizService` (service) | Management: `InitializeQuiz()`, `SubmitAnswer()`, `MoveToNextQuestion()`, `GetLastScorePercent()` |
+
+`BaseLevelState` subscribes to `QuizSystem` and initializes `QuizService`. Final score comes from `QuizService.GetLastScorePercent()`.
+
+---
+
+### 🏆 Reward System
+
+`RewardSystem` (MonoBehaviour) + logic in level states:
+
+| Level | Bonuses |
+|---|---|
+| **Warmup** | Base gems for correct answers |
+| **Miqat** | + speed (+2 if < 3 min) · + excellence (+50% at ≥ 90%) |
+| **Tawaf** | + streak (streak×2 from 3rd) · + perfect lap (+20 for 7 in a row) · + perfect Tawaf (+50 for 100%) |
+
+---
+
+## 🔧 All Services
+
+| Service | Type | File | Description |
 |---|---|---|---|
-| **GameManager** | MonoBehaviour Singleton | `Core/GameManager.cs` | Service Locator, DontDestroyOnLoad, `GetService<T>()` |
-| **GameStateMachine** | MonoBehaviour | `Core/States/GameStateMachine.cs` | Конечный автомат, управляет всеми состояниями игры |
-| **LocalizationService** | Plain C# | `Services/LocalizationService.cs` | Мультиязычность: CSV из Google Sheets, 7 языков, фоллбэк из Resources |
-| **UserProfileService** | Plain C# | `Services/UserProfileService.cs` | Загрузка/сохранение профиля (PlayerPrefs + File) |
-| **ProfileLoaderService** | Plain C# | `Services/ProfileLoaderService.cs` | Мульти-провайдерная загрузка: Backend → PlayerPrefs → File |
-| **ProgressService** | Plain C# | `Services/ProgressService.cs` | Отслеживание прогресса по уровням, расчёт общего прогресса |
-| **QuizService** | MonoBehaviour | `Services/QuizService.cs` | Управление квизом: вопросы, проверка ответов, подсчёт результата |
-| **StageCompletionService** | MonoBehaviour | `Services/StageCompletionService.cs` | Верификация завершения блоков теории, хранение результатов уровней |
-| **AudioService** | MonoBehaviour | `Services/AudioService.cs` | Воспроизведение звуков: `PlaySound()`, `PlayClick()`, `PlayWhoosh()` |
-| **UIService** | MonoBehaviour | `UI/UIService.cs` | Управление UI-панелями: показ/скрытие экранов, обновление гемов |
+| **GameManager** | Singleton | `Core/GameManager.cs` | Service Locator, DontDestroyOnLoad |
+| **GameStateMachine** | MonoBehaviour | `Core/States/GameStateMachine.cs` | FSM — state management |
+| **LocalizationService** | Plain C# | `Services/LocalizationService.cs` | CSV localization, 7 languages |
+| **UserProfileService** | Plain C# | `Services/UserProfileService.cs` | Profile: PlayerPrefs + File |
+| **ProfileLoaderService** | Plain C# | `Services/ProfileLoaderService.cs` | Multi-provider loading |
+| **ProgressService** | Plain C# | `Services/ProgressService.cs` | Level progress tracking |
+| **QuizService** | MonoBehaviour | `Services/QuizService.cs` | Quiz management |
+| **StageCompletionService** | MonoBehaviour | `Services/StageCompletionService.cs` | Theory block verification |
+| **AudioService** | MonoBehaviour | `Services/AudioService.cs` | Sounds: `PlayClick()`, `PlayWhoosh()` |
+| **UIService** | MonoBehaviour | `UI/UIService.cs` | UI panels, screens, gems |
 
 ---
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 Assets/
-├── Art/
-│   └── Fonts/Comfortaa/                  Шрифты
-├── Data/
-│   └── QuizData/                         JSON-данные вопросов
-├── DOTween/                              Библиотека анимаций (3rd party)
+├── Art/Fonts/Comfortaa/                   Fonts
+├── Data/QuizData/                         Quiz JSON data
+├── DOTween/                               Animation library (3rd party)
 ├── Prefabs/
-│   ├── App/
-│   │   ├── App.prefab                    Корневой контейнер приложения
-│   │   └── Services.prefab               Контейнер сервисов
-│   ├── UI/
-│   │   ├── LevelBtn.prefab              Кнопка уровня
-│   │   ├── QuestionCotroller.prefab     Контроллер вопроса
-│   │   ├── StartScreen.prefab           Стартовый экран
-│   │   ├── Levels/
-│   │   │   ├── Canvas.prefab            UI Canvas
-│   │   │   ├── LevelController.prefab   Контроллер уровня
-│   │   │   ├── LevelSelect.prefab       Экран выбора уровней
-│   │   │   └── levels.prefab            Контейнер уровней
-│   │   └── Theory/
-│   │       ├── CardViewer.prefab         Просмотрщик карточек теории
-│   │       └── WarmUpTheoryCardView.prefab  Карточка теории Warmup
+│   ├── App/                               App.prefab, Services.prefab
+│   ├── UI/                                LevelBtn, QuestionController, StartScreen
+│   │   ├── Levels/                        Canvas, LevelController, LevelSelect
+│   │   └── Theory/                        CardViewer, WarmUpTheoryCardView
 ├── Resources/
-│   ├── Audio/                            Звуковые файлы (click, whoosh)
-│   ├── SO/
-│   │   ├── Levels/                       ScriptableObjects уровней (LevelData)
-│   │   └── Theory/                       ScriptableObjects карточек теории
-│   └── localization.csv                  Локализация (7 языков)
+│   ├── Audio/                             Sound files
+│   ├── SO/Levels/, SO/Theory/             ScriptableObjects
+│   └── localization.csv                   Localization
 ├── Scenes/
-│   ├── MainMenu.unity                    Главное меню
-│   ├── 1lvl.unity                        Уровень 1 — Warmup (Подготовка)
-│   ├── 2lvl.unity                        Уровень 2 — Miqat (Микат)
-│   └── 3lvl.unity                        Уровень 3 — Tawaf (Таваф)
+│   ├── MainMenu.unity                     Main menu
+│   ├── 1lvl.unity                         Warmup
+│   ├── 2lvl.unity                         Miqat
+│   └── 3lvl.unity                         Tawaf
 ├── Scripts/
-│   ├── Core/                             Ядро: Bootstrapper, GameManager, LevelManager
-│   │   ├── States/                       Состояния FSM
-│   │   ├── LevelsLogic/                  Логика уровней (LevelController)
-│   │   └── Theory/                       Система теоретических карточек
-│   ├── Data/                             Модели данных: Language, LevelData, UserProfile, QuizQuestion
-│   ├── Editor/                           Инструменты редактора (ContentLoader, Localization)
-│   ├── Gameplay/                         Игровые системы: QuizSystem, RewardSystem
-│   ├── Services/                         Все сервисы + ProfileDataProvider/
-│   └── UI/                               UI-контроллеры (13 скриптов)
-├── Settings/                             Настройки рендеринга Unity
-├── TextMesh Pro/                         Библиотека текста (3rd party)
-└── UI Toolkit/                           Unity UI Toolkit ресурсы
+│   ├── Core/                              Bootstrapper, GameManager, States/
+│   ├── Data/                              Language, LevelData, UserProfile, QuizQuestion
+│   ├── Editor/                            Editor tools
+│   ├── Gameplay/                          QuizSystem, RewardSystem
+│   ├── Services/                          All services + ProfileDataProvider/
+│   └── UI/                                13 UI controllers
+├── Settings/                              Rendering
+├── TextMesh Pro/                          TMP (3rd party)
+└── UI Toolkit/                            UI Toolkit
 ```
 
 ---
 
-## 🎬 Сцены
+## 🎬 Scenes
 
-| Сцена | Файл | Содержимое |
+| Scene | File | Contents |
 |---|---|---|
-| **MainMenu** | `Scenes/MainMenu.unity` | Главное меню, стартовый экран, кнопка «Начать», выбор языка. Содержит `App.prefab` с `GameManager` и `Bootstrapper` |
-| **Level 1 — Warmup** | `Scenes/1lvl.unity` | Вводный уровень «Подготовка к Хаджу»: 3 блока теории → викторина |
-| **Level 2 — Miqat** | `Scenes/2lvl.unity` | Уровень «Микат»: 2 блока теории → викторина с бонусами за скорость |
-| **Level 3 — Tawaf** | `Scenes/3lvl.unity` | Уровень «Таваф»: 2 блока теории → викторина со стрик-системой и кругами |
+| **MainMenu** | `MainMenu.unity` | Start screen, language selection. `App.prefab` with `GameManager` and `Bootstrapper` |
+| **Warmup** | `1lvl.unity` | Hajj preparation: 3 theory blocks → quiz |
+| **Miqat** | `2lvl.unity` | Miqat: 2 theory blocks → quiz with speed bonuses |
+| **Tawaf** | `3lvl.unity` | Tawaf: 2 theory blocks → quiz with streak system |
 
 ---
 
-## 🧩 Префабы
+## 🧩 Prefabs
 
-### App (корневые)
+### App
 
-| Префаб | Путь | Описание |
-|---|---|---|
-| **App.prefab** | `Prefabs/App/` | Корневой GameObject приложения. Содержит `GameManager` (Singleton, DontDestroyOnLoad) и `Bootstrapper` для регистрации всех сервисов. Помещается в начальную сцену (MainMenu) |
-| **Services.prefab** | `Prefabs/App/` | Контейнер MonoBehaviour-сервисов: `AudioService`, `StageCompletionService`, `QuizService`, `GameStateMachine`. Привязаны к `Bootstrapper` через Inspector |
+| Prefab | Description |
+|---|---|
+| **App.prefab** | `GameManager` (Singleton) + `Bootstrapper`. Placed in the initial scene |
+| **Services.prefab** | `AudioService`, `StageCompletionService`, `QuizService`, `GameStateMachine` |
 
 ### UI
 
-| Префаб | Путь | Описание |
-|---|---|---|
-| **StartScreen.prefab** | `Prefabs/UI/` | Стартовый экран главного меню: логотип, кнопка «Начать», выбор языка. Управляется `MainMenuState` |
-| **LevelBtn.prefab** | `Prefabs/UI/` | Шаблон кнопки уровня для экрана выбора. Содержит `LevelTileUI`: миниатюра, название, прогресс-бар, состояние блокировки. Инстанциируется `UIService.CreateLevelButtons()` |
-| **QuestionCotroller.prefab** | `Prefabs/UI/` | Контроллер отображения вопроса викторины. Содержит `QuizUIController`: текст вопроса, 4 кнопки ответов, обратная связь (правильно/неправильно), пояснение |
-| **Canvas.prefab** | `Prefabs/UI/Levels/` | UI Canvas для игровых сцен уровней. Содержит основные панели: геймплей, пауза, прогресс |
-| **LevelController.prefab** | `Prefabs/UI/Levels/` | Контроллер потока уровня: переключение между теорией и квизом, управление `StageGameplayController`. Используется `LevelController.cs` |
-| **LevelSelect.prefab** | `Prefabs/UI/Levels/` | Экран выбора уровней: список доступных уровней (через `LevelBtn.prefab`), отображение общего прогресса и гемов |
-| **levels.prefab** | `Prefabs/UI/Levels/` | Контейнер для инстанциированных кнопок уровней |
+| Prefab | Description |
+|---|---|
+| **StartScreen.prefab** | Logo, "Start" button, language selection |
+| **LevelBtn.prefab** | Level button: thumbnail, progress bar, lock |
+| **QuestionCotroller.prefab** | Question: text, 4 answers, feedback |
+| **Canvas.prefab** | UI Canvas for level scenes |
+| **LevelController.prefab** | Theory ↔ quiz switching |
+| **LevelSelect.prefab** | Level list, progress, gems |
+| **levels.prefab** | Level buttons container |
 
-### Theory (карточки теории)
+### Theory
 
-| Префаб | Путь | Описание |
-|---|---|---|
-| **CardViewer.prefab** | `Prefabs/UI/Theory/` | Компонент просмотра теоретических карточек: пролистывание, анимации. Содержит `TheoryCardsManager` для управления жизненным циклом карточек |
-| **WarmUpTheoryCardView.prefab** | `Prefabs/UI/Theory/` | Специализированная карточка теории для Warmup-уровня. Содержит `WarmUpTheoryCard` с расширенным контентом для вводного обучения |
+| Prefab | Description |
+|---|---|
+| **CardViewer.prefab** | Card viewer: swiping, animations |
+| **WarmUpTheoryCardView.prefab** | Extended card for Warmup |
 
 ---
 
-## 📝 Описание скриптов
+## 📝 Script Descriptions
 
-### Core (ядро — 4 скрипта)
+### Core (4)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `Bootstrapper.cs` | Точка входа приложения. Регистрирует все сервисы в `GameManager`, верифицирует их наличие, запускает `MainMenuState` |
-| `GameManager.cs` | Singleton Service Locator с `DontDestroyOnLoad`. Центральный хаб для доступа ко всем сервисам через `GetService<T>()` |
-| `GameplaySceneInitializer.cs` | Инициализатор игровых сцен: находит `QuizSystem` и `RewardSystem` в сцене, подключает к текущему состоянию |
-| `LevelManager.cs` | Управление жизненным циклом уровней: `StartLevel()`, `RestartLevel()`, `ShowResults()` |
+| `Bootstrapper.cs` | Entry point. Service registration, launches `MainMenuState` |
+| `GameManager.cs` | Singleton Service Locator, `DontDestroyOnLoad`, `GetService<T>()` |
+| `GameplaySceneInitializer.cs` | Finds `QuizSystem`/`RewardSystem` in scene, connects to current state |
+| `LevelManager.cs` | `StartLevel()`, `RestartLevel()`, `ShowResults()` |
 
-### States (состояния FSM — 11 скриптов)
+### States (11)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `BaseGameState.cs` | Абстрактный базовый класс: `StateId`, `Initialize()`, `Enter()` (сбрасывает UI), `Update()`, `Exit()`, `OnPause()`, `OnResume()` |
-| `GameStateMachine.cs` | Главный FSM: регистрация 6 состояний, переходы, пауза/возобновление, события `OnStateChanged` и `OnLevelCompleted` |
-| `BaseLevelState.cs` | Абстрактный базовый для уровней: теория → квиз → сохранение. Подписка на `QuizSystem`, отслеживание ответов, `SaveProgress()` в три хранилища |
-| `LevelStateIds.cs` | Константы идентификаторов (`GameStateIds`): `MainMenu`, `LevelSelect`, `Results`, `Warmup`, `Miqat`, `Tawaf`. Утилиты: `GetNextLevelState()`, `IsLevelState()` |
-| `LevelStateMachine.cs` | Legacy-FSM для уровней (обратная совместимость) |
-| `MainMenuState.cs` | Состояние главного меню: `ui.ShowMainMenu()` |
-| `LevelSelectState.cs` | Состояние выбора уровня: `ui.ShowLevelSelect()`, обновление прогресса и гемов |
-| `WarmupLevelState.cs` | Warmup: `TheoryBlockCount = 3`, без бонусов, показ теории через `uiService.ShowWarmUpTheoryUI()` |
-| `MiqatLevelState.cs` | Miqat: `TheoryBlockCount = 2`, таймер `_startTime`, бонус скорости (+2 гема < 3 мин), бонус за ≥90% |
-| `TawafLevelState.cs` | Tawaf: `TheoryBlockCount = 2`, стрик `_consecutiveCorrect`, круги (каждые 7 вопросов), бонус за идеальный круг (+20) и идеальный Таваф (+50) |
-| `ResultsState.cs` | Показ результатов: `ui.ShowResults()` |
+| `BaseGameState.cs` | Abstract: `StateId`, `Enter()`, `Update()`, `Exit()`, `OnPause()`, `OnResume()` |
+| `GameStateMachine.cs` | FSM: 6 states, transitions, pause, events |
+| `BaseLevelState.cs` | Base for levels: theory → quiz → save |
+| `LevelStateIds.cs` | Constants: `MainMenu`, `LevelSelect`, `Results`, `Warmup`, `Miqat`, `Tawaf` |
+| `LevelStateMachine.cs` | Legacy FSM (backward compatibility) |
+| `MainMenuState.cs` | `ui.ShowMainMenu()` |
+| `LevelSelectState.cs` | `ui.ShowLevelSelect()`, progress and gems |
+| `WarmupLevelState.cs` | 3 theory blocks, no bonuses |
+| `MiqatLevelState.cs` | 2 blocks, timer, speed & ≥90% bonuses |
+| `TawafLevelState.cs` | 2 blocks, streak, laps (7 questions), bonuses |
+| `ResultsState.cs` | `ui.ShowResults()` |
 
-### Theory (система теории — 7 скриптов)
+### Theory (7)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `TheoryCardBase.cs` | Абстрактный базовый класс теоретической карточки |
-| `SimpleTheoryCard.cs` | Простая реализация карточки с текстом и изображением |
-| `WarmUpTheoryCard.cs` | Специализированная карточка для Warmup с расширенным контентом |
-| `TheoryCardData.cs` | Модель данных карточки: заголовок, текст, изображение, ключи локализации |
-| `TheoryCardContainer.cs` | Контейнер для группы карточек, управление навигацией |
-| `TheoryCardsManager.cs` | Менеджер жизненного цикла карточек: загрузка, показ, скрытие |
-| `TheoryToQuizIntegration.cs` | Мост между завершением теории и запуском квиза, вызывает `BaseLevelState.CompleteTheoryStage()` |
+| `TheoryCardBase.cs` | Abstract base card class |
+| `SimpleTheoryCard.cs` | Simple card: text + image |
+| `WarmUpTheoryCard.cs` | Extended card for Warmup |
+| `TheoryCardData.cs` | Data: title, text, image, localization keys |
+| `TheoryCardContainer.cs` | Card container, navigation |
+| `TheoryCardsManager.cs` | Lifecycle: load, show, hide |
+| `TheoryToQuizIntegration.cs` | Bridge: theory completion → quiz launch |
 
-### Data (модели данных — 5 скриптов)
+### Data (5)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `Language.cs` | Enum: `Russian`, `Bosnian`, `Albanian`, `Turkish`, `Arabic`, `Indonesian`, `English` |
-| `LevelData.cs` | ScriptableObject уровня: `LevelId`, `LevelName`, `Description`, `Questions[]`, `CompletionBonusGems`, `PassThreshold`, `Thumbnail`. Создание: Assets → Create → Manasik → Level Data |
-| `LevelProgress.cs` | Отслеживание прогресса по уровню |
-| `QuizQuestion.cs` | Модель вопроса: `QuestionText`, `Options[4]`, `CorrectAnswerIndex`, `Explanation`, `GemsReward`, `ShuffleOptions()` |
-| `UserProfile.cs` | Профиль игрока: `FirstName/LastName`, `TotalProgress`, `Gems`, `CompletedLevelIds`, `LevelProgress` (SerializableDictionary), `ResetProgress()` |
+| `Language.cs` | Enum: Russian, Bosnian, Albanian, Turkish, Arabic, Indonesian, English |
+| `LevelData.cs` | SO for level: `LevelId`, `Questions[]`, `CompletionBonusGems`, `PassThreshold` |
+| `LevelProgress.cs` | Level progress |
+| `QuizQuestion.cs` | Question: `QuestionText`, `Options[4]`, `CorrectAnswerIndex`, `GemsReward` |
+| `UserProfile.cs` | Profile: name, progress, gems, completed levels |
 
-### Services (сервисы — 8 скриптов)
+### Services (8)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `LocalizationService.cs` | CSV-локализация: загрузка из Resources/Google Sheets, `GetText(key)`, `ChangeLanguage()`, регистрация `GameTextController`, событие `OnLanguageChanged` |
-| `LocalizationServiceLoader.cs` | Утилита загрузки локализации |
-| `AudioService.cs` | Воспроизведение звуков через `AudioSource`: `PlaySound(clip)`, `PlayClick()`, `PlayWhoosh()` |
-| `UserProfileService.cs` | Персистентность профиля: PlayerPrefs + File, `GetProfile()`, `UpdateProfile()`, `Save()`, `SaveAsync()` |
-| `ProfileLoaderService.cs` | Мульти-провайдерная загрузка (Strategy): `Load()`, `LoadAsync()`, `Save()`, `SaveAsync()`, `SyncWithBackendAsync()`, `InvalidateCache()` |
-| `ProgressService.cs` | Прогресс уровней: `RecordLevelProgress()`, `GetLevelProgress()`, `IsLevelCompleted()`, расчёт `TotalProgress` как среднее всех уровней |
-| `QuizService.cs` | Управление квизом: `InitializeQuiz()`, `SubmitAnswer()`, `MoveToNextQuestion()`, `GetLastScorePercent()`. События: `OnQuestionDisplayed`, `OnAnswerCorrect/Incorrect`, `OnQuizCompleted` |
-| `StageCompletionService.cs` | Верификация блоков теории: `CompleteStage(levelId, index)`, хранение результатов: `RecordLevelResult()`, `GetLevelResult()`, `GetLevelScore()`, загрузка из профиля `LoadSavedResults()` |
+| `LocalizationService.cs` | CSV localization, `GetText()`, `ChangeLanguage()`, `OnLanguageChanged` |
+| `LocalizationServiceLoader.cs` | Loading utility |
+| `AudioService.cs` | `PlaySound()`, `PlayClick()`, `PlayWhoosh()` |
+| `UserProfileService.cs` | Profile: `GetProfile()`, `UpdateProfile()`, `Save()` |
+| `ProfileLoaderService.cs` | Strategy: `Load()`, `Save()`, `SyncWithBackendAsync()` |
+| `ProgressService.cs` | `RecordLevelProgress()`, `GetLevelProgress()`, `IsLevelCompleted()` |
+| `QuizService.cs` | `InitializeQuiz()`, `SubmitAnswer()`, `GetLastScorePercent()` |
+| `StageCompletionService.cs` | `CompleteStage()`, `RecordLevelResult()`, `GetLevelScore()` |
 
-### Profile Data Providers (провайдеры данных — 4 скрипта)
+### Profile Data Providers (4)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `IProfileDataProvider.cs` | Интерфейс: `HasData()`, `Load()`, `LoadAsync()`, `Save()`, `SaveAsync()`, `Clear()`, `ProviderName`, `Priority` |
-| `PlayerPrefsProfileProvider.cs` | Хранение в Unity PlayerPrefs (JSON). Приоритет: 50 |
-| `FileProfileProvider.cs` | Хранение в JSON-файле на диске. Приоритет: 10 (отключён по умолчанию) |
-| `BackendProfileProvider.cs` | REST API интеграция для облачной синхронизации. Приоритет: 100 |
+| `IProfileDataProvider.cs` | Interface: `Load()`, `Save()`, `Priority` |
+| `PlayerPrefsProfileProvider.cs` | PlayerPrefs (JSON), priority 50 |
+| `FileProfileProvider.cs` | JSON file, priority 10 |
+| `BackendProfileProvider.cs` | REST API, priority 100 |
 
-### Gameplay (игровые системы — 2 скрипта)
+### Gameplay (2)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `QuizSystem.cs` | Исполнитель квиза в сцене: `Initialise(levelData)`, `SubmitAnswer()`, `Advance()`. События: `OnQuestionReady`, `OnAnswerResult`, `OnQuizComplete` |
-| `RewardSystem.cs` | Распределение наград: `AwardGems(amount)` → `GameManager.AddGems()` |
+| `QuizSystem.cs` | Quiz executor: `Initialise()`, `SubmitAnswer()`, `Advance()` |
+| `RewardSystem.cs` | `AwardGems()` → `GameManager.AddGems()` |
 
-### UI (контроллеры интерфейса — 13 скриптов)
+### UI (13)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `UIService.cs` | Центральный UI-менеджер: `ShowMainMenu()`, `ShowLevelSelect()`, `ShowResults()`, `ShowLevelByStateId()`, `ResetUI()`, `UpdateGemsCounter()`, `CreateLevelButtons()` |
-| `GameTextController.cs` | Авто-обновляемый локализованный текст на TMP_Text. Указывается `_localizationKey` → текст обновляется при смене языка |
-| `LanguageSelectController.cs` | UI выбора языка: кнопки языков → `LocalizationService.ChangeLanguage()` |
-| `GameplayUI.cs` | Панель геймплея: отображение прогресса квиза |
-| `QuizUIController.cs` | Отображение вопроса: текст, 4 кнопки, фидбэк, пояснение |
-| `ResultsUI.cs` | Экран результатов: счёт, заработанные гемы, кнопки «Далее»/«Повтор» |
-| `SelectMenuUIController.cs` | Меню выбора уровней |
-| `MainGameplayMenuUI.cs` | Игровое меню: пауза, рестарт, назад |
-| `PauseMenuUI.cs` | Меню паузы: продолжить, рестарт, выход |
-| `LevelTileUI.cs` | Плитка уровня: миниатюра, название, прогресс-бар, замок |
-| `StageGameplayController.cs` | Контроллер этапа теории: отображение контента, кнопка «Далее» |
-| `ButtonEffect.cs` | Визуальные эффекты кнопок (анимации, звуки через DOTween) |
+| `UIService.cs` | Central UI: `ShowMainMenu()`, `ShowLevelSelect()`, `ShowResults()` |
+| `GameTextController.cs` | Localized TMP_Text, auto-update |
+| `LanguageSelectController.cs` | Language selection |
+| `GameplayUI.cs` | Gameplay panel |
+| `QuizUIController.cs` | Question, answers, feedback |
+| `ResultsUI.cs` | Score, gems, Next / Replay |
+| `SelectMenuUIController.cs` | Level select menu |
+| `MainGameplayMenuUI.cs` | Pause, restart, back |
+| `PauseMenuUI.cs` | Continue, restart, exit |
+| `LevelTileUI.cs` | Level tile: thumbnail, progress, lock |
+| `StageGameplayController.cs` | Theory controller, "Next" button |
+| `ButtonEffect.cs` | Button effects (DOTween) |
 
-### Level Logic (1 скрипт)
+### Level Logic (1)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `LevelController.cs` | Управление потоком внутри уровня: переключение между блоками теории и квизом |
+| `LevelController.cs` | Switching between theory and quiz |
 
-### Editor Tools (3 скрипта, `#if UNITY_EDITOR`)
+### Editor (3, `#if UNITY_EDITOR`)
 
-| Скрипт | Описание |
+| Script | Description |
 |---|---|
-| `ContentLoaderWindow.cs` | Editor-окно для загрузки контента из внешних источников |
-| `DataLoader.cs` | Утилита загрузки данных квизов/уровней |
-| `LocalizationEditorService.cs` | Editor-сервис для работы с локализацией |
+| `ContentLoaderWindow.cs` | Content loading from external sources |
+| `DataLoader.cs` | Quiz/level data loading |
+| `LocalizationEditorService.cs` | Localization tools in Editor |
 
 ---
 
-## 🏆 Система вознаграждений по уровням
+## 🏆 Level Rewards
 
 ```
-┌─ WARMUP (Подготовка) ────────────────────────────────────────┐
-│  Базовые гемы: question.GemsReward за каждый правильный      │
-│  Бонусы: нет                                                  │
-│  Блоков теории: 3                                             │
+┌─ WARMUP ─────────────────────────────────────────────────────┐
+│  Base gems: question.GemsReward                               │
+│  Bonuses: none  ·  Theory blocks: 3                          │
 └───────────────────────────────────────────────────────────────┘
 
-┌─ MIQAT (Микат) ──────────────────────────────────────────────┐
-│  Базовые гемы: question.GemsReward за каждый правильный      │
-│  Бонус скорости: +2 гема если ответ < 3 минут от старта      │
-│  Бонус за отличие: +50% CompletionBonusGems при score ≥ 90%  │
-│  Блоков теории: 2                                             │
-│  Пауза: учитывается Time.unscaledDeltaTime                   │
+┌─ MIQAT ──────────────────────────────────────────────────────┐
+│  Base gems + speed (+2 if < 3 min)                            │
+│  + excellence (+50% CompletionBonusGems at ≥ 90%)            │
+│  Theory blocks: 2                                             │
 └───────────────────────────────────────────────────────────────┘
 
-┌─ TAWAF (Таваф) ──────────────────────────────────────────────┐
-│  Базовые гемы: question.GemsReward за каждый правильный      │
-│  Стрик-бонус: +streak×2 гемов (начиная с 3-го подряд)        │
-│  Идеальный круг: +20 гемов за 7 подряд правильных            │
-│  Идеальный Таваф: +50 гемов за 100% прохождение              │
-│  Круги: каждые 7 вопросов = 1 круг Тавафа                    │
-│  Блоков теории: 2                                             │
+┌─ TAWAF ──────────────────────────────────────────────────────┐
+│  Base gems + streak (streak×2 from 3rd consecutive)           │
+│  + perfect lap (+20 for 7 in a row)                          │
+│  + perfect Tawaf (+50 for 100%)                              │
+│  Laps: every 7 questions  ·  Theory blocks: 2               │
 └───────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🧱 Архитектурные паттерны
+## 🧱 Architectural Patterns
 
-| Паттерн | Использование | Файл |
+| Pattern | Where | File |
 |---|---|---|
-| **Service Locator** | Глобальный доступ к сервисам | `GameManager.cs` |
-| **Singleton** | Единственный экземпляр GameManager | `GameManager.cs` |
-| **State Machine (FSM)** | Управление состояниями игры | `GameStateMachine.cs`, `BaseGameState.cs` |
-| **Template Method** | Жизненный цикл уровней, переопределяемые обработчики | `BaseLevelState.cs` |
-| **Strategy** | Мульти-провайдерная загрузка профилей | `ProfileLoaderService.cs`, `IProfileDataProvider` |
-| **Observer / Event-Driven** | Квиз-события, смена языка, завершение уровня | `QuizSystem`, `LocalizationService`, `GameStateMachine` |
-| **Factory** | Создание состояний в `RegisterDefaultStates()` | `GameStateMachine.cs` |
-| **DontDestroyOnLoad** | Сохранение сервисов между сценами | `GameManager.cs` |
+| **Service Locator** | Service access | `GameManager.cs` |
+| **Singleton** | Single GameManager | `GameManager.cs` |
+| **State Machine** | Game states | `GameStateMachine.cs` |
+| **Template Method** | Level lifecycle | `BaseLevelState.cs` |
+| **Strategy** | Multi-provider loading | `ProfileLoaderService.cs` |
+| **Observer** | Quiz, language, level events | `QuizSystem`, `LocalizationService` |
+| **Factory** | State creation | `GameStateMachine.cs` |
 
 ---
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-1. **Открыть проект** в Unity 2022.3+
-2. **Открыть сцену** `Assets/Scenes/MainMenu.unity`
-3. **Убедиться** что на сцене есть `App.prefab` с привязанными сервисами в `Bootstrapper`
-4. **Play** — игра стартует в `MainMenuState`
+1. Open project in **Unity 2022.3+**
+2. Open `Assets/Scenes/MainMenu.unity`
+3. Ensure `App.prefab` is in the scene with services bound in `Bootstrapper`
+4. **Play** — starts in `MainMenuState`
 
-**Конфигурация уровней:**
-- ScriptableObjects: `Assets/Resources/SO/Levels/`
-- Создание: Assets → Create → Manasik → Level Data
-- Заполнить: `LevelId`, `LevelName`, `Questions[]`, `CompletionBonusGems`, `PassThreshold`
+**Levels:** `Assets/Resources/SO/Levels/` → Assets → Create → Manasik → Level Data
 
-**Локализация:**
-- Основной файл: `Assets/Resources/localization.csv`
-- Обновление: Editor → Content Loader → Download from Google Sheets
-- Добавление ключа: добавить строку в CSV, использовать `GameTextController._localizationKey` на TMP_Text
+**Localization:** `Assets/Resources/localization.csv` → Editor → Content Loader → Download from Google Sheets
 
-**Добавление нового уровня:**
-1. Создать класс-наследник `BaseLevelState` с уникальным `StateId`
-2. Добавить константу в `GameStateIds`
-3. Зарегистрировать в `GameStateMachine.RegisterDefaultStates()`
-4. Создать `LevelData` ScriptableObject
-5. Создать сцену уровня с `QuizSystem` и `RewardSystem`
-
----
-
-<p align="center">
-  <i>Этот документ может использоваться как контекстный промпт для LLM — он содержит полное описание архитектуры, всех сервисов, состояний и скриптов проекта HajjFlow.</i>
-</p>
+**Adding a new level:**
+1. Subclass `BaseLevelState` with a unique `StateId`
+2. Add constant to `GameStateIds`
+3. Register in `GameStateMachine.RegisterDefaultStates()`
+4. Create `LevelData` ScriptableObject + scene with `QuizSystem` and `RewardSystem`
