@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: WARMUP_LEVEL_DESCRIPTION_KEY
   LevelDescriptionKey: WARMUP_LEVEL_DESCRIPTION_KEY
   QuestionTextKeys: []
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: -181533402, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
   Questions:
   - QuestionText: Q1_WHO_MUST_PERFORM_HAJJ
     Options:

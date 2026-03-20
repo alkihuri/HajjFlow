@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: TAWAF_LEVEL_DESCRIPTION_KEY
   LevelDescriptionKey: TAWAF_LEVEL_DESCRIPTION_KEY
   QuestionTextKeys: []
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 1451513191, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
   Questions:
   - QuestionText: Q_L3_HOW_MANY_TAWAF_CIRCLES
     Options:

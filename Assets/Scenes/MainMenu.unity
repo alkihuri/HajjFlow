@@ -637,22 +637,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: levelData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: _uiService
-      value: 
-      objectReference: {fileID: 17005501}
-    - target: {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: quizUIController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: theoryCardsManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1812.793
@@ -692,22 +676,6 @@ PrefabInstance:
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: levelData
-      value: 
-      objectReference: {fileID: 11400000, guid: 5bc7f9916f2464dcbaebd49f2dc5532a, type: 2}
-    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: _uiService
-      value: 
-      objectReference: {fileID: 17005501}
-    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: quizUIController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: theoryCardsManager
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6335978810760529491, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_Name
@@ -750,10 +718,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1770526467}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: _levels.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _resetProgressButton
       value: 
       objectReference: {fileID: 1202411580}
@@ -762,73 +726,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6574980487578156793}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levels.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levels.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levels.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelButtonsContainer
       value: 
       objectReference: {fileID: 206397653}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelsUI.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelsUI.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelsUI.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelsControllersContainer
       value: 
       objectReference: {fileID: 1659809500}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: _levelControllers.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelControllers.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelControllers.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelControllers.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: levelData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: _uiService
-      value: 
-      objectReference: {fileID: 17005501}
-    - target: {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: quizUIController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: theoryCardsManager
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-    - {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-    - {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -875,15 +780,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585900745411410656, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 585900745411410656, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 585900745411410656, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 598177499248548596, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_IsActive
@@ -1051,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 17005501}
     - target: {fileID: 3831816035819117047, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4915914860844884450, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: quizService
@@ -1067,11 +972,11 @@ PrefabInstance:
       objectReference: {fileID: 17005501}
     - target: {fileID: 6917408900780816908, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6917408900780816908, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6917408900780816908, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMin.y
@@ -1155,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -1560
       objectReference: {fileID: 0}
     - target: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1168,7 +1073,7 @@ PrefabInstance:
     - target: {fileID: 9118765352399012999, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: levelData
       value: 
-      objectReference: {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 9118765352399012999, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: _uiService
       value: 
