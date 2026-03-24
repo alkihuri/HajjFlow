@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: LEVEL_5_DESC
   LevelDescriptionKey: LEVEL_5_DESC
   QuestionTextKeys: []
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: -1570425861, guid: 703d62a22fd0e4b33b5b2bbf84fece9f, type: 3}
   Questions:
   - QuestionText: Q1_ARAFAT_RULING_STATUS
     Options:

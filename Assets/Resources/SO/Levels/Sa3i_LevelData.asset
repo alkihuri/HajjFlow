@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: LEVEL_4_DESC
   LevelDescriptionKey: LEVEL_4_DESC
   QuestionTextKeys: []
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: -1822056881, guid: 703d62a22fd0e4b33b5b2bbf84fece9f, type: 3}
   Questions:
   - QuestionText: Q1_SAY_LINGUISTIC_MEANING
     Options:

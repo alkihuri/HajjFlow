@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 1770526467}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levels.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _resetProgressButton
@@ -730,9 +730,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6574980487578156793}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: '_levels.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 993e03a64cfd34bf9b2299d7f937d10f, type: 2}
+      objectReference: {fileID: 11400000, guid: 46ef0d55b4578435085c1fa8db7ba6ba, type: 2}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: '_levels.Array.data[2]'
       value: 
@@ -740,7 +744,11 @@ PrefabInstance:
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: '_levels.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
+      objectReference: {fileID: 11400000, guid: 993e03a64cfd34bf9b2299d7f937d10f, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a4774349016434e319143d55a30bf817, type: 2}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelButtonsContainer
       value: 
@@ -926,6 +934,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2012711165514125567, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 2116441607558497106, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: _cardContainer
       value: 
@@ -1073,6 +1085,10 @@ PrefabInstance:
     - target: {fileID: 7808247484118187296, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -77.9881
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888794639271327033, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_SizeDelta.y

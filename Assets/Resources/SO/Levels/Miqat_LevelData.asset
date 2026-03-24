@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: MIQAT_LEVEL_DESCRIPTION_KEY
   LevelDescriptionKey: MIQAT_LEVEL_DESCRIPTION_KEY
   QuestionTextKeys: []
-  Thumbnail: {fileID: -1184445823, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
+  Thumbnail: {fileID: 23575053, guid: 703d62a22fd0e4b33b5b2bbf84fece9f, type: 3}
   Questions:
   - QuestionText: Q_L2_WHAT_IS_MIQAT
     Options:
