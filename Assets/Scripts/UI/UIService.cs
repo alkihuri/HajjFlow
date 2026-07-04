@@ -214,6 +214,8 @@ namespace HajjFlow.UI
                 return;
             }
 
+            _levels = _levels.OrderBy(l => l.LevelIndex).ToList();  
+            
             foreach (var levelData in _levels)
             {
                 GameObject tile = Instantiate(_levelButtonPrefab, _levelButtonsContainer);

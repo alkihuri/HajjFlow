@@ -13,6 +13,8 @@ namespace HajjFlow.Data
     [CreateAssetMenu(fileName = "NewLevelData", menuName = "Manasik/Level Data")]
     public class LevelData : ScriptableObject
     {
+
+        public int LevelIndex;
         [Header("Identity")]
         /// <summary>Unique identifier used to look up progress / completion state.</summary>
         public string LevelId = "";
