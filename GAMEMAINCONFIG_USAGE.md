@@ -115,11 +115,21 @@ Assets/Configs/
 │   ├── Miqat_LevelData.asset
 │   └── ...
 └── Theory/
-    ├── Warmup_TheoryContainer.asset
-    ├── Warmup_Card_00.asset
-    ├── Warmup_Card_01.asset
-    ├── Miqat_TheoryContainer.asset
-    ├── Miqat_Card_00.asset
+    ├── Warmup/
+    │   ├── Warmup_TheoryContainer.asset
+    │   ├── Warmup_Card_00.asset
+    │   ├── Warmup_Card_01.asset
+    │   ├── Warmup_Card_02.asset
+    │   └── ...
+    ├── Miqat/
+    │   ├── Miqat_TheoryContainer.asset
+    │   ├── Miqat_Card_00.asset
+    │   ├── Miqat_Card_01.asset
+    │   └── ...
+    ├── Tawaf/
+    │   ├── Tawaf_TheoryContainer.asset
+    │   ├── Tawaf_Card_00.asset
+    │   └── ...
     └── ...
 ```
 

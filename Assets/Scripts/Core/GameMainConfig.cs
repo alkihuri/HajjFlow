@@ -334,10 +334,9 @@ namespace Core
                             cardData.Description = jsonCard.Text;
                             cardData.Image = null;
 
-                            // Сохраняем карточку в той же папке что и контейнер
-                            string containerAssetPath = GetOrCreateTheoryContainerPath(levelId);
-                            string containerDir = Path.GetDirectoryName(containerAssetPath);
-                            string cardPath = Path.Combine(containerDir, $"{cardData.name}.asset");
+                            // Сохраняем карточку в папке конкретного уровня
+                            string levelTheoryFolderPath = GetOrCreateLevelTheoryFolder(levelId);
+                            string cardPath = Path.Combine(levelTheoryFolderPath, $"{cardData.name}.asset");
                             cardPath = AssetDatabase.GenerateUniqueAssetPath(cardPath);
 
                             AssetDatabase.CreateAsset(cardData, cardPath);
@@ -345,8 +344,10 @@ namespace Core
                         }
                     }
 
-                    // Сохраняем TheoryCardContainer
-                    string theoryAssetPath = GetOrCreateTheoryContainerPath(levelId);
+                    // Сохраняем TheoryCardContainer в папку конкретного уровня
+                    string levelTheoryPath = GetOrCreateLevelTheoryFolder(levelId);
+                    string theoryAssetPath = Path.Combine(levelTheoryPath, $"{levelId}_TheoryContainer.asset");
+                    theoryAssetPath = AssetDatabase.GenerateUniqueAssetPath(theoryAssetPath);
                     AssetDatabase.CreateAsset(container, theoryAssetPath);
 
                     existingEntry.TheoryContainer = container;
@@ -381,20 +382,29 @@ namespace Core
         }
 
         /// <summary>
-        /// Получает путь до TheoryCardContainer или создаёт папку если её нет
+        /// Получает путь до папки уровня в Theory или создаёт её если её нет
+        /// Структура: Theory/{LevelId}/
         /// </summary>
-        private string GetOrCreateTheoryContainerPath(string levelId)
+        private string GetOrCreateLevelTheoryFolder(string levelId)
         {
             string basePath = AssetDatabase.GetAssetPath(this);
             string directory = Path.GetDirectoryName(basePath);
             string theoryFolder = Path.Combine(directory, "Theory");
+            string levelFolder = Path.Combine(theoryFolder, levelId);
 
+            // Создаём папку Theory если её нет
             if (!AssetDatabase.IsValidFolder(theoryFolder))
             {
                 AssetDatabase.CreateFolder(directory, "Theory");
             }
 
-            return Path.Combine(theoryFolder, $"{levelId}_TheoryContainer.asset");
+            // Создаём папку для конкретного уровня если её нет
+            if (!AssetDatabase.IsValidFolder(levelFolder))
+            {
+                AssetDatabase.CreateFolder(theoryFolder, levelId);
+            }
+
+            return levelFolder;
         }
 
         /// <summary>
