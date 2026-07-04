@@ -6,14 +6,20 @@ using HajjFlow.Core;
 
 public class ButtonEffect : MonoBehaviour
 {
-    private Button _button;
+    [SerializeField] private Button _button;
 
     private AudioService _audioService;
     
     private void Awake()
     {
-        _button.onClick.AddListener(Effect);
-        _button = GetComponent<Button>();
+        _button??= GetComponent<Button>();
+        if(_button == null)
+        {
+            Debug.LogError("[ButtonEffect] No Button component found on the GameObject. Disabling ButtonEffect.");
+            enabled = false;
+            return;
+        }
+        _button.onClick.AddListener(Effect); 
         _audioService = GameManager.Instance?.GetService<AudioService>();
     }
 

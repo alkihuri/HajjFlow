@@ -27,6 +27,14 @@ namespace HajjFlow.Data
             new SerializableDictionary<string, float>();
 
         public string FullName => $"{FirstName} {LastName}".Trim();
+
+        public void ResetProgress()
+        { 
+            TotalProgress = 0f;
+            CompletedLevelIds.Clear();
+            LevelProgress.Keys.Clear();
+            LevelProgress.Values.Clear();
+        }
     }
 
     /// <summary>

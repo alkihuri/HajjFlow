@@ -6,6 +6,7 @@ using HajjFlow.Core;
 using HajjFlow.Core.States;
 using TMPro;
 using System.Collections;
+using System.Linq;
 using DG.Tweening;
 
 namespace HajjFlow.UI
@@ -92,8 +93,8 @@ namespace HajjFlow.UI
             Debug.Log("[QuizUIController] Displaying question: " + question.QuestionText);
 
             // Отображаем текст вопроса
-            questionText.text = question.QuestionText;
-
+            questionText.text = question.QuestionText; 
+            
             // Отображаем варианты ответов
             for (int i = 0; i < answerButtons.Length && i < question.Options.Length; i++)
             {

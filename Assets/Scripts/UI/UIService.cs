@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -22,32 +24,51 @@ namespace HajjFlow.UI
 
         [SerializeField] private GameObject _levelButtonPrefab;
         [SerializeField] private Button _backButton;
+        [SerializeField] private Button _backFromLevelsButton;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _gameStartButton;
+        [SerializeField] private Button _resetProgressButton;
 
         [SerializeField] private GameObject _gameStartScree;
         [SerializeField] private GameObject _mainMenuScreen;
         [SerializeField] private GameObject _levelSelect;
 
         [SerializeField] private GameObject _levelsUiRoot;
-        [SerializeField] private GameObject[] _levelsUI;
-
         [SerializeField] private GameTextController _levelTitleText;
 
         [SerializeField] private TextMeshProUGUI _gemsCounterText;
 
         // - level Controllers 
         [Header("Level Controllers")] [SerializeField]
-        private WarmupLevelController _warmupLevelController;
+        private Transform _levelsControllersContainer;
 
-        [SerializeField] private MiqatLevelController _miqatLevelController;
-        [SerializeField] private TawafLevelController _tawafLevelController;
+        [SerializeField] private LevelController _levelControllerPrefab;
+        [SerializeField] private List<LevelController> _levelControllers = new List<LevelController>();
 
         [Header("Level Configuration")] [SerializeField]
-        private LevelData[] _levels;
+        private List<LevelData> _levels = new List<LevelData>();
 
         private ProgressService _progressService;
-        private List<LevelTileUI> _levelSelectButtons = new  List<LevelTileUI>();
+        private List<LevelTileUI> _levelSelectButtons = new List<LevelTileUI>();
+
+
+        private void Awake()
+        {
+            foreach (var level in _levels)
+            {
+                // Instantiate a LevelController for each level and parent it under _levelsControllersContainer
+                if (_levelControllerPrefab != null && _levelsControllersContainer != null)
+                {
+                    var controllerObj = Instantiate(_levelControllerPrefab, _levelsControllersContainer);
+                    var controller = controllerObj.GetComponent<LevelController>();
+                    if (controller != null)
+                    {
+                        controller.Init(level);
+                        _levelControllers.Add(controller);
+                    }
+                }
+            }
+        }
 
         private void Start()
         {
@@ -55,11 +76,30 @@ namespace HajjFlow.UI
 
             _backButton?.onClick.AddListener(OnBackClicked);
 
+            _backFromLevelsButton.onClick.AddListener(OnBackClicked);
+
             _gameStartButton?.onClick.AddListener(GameStartUI);
+
+            _resetProgressButton?.onClick.AddListener(ResetGameProgress);
 
             _nextLevelButton?.onClick.AddListener(NextLevel);
 
             BuildLevelGrid();
+        }
+
+
+        private void ResetGameProgress()
+        {
+            var userProfileService = GameManager.Instance?.GetService<UserProfileService>();
+            if (userProfileService == null)
+            {
+                Debug.LogWarning("[UIService] UserProfileService not found, cannot reset progress");
+                return;
+            }
+
+            userProfileService.ResetProgress();
+
+            UpdateLevelTileButtons(true);
         }
 
         private void NextLevel()
@@ -115,19 +155,26 @@ namespace HajjFlow.UI
         {
             int levelIndex = levelNumber - 1;
 
+            if (!(levelIndex >= 0 && levelIndex < _levels.Count))
+            {
+                Debug.LogWarning($"[UIService] Unknown level UI: {levelIndex}");
+                return;
+            }
+
+
             Debug.Log($"[UIService] Showing level index {levelIndex}");
 
             if (!_levelsUiRoot.activeInHierarchy)
                 _levelsUiRoot.SetActive(true);
 
-            foreach (var lvl in _levelsUI)
+            foreach (var lvl in _levelControllers)
             {
                 lvl.SetActive(false);
             }
 
-            if (levelIndex >= 0 && levelIndex < _levelsUI.Length)
+            if (!_levelControllers[levelIndex].activeInHierarchy)
             {
-                _levelsUI[levelIndex].SetActive(true);
+                _levelControllers[levelIndex].SetActive(true);
             }
         }
 
@@ -141,13 +188,9 @@ namespace HajjFlow.UI
             _gameStartScree?.SetActive(false);
             _levelSelect?.SetActive(false);
 
-            int levelNumber = stateId switch
-            {
-                GameStateIds.Warmup => 1,
-                GameStateIds.Miqat => 2,
-                GameStateIds.Tawaf => 3,
-                _ => 0
-            };
+            // Находим индекс уровня в списке по LevelId
+            int levelIndex = _levels.FindIndex(l => l.LevelId == stateId);
+            int levelNumber = levelIndex + 1; // levelNumber = 1-based
 
             if (levelNumber > 0)
             {
@@ -159,10 +202,6 @@ namespace HajjFlow.UI
             }
         }
 
-        // Backward-compatible wrappers
-        public void WarmUpLevelShow() => ShowLevelByStateId(GameStateIds.Warmup);
-        public void MiqatLevelShow() => ShowLevelByStateId(GameStateIds.Miqat);
-        public void TawafLevelShow() => ShowLevelByStateId(GameStateIds.Tawaf);
 
         // ── Private ──────────────────────────────────────────────────────────────
 
@@ -175,6 +214,8 @@ namespace HajjFlow.UI
                 return;
             }
 
+            _levels = _levels.OrderBy(l => l.LevelIndex).ToList();  
+            
             foreach (var levelData in _levels)
             {
                 GameObject tile = Instantiate(_levelButtonPrefab, _levelButtonsContainer);
@@ -191,7 +232,7 @@ namespace HajjFlow.UI
 
         private void OnLevelTileClicked(LevelData level)
         {
-            string stateId = DetermineStateId(level.LevelId);
+            string stateId = level.LevelId;
 
             _levelTitleText.text = $"{level.LevelName}";
 
@@ -207,21 +248,6 @@ namespace HajjFlow.UI
             }
         }
 
-        private string DetermineStateId(string levelId)
-        {
-            string id = levelId.ToLower();
-
-            if (id.Contains("warmup") || id.Contains("warm") || id.Contains("1"))
-                return GameStateIds.Warmup;
-            else if (id.Contains("miqat") || id.Contains("2"))
-                return GameStateIds.Miqat;
-            else if (id.Contains("tawaf") || id.Contains("3"))
-                return GameStateIds.Tawaf;
-
-            Debug.LogWarning($"[UIService] Unknown level id '{levelId}', defaulting to warmup");
-            return GameStateIds.Warmup;
-        }
-
         private void OnBackClicked()
         {
             var sm = GameManager.Instance?.GetService<GameStateMachine>();
@@ -231,17 +257,6 @@ namespace HajjFlow.UI
                 LevelManager.GoToMainMenu();
         }
 
-        public void ShowUpQuizUI(QuizUIController quizUIController)
-        {
-            if (quizUIController == null)
-            {
-                Debug.LogError("[UIService] Cannot show quiz UI: QuizUIController reference is null!");
-                return;
-            }
-
-            quizUIController.gameObject.SetActive(true);
-        }
-
         /// <summary>
         /// Сбрасывает состояние всех уровней.
         /// </summary>
@@ -249,66 +264,78 @@ namespace HajjFlow.UI
         {
             Debug.Log("[UIService] Resetting all level UIs");
 
-            if (_warmupLevelController != null)
+            foreach (var levelController in _levelControllers)
             {
-                _warmupLevelController.ResetLevel();
+                levelController.ResetLevel();
+            }
+        }
+
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            // load all LEvelData assets from the Resources/Levels folder if the list is empty (for convenience)
+            if (_levels.Count == 0)
+            {
+                _levels = Resources.LoadAll<LevelData>("SO/Levels").ToList();
+            }
+        }
+#endif
+
+        /// <summary>
+        /// Получает контроллер уровня по его ID с ленивой инициализацией.
+        /// </summary>
+        private LevelController GetLevelController(string levelId)
+        {
+            // Ленивая инициализация - получаем контроллеры, если список пуст или контроллер не найден
+            var controller = _levelControllers.Find(lc => lc.LevelId == levelId);
+
+
+            if (controller == null && _levelsControllersContainer != null)
+            {
+                _levelControllers = _levelsControllersContainer.GetComponentsInChildren<LevelController>().ToList();
+                controller = _levelControllers.Find(lc => lc.LevelId == levelId);
             }
 
-            if (_miqatLevelController != null)
-            {
-                _miqatLevelController.ResetLevel();
-            }
+            return controller;
+        }
 
-            if (_tawafLevelController != null)
+        /// <summary>
+        /// Показывает блок теории для уровня по его ID.
+        /// </summary>
+        public void ShowTheoryUI(string levelId)
+        {
+            var controller = GetLevelController(levelId);
+
+            if (controller != null)
             {
-                _tawafLevelController.ResetLevel();
+                controller.ShowTheory();
+            }
+            else
+            {
+                Debug.LogWarning($"[UIService] LevelController for '{levelId}' is null!");
             }
         }
 
         /// <summary>
         /// Показывает блок теории для Warmup уровня.
         /// </summary>
-        public void ShowWarmUpTheoryUI()
-        {
-            if (_warmupLevelController != null)
-            {
-                _warmupLevelController.ShowTheory();
-            }
-            else
-            {
-                Debug.LogWarning("[UIService] WarmupLevelController is null!");
-            }
-        }
+        public void ShowWarmUpTheoryUI() => ShowTheoryUI(GameStateIds.Warmup);
 
         /// <summary>
         /// Показывает блок теории для Miqat уровня.
         /// </summary>
-        public void ShowMiqatTheoryUI()
-        {
-            if (_miqatLevelController != null)
-            {
-                _miqatLevelController.ShowTheory();
-            }
-            else
-            {
-                Debug.LogWarning("[UIService] MiqatLevelController is null!");
-            }
-        }
+        public void ShowMiqatTheoryUI() => ShowTheoryUI(GameStateIds.Miqat);
 
         /// <summary>
         /// Показывает блок теории для Tawaf уровня.
         /// </summary>
-        public void ShowTawafTheoryUI()
-        {
-            if (_tawafLevelController != null)
-            {
-                _tawafLevelController.ShowTheory();
-            }
-            else
-            {
-                Debug.LogWarning("[UIService] TawafLevelController is null!");
-            }
-        }
+        public void ShowTawafTheoryUI() => ShowTheoryUI(GameStateIds.Tawaf);
+
+        /// <summary>
+        /// Показывает блок теории для Sa3i уровня.
+        /// </summary>
+        public void ShowSa3iTheoryUI() => ShowTheoryUI(GameStateIds.Sa3i);
 
         public void UpdateGemsCounter(int gems, int totalGems = 0)
         {
@@ -320,12 +347,12 @@ namespace HajjFlow.UI
                     _gemsCounterText.text = $"{gems}";
             }
         }
-        
-        public void  UpdateLevelTileButtons()
+
+        public void UpdateLevelTileButtons(bool forceRefresh = false)
         {
             foreach (var tile in _levelSelectButtons)
             {
-                tile.UpdateUiData();
+                tile.UpdateUiData(forceRefresh);
             }
         }
     }

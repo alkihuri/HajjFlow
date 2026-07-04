@@ -1,4 +1,9 @@
 [
+  {"LevelId" : "Miqat",
+    "LevelName" : "UI_TITLE_LEVEL_2",
+    "Description" : "MIQAT_LEVEL_DESCRIPTION_KEY",
+    "imagePath" : null
+  },
   {
     "QuestionText": "Q_L2_WHAT_IS_MIQAT",
     "Options": [

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: Sa3i_TheoryContainer
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: Sa3i
+  Cards:
+  - {fileID: 11400000, guid: 44a713dc006a943c782f9b56f2aa14dc, type: 2}
+  - {fileID: 11400000, guid: 1844064882222443cb91e1d94cbcf033, type: 2}
+  - {fileID: 11400000, guid: 2b70e26c45b0f4387b78c24aa283224f, type: 2}
+  - {fileID: 11400000, guid: 9801cf4ef926c4e1099083fea1a3997b, type: 2}
+  - {fileID: 11400000, guid: 44e4b05718bec4b39be8a0b58e27421b, type: 2}
+  - {fileID: 11400000, guid: 5b0ed74c635e14939a79ad7436284cec, type: 2}
+  - {fileID: 11400000, guid: 367d9f26c64a640c18378bc4e206c86d, type: 2}

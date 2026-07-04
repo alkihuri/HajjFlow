@@ -72,6 +72,8 @@ namespace HajjFlow.Core
         public QuizService quizService => GetService<QuizService>();
         public LocalizationService localizationService => GetService<LocalizationService>();
 
+        public ProfileLoaderService profileLoaderService => GetService<ProfileLoaderService>();
+        
         // ── Convenience helpers ──────────────────────────────────────────────────
 
         /// <summary>

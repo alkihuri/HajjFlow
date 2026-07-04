@@ -10,8 +10,10 @@ namespace Core.Theory
 {
     public class TheoryCardsManager : MonoBehaviour
     {
-        [Header("Data Source (use one)")]
-        [SerializeField] private TheoryCardContainer _cardContainer;
+        [field: Header("Data Source (use one)")]
+        [field: SerializeField]
+        public TheoryCardContainer CardContainer { get; set; }
+
         [SerializeField] private List<TheoryCardData> _data = new();
         [SerializeField] private TextMeshProUGUI _counterText;
         
@@ -39,9 +41,9 @@ namespace Core.Theory
         {
             get
             {
-                if (_cardContainer != null && _cardContainer.Cards.Count > 0)
+                if (CardContainer != null && CardContainer.Cards.Count > 0)
                 {
-                    return _cardContainer.Cards;
+                    return CardContainer.Cards;
                 }
                 return _data;
             }

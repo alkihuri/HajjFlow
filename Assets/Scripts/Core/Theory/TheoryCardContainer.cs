@@ -35,24 +35,35 @@ namespace Core.Theory
 
         private void ImportFromJson(string jsonContent, string sourcePath)
         {
-            // Parse JSON array
-            TheoryCardJsonData[] jsonCards = JsonHelper.FromJson<TheoryCardJsonData>(jsonContent);
+            // Извлекаем LevelId из первого элемента JSON
+            string extractedLevelId = JsonHelper.ExtractLevelId(jsonContent);
+            if (!string.IsNullOrEmpty(extractedLevelId))
+            {
+                LevelId = extractedLevelId;
+                Debug.Log($"[TheoryCardContainer] Extracted LevelId: {LevelId}");
+            }
+            
+            // Получаем только карточки теории (без метаданных)
+            TheoryCardJsonData[] jsonCards = JsonHelper.GetTheoryCardsOnly(jsonContent);
             
             if (jsonCards == null || jsonCards.Length == 0)
             {
-                Debug.LogError("[TheoryCardContainer] Failed to parse JSON or empty array!");
+                Debug.LogError("[TheoryCardContainer] Failed to parse JSON or no theory cards found!");
                 return;
             }
 
             // Get directory for saving ScriptableObjects
             string thisAssetPath = AssetDatabase.GetAssetPath(this);
             string directory = Path.GetDirectoryName(thisAssetPath);
-            string cardsFolder = Path.Combine(directory, $"{name}_Cards");
+            
+            // Используем LevelId для названия папки
+            string folderName = !string.IsNullOrEmpty(LevelId) ? $"{LevelId}_Cards" : $"{name}_Cards";
+            string cardsFolder = Path.Combine(directory, folderName);
             
             // Create folder if needed
             if (!AssetDatabase.IsValidFolder(cardsFolder))
             {
-                AssetDatabase.CreateFolder(directory, $"{name}_Cards");
+                AssetDatabase.CreateFolder(directory, folderName);
             }
 
             // Clear existing cards
@@ -70,8 +81,8 @@ namespace Core.Theory
                 cardData.Description = jsonCard.Text;
                 cardData.Image = null; // Can be assigned manually later
                 
-                // Save as asset
-                string cardName = SanitizeFileName($"Card_{i:D2}_{jsonCard.Title}");
+                // Save as asset - используем LevelId в имени файла
+                string cardName = SanitizeFileName($"{LevelId}_Card_{i:D2}_{jsonCard.Title}");
                 string cardPath = Path.Combine(cardsFolder, $"{cardName}.asset");
                 cardPath = AssetDatabase.GenerateUniqueAssetPath(cardPath);
                 
@@ -133,8 +144,20 @@ namespace Core.Theory
     [System.Serializable]
     public class TheoryCardJsonData
     {
+        public string Id;       // Для первого элемента с идентификатором уровня
+        public string LevelId;  // Альтернативное поле для LevelId
         public string Title;
         public string Text;
+        
+        /// <summary>
+        /// Проверяет, является ли элемент метаданными уровня (содержит Id но не Title)
+        /// </summary>
+        public bool IsLevelMetadata => !string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Title);
+        
+        /// <summary>
+        /// Проверяет, является ли элемент карточкой теории
+        /// </summary>
+        public bool IsTheoryCard => !string.IsNullOrEmpty(Title);
     }
 
     /// <summary>
@@ -149,6 +172,45 @@ namespace Core.Theory
             string wrappedJson = "{\"Items\":" + json + "}";
             Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(wrappedJson);
             return wrapper?.Items;
+        }
+        
+        /// <summary>
+        /// Извлекает LevelId из первого элемента JSON массива (поле Id)
+        /// </summary>
+        public static string ExtractLevelId(string json)
+        {
+            var items = FromJson<TheoryCardJsonData>(json);
+            if (items != null && items.Length > 0)
+            {
+                // Ищем элемент с Id но без Title (метаданные уровня)
+                foreach (var item in items)
+                {
+                    if (item.IsLevelMetadata)
+                    {
+                        return item.Id;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        /// <summary>
+        /// Возвращает только карточки теории (фильтрует метаданные)
+        /// </summary>
+        public static TheoryCardJsonData[] GetTheoryCardsOnly(string json)
+        {
+            var items = FromJson<TheoryCardJsonData>(json);
+            if (items == null) return null;
+            
+            var cards = new System.Collections.Generic.List<TheoryCardJsonData>();
+            foreach (var item in items)
+            {
+                if (item.IsTheoryCard)
+                {
+                    cards.Add(item);
+                }
+            }
+            return cards.ToArray();
         }
 
         [System.Serializable]

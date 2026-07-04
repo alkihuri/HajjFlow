@@ -1,0 +1,262 @@
+using UnityEngine;
+using HajjFlow.Data;
+using HajjFlow.Gameplay;
+using HajjFlow.Services;
+
+namespace HajjFlow.Core.States
+{
+    /// <summary>
+    /// Universal level-gameplay state.
+    /// Manages the full level lifecycle: theory blocks → quiz → completion.
+    /// Level is identified by StateId which is set dynamically.
+    /// </summary>
+    public class LevelState : BaseGameState
+    {
+        private string _stateId;
+        public override string StateId => _stateId;
+
+        protected LevelData _levelData;
+
+        // ── Quiz tracking ────────────────────────────────────────────────────────
+        protected QuizSystem _quizSystem;
+        protected RewardSystem _rewardSystem;
+        protected int _questionsAnswered;
+        protected int _correctAnswers;
+        protected int _totalQuestions;
+        protected float _lastScorePercent;
+
+        // ── Theory stage tracking ────────────────────────────────────────────────
+        protected int _currentStageIndex;
+
+        /// <summary>Number of theory blocks this level requires before the quiz.</summary>
+        protected int TheoryBlockCount { get; set; } = 2;
+
+        /// <summary>
+        /// Creates a new LevelState for the specified level.
+        /// </summary>
+        /// <param name="stateId">The unique state identifier (e.g., "Warmup", "Miqat", "Tawaf", "Sa3i")</param>
+        /// <param name="theoryBlockCount">Number of theory blocks before quiz starts</param>
+        public LevelState(string stateId, int theoryBlockCount = 2)
+        {
+            _stateId = stateId;
+            TheoryBlockCount = theoryBlockCount;
+        }
+
+        /// <summary>
+        /// Initializes the state with both the state machine and level-specific data.
+        /// Called by <see cref="GameStateMachine.ChangeState(string, LevelData)"/>.
+        /// </summary>
+        public virtual void InitializeWithLevel(GameStateMachine stateMachine, LevelData levelData)
+        {
+            base.Initialize(stateMachine);
+            _levelData = levelData;
+        }
+
+        public override void Enter()
+        {
+            Debug.Log($"[{StateId}] Entering state: {_levelData?.LevelName ?? "Unknown"}");
+
+            // Reset all runtime state for clean replay
+            ResetLevelState();
+
+            // Show level-specific UI
+            ShowLevelUI();
+
+            // Find scene systems
+            _quizSystem = Object.FindObjectOfType<QuizSystem>();
+            _rewardSystem = Object.FindObjectOfType<RewardSystem>();
+
+            if (_quizSystem == null)
+            {
+                Debug.LogError($"[{StateId}] QuizSystem not found in scene!");
+                return;
+            }
+
+            // Subscribe to quiz events
+            _quizSystem.OnQuestionReady += HandleQuestionReady;
+            _quizSystem.OnAnswerResult += HandleAnswerResult;
+            _quizSystem.OnQuizComplete += HandleQuizComplete;
+
+            // Initialize quiz
+            _quizSystem.Initialise(_levelData);
+            _totalQuestions = _levelData?.Questions?.Length ?? 0;
+
+            Debug.Log($"[{StateId}] Started with {_totalQuestions} questions");
+        }
+
+        public override void Exit()
+        {
+            SaveProgress();
+            UnsubscribeQuizEvents();
+            Debug.Log($"[{StateId}] Exiting state");
+        }
+
+        // ── UI ───────────────────────────────────────────────────────────────────
+
+        /// <summary>Called on Enter to show level-specific UI panels.</summary>
+        protected virtual void ShowLevelUI()
+        {
+            var uiService = GameManager.Instance?.uiService;
+            uiService?.ShowLevelByStateId(StateId);
+            uiService?.ShowTheoryUI(StateId);
+        }
+
+        // ── Theory stages ────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Call from scene (e.g. StageGameplayController) when a theory block is done.
+        /// Verifies via StageCompletionService and advances or starts quiz.
+        /// </summary>
+        public void CompleteTheoryStage()
+        {
+            var stageService = GameManager.Instance?.stageCompletionService;
+            if (stageService != null)
+            {
+                stageService.CompleteStage(_levelData?.LevelId ?? StateId, _currentStageIndex);
+            }
+
+            _currentStageIndex++;
+
+            if (_currentStageIndex < TheoryBlockCount)
+            {
+                Debug.Log($"[{StateId}] Theory block {_currentStageIndex}/{TheoryBlockCount}");
+            }
+            else
+            {
+                Debug.Log($"[{StateId}] All theory blocks completed, starting quiz");
+                StartQuiz();
+            }
+        }
+
+        /// <summary>Starts the quiz portion of the level.</summary>
+        protected virtual void StartQuiz()
+        {
+            if (_levelData == null || _levelData.Questions == null || _levelData.Questions.Length == 0)
+            {
+                Debug.LogError($"[{StateId}] No questions loaded for quiz!");
+                return;
+            }
+
+            var quizService = GameManager.Instance?.quizService;
+            if (quizService != null)
+            {
+                quizService.InitializeQuiz(_levelData.Questions);
+            }
+
+            Debug.Log($"[{StateId}] Quiz started with {_levelData.Questions.Length} questions");
+        }
+
+        // ── Reset ────────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Resets all runtime state so the level can be replayed without scene reload.
+        /// </summary>
+        public void ResetLevelState()
+        {
+            _questionsAnswered = 0;
+            _correctAnswers = 0;
+            _totalQuestions = 0;
+            _lastScorePercent = 0f;
+            _currentStageIndex = 0;
+        }
+
+        // ── Progress ─────────────────────────────────────────────────────────────
+
+        protected virtual void SaveProgress()
+        {
+            var progressService = GameManager.Instance?.ProgressService;
+            var quizService = GameManager.Instance?.quizService;
+            if (progressService == null || _levelData == null) return;
+
+            // Сначала получаем актуальный процент из QuizService
+            if (quizService != null)
+            {
+                _lastScorePercent = quizService.GetLastScorePercent();
+            }
+            
+            Debug.Log($"[{StateId}] Saving progress: LevelId={_levelData.LevelId}, Score={_lastScorePercent:F1}%");
+
+            // Сохраняем в ProgressService (и в profile)
+            progressService.RecordLevelProgress(
+                _levelData.LevelId, _lastScorePercent, _levelData.PassThreshold);
+
+            // Store in StageCompletionService for query by level key
+            var stageService = GameManager.Instance?.stageCompletionService;
+            stageService?.RecordLevelResult(_levelData.LevelId, _lastScorePercent);
+
+            // Также сохраняем через ProfileLoaderService
+            var profileLoader = GameManager.Instance?.profileLoaderService;
+            if (profileLoader != null)
+            {
+                var profile = profileLoader.GetProfile();
+                if (profile != null)
+                {
+                    // Записываем прогресс
+                    profile.LevelProgress.Set(_levelData.LevelId, _lastScorePercent);
+                    
+                    // Добавляем в завершённые если ещё нет
+                    if (!profile.CompletedLevelIds.Contains(_levelData.LevelId))
+                    {
+                        profile.CompletedLevelIds.Add(_levelData.LevelId);
+                    }
+                    
+                    profileLoader.Save(profile);
+                    Debug.Log($"[{StateId}] Profile saved via ProfileLoaderService: {_levelData.LevelId} = {_lastScorePercent:F1}%");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[{StateId}] ProfileLoaderService not found");
+            }
+
+            Debug.Log($"[{StateId}] Progress saved: {_lastScorePercent:F1}%");
+        }
+
+        // ── Quiz event handlers ──────────────────────────────────────────────────
+
+        protected virtual void HandleQuestionReady(QuizQuestion question, int questionNumber)
+        {
+            Debug.Log($"[{StateId}] Question {questionNumber}/{_totalQuestions}: {question.QuestionText}");
+        }
+
+        /// <summary>
+        /// Handler for answer results. Tracks correct count.
+        /// </summary>
+        protected virtual void HandleAnswerResult(bool wasCorrect, string explanation)
+        {
+            _questionsAnswered++;
+
+            if (wasCorrect)
+            {
+                _correctAnswers++;
+                Debug.Log($"[{StateId}] Correct! ({_correctAnswers}/{_questionsAnswered})");
+            }
+            else
+            {
+                Debug.Log($"[{StateId}] Wrong answer. {explanation}");
+            }
+        }
+
+        /// <summary>
+        /// Handler for quiz completion. Saves score and signals state machine.
+        /// </summary>
+        protected virtual void HandleQuizComplete(float scorePercent)
+        {
+            _lastScorePercent = scorePercent;
+            Debug.Log($"[{StateId}] Quiz completed with score: {scorePercent:F1}%");
+            _stateMachine?.CompleteLevel(scorePercent);
+        }
+
+        // ── Cleanup ──────────────────────────────────────────────────────────────
+
+        private void UnsubscribeQuizEvents()
+        {
+            if (_quizSystem != null)
+            {
+                _quizSystem.OnQuestionReady -= HandleQuestionReady;
+                _quizSystem.OnAnswerResult -= HandleAnswerResult;
+                _quizSystem.OnQuizComplete -= HandleQuizComplete;
+            }
+        }
+    }
+}

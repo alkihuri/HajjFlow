@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &17005501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+  m_PrefabInstance: {fileID: 718052292907740996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a57fb82129b4e8a9228fe41428ee62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.UIManager
 --- !u!114 &125191162 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6042578843526782871, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -130,11 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!1 &141046626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5041047310367352539, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &206397653 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -404,17 +410,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &616680884 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4935612494687338250, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f9de0434bd4d8bb431a4b6dbfcdd31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.QuizUIController
 --- !u!1 &648207995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831816035819117047, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -564,17 +559,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1310881683 stripped
+--- !u!114 &1202411580 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4915914860844884450, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8389478734541447958, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f9de0434bd4d8bb431a4b6dbfcdd31, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.QuizUIController
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &1414502102 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3858279563846927446, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
@@ -591,25 +586,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598177499248548596, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1541149503 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4996554571461285070, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TheoryCardsManager
 --- !u!1 &1605832081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7888794639271327033, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1695922500 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6150696494448490469, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+--- !u!224 &1659809500 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8251862258811798607, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1770526467 stripped
@@ -623,11 +607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!1 &1810968607 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5885339540995364766, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1859382638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8283933361547601800, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -639,17 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1987693465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2116441607558497106, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TheoryCardsManager
 --- !u!114 &2052391868 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6530834741759566172, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -669,25 +637,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: quizUIController
-      value: 
-      objectReference: {fileID: 1310881683}
-    - target: {fileID: 317345831872285377, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: theoryCardsManager
-      value: 
-      objectReference: {fileID: 1541149503}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1812.793
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2344.2927
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -717,14 +677,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: quizUIController
-      value: 
-      objectReference: {fileID: 6574980487578156796}
-    - target: {fileID: 6004215739750074608, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: theoryCardsManager
-      value: 
-      objectReference: {fileID: 1987693465}
     - target: {fileID: 6335978810760529491, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_Name
       value: App
@@ -766,29 +718,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1770526467}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _levels.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _resetProgressButton
+      value: 
+      objectReference: {fileID: 1202411580}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _backFromLevelsButton
+      value: 
+      objectReference: {fileID: 6574980487578156793}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a4774349016434e319143d55a30bf817, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 46ef0d55b4578435085c1fa8db7ba6ba, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 993e03a64cfd34bf9b2299d7f937d10f, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c5bb5ab803ff043c6b266c95ac422e16, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c7e785a039cf4afab1da0431feb4140, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levelButtonsContainer
       value: 
       objectReference: {fileID: 206397653}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelsUI.Array.data[0]'
+      propertyPath: _levelsControllersContainer
       value: 
-      objectReference: {fileID: 1695922500}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelsUI.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1810968607}
-    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: '_levelsUI.Array.data[2]'
-      value: 
-      objectReference: {fileID: 141046626}
-    - target: {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: quizUIController
-      value: 
-      objectReference: {fileID: 616680884}
-    - target: {fileID: 8820929837277791200, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
-      propertyPath: theoryCardsManager
-      value: 
-      objectReference: {fileID: 6574980487578156794}
+      objectReference: {fileID: 1659809500}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -802,6 +774,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5314038667865657, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 63
+      objectReference: {fileID: 0}
     - target: {fileID: 220034512421134208, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -874,6 +850,10 @@ PrefabInstance:
       propertyPath: quizService
       value: 
       objectReference: {fileID: 1414502102}
+    - target: {fileID: 1388309501306869676, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1696791376022195048, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -958,6 +938,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2116441607558497106, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116441607558497106, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: <CardContainer>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2307901602021259226, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -990,6 +978,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -77.9881
       objectReference: {fileID: 0}
+    - target: {fileID: 3530204334222189841, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _uiService
+      value: 
+      objectReference: {fileID: 17005501}
     - target: {fileID: 3831816035819117047, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -998,6 +990,14 @@ PrefabInstance:
       propertyPath: quizService
       value: 
       objectReference: {fileID: 1414502102}
+    - target: {fileID: 4996554571461285070, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _cardContainer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250618039013456585, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _uiService
+      value: 
+      objectReference: {fileID: 17005501}
     - target: {fileID: 6917408900780816908, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1088,16 +1088,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1820
+      value: -1560
       objectReference: {fileID: 0}
     - target: {fileID: 7972515301652155726, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0009765625
+      value: -0.0007324219
       objectReference: {fileID: 0}
     - target: {fileID: 8411598473491675172, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -237
       objectReference: {fileID: 0}
+    - target: {fileID: 9118765352399012999, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: levelData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118765352399012999, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+      propertyPath: _uiService
+      value: 
+      objectReference: {fileID: 17005501}
     m_RemovedComponents:
     - {fileID: 5742857830502918616, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
     - {fileID: 479933195876426119, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -1110,28 +1118,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
---- !u!114 &6574980487578156794 stripped
+--- !u!114 &6574980487578156793 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1388309501306869676, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7980874799230148476, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TheoryCardsManager
---- !u!114 &6574980487578156796 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1280970156809126209, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
-  m_PrefabInstance: {fileID: 6574980487578156792}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f9de0434bd4d8bb431a4b6dbfcdd31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.QuizUIController
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

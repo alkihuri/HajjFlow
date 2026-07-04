@@ -1,4 +1,5 @@
 using System;
+using HajjFlow.Core;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -57,7 +58,9 @@ namespace HajjFlow.Services
                 return;
             }
 
-            QuizQuestion question = currentQuestions[currentQuestionIndex];
+            QuizQuestion question = currentQuestions[currentQuestionIndex]; 
+            // shuffle options to prevent memorization of correct answer position
+            question.ShuffleOptions();
             Debug.Log($"[QuizService] Question {currentQuestionIndex + 1}/{currentQuestions.Length}: {question.QuestionText}");
             OnQuestionDisplayed?.Invoke(question);
         }
@@ -137,6 +140,7 @@ namespace HajjFlow.Services
             Debug.Log($"[QuizService] Quiz completed! Correct: {correctAnswerCount}/{currentQuestions.Length}");
             float scorePercent = (float)correctAnswerCount / currentQuestions.Length * 100;
             OnQuizCompleted?.Invoke(currentQuestions.Length, correctAnswerCount, scorePercent);
+ 
         }
 
         /// <summary>Возвращает текущий вопрос</summary>
