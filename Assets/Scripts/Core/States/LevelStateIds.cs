@@ -1,48 +1,56 @@
 using System.Collections.Generic;
+using System.Linq;
+using HajjFlow.Data;
 
 namespace HajjFlow.Core.States
 {
     /// <summary>
-    /// Constants for all game state identifiers.
-    /// Use these instead of string literals to avoid typos.
+    /// Constants for game-flow state identifiers and dynamic level state management.
+    /// Level states are no longer hardcoded — they are registered dynamically from <see cref="GameConfig"/>.
     /// </summary>
     public static class GameStateIds
     {
-        // ── Game-flow states ─────────────────────────────────────────────────────
+        // ── Game-flow states (fixed) ────────────────────────────────────────────
 
         public const string MainMenu    = "main_menu";
         public const string LevelSelect = "level_select";
         public const string Results     = "results";
 
-        // ── Level-gameplay states ────────────────────────────────────────────────
+        // ── Dynamic level states ────────────────────────────────────────────────
 
-        public const string Warmup = "Warmup";
-        public const string Miqat  = "Miqat";
-        public const string Tawaf  = "Tawaf";
-        public const string Sa3i   = "Sa3i";
-        public const string Arafat  = "Arafat";
+        /// <summary>
+        /// All level state IDs in progression order. Populated at runtime from GameConfig.
+        /// </summary>
+        public static readonly List<string> LevelStates = new List<string>();
 
-        /// <summary>All level state IDs in progression order.</summary>
-        public static readonly List<string> LevelStates = new List<string>
+        /// <summary>All state IDs (game-flow + level). Rebuilt when levels change.</summary>
+        public static List<string> AllStates
         {
-            Warmup,
-            Miqat,
-            Tawaf,
-            Sa3i
-        };
+            get
+            {
+                var all = new List<string> { MainMenu, LevelSelect };
+                all.AddRange(LevelStates);
+                all.Add(Results);
+                return all;
+            }
+        }
 
-        /// <summary>All state IDs.</summary>
-        public static readonly List<string> AllStates = new List<string>
+        /// <summary>
+        /// Populates level state IDs from a GameConfig. Call once at startup.
+        /// </summary>
+        public static void InitializeFromConfig(GameConfig config)
         {
-            MainMenu,
-            LevelSelect,
-            Warmup,
-            Miqat,
-            Tawaf,
-            Sa3i,
-            Arafat,
-            Results
-        };
+            LevelStates.Clear();
+            if (config == null) return;
+
+            foreach (var level in config.Levels)
+            {
+                if (!string.IsNullOrEmpty(level.LevelId))
+                {
+                    LevelStates.Add(level.LevelId);
+                }
+            }
+        }
 
         /// <summary>
         /// Returns the next level state in the sequence, or null if at the end.
@@ -71,7 +79,8 @@ namespace HajjFlow.Core.States
         /// <summary>Returns true when the id is a valid state id.</summary>
         public static bool IsValid(string stateId)
         {
-            return AllStates.Contains(stateId);
+            return stateId == MainMenu || stateId == LevelSelect || stateId == Results
+                   || LevelStates.Contains(stateId);
         }
 
         /// <summary>Returns true when the id represents a gameplay level.</summary>
@@ -85,14 +94,10 @@ namespace HajjFlow.Core.States
 
     /// <summary>
     /// Kept for backward compatibility. Use <see cref="GameStateIds"/> instead.
+    /// Level IDs are now dynamic — these constants may not match actual configured levels.
     /// </summary>
     public static class LevelStateIds
     {
-        public const string Warmup = GameStateIds.Warmup;
-        public const string Miqat  = GameStateIds.Miqat;
-        public const string Tawaf  = GameStateIds.Tawaf;
-        public const string Sa3i   = GameStateIds.Sa3i;
-
         public static readonly List<string> AllStates = GameStateIds.LevelStates;
 
         public static string GetNextState(string currentStateId) =>

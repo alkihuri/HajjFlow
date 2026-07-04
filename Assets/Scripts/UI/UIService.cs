@@ -14,8 +14,7 @@ namespace HajjFlow.UI
 {
     /// <summary>
     /// Central UI service responsible for showing / hiding screen panels.
-    /// Screen visibility is driven by the <see cref="GameStateMachine"/> states
-    /// via the public Show… methods.
+    /// Levels are loaded dynamically from <see cref="GameConfig"/> via <see cref="GameStateMachine"/>.
     /// </summary>
     public class UIService : MonoBehaviour
     {
@@ -45,16 +44,30 @@ namespace HajjFlow.UI
         [SerializeField] private LevelController _levelControllerPrefab;
         [SerializeField] private List<LevelController> _levelControllers = new List<LevelController>();
 
-        [Header("Level Configuration")] [SerializeField]
-        private List<LevelData> _levels = new List<LevelData>();
-
         private ProgressService _progressService;
         private List<LevelTileUI> _levelSelectButtons = new List<LevelTileUI>();
+
+        /// <summary>Returns the levels list from GameConfig.</summary>
+        private IReadOnlyList<LevelData> Levels
+        {
+            get
+            {
+                var sm = GameManager.Instance?.GetService<GameStateMachine>();
+                return sm?.GameConfig?.Levels;
+            }
+        }
 
 
         private void Awake()
         {
-            foreach (var level in _levels)
+            var levels = Levels;
+            if (levels == null || levels.Count == 0)
+            {
+                Debug.LogWarning("[UIService] No levels found in GameConfig. Make sure GameStateMachine has GameConfig assigned.");
+                return;
+            }
+
+            foreach (var level in levels)
             {
                 // Instantiate a LevelController for each level and parent it under _levelsControllersContainer
                 if (_levelControllerPrefab != null && _levelsControllersContainer != null)
@@ -154,8 +167,9 @@ namespace HajjFlow.UI
         public void ShowLevel(int levelNumber)
         {
             int levelIndex = levelNumber - 1;
+            var levels = Levels;
 
-            if (!(levelIndex >= 0 && levelIndex < _levels.Count))
+            if (levels == null || !(levelIndex >= 0 && levelIndex < levels.Count))
             {
                 Debug.LogWarning($"[UIService] Unknown level UI: {levelIndex}");
                 return;
@@ -172,7 +186,7 @@ namespace HajjFlow.UI
                 lvl.SetActive(false);
             }
 
-            if (!_levelControllers[levelIndex].activeInHierarchy)
+            if (levelIndex < _levelControllers.Count && !_levelControllers[levelIndex].activeInHierarchy)
             {
                 _levelControllers[levelIndex].SetActive(true);
             }
@@ -180,7 +194,7 @@ namespace HajjFlow.UI
 
         /// <summary>
         /// Shows the UI for a level by its state ID.
-        /// Replaces the per-level WarmUpLevelShow/MiqatLevelShow/TawafLevelShow methods.
+        /// Works dynamically — no hardcoded level names.
         /// </summary>
         public void ShowLevelByStateId(string stateId)
         {
@@ -188,8 +202,20 @@ namespace HajjFlow.UI
             _gameStartScree?.SetActive(false);
             _levelSelect?.SetActive(false);
 
-            // Находим индекс уровня в списке по LevelId
-            int levelIndex = _levels.FindIndex(l => l.LevelId == stateId);
+            var levels = Levels;
+            if (levels == null) return;
+
+            // Find level index dynamically by LevelId
+            int levelIndex = -1;
+            for (int i = 0; i < levels.Count; i++)
+            {
+                if (levels[i].LevelId == stateId)
+                {
+                    levelIndex = i;
+                    break;
+                }
+            }
+
             int levelNumber = levelIndex + 1; // levelNumber = 1-based
 
             if (levelNumber > 0)
@@ -205,16 +231,17 @@ namespace HajjFlow.UI
 
         // ── Private ──────────────────────────────────────────────────────────────
 
-        /// <summary>Instantiates one tile button per LevelData entry.</summary>
+        /// <summary>Instantiates one tile button per LevelData entry from GameConfig.</summary>
         private void BuildLevelGrid()
         {
-            if (_levels == null || _levelButtonPrefab == null || _levelButtonsContainer == null)
+            var levels = Levels;
+            if (levels == null || _levelButtonPrefab == null || _levelButtonsContainer == null)
             {
                 Debug.LogWarning("[UIService] Missing references — cannot build level grid.");
                 return;
             }
 
-            foreach (var levelData in _levels)
+            foreach (var levelData in levels)
             {
                 GameObject tile = Instantiate(_levelButtonPrefab, _levelButtonsContainer);
                 var tileUI = tile.GetComponent<LevelTileUI>();
@@ -268,18 +295,6 @@ namespace HajjFlow.UI
             }
         }
 
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            // load all LEvelData assets from the Resources/Levels folder if the list is empty (for convenience)
-            if (_levels.Count == 0)
-            {
-                _levels = Resources.LoadAll<LevelData>("SO/Levels").ToList();
-            }
-        }
-#endif
-
         /// <summary>
         /// Получает контроллер уровня по его ID с ленивой инициализацией.
         /// </summary>
@@ -300,6 +315,7 @@ namespace HajjFlow.UI
 
         /// <summary>
         /// Показывает блок теории для уровня по его ID.
+        /// Works with any dynamically configured level.
         /// </summary>
         public void ShowTheoryUI(string levelId)
         {
@@ -314,26 +330,6 @@ namespace HajjFlow.UI
                 Debug.LogWarning($"[UIService] LevelController for '{levelId}' is null!");
             }
         }
-
-        /// <summary>
-        /// Показывает блок теории для Warmup уровня.
-        /// </summary>
-        public void ShowWarmUpTheoryUI() => ShowTheoryUI(GameStateIds.Warmup);
-
-        /// <summary>
-        /// Показывает блок теории для Miqat уровня.
-        /// </summary>
-        public void ShowMiqatTheoryUI() => ShowTheoryUI(GameStateIds.Miqat);
-
-        /// <summary>
-        /// Показывает блок теории для Tawaf уровня.
-        /// </summary>
-        public void ShowTawafTheoryUI() => ShowTheoryUI(GameStateIds.Tawaf);
-
-        /// <summary>
-        /// Показывает блок теории для Sa3i уровня.
-        /// </summary>
-        public void ShowSa3iTheoryUI() => ShowTheoryUI(GameStateIds.Sa3i);
 
         public void UpdateGemsCounter(int gems, int totalGems = 0)
         {

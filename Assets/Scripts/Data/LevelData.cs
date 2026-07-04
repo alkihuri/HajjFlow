@@ -1,17 +1,16 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace HajjFlow.Data
 {
     /// <summary>
-    /// ScriptableObject that holds all configuration for a single game level.
-    /// Create via: Assets → Create → Manasik → Level Data
+    /// Serializable data class that holds all configuration for a single game level.
+    /// No longer a ScriptableObject — lives inside <see cref="GameConfig"/>.
+    /// Levels are added/removed dynamically in a single GameConfig asset.
     /// </summary>
-    [CreateAssetMenu(fileName = "NewLevelData", menuName = "Manasik/Level Data")]
-    public class LevelData : ScriptableObject
+    [Serializable]
+    public class LevelData
     {
         [Header("Identity")]
         /// <summary>Unique identifier used to look up progress / completion state.</summary>
@@ -35,6 +34,16 @@ namespace HajjFlow.Data
         /// <summary>Thumbnail displayed on the level-selection map tile.</summary>
         public Sprite Thumbnail;
 
+        /// <summary>URL for remote image (used with Google Sheets integration). Cached locally after first download.</summary>
+        public string ImageUrl = "";
+
+        [Header("Theory")]
+        /// <summary>Number of theory blocks this level requires before the quiz starts.</summary>
+        public int TheoryBlockCount = 1;
+
+        /// <summary>Path to TheoryCardContainer resource (e.g. "SO/Theory/Warmup/Warmup_TheoryContainer"). Set automatically or manually.</summary>
+        public string TheoryContainerPath = "";
+
         [Header("Quiz")]
         /// <summary>Questions the player must answer to complete this level.</summary>
         public QuizQuestion[] Questions;
@@ -50,65 +59,7 @@ namespace HajjFlow.Data
         [Range(0, 100)]
         public int PassThreshold = 60;
 
-        /// <summary>
-        /// Загружает вопросы из JSON файла через диалоговое окно выбора файла.
-        /// Вызывается через контекст-меню инспектора.
-        /// </summary>
-        [ContextMenu("Load Questions from JSON")]
-        public void LoadQuestionsFromJson()
-        {
-#if UNITY_EDITOR
-            // Открываем диалог выбора файла
-            string path = EditorUtility.OpenFilePanel("Select JSON Quiz File", "Assets", "json");
-            
-            if (string.IsNullOrEmpty(path))
-            {
-                Debug.Log("File selection cancelled");
-                return;
-            }
-
-            try
-            {
-                // Читаем содержимое файла
-                string jsonContent = System.IO.File.ReadAllText(path);
-                
-                // Извлекаем метаданные уровня из первого элемента
-                var metadata = QuizQuestion.ExtractLevelMetadata(jsonContent);
-                if (metadata != null)
-                {
-                    LevelId = metadata.LevelId;
-                    LevelName = metadata.LevelName;
-                    Description = metadata.Description;
-                    LevelDescriptionKey = metadata.Description; // Используем Description как ключ локализации
-                    Debug.Log($"[{name}] Loaded level metadata: Id={LevelId}, Name={LevelName}");
-                }
-                
-                // Парсим вопросы (метод автоматически пропускает элементы без QuestionText)
-                Questions = QuizQuestion.FromJsonArray(jsonContent);
-                
-                if (Questions == null || Questions.Length == 0)
-                {
-                    Debug.LogWarning($"[{name}] No questions loaded from file: {path}");
-                    return;
-                }
-
-                Debug.Log($"[{name}] Successfully loaded {Questions.Length} questions from:\n{path}");
-                
-                // Выводим для проверки
-                for (int i = 0; i < Questions.Length; i++)
-                {
-                    Debug.Log($"  Q{i+1}: {Questions[i].QuestionText}");
-                }
-
-                EditorUtility.SetDirty(this);
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError($"[{name}] Failed to load questions: {ex.Message}\n{ex.StackTrace}");
-            }
-#else
-            Debug.LogError("[" + name + "] This function only works in the Editor!");
-#endif
-        }
+        /// <summary>Order index for sorting in level selection (lower = earlier).</summary>
+        public int SortOrder = 0;
     }
 }

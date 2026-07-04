@@ -37,10 +37,10 @@ namespace HajjFlow.Core
             sm.StartLevel(level, stateId);
         }
 
-        /// <summary>Legacy overload — defaults to warmup state.</summary>
+        /// <summary>Legacy overload — starts the level using its own LevelId as state ID.</summary>
         public static void StartLevel(LevelData level)
         {
-            StartLevel(level, GameStateIds.Warmup);
+            StartLevel(level, level.LevelId);
         }
 
         /// <summary>Returns to the level-selection screen.</summary>

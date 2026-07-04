@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using HajjFlow.Data;
 using HajjFlow.Core;
+using HajjFlow.Core.States;
 
 namespace HajjFlow.Services
 {
@@ -177,36 +178,28 @@ namespace HajjFlow.Services
         // ── Verification ─────────────────────────────────────────────────────────
 
         /// <summary>
-        /// Верификация блока в зависимости от типа уровня.
-        /// Каждый уровень может иметь свои требования для завершения.
+        /// Верификация блока в зависимости от конфигурации уровня.
+        /// Уровни больше не захардкожены — проверяется через GameConfig.
         /// </summary>
         private bool VerifyStageCompletion(string levelId, int stageIndex)
         {
-            return levelId switch
+            if (stageIndex < 0) return false;
+
+            // Get the level's theory block count from GameConfig
+            var sm = GameManager.Instance?.GetService<GameStateMachine>();
+            var config = sm?.GameConfig;
+            if (config != null)
             {
-                "Warmup" => VerifyWarmupStage(stageIndex),
-                "Miqat" => VerifyMiqatStage(stageIndex),
-                "Tawaf" => VerifyTawafStage(stageIndex),
-                _ => false
-            };
-        }
+                var level = config.GetLevel(levelId);
+                if (level != null)
+                {
+                    return stageIndex < level.TheoryBlockCount;
+                }
+            }
 
-        /// <summary>Верификация блока уровня Warmup (Подготовка к Хаджу)</summary>
-        private bool VerifyWarmupStage(int stageIndex)
-        {
-            return stageIndex >= 0 && stageIndex < 3;
-        }
-
-        /// <summary>Верификация блока уровня Miqat (Микат)</summary>
-        private bool VerifyMiqatStage(int stageIndex)
-        {
-            return stageIndex >= 0 && stageIndex < 2;
-        }
-
-        /// <summary>Верификация блока уровня Tawaf (Таваф)</summary>
-        private bool VerifyTawafStage(int stageIndex)
-        {
-            return stageIndex >= 0 && stageIndex < 2;
+            // Fallback: allow any non-negative stage index if config not found
+            Debug.LogWarning($"[StageCompletionService] Level '{levelId}' not found in GameConfig, allowing stage {stageIndex}");
+            return true;
         }
 
         public float GetLevelPercent(string dataLevelId)

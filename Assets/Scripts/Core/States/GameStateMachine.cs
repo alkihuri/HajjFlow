@@ -9,11 +9,19 @@ namespace HajjFlow.Core.States
     /// <summary>
     /// The single, authoritative state machine for the entire game.
     /// Manages all states: menu screens, level gameplay, and results.
-    /// All UI transitions and game-flow decisions are driven by state Enter / Exit.
+    /// Level states are registered dynamically from <see cref="GameConfig"/>.
     /// </summary>
     public class GameStateMachine : MonoBehaviour
     {
         
+        // ── Configuration ───────────────────────────────────────────────────────
+
+        [Header("Game Configuration")]
+        [SerializeField] private GameConfig _gameConfig;
+
+        /// <summary>The game configuration asset. All levels come from here.</summary>
+        public GameConfig GameConfig => _gameConfig;
+
         // ── Events ──────────────────────────────────────────────────────────────
 
         /// <summary>Fired whenever the active state changes.</summary>
@@ -49,21 +57,35 @@ namespace HajjFlow.Core.States
             RegisterDefaultStates();
         }
 
-        /// <summary>Registers the built-in set of states.</summary>
+        /// <summary>
+        /// Registers game-flow states and dynamically creates level states from GameConfig.
+        /// </summary>
         private void RegisterDefaultStates()
         {
-            // Game-flow states
+            // Game-flow states (always present)
             RegisterState(new MainMenuState());
             RegisterState(new LevelSelectState());
             RegisterState(new ResultsState());
 
-            // Level-gameplay states - all use universal LevelState with different IDs
-            RegisterState(new LevelState(GameStateIds.Warmup, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Miqat, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Tawaf, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Sa3i, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Arafat, theoryBlockCount: 1)); 
-            
+            // Dynamic level-gameplay states from GameConfig
+            if (_gameConfig != null)
+            {
+                GameStateIds.InitializeFromConfig(_gameConfig);
+
+                foreach (var level in _gameConfig.Levels)
+                {
+                    if (string.IsNullOrEmpty(level.LevelId)) continue;
+
+                    var levelState = new LevelState(level.LevelId, level.TheoryBlockCount);
+                    RegisterState(levelState);
+                }
+
+                Debug.Log($"[GameStateMachine] Registered {_gameConfig.LevelCount} level states from GameConfig");
+            }
+            else
+            {
+                Debug.LogWarning("[GameStateMachine] GameConfig not assigned! No level states registered.");
+            }
         }
 
         /// <summary>Registers a state in the machine.</summary>
