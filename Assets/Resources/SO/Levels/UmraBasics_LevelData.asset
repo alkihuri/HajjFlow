@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: UmraBasics_LevelData
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
-  LevelIndex: 1
+  LevelIndex: 0
   LevelId: UmraBasics
   LevelName: LEVEL_0_TITLE
   Description: LEVEL_0_DESC

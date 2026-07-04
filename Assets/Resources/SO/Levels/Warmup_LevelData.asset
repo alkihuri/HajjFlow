@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: Warmup_LevelData
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
-  LevelIndex: 2
+  LevelIndex: 0
   LevelId: Warmup
   LevelName: UI_TITLE_LEVEL_1
   Description: WARMUP_LEVEL_DESCRIPTION_KEY
   LevelDescriptionKey: WARMUP_LEVEL_DESCRIPTION_KEY
   QuestionTextKeys: []
-  Thumbnail: {fileID: -181533402, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
+  Thumbnail: {fileID: 0}
   Questions:
   - QuestionText: Q1_WHO_MUST_PERFORM_HAJJ
     Options:

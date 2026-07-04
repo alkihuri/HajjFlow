@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: Arafat_LevelData
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
-  LevelIndex: 6
+  LevelIndex: 0
   LevelId: Arafat
   LevelName: LEVEL_5_TITLE
   Description: LEVEL_5_DESC

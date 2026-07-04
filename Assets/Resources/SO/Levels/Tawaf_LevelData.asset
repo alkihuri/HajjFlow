@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: Tawaf_LevelData
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
-  LevelIndex: 4
+  LevelIndex: 0
   LevelId: Tawaf
   LevelName: UI_TITLE_LEVEL_3
   Description: TAWAF_LEVEL_DESCRIPTION_KEY
   LevelDescriptionKey: TAWAF_LEVEL_DESCRIPTION_KEY
   QuestionTextKeys: []
-  Thumbnail: {fileID: 1451513191, guid: 40fd8f33f7bce4a8793a879dd836bda1, type: 3}
+  Thumbnail: {fileID: 0}
   Questions:
   - QuestionText: Q_L3_HOW_MANY_TAWAF_CIRCLES
     Options:

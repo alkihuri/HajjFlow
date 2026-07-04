@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff152c380d64c86abfad0a5b6ce2508, type: 3}
+  m_Name: Main
+  m_EditorClassIdentifier: Assembly-CSharp::Core.GameMainConfig
+  Levels:
+  - LevelId: UmraBasics
+    LevelData: {fileID: 11400000, guid: 40fc8da0cbad044039d9390821d1cfd7, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: fec208c0669db499c91df3388b0e30c9, type: 2}
+  - LevelId: Warmup
+    LevelData: {fileID: 11400000, guid: 411afba78e4ac48959c0578886c455e9, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 3d7f48a51b2f943b686d014749591f6b, type: 2}
+  - LevelId: Miqat
+    LevelData: {fileID: 11400000, guid: 478272943ffcf410bb48f8514e3b3fd7, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 9ae9fd2bdf0fc4856ac459006d92d5c6, type: 2}
+  - LevelId: Tawaf
+    LevelData: {fileID: 11400000, guid: d5894872a58c54df29716cb6b794432e, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 4a18d3e1ec3f140b783d72ab3bd81c9d, type: 2}
+  - LevelId: Sa3i
+    LevelData: {fileID: 11400000, guid: 0c03deecf709a425894185e84df9ff21, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 89a82e35a9428465a8726d5294f85adb, type: 2}
+  - LevelId: Arafat
+    LevelData: {fileID: 11400000, guid: fdb743d9e6a7241cca4de6a28536879b, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: efaf9aa79406d4586832aeba3de40d65, type: 2}
+  QuizJsonFolderPath: Data/Quiz
+  TheoryJsonFolderPath: Data/Theory
+  AutoCreateTheoryContainers: 1
