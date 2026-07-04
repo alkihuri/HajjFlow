@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: Warmup_LevelData
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
+  LevelIndex: 2
   LevelId: Warmup
   LevelName: UI_TITLE_LEVEL_1
   Description: WARMUP_LEVEL_DESCRIPTION_KEY

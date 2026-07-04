@@ -16,6 +16,7 @@ namespace HajjFlow.Core.States
 
         // ── Level-gameplay states ────────────────────────────────────────────────
 
+        public const string UmraBasics = "UmraBasics";
         public const string Warmup = "Warmup";
         public const string Miqat  = "Miqat";
         public const string Tawaf  = "Tawaf";
@@ -25,6 +26,7 @@ namespace HajjFlow.Core.States
         /// <summary>All level state IDs in progression order.</summary>
         public static readonly List<string> LevelStates = new List<string>
         {
+            UmraBasics,
             Warmup,
             Miqat,
             Tawaf,
@@ -34,6 +36,7 @@ namespace HajjFlow.Core.States
         /// <summary>All state IDs.</summary>
         public static readonly List<string> AllStates = new List<string>
         {
+            UmraBasics,
             MainMenu,
             LevelSelect,
             Warmup,
@@ -43,6 +46,7 @@ namespace HajjFlow.Core.States
             Arafat,
             Results
         };
+ 
 
         /// <summary>
         /// Returns the next level state in the sequence, or null if at the end.

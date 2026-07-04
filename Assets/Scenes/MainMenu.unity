@@ -639,15 +639,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1812.793
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2344.2927
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2182031863676940137, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 1770526467}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _levels.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _resetProgressButton
@@ -730,15 +730,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6574980487578156793}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a4774349016434e319143d55a30bf817, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: '_levels.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 993e03a64cfd34bf9b2299d7f937d10f, type: 2}
+      objectReference: {fileID: 11400000, guid: 46ef0d55b4578435085c1fa8db7ba6ba, type: 2}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: '_levels.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: c5bb5ab803ff043c6b266c95ac422e16, type: 2}
+      objectReference: {fileID: 11400000, guid: 993e03a64cfd34bf9b2299d7f937d10f, type: 2}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: '_levels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c5bb5ab803ff043c6b266c95ac422e16, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c7e785a039cf4afab1da0431feb4140, type: 2}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: '_levels.Array.data[5]'
       value: 
       objectReference: {fileID: 11400000, guid: b72e003e8ddbe4b6898d0c8079c13943, type: 2}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
