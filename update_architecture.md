@@ -105,7 +105,7 @@ return stageIndex < level.TheoryBlockCount;
 ### Удалённые файлы
 | Файл | Причина |
 |------|---------|
-| `WarmUpTheoryCard.cs` | Уровне-специфичный класс. Заменён универсальным `SimpleTheoryCard` |
+| `WarmUpTheoryCard.cs` | Уровне-специфический класс. Заменён универсальным `SimpleTheoryCard` |
 
 ---
 
