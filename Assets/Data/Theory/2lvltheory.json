@@ -1,33 +1,29 @@
 [
   {
-    "Id" : "Miqat"
+    "Id": "level_2"
   },
   {
-    "Title": "THEORY_L2_WHAT_IS_MIQAT_TITLE",
-    "Text": "THEORY_L2_WHAT_IS_MIQAT_TEXT"
+    "Title": "THEORY_L2_MIQAT_DEF_TITLE",
+    "Text": "THEORY_L2_MIQAT_DEF_TEXT"
   },
   {
-    "Title": "THEORY_L2_CROSSING_BOUNDARY_TITLE",
-    "Text": "THEORY_L2_CROSSING_BOUNDARY_TEXT"
+    "Title": "THEORY_L2_MIQAT_COUNT_TITLE",
+    "Text": "THEORY_L2_MIQAT_COUNT_TEXT"
   },
   {
-    "Title": "THEORY_L2_NIYYAH_TITLE",
-    "Text": "THEORY_L2_NIYYAH_TEXT"
+    "Title": "THEORY_L2_PLANE_MIQAT_TITLE",
+    "Text": "THEORY_L2_PLANE_MIQAT_TEXT"
   },
   {
-    "Title": "THEORY_L2_IHRAM_CLOTHING_TITLE",
-    "Text": "THEORY_L2_IHRAM_CLOTHING_TEXT"
+    "Title": "THEORY_L2_NIYYAH_UMRAH_TITLE",
+    "Text": "THEORY_L2_NIYYAH_UMRAH_TEXT"
   },
   {
-    "Title": "THEORY_L2_WOMEN_IN_IHRAM_TITLE",
-    "Text": "THEORY_L2_WOMEN_IN_IHRAM_TEXT"
+    "Title": "THEORY_L2_CROSS_ERROR_TITLE",
+    "Text": "THEORY_L2_CROSS_ERROR_TEXT"
   },
   {
-    "Title": "THEORY_L2_TALBIYAH_TITLE",
-    "Text": "THEORY_L2_TALBIYAH_TEXT"
-  },
-  {
-    "Title": "THEORY_L2_CROSSING_ERROR_TITLE",
-    "Text": "THEORY_L2_CROSSING_ERROR_TEXT"
+    "Title": "THEORY_L2_MIQAT_REGIONS_TITLE",
+    "Text": "THEORY_L2_MIQAT_REGIONS_TEXT"
   }
 ]

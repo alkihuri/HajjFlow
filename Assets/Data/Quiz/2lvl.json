@@ -1,91 +1,92 @@
 [
-  {"LevelId" : "Miqat",
-    "LevelName" : "UI_TITLE_LEVEL_2",
-    "Description" : "MIQAT_LEVEL_DESCRIPTION_KEY",
-    "imagePath" : null
+  {
+    "LevelId": "level_2",
+    "LevelName": "LEVEL_2_TITLE",
+    "Description": "LEVEL_2_DESC",
+    "imagePath": null
   },
   {
-    "QuestionText": "Q_L2_WHAT_IS_MIQAT",
+    "QuestionText": "Q2_MIQAT_DEFINITION",
     "Options": [
-      "Q_L2_OPT_SACRED_MOUNTAIN",
-      "Q_L2_OPT_IHRAM_BOUNDARY",
-      "Q_L2_OPT_PRAYER",
-      "Q_L2_OPT_CITY"
+      "Q2_OPT_1_SACRED_MOUNTAIN",
+      "Q2_OPT_2_IHRAM_BOUNDARY",
+      "Q2_OPT_3_PRAYER_PLACE",
+      "Q2_OPT_4_CITY_GATE"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_MIQAT_EXPLANATION",
-    "GemsReward": 5
+    "Explanation": "Q2_EXPL_MIQAT_DEF",
+    "GemsReward": 10
   },
   {
-    "QuestionText": "Q_L2_CAN_CROSS_MIQAT_WITHOUT_IHRAM",
+    "QuestionText": "Q2_MIQAT_COUNT",
     "Options": [
-      "Q_L2_OPT_YES",
-      "Q_L2_OPT_NO",
-      "Q_L2_OPT_ONLY_AT_NIGHT",
-      "Q_L2_OPT_SOMETIMES"
+      "Q2_OPT_1_THREE",
+      "Q2_OPT_2_FOUR",
+      "Q2_OPT_3_FIVE",
+      "Q2_OPT_4_SIX"
     ],
-    "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_CROSS_MIQAT_EXPLANATION",
-    "GemsReward": 5
+    "CorrectAnswerIndex": 2,
+    "Explanation": "Q2_EXPL_MIQAT_COUNT",
+    "GemsReward": 10
   },
   {
-    "QuestionText": "Q_L2_WHAT_TO_DO_BEFORE_MIQAT",
+    "QuestionText": "Q2_PLANE_MIQAT",
     "Options": [
-      "Q_L2_OPT_PERFORM_TAWAF",
-      "Q_L2_OPT_MAKE_NIYYAH_ENTER_IHRAM",
-      "Q_L2_OPT_READ_QURAN",
-      "Q_L2_OPT_VISIT_ZAMZAM"
+      "Q2_OPT_1_PRAY_ON_PLANE",
+      "Q2_OPT_2_WEAR_IHRAM_BEFORE_CROSS",
+      "Q2_OPT_3_WAIT_LANDING",
+      "Q2_OPT_4_IGNORE_MIQAT"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_BEFORE_MIQAT_EXPLANATION",
-    "GemsReward": 5
+    "Explanation": "Q2_EXPL_PLANE_MIQAT",
+    "GemsReward": 10
   },
   {
-    "QuestionText": "Q_L2_WHAT_MEN_WEAR_IN_IHRAM",
+    "QuestionText": "Q2_NIYYAH_UMRAH",
     "Options": [
-      "Q_L2_OPT_REGULAR_CLOTHES",
-      "Q_L2_OPT_TWO_WHITE_CLOTHS",
-      "Q_L2_OPT_SUIT",
-      "Q_L2_OPT_ANY_COMFORTABLE"
+      "Q2_OPT_1_ALLAHU_AKBAR",
+      "Q2_OPT_2_LABBAYKA_UMRATAN",
+      "Q2_OPT_3_SUBHANALLAH",
+      "Q2_OPT_4_BISMILLAH"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_MEN_IHRAM_EXPLANATION",
-    "GemsReward": 5
+    "Explanation": "Q2_EXPL_NIYYAH",
+    "GemsReward": 10
   },
   {
-    "QuestionText": "Q_L2_WHAT_AFTER_ENTERING_IHRAM",
+    "QuestionText": "Q2_CROSS_WITHOUT_IHRAM",
     "Options": [
-      "Q_L2_OPT_START_TAWAF",
-      "Q_L2_OPT_RECITE_TALBIYAH",
-      "Q_L2_OPT_RETURN_HOME",
-      "Q_L2_OPT_REMOVE_SHOES"
+      "Q2_OPT_1_CONTINUE_PATH",
+      "Q2_OPT_2_RETURN_TO_MIQAT",
+      "Q2_OPT_3_IGNORE_ERROR",
+      "Q2_OPT_4_START_TAWAF"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_AFTER_IHRAM_EXPLANATION",
-    "GemsReward": 5
+    "Explanation": "Q2_EXPL_CROSS_ERROR",
+    "GemsReward": 10
   },
   {
-    "QuestionText": "Q_L2_IF_CROSSED_MIQAT_WITHOUT_IHRAM",
+    "QuestionText": "Q2_MIQAT_REGIONS",
     "Options": [
-      "Q_L2_OPT_CONTINUE_PATH",
-      "Q_L2_OPT_RETURN_TO_MIQAT",
-      "Q_L2_OPT_IGNORE",
-      "Q_L2_OPT_START_SAI"
+      "Q2_OPT_1_ONE_FOR_ALL",
+      "Q2_OPT_2_DIFFERENT_FOR_REGIONS",
+      "Q2_OPT_3_ONLY_IN_MECCA",
+      "Q2_OPT_4_ONLY_IN_MEDINA"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_CROSSED_WITHOUT_IHRAM_EXPLANATION",
-    "GemsReward": 5
+    "Explanation": "Q2_EXPL_MIQAT_REGIONS",
+    "GemsReward": 10
   },
   {
-    "QuestionText": "Q_L2_WHEN_TALBIYAH_RECITED",
+    "QuestionText": "Q2_MIQAT_EGYPTIANS",
     "Options": [
-      "Q_L2_OPT_BEFORE_IHRAM",
-      "Q_L2_OPT_AFTER_ENTERING_IHRAM",
-      "Q_L2_OPT_AFTER_ARAFAT",
-      "Q_L2_OPT_AFTER_HAJJ"
+      "Q2_OPT_1_DHUL_HULAYFAH",
+      "Q2_OPT_2_JUHFAH",
+      "Q2_OPT_3_YALAMLAM",
+      "Q2_OPT_4_DHAT_IRQ"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q_L2_TALBIYAH_EXPLANATION",
-    "GemsReward": 5
+    "Explanation": "Q2_EXPL_MIQAT_EGYPT",
+    "GemsReward": 10
   }
 ]

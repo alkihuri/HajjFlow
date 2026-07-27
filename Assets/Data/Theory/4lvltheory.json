@@ -1,33 +1,25 @@
 [
   {
-    "Id": "Sa3i"
+    "Id": "level_4"
   },
   {
-    "Title": "THEORY_L4_SAY_DEFINITION_TITLE",
-    "Text": "THEORY_L4_SAY_DEFINITION_TEXT"
+    "Title": "THEORY_L4_TAWAF_DEF_TITLE",
+    "Text": "THEORY_L4_TAWAF_DEF_TEXT"
   },
   {
-    "Title": "THEORY_L4_SAFA_MARWA_TITLE",
-    "Text": "THEORY_L4_SAFA_MARWA_TEXT"
+    "Title": "THEORY_L4_START_END_TITLE",
+    "Text": "THEORY_L4_START_END_TEXT"
   },
   {
-    "Title": "THEORY_L4_NUMBER_LAPS_TITLE",
-    "Text": "THEORY_L4_NUMBER_LAPS_TEXT"
+    "Title": "THEORY_L4_LINES_TITLE",
+    "Text": "THEORY_L4_LINES_TEXT"
   },
   {
-    "Title": "THEORY_L4_HISTORY_HAGAR_TITLE",
-    "Text": "THEORY_L4_HISTORY_HAGAR_TEXT"
+    "Title": "THEORY_L4_PRAYER_TITLE",
+    "Text": "THEORY_L4_PRAYER_TEXT"
   },
   {
-    "Title": "THEORY_L4_RULING_STATUS_TITLE",
-    "Text": "THEORY_L4_RULING_STATUS_TEXT"
-  },
-  {
-    "Title": "THEORY_L4_RUNNING_SECTION_TITLE",
-    "Text": "THEORY_L4_RUNNING_SECTION_TEXT"
-  },
-  {
-    "Title": "THEORY_L4_VALIDITY_CONDITIONS_TITLE",
-    "Text": "THEORY_L4_VALIDITY_CONDITIONS_TEXT"
+    "Title": "THEORY_L4_DUA_NOT_OBLIGATORY_TITLE",
+    "Text": "THEORY_L4_DUA_NOT_OBLIGATORY_TEXT"
   }
 ]

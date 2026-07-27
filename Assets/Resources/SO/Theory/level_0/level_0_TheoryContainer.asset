@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: level_0_TheoryContainer
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: level_0
+  Cards:
+  - {fileID: 11400000, guid: 5a8d20840aaf7481d84c5c1cd170a14d, type: 2}
+  - {fileID: 11400000, guid: b21fc7544fd764f18bd432fa22e7109d, type: 2}
+  - {fileID: 11400000, guid: 0f5f85f3eb8854059a0076525c5214ef, type: 2}
+  - {fileID: 11400000, guid: 0a3881a3dad7a4569982f37f5a716ed8, type: 2}
+  - {fileID: 11400000, guid: 75157476336e64003b15a97531fdc790, type: 2}
+  - {fileID: 11400000, guid: 64e2242ea955d41c98efdd1b8345c776, type: 2}
+  - {fileID: 11400000, guid: 2d6ab4b8295ad42dab7c724bdfcd39e3, type: 2}

@@ -1,92 +1,92 @@
 [
   {
-    "LevelId": "Sa3i",
+    "LevelId": "level_4",
     "LevelName": "LEVEL_4_TITLE",
     "Description": "LEVEL_4_DESC",
     "imagePath": null
   },
   {
-    "QuestionText": "Q1_SAY_LINGUISTIC_MEANING",
+    "QuestionText": "Q4_TAWAF_DEFINITION",
     "Options": [
-      "Q1_OPT_1_WALKING",
-      "Q1_OPT_2_STRIVING_OR_EXERTION",
-      "Q1_OPT_3_RUNNING",
-      "Q1_OPT_4_PRAYER"
+      "Q4_OPT_1_WALK_BETWEEN_HILLS",
+      "Q4_OPT_2_CIRCUMAMBULATE_KAABA",
+      "Q4_OPT_3_PRAYER_RAKATS",
+      "Q4_OPT_4_FASTING_RITUAL"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q1_EXPL_SAY_MEANING",
+    "Explanation": "Q4_EXPL_TAWAF_DEF",
     "GemsReward": 10
   },
   {
-    "QuestionText": "Q2_SAY_STARTING_POINT",
+    "QuestionText": "Q4_TAWAF_CIRCLES",
     "Options": [
-      "Q2_OPT_1_MARWA",
-      "Q2_OPT_2_KAABA",
-      "Q2_OPT_3_SAFA",
-      "Q2_OPT_4_ARAFAT"
+      "Q4_OPT_1_FIVE",
+      "Q4_OPT_2_SIX",
+      "Q4_OPT_3_SEVEN",
+      "Q4_OPT_4_EIGHT"
     ],
     "CorrectAnswerIndex": 2,
-    "Explanation": "Q2_EXPL_START_SAFA",
+    "Explanation": "Q4_EXPL_TAWAF_CIRCLES",
     "GemsReward": 10
   },
   {
-    "QuestionText": "Q3_SAY_NUMBER_OF_LAPS",
+    "QuestionText": "Q4_TAWAF_START_END",
     "Options": [
-      "Q3_OPT_1_THREE",
-      "Q3_OPT_2_FIVE",
-      "Q3_OPT_3_SEVEN",
-      "Q3_OPT_4_TEN"
-    ],
-    "CorrectAnswerIndex": 2,
-    "Explanation": "Q3_EXPL_SEVEN_LAPS",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q4_SAY_HISTORICAL_ORIGIN",
-    "Options": [
-      "Q4_OPT_1_PROPHET_MUHAMMAD",
-      "Q4_OPT_2_PROPHET_IBRAHIM",
-      "Q4_OPT_3_HAGAR_HAJAR",
-      "Q4_OPT_4_PROPHET_ISMAIL"
-    ],
-    "CorrectAnswerIndex": 2,
-    "Explanation": "Q4_EXPL_HAGAR_STORY",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q5_SAY_RULING_STATUS",
-    "Options": [
-      "Q5_OPT_1_SUNAH_ONLY",
-      "Q5_OPT_2_RUKN_PILLAR",
-      "Q5_OPT_3_WAJIB_OBLIGATORY",
-      "Q5_OPT_4_MUSTAHAB_RECOMMENDED"
+      "Q4_OPT_1_KAABA_DOOR",
+      "Q4_OPT_2_BLACK_STONE",
+      "Q4_OPT_3_ZAMZAM_WELL",
+      "Q4_OPT_4_MAQAM_IBRAHIM"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q5_EXPL_SAY_RUKN",
+    "Explanation": "Q4_EXPL_START_END",
     "GemsReward": 10
   },
   {
-    "QuestionText": "Q6_SAY_GREEN_LIGHTS_SECTION",
+    "QuestionText": "Q4_TAWAF_LINES",
     "Options": [
-      "Q6_OPT_1_WALK_NORMALLY",
-      "Q6_OPT_2_RUN_RAPIDLY",
-      "Q6_OPT_3_STOP_PRAY",
-      "Q6_OPT_4_SIT_REST"
+      "Q4_OPT_1_RED_LINES",
+      "Q4_OPT_2_GREEN_LINES",
+      "Q4_OPT_3_BLUE_LINES",
+      "Q4_OPT_4_YELLOW_LINES"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q6_EXPL_RUNNING_MEN",
+    "Explanation": "Q4_EXPL_LINES",
     "GemsReward": 10
   },
   {
-    "QuestionText": "Q7_SAY_CONDITION_VALIDITY",
+    "QuestionText": "Q4_TAWAF_DISTANCE",
     "Options": [
-      "Q7_OPT_1_BE_IN_WUDU",
-      "Q7_OPT_2_WEAR_IHram",
-      "Q7_OPT_3_COMPLETE_SEVEN_LAPS",
-      "Q7_OPT_4_FAST_BEFORE"
+      "Q4_OPT_1_2_KM",
+      "Q4_OPT_2_3_KM",
+      "Q4_OPT_3_5_KM",
+      "Q4_OPT_4_10_KM"
     ],
     "CorrectAnswerIndex": 2,
-    "Explanation": "Q7_EXPL_COMPLETION",
+    "Explanation": "Q4_EXPL_DISTANCE",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q4_TAWAF_DUA_OBLIGATORY",
+    "Options": [
+      "Q4_OPT_1_YES_MUST_READ",
+      "Q4_OPT_2_NO_NOT_OBLIGATORY",
+      "Q4_OPT_3_ONLY_IN_MECCA",
+      "Q4_OPT_4_ONLY_ON_FRIDAY"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q4_EXPL_DUA",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q4_TAWAF_COMPLETION",
+    "Options": [
+      "Q4_OPT_1_MAKAM_IBRAHIM_PRAYER",
+      "Q4_OPT_2_DRINK_ZAMZAM",
+      "Q4_OPT_3_LEAVE_MOSQUE",
+      "Q4_OPT_4_START_SAY"
+    ],
+    "CorrectAnswerIndex": 0,
+    "Explanation": "Q4_EXPL_COMPLETION",
     "GemsReward": 10
   }
 ]

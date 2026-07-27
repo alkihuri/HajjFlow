@@ -13,24 +13,27 @@ MonoBehaviour:
   m_Name: Main
   m_EditorClassIdentifier: Assembly-CSharp::Core.GameMainConfig
   Levels:
-  - LevelId: UmraBasics
-    LevelData: {fileID: 11400000, guid: 40fc8da0cbad044039d9390821d1cfd7, type: 2}
-    TheoryContainer: {fileID: 11400000, guid: ebd3dcae0993145b29866894472e8eea, type: 2}
-  - LevelId: Warmup
-    LevelData: {fileID: 11400000, guid: 411afba78e4ac48959c0578886c455e9, type: 2}
-    TheoryContainer: {fileID: 11400000, guid: e53b18e7d82844fd0aa34070dfc0f67f, type: 2}
-  - LevelId: Miqat
-    LevelData: {fileID: 11400000, guid: 478272943ffcf410bb48f8514e3b3fd7, type: 2}
-    TheoryContainer: {fileID: 11400000, guid: a860f810a78f846179b1eb41585d36a5, type: 2}
-  - LevelId: Tawaf
-    LevelData: {fileID: 11400000, guid: d5894872a58c54df29716cb6b794432e, type: 2}
-    TheoryContainer: {fileID: 11400000, guid: 1a40789c0ae8e4ddcb49c0d64226c5ef, type: 2}
-  - LevelId: Sa3i
-    LevelData: {fileID: 11400000, guid: 0c03deecf709a425894185e84df9ff21, type: 2}
-    TheoryContainer: {fileID: 11400000, guid: ba7562066ca86457a9ba1fb0226c632e, type: 2}
-  - LevelId: Arafat
-    LevelData: {fileID: 11400000, guid: fdb743d9e6a7241cca4de6a28536879b, type: 2}
-    TheoryContainer: {fileID: 11400000, guid: 61c9e771a32834532b4af2915df7dba5, type: 2}
+  - LevelId: level_0
+    LevelData: {fileID: 11400000, guid: 099a44d54385f4385b54a87d7497fc9c, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: b6e2f91dac2994b46a729589f4fc87ec, type: 2}
+  - LevelId: level_1
+    LevelData: {fileID: 11400000, guid: 1e0e08f4920bc4c8d956b3bf8807f9ba, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 5d032e0b11bf9443f8834b2f2bda0870, type: 2}
+  - LevelId: level_2
+    LevelData: {fileID: 11400000, guid: 57e695569f4e54ffcaba19c7981b441b, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: a1811bd1701484960bd4b2f6bf8169ce, type: 2}
+  - LevelId: level_3
+    LevelData: {fileID: 11400000, guid: bfc854aee8cd14beaa90b4738bc81a0f, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 509d79772da1749729cbca99a9258837, type: 2}
+  - LevelId: level_4
+    LevelData: {fileID: 11400000, guid: 4a01fcc22afba4d3281d41b49e82a38d, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 2d069e2b52491404abd5469c89f2c74a, type: 2}
+  - LevelId: level_5
+    LevelData: {fileID: 11400000, guid: 7a8aad14f34a2401990f9f8ad334633e, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: bd4b779122ee3437bbc3420f1ded5cb1, type: 2}
+  - LevelId: level_6
+    LevelData: {fileID: 11400000, guid: a9584c36d354f432ba20977f1fab0932, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 72c83b9c67a9048f38e34d014292ca37, type: 2}
   QuizJsonFolderPath: Data/Quiz
   TheoryJsonFolderPath: Data/Theory
   AutoCreateTheoryContainers: 1

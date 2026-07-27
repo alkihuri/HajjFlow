@@ -1,10 +1,10 @@
 [
   {
-    "Id": "UmraBasics"
+    "Id": "level_0"
   },
   {
-    "Title": "THEORY_L0_UMRA_DEFINITION_TITLE",
-    "Text": "THEORY_L0_UMRA_DEFINITION_TEXT"
+    "Title": "THEORY_L0_UMRA_DEF_TITLE",
+    "Text": "THEORY_L0_UMRA_DEF_TEXT"
   },
   {
     "Title": "THEORY_L0_UMRA_VS_HAJJ_TITLE",

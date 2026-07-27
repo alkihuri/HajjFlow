@@ -1,33 +1,25 @@
 [
   {
-    "Id" : "Tawaf"
+    "Id": "level_3"
   },
   {
-    "Title": "THEORY_L3_WHAT_IS_TAWAF_TITLE",
-    "Text": "THEORY_L3_WHAT_IS_TAWAF_TEXT"
+    "Title": "THEORY_L3_ARRIVAL_TITLE",
+    "Text": "THEORY_L3_ARRIVAL_TEXT"
   },
   {
-    "Title": "THEORY_L3_NUMBER_OF_CIRCLES_TITLE",
-    "Text": "THEORY_L3_NUMBER_OF_CIRCLES_TEXT"
+    "Title": "THEORY_L3_TRANSPORT_TITLE",
+    "Text": "THEORY_L3_TRANSPORT_TEXT"
   },
   {
-    "Title": "THEORY_L3_START_POINT_TITLE",
-    "Text": "THEORY_L3_START_POINT_TEXT"
+    "Title": "THEORY_L3_IHRAM_STATUS_TITLE",
+    "Text": "THEORY_L3_IHRAM_STATUS_TEXT"
   },
   {
-    "Title": "THEORY_L3_DIRECTION_TITLE",
-    "Text": "THEORY_L3_DIRECTION_TEXT"
+    "Title": "THEORY_L3_PROHIBITIONS_TITLE",
+    "Text": "THEORY_L3_PROHIBITIONS_TEXT"
   },
   {
-    "Title": "THEORY_L3_RITUAL_PURITY_TITLE",
-    "Text": "THEORY_L3_RITUAL_PURITY_TEXT"
-  },
-  {
-    "Title": "THEORY_L3_CIRCLE_COMPLETION_TITLE",
-    "Text": "THEORY_L3_CIRCLE_COMPLETION_TEXT"
-  },
-  {
-    "Title": "THEORY_L3_DUA_DURING_TAWAF_TITLE",
-    "Text": "THEORY_L3_DUA_DURING_TAWAF_TEXT"
+    "Title": "THEORY_L3_FORGOT_IHRAM_TITLE",
+    "Text": "THEORY_L3_FORGOT_IHRAM_TEXT"
   }
 ]

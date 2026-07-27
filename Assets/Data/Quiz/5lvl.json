@@ -1,92 +1,92 @@
 [
   {
-    "LevelId": "Arafat",
+    "LevelId": "level_5",
     "LevelName": "LEVEL_5_TITLE",
     "Description": "LEVEL_5_DESC",
     "imagePath": null
   },
   {
-    "QuestionText": "Q1_ARAFAT_RULING_STATUS",
+    "QuestionText": "Q5_SAY_DEFINITION",
     "Options": [
-      "Q1_OPT_1_SUNAH_RECOMMENDED",
-      "Q1_OPT_2_WAJIB_OBLIGATORY",
-      "Q1_OPT_3_RUKN_PILLAR",
-      "Q1_OPT_4_MUSTAHAB_VOLUNTARY"
-    ],
-    "CorrectAnswerIndex": 2,
-    "Explanation": "Q1_EXPL_ARAFAT_RUKN",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q2_ARAFAT_DATE_HIJRI",
-    "Options": [
-      "Q2_OPT_1_8_DHUL_HIJJAH",
-      "Q2_OPT_2_9_DHUL_HIJJAH",
-      "Q2_OPT_3_10_DHUL_HIJJAH",
-      "Q2_OPT_4_11_DHUL_HIJJAH"
+      "Q5_OPT_1_CIRCUMAMBULATE_KAABA",
+      "Q5_OPT_2_WALK_SAFA_MARWAH",
+      "Q5_OPT_3_PRAYER_RAKATS",
+      "Q5_OPT_4_SHAVING_RITUAL"
     ],
     "CorrectAnswerIndex": 1,
-    "Explanation": "Q2_EXPL_ARAFAT_DATE",
+    "Explanation": "Q5_EXPL_SAY_DEF",
     "GemsReward": 10
   },
   {
-    "QuestionText": "Q3_ARAFAT_TIME_DURATION",
+    "QuestionText": "Q5_SAY_WALKS",
     "Options": [
-      "Q3_OPT_1_FROM_FAJR_TO_SUNSET",
-      "Q3_OPT_2_FROM_ZUHR_TO_MAGHRIB",
-      "Q3_OPT_3_FROM_SUNRISE_TO_ZUHR",
-      "Q3_OPT_4_ENTIRE_NIGHT"
+      "Q5_OPT_1_FIVE",
+      "Q5_OPT_2_SIX",
+      "Q5_OPT_3_SEVEN",
+      "Q5_OPT_4_EIGHT"
+    ],
+    "CorrectAnswerIndex": 2,
+    "Explanation": "Q5_EXPL_SAY_WALKS",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_END_7TH",
+    "Options": [
+      "Q5_OPT_1_SAFA",
+      "Q5_OPT_2_MARWAH",
+      "Q5_OPT_3_KAABA",
+      "Q5_OPT_4_ZAMZAM"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_END_7TH",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_DISTANCE",
+    "Options": [
+      "Q5_OPT_1_1_KM",
+      "Q5_OPT_2_2_5_KM",
+      "Q5_OPT_3_5_KM",
+      "Q5_OPT_4_7_KM"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_DISTANCE",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_DUA_OBLIGATORY",
+    "Options": [
+      "Q5_OPT_1_YES_MUST_READ",
+      "Q5_OPT_2_NO_NOT_OBLIGATORY",
+      "Q5_OPT_3_ONLY_WHEN_ASCENDING",
+      "Q5_OPT_4_ONLY_WHEN_DESCENDING"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_SAY_DUA",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_COMPLETION",
+    "Options": [
+      "Q5_OPT_1_TAWAF_AGAIN",
+      "Q5_OPT_2_SHAVE_CUT_HAIR",
+      "Q5_OPT_3_PRAY_NAMAZ",
+      "Q5_OPT_4_DRINK_ZAMZAM"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_SAY_COMPLETION",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_AFTER_IHRAM_PERMITTED",
+    "Options": [
+      "Q5_OPT_1_WASH_PERFUME_SCENT",
+      "Q5_OPT_2_ONLY_WASH_WATER",
+      "Q5_OPT_3_ONLY_PERFUME",
+      "Q5_OPT_4_NOTHING_PERMITTED"
     ],
     "CorrectAnswerIndex": 0,
-    "Explanation": "Q3_EXPL_ARAFAT_TIME",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q4_ARAFAT_LOCATION_MEANING",
-    "Options": [
-      "Q4_OPT_1_PLACE_OF_SACRIFICE",
-      "Q4_OPT_2_PLACE_OF_KNOWLEDGE",
-      "Q4_OPT_3_PLACE_OF_STONING",
-      "Q4_OPT_4_PLACE_OF_TALBIYAH"
-    ],
-    "CorrectAnswerIndex": 1,
-    "Explanation": "Q4_EXPL_ARAFAT_MEANING",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q5_ARAFAT_FAREWELL_SERMON",
-    "Options": [
-      "Q5_OPT_1_PROPHET_MUSA",
-      "Q5_OPT_2_PROPHET_IBRAHIM",
-      "Q5_OPT_3_PROPHET_MUHAMMAD",
-      "Q5_OPT_4_PROPHET_ADAM"
-    ],
-    "CorrectAnswerIndex": 2,
-    "Explanation": "Q5_EXPL_FAREWELL_SERMON",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q6_ARAFAT_MISSING_CONSEQUENCE",
-    "Options": [
-      "Q6_OPT_1_SACRIFICE_ANIMAL",
-      "Q6_OPT_2_FAST_THREE_DAYS",
-      "Q6_OPT_3_HAJJ_INVALID",
-      "Q6_OPT_4_PAY_FIDYAH"
-    ],
-    "CorrectAnswerIndex": 2,
-    "Explanation": "Q6_EXPL_MISSING_ARAFAT",
-    "GemsReward": 10
-  },
-  {
-    "QuestionText": "Q7_ARAFAT_RECOMMENDED_SUPPLICATION",
-    "Options": [
-      "Q7_OPT_1_TALBIYAH_ONLY",
-      "Q7_OPT_2_LA_ILAHA_ILLALLAH",
-      "Q7_OPT_3_SAYID_AL_ISTIGHFAR",
-      "Q7_OPT_4_SURAH_AL_IKHLAS"
-    ],
-    "CorrectAnswerIndex": 2,
-    "Explanation": "Q7_EXPL_BEST_DUA",
+    "Explanation": "Q5_EXPL_AFTER_IHRAM",
     "GemsReward": 10
   }
 ]

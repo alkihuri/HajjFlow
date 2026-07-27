@@ -1,206 +1,100 @@
-﻿key,ru,bs,sq,tr,ar,id,en
-# === LEVEL DESCRIPTIONS ===,,,,,,,
-MIQAT_LEVEL_DESCRIPTION_KEY,Микат — место вхождения в ихрам,Miqat — mjesto ulaska u ihram,Miqat — vendi i hyrjes në ihram,Miqat — ihrama giriş yeri,الميقات — مكان الدخول في الإحرام,Miqat — tempat masuk ihram,Mikat is the place where one enters ihram.
-WARMUP_LEVEL_DESCRIPTION_KEY,Подготовка к Хаджу,Priprema za Hadž,Përgatitja për Haxh,Hacca Hazırlık,الاستعداد للحج,Persiapan Haji,Preparing for Hajj
-TAWAF_LEVEL_DESCRIPTION_KEY,Обход Каабы,Obilazak Kabe,Tavafi i Qabes,Kâbe Tavafı,الطواف حول الكعبة,Tawaf Kabah,Circumambulation of the Kaaba
+key,ru,bs,sq,tr,ar,id,en
+# === LEVEL 1 - IHRAM ===,,,,,,,
+LEVEL_1_TITLE,Ихрам,Ihram,Ihram,İhram,الإحرام,Ihram,Ihram
+LEVEL_1_DESC,Изучи правила вступления в ихрам,Naučite pravila ulaska u ihram,Mësoni rregullat e hyrjes në ihram,İhrama girme kurallarını öğrenin.,تعرّف على قواعد الإحرام,Pelajari aturan memasuki ihram.,Learn the rules of entering ihram
 ,,,,,,,
-# === LEVEL 1 THEORY ===,,,,,,,
-THEORY_L1_HAJJ_OBLIGATION_TITLE,Обязательность хаджа,Obaveza hadža,Detyrimi i Haxhit,Hac Farziyeti,فرضية الحج,Kewajiban Haji,The Obligation of Hajj
-THEORY_L1_HAJJ_OBLIGATION_TEXT,Хадж обязателен один раз в жизни для способных мусульман.,Hadž je obavezan jednom u životu za sposobne muslimane.,Haxhi është i detyrueshëm një herë në jetë për myslimanët e aftë.,Hac hayatta bir kez yapılması gereken bir farzdır.,الحج فرض مرة واحدة في العمر للمسلم القادر.,Haji wajib sekali seumur hidup bagi muslim yang mampu.,Hajj is obligatory once in a lifetime for capable Muslims.
-THEORY_L1_NIYYAH_TITLE,Намерение (Нийя),Namjera (Nijjet),Qëllimi (Nijeti),Niyet,النية,Niat,Intention (Niya)
-THEORY_L1_NIYYAH_TEXT,Любое поклонение начинается с искреннего намерения ради Аллаха.,Svaki ibadet počinje iskrenom namjerom radi Allaha.,Çdo adhurim fillon me qëllim të sinqertë për hir të Allahut.,Her ibadet Allah için samimi bir niyetle başlar.,كل عبادة تبدأ بنية خالصة لله.,Setiap ibadah dimulai dengan niat yang ikhlas karena Allah.,Any worship begins with a sincere intention for the sake of Allah.
-THEORY_L1_FINANCIAL_READINESS_TITLE,Финансовая готовность,Finansijska spremnost,Gatishmëria financiare,Mali Hazırlık,الاستطاعة المالية,Kesiapan Finansial,Financial readiness
-THEORY_L1_FINANCIAL_READINESS_TEXT,Паломник должен иметь средства без вреда семье и долгам.,Hodočasnik mora imati sredstva bez štete porodici i dugovima.,Pelegrinit duhet të ketë mjete pa dëmtuar familjen dhe borxhet.,Hacı ailesine ve borçlarına zarar vermeden imkânlara sahip olmalıdır.,يجب أن يملك الحاج المال دون الإضرار بعائلته وديونه.,Jamaah harus memiliki dana tanpa merugikan keluarga dan hutang.,The pilgrim must have funds that do not harm his family or debts.
-THEORY_L1_PHYSICAL_ABILITY_TITLE,Физическая способность,Fizička sposobnost,Aftësia fizike,Fiziksel Yeterlilik,القدرة البدنية,Kemampuan Fisik,Physical ability
-THEORY_L1_PHYSICAL_ABILITY_TEXT,Хадж обязателен при физической возможности его совершить.,Hadž je obavezan ako postoji fizička mogućnost za njegovo obavljanje.,Haxhi është i detyrueshëm kur ka mundësi fizike për ta kryer.,Hac fiziksel olarak yapılabilir olduğunda farzdır.,الحج واجب عند القدرة البدنية على أدائه.,Haji wajib jika mampu secara fisik untuk melaksanakannya.,Hajj is obligatory if one is physically able to perform it.
-THEORY_L1_IHRAM_TITLE,Ихрам,Ihram,Ihrami,İhram,الإحرام,Ihram,Ihram
-THEORY_L1_IHRAM_TEXT,Ихрам — священное состояние с особыми правилами и ограничениями.,Ihram je sveto stanje sa posebnim pravilima i ograničenjima.,Ihrami është gjendje e shenjtë me rregulla dhe kufizime të veçanta.,İhram özel kuralları ve kısıtlamaları olan kutsal bir haldir.,الإحرام حالة مقدسة لها قواعد وقيود خاصة.,Ihram adalah keadaan suci dengan aturan dan larangan khusus.,Ihram is a sacred state with special rules and restrictions.
-THEORY_L1_MIQAT_TITLE,Микат,Mikat,Mikati,Mîkât,الميقات,Miqat,Mikat
-THEORY_L1_MIQAT_TEXT,Микат — граница где паломник вступает в состояние ихрама.,Mikat je granica gdje hodočasnik ulazi u stanje ihrama.,Mikati është kufiri ku pelegrinët hyjnë në gjendjen e ihramit.,Mîkât hacının ihram haline girdiği sınırdır.,الميقات هو الحد الذي يدخل فيه الحاج في حالة الإحرام.,Miqat adalah batas di mana jamaah memasuki keadaan ihram.,Mikat is the boundary where the pilgrim enters the state of ihram.
-THEORY_L1_TALBIYAH_TITLE,Тальбия,Telbija,Telbija,Telbiye,التلبية,Talbiyah,Talbiya
-THEORY_L1_TALBIYAH_TEXT,После вступления в ихрам паломник произносит тальбию.,Nakon ulaska u ihram hodočasnik izgovara telbiju.,Pas hyrjes në ihram pelegrinët thonë telbijen.,İhrama girdikten sonra hacı telbiye okur.,بعد الدخول في الإحرام يردد الحاج التلبية.,Setelah memasuki ihram jamaah mengucapkan talbiyah.,"After entering ihram, the pilgrim recites the Talbiyah."
+THEORY_L1_IHRAM_DEF_TITLE,Что такое ихрам?,Šta je Ihram?,Çfarë është Ihrami?,İhram nedir?,ما هو الإحرام؟,Apa itu Ihram?,What is Ihram?
+THEORY_L1_IHRAM_DEF_TEXT,Ихрам — это особое состояние поклонения. Оно начинается с намерения (нийя) и произнесения тальбии. В этом состоянии действуют определенные правила и ограничения.,Ihram je posebno stanje obožavanja. Počinje namjerom (nijjom) i izgovaranjem talbije. Tokom ovog stanja primjenjuju se određena pravila i ograničenja.,Ihrami është një gjendje e veçantë adhurimi. Ai fillon me nijetin (nijjen) dhe recitimin e telbijes. Gjatë kësaj gjendjeje zbatohen rregulla dhe kufizime të caktuara.,"İhram, özel bir ibadet halidir. Niyetle (niyye) ve Talbiye'nin okunmasıyla başlar. Bu hal sırasında belirli kurallar ve kısıtlamalar geçerlidir.",الإحرام حالة عبادة خاصة. تبدأ بالنية وتلاوة التلبية. وتُطبق خلال هذه الحالة أحكام وقيود معينة.,Ihram adalah keadaan ibadah khusus. Ihram dimulai dengan niat (niyya) dan pembacaan Talbiyah. Aturan dan batasan tertentu berlaku selama keadaan ini.,Ihram is a special state of worship. It begins with the intention (niyya) and the recitation of Talbiyah. Certain rules and restrictions apply during this state.
 ,,,,,,,
-# === LEVEL 1 QUIZ ===,,,,,,,
-Q1_WHO_MUST_PERFORM_HAJJ,Кто обязан совершать хадж?,Ko je obavezan obaviti hadž?,Kush është i detyruar të kryejë Haxhin?,Hac kimlere farzdır?,من الذي يجب عليه أداء الحج؟,Siapa yang wajib menunaikan haji?,Who is obliged to perform Hajj?
-Q1_OPT_EVERYONE,Каждый человек,Svaka osoba,Çdo person,Herkes,كل شخص,Setiap orang,Every person
-Q1_OPT_ONLY_MEN,Только мужчины,Samo muškarci,Vetëm burrat,Sadece erkekler,الرجال فقط,Hanya laki-laki,Men only
-Q1_OPT_ABLE_MUSLIM,Физически и финансово способный мусульманин,Fizički i finansijski sposoban musliman,Mysliman i aftë fizikisht dhe financiarisht,Fiziksel ve mali açıdan gücü yeten Müslüman,المسلم القادر بدنياً ومالياً,Muslim yang mampu secara fisik dan finansial,A physically and financially capable Muslim
-Q1_OPT_ONLY_ELDERLY,Только пожилые,Samo stariji,Vetëm të moshuarit,Sadece yaşlılar,كبار السن فقط,Hanya orang tua,Only the elderly
-Q1_EXPLANATION,Хадж обязателен для мусульманина который физически и финансово способен.,Hadž je obavezan za muslimana koji je fizički i finansijski sposoban.,Haxhi është i detyrueshëm për myslimanin që është i aftë fizikisht dhe financiarisht.,Hac fiziksel ve mali açıdan gücü yeten Müslümana farzdır.,الحج فرض على المسلم القادر بدنياً ومالياً.,Haji wajib bagi muslim yang mampu secara fisik dan finansial.,Hajj is obligatory for a Muslim who is physically and financially capable.
+THEORY_L1_ENTERING_IHRAM_TITLE,Как вступить в ихрам?,Kako ući u ihram?,Si të hyj në ihram?,İhrama nasıl girilir?,كيفية الدخول إلى الإحرام؟,Bagaimana cara memasuki ihram?,How to enter ihram?
+THEORY_L1_ENTERING_IHRAM_TEXT,"Для вступления в ихрам необходимо: 1) Сделать намерение (нийя) на умру или хадж; 2) Произнести тальбию: ""Лаббайка Аллахумма лаббайк...""; 3) Надеть ихрам до пересечения миката.","Da biste ušli u ihram, morate: 1) napraviti namjeru (nija) za umru ili hadž; 2) Recite talbiju: ""Labbayka Allahumma labbayk...""; 3) Obucite ihram dok ne pređete mikat.","Për të hyrë në ihram, duhet: 1) Të bësh nijet (niya) për umre ose haxh; 2) Thuaj Talbijah: “Labbayka Allahumma labbayk...”; 3) Vish ihramin derisa të kalosh mikatin.","İhrama girmek için şunları yapmalısınız: 1) Umre veya Hac için niyet (niya) yapın; 2) Telbiye deyin: ""Lebbeyke Allahumme lebbeyk...""; 3) Mikat'ı geçinceye kadar ihrama girin.","للإحرام يجب عليك: 1) نية العمرة أو الحج. 2) قول التلبية: ""لبيك اللهمّ لبيك...""؛ 3) أحرم حتى تعبر الميقات.",Untuk masuk ihram harus: 1) Niat (niya) untuk umroh atau haji; 2) Ucapkan Talbiyah: “Labbayka Allahumma labbayk…”; 3) Kenakan ihram sampai Anda melewati miqat.,"To enter ihram, you must: 1) Make an intention (niya) for Umrah or Hajj; 2) Say the Talbiyah: ""Labbayka Allahumma labbayk...""; 3) Put on ihram until you cross the miqat."
 ,,,,,,,
-Q2_HOW_MANY_TIMES_HAJJ_REQUIRED,Сколько раз хадж обязателен в жизни?,Koliko puta je hadž obavezan u životu?,Sa herë është i detyrueshëm Haxhi në jetë?,Hayatta kaç kez hac farzdır?,كم مرة يجب الحج في العمر؟,Berapa kali haji wajib dalam seumur hidup?,How many times is Hajj obligatory in life?
-Q2_OPT_EVERY_YEAR,Каждый год,Svake godine,Çdo vit,Her yıl,كل سنة,Setiap tahun,Every year
-Q2_OPT_ONCE,Один раз,Jednom,Një herë,Bir kez,مرة واحدة,Sekali,Once
-Q2_OPT_THREE_TIMES,Три раза,Tri puta,Tre herë,Üç kez,ثلاث مرات,Tiga kali,Three times
-Q2_OPT_UNLIMITED,Не ограничено,Neograničeno,Pa kufi,Sınırsız,غير محدود,Tidak terbatas,Unlimited
-Q2_EXPLANATION,Хадж обязателен один раз в жизни при наличии возможности.,Hadž je obavezan jednom u životu ako postoji mogućnost.,Haxhi është i detyrueshëm një herë në jetë nëse ka mundësi.,Hac imkân olduğunda hayatta bir kez farzdır.,الحج واجب مرة واحدة في العمر عند الاستطاعة.,Haji wajib sekali seumur hidup jika mampu.,Hajj is obligatory once in a lifetime if possible.
+THEORY_L1_PROHIBITED_TITLE,Что запрещено в ихраме?,Šta je zabranjeno u ihramu?,Çfarë është e ndaluar në ihram?,İhramda yasak olan şeyler nelerdir?,ما هي المحظورات في الإحرام؟,Apa saja yang dilarang dalam ihram?,What is prohibited in ihram?
+THEORY_L1_PROHIBITED_TEXT,Запрещено: пользоваться духами и благовониями; мыться мылом с ароматом; стричь ногти и волосы; половая близость; охота; споры и ссоры.,Zabranjeno je: korištenje parfema i tamjana; pranje mirisnim sapunom; rezanje noktiju i kose; spolni odnos; lov; sporovi i svađe.,Është e ndaluar: përdorimi i parfumeve dhe temjanit; larja me sapun të parfumuar; prerja e thonjve dhe e flokëve; marrëdhëniet seksuale; gjuetia; grindjet dhe mosmarrëveshjet.,Şunlar yasaktır: parfüm ve tütsü kullanmak; kokulu sabunla yıkanmak; tırnak ve saç kesmek; cinsel ilişki; avlanmak; tartışma ve kavga etmek.,يُحظر ما يلي: استخدام العطور والبخور؛ الاغتسال بالصابون المعطر؛ قص الأظافر والشعر؛ ممارسة الجنس؛ الصيد؛ النزاعات والمشاحنات.,Dilarang untuk: menggunakan parfum dan dupa; mandi dengan sabun wangi; memotong kuku dan rambut; berhubungan seksual; berburu; perselisihan dan pertengkaran.,It is forbidden to: use perfumes and incense; wash with scented soap; cut nails and hair; sexual intercourse; hunting; disputes and quarrels.
 ,,,,,,,
-Q3_WHAT_IS_IHRAM,Что такое ихрам?,Šta je ihram?,Çfarë është ihrimi?,İhram nedir?,ما هو الإحرام؟,Apa itu ihram?,What is Ihram?
-Q3_OPT_CLOTHING,Одежда,Odjeća,Veshje,Giysi,ملابس,Pakaian,Cloth
-Q3_OPT_PLACE,Место,Mjesto,Vend,Yer,مكان,Tempat,Place
-Q3_OPT_WORSHIP_STATE,Состояние поклонения с ограничениями,Stanje ibadeta sa ograničenjima,Gjendje adhurimi me kufizime,İbadet hali ve kısıtlamalar,حالة عبادة مع قيود,Keadaan ibadah dengan larangan,State of worship with limitations
-Q3_OPT_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Sholat,Prayer
-Q3_EXPLANATION,Ихрам — это священное состояние включающее намерение и ограничения.,Ihram je sveto stanje koje uključuje namjeru i ograničenja.,Ihrami është gjendje e shenjtë që përfshin qëllimin dhe kufizimet.,İhram niyet ve kısıtlamaları içeren kutsal bir haldir.,الإحرام حالة مقدسة تشمل النية والقيود.,Ihram adalah keadaan suci yang mencakup niat dan larangan.,Ihram is a sacred state that includes intention and restrictions.
+THEORY_L1_PERMITTED_TITLE,Что разрешено в ихраме?,Šta je dozvoljeno u ihramu?,Çfarë është e lejuar në ihram?,İhramda nelere izin verilir?,ما المسموح به في الإحرام؟,Apa saja yang diperbolehkan saat ihram?,What is permitted in ihram?
+THEORY_L1_PERMITTED_TEXT,Разрешено: умываться чистой водой; чесаться; мыться водой без ароматизированного мыла; носить сандалии; использовать зонт от солнца.,Dozvoljeno: pranje čistom vodom; češanje; pranje vodom bez mirisnog sapuna; nošenje sandala; korištenje suncobrana.,Lejohen: larja me ujë të pastër; kruarja; larja me ujë pa sapun të parfumuar; veshja e sandaleve; përdorimi i një çadre dielli.,İzin verilenler: temiz suyla yıkamak; kaşımak; kokusuz sabunla yıkamak; sandalet giymek; güneş şemsiyesi kullanmak.,مسموح بما يلي: الغسل بالماء النظيف؛ الحك؛ الغسل بالماء بدون صابون معطر؛ ارتداء الصنادل؛ استخدام مظلة شمسية.,Diperbolehkan: mencuci dengan air bersih; menggaruk; mencuci dengan air tanpa sabun wangi; memakai sandal; menggunakan payung matahari.,Allowed: washing with clean water; scratching; washing with water without scented soap; wearing sandals; using a sun umbrella.
 ,,,,,,,
-Q4_CAN_USE_PERFUME_IN_IHRAM,Можно ли использовать духи в ихраме?,Može li se koristiti parfem u ihramu?,A mund të përdoret parfum në ihram?,İhramda parfüm kullanılabilir mi?,هل يمكن استخدام العطر في الإحرام؟,Bolehkah menggunakan parfum saat ihram?,Is it permissible to use perfume in ihram?
-Q4_OPT_YES,Да,Da,Po,Evet,نعم,Ya,Yes
-Q4_OPT_NO,Нет,Ne,Jo,Hayır,لا,Tidak,No
-Q4_OPT_ONLY_MEN,Только мужчинам,Samo muškarcima,Vetëm burrave,Sadece erkeklere,للرجال فقط,Hanya laki-laki,For men only
-Q4_OPT_LITTLE_BIT,Немного можно,Malo može,Pak mund,Biraz olabilir,قليلاً يجوز,Sedikit boleh,A little is possible
-Q4_EXPLANATION,Использование духов после вступления в ихрам запрещено.,Korištenje parfema nakon ulaska u ihram je zabranjeno.,Përdorimi i parfumit pas hyrjes në ihram është i ndaluar.,İhrama girdikten sonra parfüm kullanmak yasaktır.,استخدام العطر بعد الدخول في الإحرام محرم.,Penggunaan parfum setelah memasuki ihram dilarang.,The use of perfume after entering ihram is prohibited.
+THEORY_L1_REMOVE_CLOTHES_TITLE,Что нужно снять перед ихрамом?,Šta trebam skinuti prije ihrama?,Çfarë duhet të heq para Ihramit?,İhrama girmeden önce neleri çıkarmalıyım?,ما الذي يجب أن أخلعه قبل الإحرام؟,Apa yang harus saya lepas sebelum Ihram?,What should I take off before Ihram?
+THEORY_L1_REMOVE_CLOTHES_TEXT,Мужчины снимают обычную одежду и надевают два белых несшитых полотна. Женщины снимают украшения и закрывают тело скромной одеждой,"Muškarci skidaju svoju uobičajenu odjeću i oblače dvije bijele, nešivene plahte. Žene skidaju nakit i pokrivaju svoja tijela skromnom odjećom.",Burrat heqin rrobat e tyre të zakonshme dhe veshin dy çarçafë të bardhë të pakepur. Gratë heqin bizhuteritë dhe mbulojnë trupat e tyre me rroba modeste.,Erkekler normal kıyafetlerini çıkarıp dikişsiz iki beyaz çarşaf giyerler. Kadınlar ise takılarını çıkarıp vücutlarını mütevazı kıyafetlerle örterler.,يخلع الرجال ملابسهم العادية ويرتدون ملاءتين بيضاوتين غير مخيطتين. وتخلع النساء مجوهراتهن ويغطين أجسادهن بملابس محتشمة.,Para pria menanggalkan pakaian biasa mereka dan mengenakan dua lembar kain putih tanpa jahitan. Para wanita menanggalkan perhiasan dan menutupi tubuh mereka dengan pakaian yang sopan.,"Men remove their regular clothing and put on two white, unstitched sheets. Women remove jewelry and cover their bodies with modest clothing."
 ,,,,,,,
-Q5_WHAT_IS_MIQAT,Что такое микат?,Šta je mikat?,Çfarë është mikati?,Mîkât nedir?,ما هو الميقات؟,Apa itu miqat?,What is miqat?
-Q5_OPT_MOUNTAIN,Гора,Planina,Mal,Dağ,جبل,Gunung,Mountain
-Q5_OPT_IHRAM_BOUNDARY,Граница для вступления в ихрам,Granica za ulazak u ihram,Kufiri për të hyrë në ihram,İhrama giriş sınırı,حد الدخول في الإحرام,Batas untuk memasuki ihram,The boundary for entering ihram
-Q5_OPT_MARKET,Рынок,Pijaca,Treg,Pazar,سوق,Pasar,Market
-Q5_OPT_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Sholat,Prayer
-Q5_EXPLANATION,Микат — установленная граница для вступления в ихрам.,Mikat je određena granica za ulazak u ihram.,Mikati është kufiri i caktuar për të hyrë në ihram.,Mîkât ihrama giriş için belirlenen sınırdır.,الميقات هو الحد المعين للدخول في الإحرام.,Miqat adalah batas yang ditetapkan untuk memasuki ihram.,Miqat is the established boundary for entering ihram.
+# === LEVEL 2 - MIKAT ===,,,,,,,
+LEVEL_2_TITLE,Микат,Mikat,Mikat,Mikat,ميكات,Mikat,Mikat
+LEVEL_2_DESC,Изучи установленные границы для ихрама,Naučite utvrđene granice za ihram,Mësoni kufijtë e përcaktuar për ihramin,İhramın belirlenmiş sınırlarını öğrenin.,تعرّف على الحدود المعتمدة للإحرام,Pelajari batasan-batasan yang telah ditetapkan untuk ihram.,Learn the established boundaries for ihram
 ,,,,,,,
-Q6_WHAT_TO_DO_BEFORE_MIQAT,Что нужно сделать перед пересечением миката?,Šta treba učiniti prije prelaska mikata?,Çfarë duhet bërë para kalimit të mikatit?,Mîkâtı geçmeden önce ne yapılmalı?,ماذا يجب فعله قبل عبور الميقات؟,Apa yang harus dilakukan sebelum melewati miqat?,What should you do before crossing the miqat?
-Q6_OPT_PERFORM_TAWAF,Совершить таваф,Obaviti tavaf,Kryej tavafin,Tavaf yapmak,أداء الطواف,Melakukan tawaf,Perform tawaf
-Q6_OPT_WEAR_IHRAM_MAKE_NIYYAH,Надеть ихрам и сделать намерение,Obući ihram i učiniti nijjet,Vesh ihramin dhe bëj nijetin,İhram giymek ve niyet etmek,لبس الإحرام وعقد النية,Mengenakan ihram dan berniat,Put on ihram and make the intention
-Q6_OPT_READ_QURAN,Прочитать весь Коран,Pročitati cijeli Kuran,Lexo tërë Kuranin,Tüm Kuran'ı okumak,قراءة القرآن كاملاً,Membaca seluruh Al-Quran,Read the entire Quran
-Q6_OPT_VISIT_ZAMZAM,Посетить Замзам,Posjetiti Zemzem,Vizito Zemzemin,Zemzem'i ziyaret etmek,زيارة زمزم,Mengunjungi Zamzam,Visit Zamzam
-Q6_EXPLANATION,Перед пересечением миката нужно вступить в ихрам и сделать намерение.,Prije prelaska mikata treba ući u ihram i učiniti nijjet.,Para kalimit të mikatit duhet të hysh në ihram dhe të bësh nijetin.,Mîkâtı geçmeden önce ihrama girmek ve niyet etmek gerekir.,قبل عبور الميقات يجب الدخول في الإحرام وعقد النية.,Sebelum melewati miqat harus memasuki ihram dan berniat.,"Before crossing the miqat, one must enter ihram and make an intention."
+THEORY_L2_MIQAT_DEF_TITLE,Что такое микат?,Šta je mikat?,Çfarë është mikati?,Mikat nedir?,ما هو الميقات؟,Apa itu miqat?,What is miqat?
+THEORY_L2_MIQAT_DEF_TEXT,Микат — это установленная граница,Mikat je određena granica,Miqat është një kufi i caktuar,"Miqat, belirlenmiş bir sınırdır.",الميقات هو حد فاصل محدد,Miqat adalah batas yang ditetapkan.,Miqat is a set boundary
 ,,,,,,,
-Q7_WHEN_TALBIYAH_RECITED,Когда произносится тальбия?,Kada se izgovara telbija?,Kur thuhet telbija?,Telbiye ne zaman okunur?,متى تُقال التلبية؟,Kapan talbiyah diucapkan?,When is Talbiya pronounced?
-Q7_OPT_AFTER_ARAFAT,После Арафата,Nakon Arafata,Pas Arafatit,Arafat'tan sonra,بعد عرفة,Setelah Arafah,After Arafat
-Q7_OPT_AFTER_IHRAM,После вступления в ихрам,Nakon ulaska u ihram,Pas hyrjes në ihram,İhrama girdikten sonra,بعد الدخول في الإحرام,Setelah memasuki ihram,After entering ihram
-Q7_OPT_BEFORE_SLEEP,Перед сном,Prije spavanja,Para gjumit,Uyumadan önce,قبل النوم,Sebelum tidur,Before bed
-Q7_OPT_AFTER_TAWAF,После тавафа,Nakon tavafa,Pas tavafit,Tavaftan sonra,بعد الطواف,Setelah tawaf,After tawaf
-Q7_EXPLANATION,Тальбия читается после вступления в состояние ихрама.,Telbija se izgovara nakon ulaska u stanje ihrama.,Telbija thuhet pas hyrjes në gjendjen e ihramit.,Telbiye ihram haline girdikten sonra okunur.,التلبية تُقال بعد الدخول في حالة الإحرام.,Talbiyah diucapkan setelah memasuki keadaan ihram.,Talbiya is recited after entering the state of ihram.
+THEORY_L2_PLANE_MIQAT_TITLE,Как быть в самолете?,Šta raditi u avionu?,Çfarë duhet të bëni në aeroplan?,Uçakta ne yapmalı?,ماذا أفعل على متن الطائرة؟,Apa yang harus dilakukan di pesawat?,What to do on the plane?
+THEORY_L2_PLANE_MIQAT_TEXT,При пересечении миката на самолете нужно заранее надеть ихрам и сделать намерение. Бортпроводники обычно объявляют о приближении к микату. Нельзя пересекать микат без ихрама.,"Prilikom prelaska mikata u avionu, morate obući ihram i unaprijed izraziti namjeru. Stjuardese obično najavljuju prilazak mikatu. Ne možete preći mikat bez ihrama.","Kur kaloni mikatin në aeroplan, duhet të vishni ihramin dhe të bëni nijetin paraprakisht. Asistentët e fluturimit zakonisht njoftojnë kur afroheni te mikati. Nuk mund ta kaloni mikatin pa ihram.",Uçakta mikattan geçerken ihram giymeli ve önceden niyet etmelisiniz. Kabin görevlileri genellikle mikat yaklaşırken anons yaparlar. İhram giymeden mikattan geçemezsiniz.,عند عبور الميقات بالطائرة، يجب الإحرام ونية العبور مسبقاً. عادةً ما يُعلن طاقم الطائرة عن ذلك عند الاقتراب من الميقات. لا يجوز عبور الميقات بدون إحرام.,"Saat melewati miqat di pesawat, Anda harus mengenakan ihram dan berniat terlebih dahulu. Pramugari biasanya akan mengumumkan saat mendekati miqat. Anda tidak dapat melewati miqat tanpa ihram.","When crossing the miqat on a plane, you must put on ihram and make the intention in advance. Flight attendants usually announce when approaching the miqat. You cannot cross the miqat without ihram."
 ,,,,,,,
-# === LEVEL 2 THEORY ===,,,,,,,
-THEORY_L2_WHAT_IS_MIQAT_TITLE,Что такое микат,Šta je mikat,Çfarë është mikati,Mîkât nedir,ما هو الميقات,Apa itu Miqat,What is miqat?
-THEORY_L2_WHAT_IS_MIQAT_TEXT,Микат — установленная граница для вступления в ихрам.,Mikat je određena granica za ulazak u ihram.,Mikati është kufiri i caktuar për të hyrë në ihram.,Mîkât ihrama giriş için belirlenen sınırdır.,الميقات هو الحد المعين للدخول في الإحرام.,Miqat adalah batas yang ditetapkan untuk memasuki ihram.,Miqat is the established boundary for entering ihram.
-THEORY_L2_CROSSING_BOUNDARY_TITLE,Пересечение границы,Prelazak granice,Kalimi i kufirit,Sınırı Geçmek,عبور الحد,Melewati Batas,Crossing the border
-THEORY_L2_CROSSING_BOUNDARY_TEXT,Нельзя пересекать микат без намерения и ихрама.,Nije dozvoljeno preći mikat bez nijjeta i ihrama.,Nuk lejohet të kalohet mikati pa nijet dhe ihram.,Mîkât niyet ve ihram olmadan geçilemez.,لا يجوز عبور الميقات بدون نية وإحرام.,Tidak boleh melewati miqat tanpa niat dan ihram.,It is not permissible to cross the miqat without the intention and ihram.
-THEORY_L2_NIYYAH_TITLE,Намерение,Nijjet,Nijeti,Niyet,النية,Niat,Intention
-THEORY_L2_NIYYAH_TEXT,Перед микатом паломник делает намерение на хадж.,Prije mikata hodočasnik čini nijjet za hadž.,Para mikatit pelegrinët bëjnë nijetin për haxh.,Mîkâttan önce hacı hac için niyet eder.,قبل الميقات يعقد الحاج نية الحج.,Sebelum miqat jamaah berniat untuk haji.,"Before the miqat, the pilgrim makes the intention for Hajj."
-THEORY_L2_IHRAM_CLOTHING_TITLE,Одежда ихрама,Odjeća ihrama,Veshja e ihramit,İhram Giysisi,ملابس الإحرام,Pakaian Ihram,Ihram clothing
-THEORY_L2_IHRAM_CLOTHING_TEXT,Мужчины надевают два белых куска ткани без швов.,Muškarci oblače dva bijela komada tkanine bez šavova.,Burrat veshin dy copë pëlhure të bardha pa qepje.,Erkekler dikişsiz iki beyaz parça kumaş giyer.,يرتدي الرجال قطعتين من القماش الأبيض بدون خياطة.,Laki-laki mengenakan dua lembar kain putih tanpa jahitan.,Men wear two white pieces of seamless fabric.
-THEORY_L2_WOMEN_IN_IHRAM_TITLE,Женщины в ихраме,Žene u ihramu,Gratë në ihram,İhramda Kadınlar,المرأة في الإحرام,Wanita dalam Ihram,Women in ihram
-THEORY_L2_WOMEN_IN_IHRAM_TEXT,Женщины надевают обычную скромную одежду без украшений.,Žene oblače običnu skromnu odjeću bez ukrasa.,Gratë veshin rroba të thjeshta modeste pa zbukurime.,Kadınlar süssüz sade kıyafetler giyer.,ترتدي النساء ملابس عادية محتشمة بدون زينة.,Wanita mengenakan pakaian biasa yang sopan tanpa perhiasan.,"Women wear simple, modest clothing without jewelry."
-THEORY_L2_TALBIYAH_TITLE,Тальбия,Telbija,Telbija,Telbiye,التلبية,Talbiyah,Talbiya
-THEORY_L2_TALBIYAH_TEXT,После вступления в ихрам произносится тальбия.,Nakon ulaska u ihram izgovara se telbija.,Pas hyrjes në ihram thuhet telbija.,İhrama girdikten sonra telbiye okunur.,بعد الدخول في الإحرام تُقال التلبية.,Setelah memasuki ihram diucapkan talbiyah.,"After entering ihram, Talbiya is recited."
-THEORY_L2_CROSSING_ERROR_TITLE,Ошибка при пересечении,Greška pri prelasku,Gabimi gjatë kalimit,Geçiş Hatası,خطأ عند العبور,Kesalahan saat Melewati,Error when crossing
-THEORY_L2_CROSSING_ERROR_TEXT,Если микат пересечён без ихрама нужно вернуться.,Ako je mikat pređen bez ihrama treba se vratiti.,Nëse mikati është kaluar pa ihram duhet të ktheheni.,Mîkât ihramsız geçildiyse geri dönülmelidir.,إذا عُبر الميقات بدون إحرام يجب الرجوع.,Jika miqat dilewati tanpa ihram harus kembali.,"If the miqat is crossed without ihram, one must return."
+THEORY_L2_NIYYAH_UMRAH_TITLE,Намерение на умру,Namjera da se umre,Qëllimi për të vdekur,Ölme niyeti,نية الموت,Niat untuk mati,Intention to die
+THEORY_L2_NIYYAH_UMRAH_TEXT,Намерение делается в сердце,Namjera se stvara u srcu,Qëllimi bëhet në zemër,Niyet kalpte oluşur.,تُبنى النية في القلب,Niat dibuat di dalam hati.,Intention is made in the heart
 ,,,,,,,
-# === LEVEL 2 QUIZ ===,,,,,,,
-Q_L2_WHAT_IS_MIQAT,Что такое микат?,Šta je mikat?,Çfarë është mikati?,Mîkât nedir?,ما هو الميقات؟,Apa itu miqat?,What is miqat?
-Q_L2_OPT_SACRED_MOUNTAIN,Священная гора,Sveta planina,Mal i shenjtë,Kutsal dağ,جبل مقدس,Gunung suci,Sacred Mountain
-Q_L2_OPT_IHRAM_BOUNDARY,Граница для вступления в ихрам,Granica za ulazak u ihram,Kufiri për të hyrë në ihram,İhrama giriş sınırı,حد الدخول في الإحرام,Batas untuk memasuki ihram,The boundary for entering ihram
-Q_L2_OPT_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Sholat,Prayer
-Q_L2_OPT_CITY,Город,Grad,Qytet,Şehir,مدينة,Kota,City
-Q_L2_MIQAT_EXPLANATION,Микат — это установленная граница где паломник должен вступить в ихрам.,Mikat je određena granica gdje hodočasnik mora ući u ihram.,Mikati është kufiri i caktuar ku pelegrinët duhet të hyjnë në ihram.,Mîkât hacının ihrama girmesi gereken belirlenen sınırdır.,الميقات هو الحد المعين حيث يجب على الحاج الدخول في الإحرام.,Miqat adalah batas yang ditetapkan di mana jamaah harus memasuki ihram.,Miqat is the designated boundary where the pilgrim must enter ihram.
+THEORY_L2_RETURN_MIQAT_TITLE,Ошибка при пересечении,Greška prilikom prelaska,Gabim gjatë kalimit,Geçiş sırasında hata,خطأ عند العبور,Terjadi kesalahan saat menyeberang,Error when crossing
+THEORY_L2_RETURN_MIQAT_TEXT,Если паломник пересек микат без ихрама,Ako hodočasnik pređe mikat bez ihrama,Nëse një haxhi kalon mikatin pa ihram,Eğer bir hacı ihramsız olarak mikat bölgesini geçerse,إذا عبر الحاج الميقات بدون إحرام,Jika seorang jamaah haji melewati miqat tanpa ihram,If a pilgrim crosses the miqat without ihram
 ,,,,,,,
-Q_L2_CAN_CROSS_MIQAT_WITHOUT_IHRAM,Можно ли пересекать микат без ихрама?,Može li se preći mikat bez ihrama?,A mund të kalohet mikati pa ihram?,Mîkât ihramsız geçilebilir mi?,هل يمكن عبور الميقات بدون إحرام؟,Bolehkah melewati miqat tanpa ihram?,Is it permissible to cross the miqat without ihram?
-Q_L2_OPT_YES,Да,Da,Po,Evet,نعم,Ya,Yes
-Q_L2_OPT_NO,Нет,Ne,Jo,Hayır,لا,Tidak,No
-Q_L2_OPT_ONLY_AT_NIGHT,Только ночью,Samo noću,Vetëm natën,Sadece gece,فقط ليلاً,Hanya malam hari,Only at night
-Q_L2_OPT_SOMETIMES,Иногда можно,Ponekad može,Ndonjëherë mund,Bazen olabilir,أحياناً يجوز,Kadang boleh,Sometimes it is possible
-Q_L2_CROSS_MIQAT_EXPLANATION,Пересекать микат без вступления в ихрам нельзя при намерении хаджа.,Preći mikat bez ulaska u ihram nije dozvoljeno pri namjeri hadža.,Kalimi i mikatit pa hyrë në ihram nuk lejohet kur ke nijet për haxh.,Hac niyetiyle mîkâtı ihramsız geçmek caiz değildir.,لا يجوز عبور الميقات بدون الدخول في الإحرام عند نية الحج.,Tidak boleh melewati miqat tanpa memasuki ihram jika berniat haji.,It is not permissible to cross the miqat without entering ihram if one intends to perform Hajj.
+# === LEVEL 3 - ARRIVAL ===,,,,,,,
+LEVEL_3_TITLE,Прибытие в Мекку,Dolazak u Meku,Mbërritja në Mekë,Mekke'ye Varış,الوصول إلى مكة المكرمة,Tiba di Mekah,Arrival in Mecca
+LEVEL_3_DESC,Подготовка к прибытию и путь до Мекки,Pripreme za dolazak i putovanje u Meku,Përgatitja për mbërritjen dhe udhëtimin për në Mekë,Varışa ve Mekke'ye yolculuğa hazırlık.,الاستعداد للوصول والرحلة إلى مكة المكرمة,Persiapan kedatangan dan perjalanan ke Mekah,Preparing for arrival and the journey to Mecca
 ,,,,,,,
-Q_L2_WHAT_TO_DO_BEFORE_MIQAT,Что нужно сделать перед пересечением миката?,Šta treba učiniti prije prelaska mikata?,Çfarë duhet bërë para kalimit të mikatit?,Mîkâtı geçmeden önce ne yapılmalı?,ماذا يجب فعله قبل عبور الميقات؟,Apa yang harus dilakukan sebelum melewati miqat?,What should you do before crossing the miqat?
-Q_L2_OPT_PERFORM_TAWAF,Сделать таваф,Obaviti tavaf,Bëj tavafin,Tavaf yapmak,أداء الطواف,Melakukan tawaf,Make tawaf
-Q_L2_OPT_MAKE_NIYYAH_ENTER_IHRAM,Сделать намерение и вступить в ихрам,Učiniti nijjet i ući u ihram,Bëj nijetin dhe hyj në ihram,Niyet edip ihrama girmek,عقد النية والدخول في الإحرام,Berniat dan memasuki ihram,Make the intention and enter ihram
-Q_L2_OPT_READ_QURAN,Прочитать Коран,Pročitati Kuran,Lexo Kuranin,Kuran okumak,قراءة القرآن,Membaca Al-Quran,Read the Quran
-Q_L2_OPT_VISIT_ZAMZAM,Посетить Замзам,Posjetiti Zemzem,Vizito Zemzemin,Zemzem'i ziyaret etmek,زيارة زمزم,Mengunjungi Zamzam,Visit Zamzam
-Q_L2_BEFORE_MIQAT_EXPLANATION,Перед микатом необходимо сделать намерение и вступить в ихрам.,Prije mikata potrebno je učiniti nijjet i ući u ihram.,Para mikatit duhet të bësh nijetin dhe të hysh në ihram.,Mîkâttan önce niyet edip ihrama girmek gerekir.,قبل الميقات يجب عقد النية والدخول في الإحرام.,Sebelum miqat harus berniat dan memasuki ihram.,"Before the miqat, one must make the intention and enter ihram."
+THEORY_L3_ARRIVAL_TITLE,Прибытие в Джидду или Медину,Dolazak u Džedu ili Medinu,Mbërritja në Xheda ose Medinë,Cidde veya Medine'ye Varış,الوصول إلى جدة أو المدينة المنورة,Tiba di Jeddah atau Madinah,Arrival in Jeddah or Medina
+THEORY_L3_ARRIVAL_TEXT,Паломники прибывают в международный аэропорт Джидды или Медины. Оттуда они отправляются в Мекку на автобусах с туроператором,Hodočasnici stižu na međunarodni aerodrom u Džedi ili Medini. Odatle putuju u Meku autobusom s turističkim operaterom.,"Pelegrinët mbërrijnë në Aeroportin Ndërkombëtar të Xhedës ose të Medinës. Prej andej, ata udhëtojnë për në Mekë me autobus me një operator turistik.",Hacılar Cidde veya Medine Uluslararası Havalimanı'na varırlar. Oradan bir tur operatörü aracılığıyla otobüsle Mekke'ye giderler.,يصل الحجاج إلى مطار جدة أو مطار المدينة المنورة الدولي. ومن هناك، يسافرون إلى مكة المكرمة بالحافلة مع منظم رحلات سياحية.,"Para jemaah haji tiba di Bandara Internasional Jeddah atau Madinah. Dari sana, mereka melanjutkan perjalanan ke Mekah dengan bus yang dibantu oleh operator tur.","Pilgrims arrive at Jeddah or Medina International Airport. From there, they travel to Mecca by bus with a tour operator."
 ,,,,,,,
-Q_L2_WHAT_MEN_WEAR_IN_IHRAM,Что надевают мужчины в ихраме?,Šta oblače muškarci u ihramu?,Çfarë veshin burrat në ihram?,Erkekler ihramda ne giyer?,ماذا يرتدي الرجال في الإحرام؟,Apa yang dipakai pria saat ihram?,What do men wear in ihram?
-Q_L2_OPT_REGULAR_CLOTHES,Обычную одежду,Običnu odjeću,Rroba të zakonshme,Normal kıyafet,ملابس عادية,Pakaian biasa,Regular clothes
-Q_L2_OPT_TWO_WHITE_CLOTHS,Два белых куска ткани,Dva bijela komada tkanine,Dy copë pëlhure të bardhë,İki beyaz parça kumaş,قطعتين من القماش الأبيض,Dua lembar kain putih,Two white pieces of fabric
-Q_L2_OPT_SUIT,Костюм,Odijelo,Kostum,Takım elbise,بدلة,Jas,Costume
-Q_L2_OPT_ANY_COMFORTABLE,Любую удобную одежду,Bilo koju udobnu odjeću,Çdo veshje të rehatshme,Herhangi rahat bir kıyafet,أي ملابس مريحة,Pakaian nyaman apa saja,Any comfortable clothes
-Q_L2_MEN_IHRAM_EXPLANATION,Мужчины надевают два белых куска ткани без швов.,Muškarci oblače dva bijela komada tkanine bez šavova.,Burrat veshin dy copë pëlhure të bardha pa qepje.,Erkekler dikişsiz iki beyaz parça kumaş giyer.,يرتدي الرجال قطعتين من القماش الأبيض بدون خياطة.,Laki-laki mengenakan dua lembar kain putih tanpa jahitan.,Men wear two white pieces of seamless fabric.
+THEORY_L3_IHRAM_ON_ROAD_TITLE,Ихрам в пути,Ihram na putu,Ihram në rrugë e sipër,Yolda ihram,الإحرام في الطريق,Ihram dalam perjalanan,Ihram on the way
+THEORY_L3_IHRAM_ON_ROAD_TEXT,Важно помнить: паломник уже находится в состоянии ихрама. Все запреты ихрама действуют — нельзя использовать духи,Važno je zapamtiti: hodočasnik je već u stanju ihrama. Primjenjuju se sve ihramske zabrane - parfemi nisu dozvoljeni.,Është e rëndësishme të mbani mend: haxhiu është tashmë në gjendje ihrami. Vlenë të gjitha ndalesat e ihramit - parfumet nuk lejohen.,Unutulmaması gereken önemli bir nokta: Hacı zaten ihram halindedir. İhramın tüm yasakları geçerlidir; parfüm kullanımı yasaktır.,من المهم أن نتذكر: أن الحاج يكون في حالة إحرام بالفعل. تنطبق عليه جميع محظورات الإحرام، بما في ذلك العطور.,Penting untuk diingat: jamaah haji sudah dalam keadaan ihram. Semua larangan ihram berlaku—parfum tidak diperbolehkan.,It's important to remember: the pilgrim is already in a state of ihram. All ihram prohibitions apply—perfumes are not allowed.
 ,,,,,,,
-Q_L2_WHAT_AFTER_ENTERING_IHRAM,Что делают после вступления в ихрам?,Šta se radi nakon ulaska u ihram?,Çfarë bëhet pas hyrjes në ihram?,İhrama girdikten sonra ne yapılır?,ماذا يُفعل بعد الدخول في الإحرام؟,Apa yang dilakukan setelah memasuki ihram?,What do you do after entering ihram?
-Q_L2_OPT_START_TAWAF,Начинают таваф,Započinju tavaf,Fillojnë tavafin,Tavafa başlanır,البدء بالطواف,Memulai tawaf,They begin tawaf
-Q_L2_OPT_RECITE_TALBIYAH,Произносят тальбию,Izgovaraju telbiju,Thonë telbija,Telbiye okunur,ترديد التلبية,Mengucapkan talbiyah,They recite the Talbiya
-Q_L2_OPT_RETURN_HOME,Возвращаются домой,Vraćaju se kući,Kthehen në shtëpi,Eve dönülür,العودة للبيت,Pulang ke rumah,Returning home
-Q_L2_OPT_REMOVE_SHOES,Снимают обувь,Skidaju obuću,Heqin këpucët,Ayakkabılar çıkarılır,خلع الأحذية,Melepas sepatu,They take off their shoes
-Q_L2_AFTER_IHRAM_EXPLANATION,После вступления в ихрам паломник произносит тальбию.,Nakon ulaska u ihram hodočasnik izgovara telbiju.,Pas hyrjes në ihram pelegrinët thonë telbija.,İhrama girdikten sonra hacı telbiye okur.,بعد الدخول في الإحرام يردد الحاج التلبية.,Setelah memasuki ihram jamaah mengucapkan talbiyah.,"After entering ihram, the pilgrim recites the Talbiyah."
-,,,,,,,#VALUE!
-Q_L2_IF_CROSSED_MIQAT_WITHOUT_IHRAM,Если человек пересёк микат без ихрама что нужно сделать?,Ako je osoba prešla mikat bez ihrama šta treba učiniti?,Nëse personi ka kaluar mikatin pa ihram çfarë duhet bërë?,Kişi mîkâtı ihramsız geçtiyse ne yapmalı?,إذا عبر الشخص الميقات بدون إحرام ماذا يجب أن يفعل؟,Jika seseorang melewati miqat tanpa ihram apa yang harus dilakukan?,"If a person crosses the miqat without ihram, what should he do?"
-Q_L2_OPT_CONTINUE_PATH,Продолжить путь,Nastaviti put,Vazhdoni rrugën,Yola devam etmek,استمر في الطريق,Melanjutkan perjalanan,Continue on your way
-Q_L2_OPT_RETURN_TO_MIQAT,Вернуться к микату,Vratiti se na mikat,Kthehu te mikati,Mîkâta geri dönmek,العودة إلى الميقات,Kembali ke miqat,Return to miqat
-Q_L2_OPT_IGNORE,Игнорировать это,Ignorisati to,Injoro këtë,Bunu görmezden gelmek,تجاهل ذلك,Mengabaikannya,Ignore this
-Q_L2_OPT_START_SAI,Начать саи,Započeti sai,Fillo sa'in,Sa'ye başlamak,البدء بالسعي,Memulai sa'i,Start sai
-Q_L2_CROSSED_WITHOUT_IHRAM_EXPLANATION,Необходимо вернуться к микату и правильно вступить в ихрам.,Potrebno je vratiti se na mikat i pravilno ući u ihram.,Duhet të ktheheni te mikati dhe të hyni siç duhet në ihram.,Mîkâta geri dönüp doğru şekilde ihrama girmek gerekir.,يجب العودة إلى الميقات والدخول في الإحرام بشكل صحيح.,Harus kembali ke miqat dan memasuki ihram dengan benar.,It is necessary to return to the miqat and enter ihram correctly.
+# === LEVEL 4 - TAWAF ===,,,,,,,
+LEVEL_4_TITLE,Таваф,Tavaf,Tavaf,Tavaf,طواف,Tawaf,Tawaf
+LEVEL_4_DESC,Обход вокруг Каабы,Kruženje oko Kabe,Qarkullim rreth Qabes,Kabe'nin etrafında tavaf,الطواف حول الكعبة,Mengelilingi Ka'bah,Circumambulation around the Kaaba
 ,,,,,,,
-Q_L2_WHEN_TALBIYAH_RECITED,Когда произносится тальбия?,Kada se izgovara telbija?,Kur thuhet telbija?,Telbiye ne zaman okunur?,متى تُقال التلبية؟,Kapan talbiyah diucapkan?,When is Talbiya pronounced?
-Q_L2_OPT_BEFORE_IHRAM,До ихрама,Prije ihrama,Para ihramit,İhramdan önce,قبل الإحرام,Sebelum ihram,Before ihram
-Q_L2_OPT_AFTER_ENTERING_IHRAM,После вступления в ихрам,Nakon ulaska u ihram,Pas hyrjes në ihram,İhrama girdikten sonra,بعد الدخول في الإحرام,Setelah memasuki ihram,After entering ihram
-Q_L2_OPT_AFTER_ARAFAT,После Арафата,Nakon Arafata,Pas Arafatit,Arafat'tan sonra,بعد عرفة,Setelah Arafah,After Arafat
-Q_L2_OPT_AFTER_HAJJ,После хаджа,Nakon hadža,Pas haxhit,Hacdan sonra,بعد الحج,Setelah haji,After the Hajj
-Q_L2_TALBIYAH_EXPLANATION,Тальбия читается после вступления в состояние ихрама.,Telbija se izgovara nakon ulaska u stanje ihrama.,Telbija thuhet pas hyrjes në gjendjen e ihramit.,Telbiye ihram haline girdikten sonra okunur.,التلبية تُقال بعد الدخول في حالة الإحرام.,Talbiyah diucapkan setelah memasuki keadaan ihram.,Talbiya is recited after entering the state of ihram.
+THEORY_L4_TAWAF_DEF_TITLE,Что такое таваф?,Šta je tavaf?,Çfarë është tavafi?,Tavaf nedir?,ما هو الطواف؟,Apa itu tawaf?,What is tawaf?
+THEORY_L4_TAWAF_DEF_TEXT,Таваф — это ритуальный обход Каабы семь раз против часовой стрелки. Это один из важнейших обрядов хаджа и умры.,Tavaf je ritualni obilazak Kabe sedam puta u smjeru suprotnom od kazaljke na satu. To je jedan od najvažnijih obreda hadža i umre.,Tavafi është rituali i rrotullimit rreth Qabes shtatë herë në kahun kundër akrepave të orës. Është një nga ritet më të rëndësishme të Haxhit dhe Umres.,"Tavaf, Kâbe'nin etrafında saat yönünün tersine yedi kez yapılan ritüel bir tavaftır. Hac ve Umre'nin en önemli ibadetlerinden biridir.",الطواف هو الطواف حول الكعبة سبع مرات عكس اتجاه عقارب الساعة، وهو أحد أهم شعائر الحج والعمرة.,Tawaf adalah ritual mengelilingi Ka'bah sebanyak tujuh kali berlawan arah jarum jam. Ini adalah salah satu ritual terpenting dalam ibadah Haji dan Umrah.,Tawaf is the ritual circumambulation of the Kaaba seven times counterclockwise. It is one of the most important rites of Hajj and Umrah.
 ,,,,,,,
-# === LEVEL 3 THEORY ===,,,,,,,
-THEORY_L3_WHAT_IS_TAWAF_TITLE,Что такое таваф,Šta je tavaf,Çfarë është tavafi,Tavaf nedir,ما هو الطواف,Apa itu Tawaf,What is tawaf?
-THEORY_L3_WHAT_IS_TAWAF_TEXT,Таваф — это обход Каабы семь раз.,Tavaf je obilazak Kabe sedam puta.,Tavafi është të sillesh rreth Qabes shtatë herë.,Tavaf Kâbe'nin yedi kez etrafında dönmektir.,الطواف هو الدوران حول الكعبة سبع مرات.,Tawaf adalah mengelilingi Ka'bah tujuh kali.,Tawaf is walking around the Kaaba seven times.
-THEORY_L3_NUMBER_OF_CIRCLES_TITLE,Количество кругов,Broj krugova,Numri i rrathëve,Devir Sayısı,عدد الأشواط,Jumlah Putaran,Number of laps
-THEORY_L3_NUMBER_OF_CIRCLES_TEXT,Во время тавафа совершается семь полных кругов.,Tokom tavafa se obavi sedam punih krugova.,Gjatë tavafit kryhen shtatë rrathë të plota.,Tavaf sırasında yedi tam devir yapılır.,يُؤدى الطواف بسبعة أشواط كاملة.,Selama tawaf dilakukan tujuh putaran penuh.,"During tawaf, seven full circles are performed."
-THEORY_L3_START_POINT_TITLE,Начало обхода,Početak obilaska,Fillimi i silljes,Başlangıç Noktası,بداية الطواف,Titik Mulai,Beginning of the detour
-THEORY_L3_START_POINT_TEXT,Таваф начинается у Чёрного камня.,Tavaf počinje kod Crnog kamena.,Tavafi fillon te Guri i Zi.,Tavaf Hacerü'l-Esved'den başlar.,يبدأ الطواف من الحجر الأسود.,Tawaf dimulai dari Hajar Aswad.,Tawaf begins at the Black Stone.
-THEORY_L3_DIRECTION_TITLE,Направление,Smjer,Drejtimi,Yön,الاتجاه,Arah,Direction
-THEORY_L3_DIRECTION_TEXT,Обход совершается против часовой стрелки.,Obilazak se vrši suprotno od kazaljke na satu.,Sjellja bëhet në drejtim të kundërt me akrepat e orës.,Tavaf saat yönünün tersine yapılır.,يُؤدى الطواف عكس عقارب الساعة.,Tawaf dilakukan berlawanan arah jarum jam.,The circumambulation is performed counterclockwise.
-THEORY_L3_RITUAL_PURITY_TITLE,Ритуальная чистота,Ritualna čistoća,Pastërtia rituale,Abdest,الطهارة,Kesucian Ritual,Ritual purity
-THEORY_L3_RITUAL_PURITY_TEXT,Для тавафа необходимо находиться в состоянии вуду.,Za tavaf je potrebno biti u stanju abdesta.,Për tavafin duhet të jeni në gjendje të abdestit.,Tavaf için abdestli olmak gerekir.,للطواف يجب أن تكون على وضوء.,Untuk tawaf harus dalam keadaan wudhu.,To perform tawaf one must be in a state of wudu.
-THEORY_L3_CIRCLE_COMPLETION_TITLE,Завершение круга,Završetak kruga,Përfundimi i rrathit,Devrin Tamamlanması,إتمام الشوط,Penyelesaian Putaran,Completing the circle
-THEORY_L3_CIRCLE_COMPLETION_TEXT,Круг считается завершённым при возвращении к Чёрному камню.,Krug se smatra završenim pri povratku do Crnog kamena.,Rrethi konsiderohet i përfunduar kur ktheheni te Guri i Zi.,Devir Hacerü'l-Esved'e dönüldüğünde tamamlanmış sayılır.,يُعتبر الشوط مكتملاً عند العودة إلى الحجر الأسود.,Putaran dianggap selesai saat kembali ke Hajar Aswad.,The circle is considered complete upon returning to the Black Stone.
-THEORY_L3_DUA_DURING_TAWAF_TITLE,Дуа во время тавафа,Dova tokom tavafa,Duaja gjatë tavafit,Tavafta Dua,الدعاء أثناء الطواف,Doa selama Tawaf,Dua during tawaf
-THEORY_L3_DUA_DURING_TAWAF_TEXT,Во время тавафа читаются дуа и поминание Аллаха.,Tokom tavafa se čitaju dove i spominje Allah.,Gjatë tavafit lexohen dua dhe përmendet Allahu.,Tavaf sırasında dua okunur ve Allah zikredilir.,أثناء الطواف تُقرأ الأدعية ويُذكر الله.,Selama tawaf dibacakan doa dan dzikir kepada Allah.,"During tawaf, dua and remembrance of Allah are recited."
+THEORY_L4_START_END_TITLE,Начало и завершение тавафа,Početak i završetak tavafa,Fillimi dhe mbarimi i tavafit,Tavafın başlangıcı ve sonu,بداية ونهاية الطواف,Awal dan akhir tawaf,Beginning and ending of tawaf
+THEORY_L4_START_END_TEXT,Таваф начинается и заканчивается у Хаджар аль-Асвад (Черный камень). Каждый круг считается завершенным при возвращении к Черному камню.,Tavaf počinje i završava se kod Hadžer al-Asveda (Crnog kamena). Svaki krug se smatra završenim po povratku na Crni kamen.,Tavafi fillon dhe mbaron në Haxher el-Eswed (Guri i Zi). Çdo rreth konsiderohet i përfunduar pas kthimit te Guri i Zi.,"Tavaf, Hacerü'l-Esved'de (Kara Taş) başlar ve orada biter. Her tavaf, Kara Taş'a dönüldüğünde tamamlanmış sayılır.",يبدأ الطواف وينتهي عند الحجر الأسود. ويعتبر كل دور مكتملاً عند العودة إلى الحجر الأسود.,Tawaf dimulai dan berakhir di Hajar al-Aswad (Batu Hitam). Setiap putaran dianggap selesai setelah kembali ke Batu Hitam.,Tawaf begins and ends at Hajar al-Aswad (the Black Stone). Each circle is considered complete upon returning to the Black Stone.
 ,,,,,,,
-# === LEVEL 3 QUIZ ===,,,,,,,
-Q_L3_HOW_MANY_TAWAF_CIRCLES,Сколько кругов совершается во время тавафа?,Koliko krugova se obavi tokom tavafa?,Sa rrathë kryhen gjatë tavafit?,Tavafta kaç devir yapılır?,كم شوطاً يُؤدى في الطواف؟,Berapa putaran yang dilakukan saat tawaf?,How many circles are made during tawaf?
-Q_L3_OPT_FIVE,Пять,Pet,Pesë,Beş,خمسة,Lima,Five
-Q_L3_OPT_SIX,Шесть,Šest,Gjashtë,Altı,ستة,Enam,Six
-Q_L3_OPT_SEVEN,Семь,Sedam,Shtatë,Yedi,سبعة,Tujuh,Seven
-Q_L3_OPT_EIGHT,Восемь,Osam,Tetë,Sekiz,ثمانية,Delapan,Eight
-Q_L3_TAWAF_CIRCLES_EXPLANATION,Таваф состоит из семи полных обходов вокруг Каабы.,Tavaf se sastoji od sedam punih obilazaka oko Kabe.,Tavafi përbëhet nga shtatë sjellje të plota rreth Qabes.,Tavaf Kâbe etrafında yedi tam devirden oluşur.,يتكون الطواف من سبعة أشواط كاملة حول الكعبة.,Tawaf terdiri dari tujuh putaran penuh mengelilingi Ka'bah.,Tawaf consists of seven complete circuits around the Kaaba.
+THEORY_L4_LINES_TITLE,Зеленые линии,Zelene linije,Vijat e gjelbra,Yeşil çizgiler,أخضر,Garis hijau,Green lines
+THEORY_L4_LINES_TEXT,Путь для тавафа помечен зелеными линиями на полу. По среднему кольцу (самый распространенный маршрут) длина составляет примерно 5 километров.,Ruta tavafa je označena zelenim linijama na podu. Srednji prsten (najčešća ruta) je dugačak otprilike 5 kilometara.,Rruga e tavafit është e shënuar me vija të gjelbra në dysheme. Unaza e mesme (rruga më e zakonshme) është afërsisht 5 kilometra e gjatë.,Tavaf güzergahı zeminde yeşil çizgilerle işaretlenmiştir. Orta halka (en yaygın kullanılan güzergah) yaklaşık 5 kilometre uzunluğundadır.,يُحدد مسار الطواف بخطوط خضراء على الأرض. ويبلغ طول الحلقة الوسطى (المسار الأكثر شيوعاً) حوالي 5 كيلومترات.,Rute tawaf ditandai dengan garis-garis hijau di lantai. Lingkaran tengah (rute yang paling umum) panjangnya sekitar 5 kilometer.,The tawaf route is marked with green lines on the floor. The middle ring (the most common route) is approximately 5 kilometers long.
 ,,,,,,,
-Q_L3_WHERE_TAWAF_STARTS,Где начинается таваф?,Gdje počinje tavaf?,Ku fillon tavafi?,Tavaf nereden başlar?,من أين يبدأ الطواف؟,Di mana tawaf dimulai?,Where does tawaf begin?
-Q_L3_OPT_KAABA_DOOR,У двери Каабы,Kod vrata Kabe,Te dera e Qabes,Kâbe kapısında,عند باب الكعبة,Di pintu Ka'bah,At the door of the Kaaba
-Q_L3_OPT_BLACK_STONE,У Чёрного камня,Kod Crnog kamena,Te Guri i Zi,Hacerü'l-Esved'de,عند الحجر الأسود,Di Hajar Aswad,At the Black Stone
-Q_L3_OPT_ANYWHERE,В любом месте,Na bilo kojem mjestu,Në çdo vend,Herhangi bir yerde,في أي مكان,Di mana saja,Anywhere
-Q_L3_OPT_ZAMZAM,У Замзам,Kod Zemzema,Te Zemzemi,Zemzem'de,عند زمزم,Di Zamzam,At Zamzam
-Q_L3_TAWAF_START_EXPLANATION,Таваф начинается у Чёрного камня (Хаджар аль-Асвад).,Tavaf počinje kod Crnog kamena (Hadžerul-Esved).,Tavafi fillon te Guri i Zi (Haxherul-Esved).,Tavaf Hacerü'l-Esved'den başlar.,يبدأ الطواف من الحجر الأسود (الحجر الأسود).,Tawaf dimulai dari Hajar Aswad.,Tawaf begins at the Black Stone (Hajar al-Aswad).
-,,,,,,,#VALUE!
-Q_L3_TAWAF_DIRECTION,В каком направлении совершается таваф?,U kom smjeru se obavlja tavaf?,Në cilën drejtim kryhet tavafi?,Tavaf hangi yönde yapılır?,في أي اتجاه يُؤدى الطواف؟,Ke arah mana tawaf dilakukan?,In which direction is tawaf performed?
-Q_L3_OPT_CLOCKWISE,По часовой стрелке,U smjeru kazaljke na satu,Në drejtim të akrepave të orës,Saat yönünde,مع عقارب الساعة,Searah jarum jam,Clockwise
-Q_L3_OPT_COUNTER_CLOCKWISE,Против часовой стрелки,Suprotno od kazaljke na satu,Në drejtim të kundërt me akrepat e orës,Saat yönünün tersine,عكس عقارب الساعة,Berlawanan arah jarum jam,Counterclockwise
-Q_L3_OPT_ANY_DIRECTION,В любом направлении,U bilo kojem smjeru,Në çdo drejtim,Herhangi bir yönde,في أي اتجاه,Ke arah mana saja,In any direction
-Q_L3_OPT_DIAGONAL,По диагонали,Dijagonalno,Diagonalisht,Çapraz,بشكل قطري,Secara diagonal,Diagonally
-Q_L3_TAWAF_DIRECTION_EXPLANATION,Таваф совершается против часовой стрелки.,Tavaf se obavlja suprotno od kazaljke na satu.,Tavafi kryhet në drejtim të kundërt me akrepat e orës.,Tavaf saat yönünün tersine yapılır.,يُؤدى الطواف عكس عقارب الساعة.,Tawaf dilakukan berlawanan arah jarum jam.,Tawaf is performed counterclockwise.
-,,,,,,,#VALUE!
-Q_L3_TAWAF_REQUIREMENT,Что необходимо для совершения тавафа?,Šta je potrebno za obavljanje tavafa?,Çfarë nevojitet për të kryer tavafin?,Tavaf için ne gereklidir?,ما المطلوب لأداء الطواف؟,Apa yang diperlukan untuk melakukan tawaf?,What is required to perform tawaf?
-Q_L3_OPT_REGULAR_CLOTHES,Обычная одежда,Obična odjeća,Rroba të zakonshme,Normal kıyafet,ملابس عادية,Pakaian biasa,Regular clothes
-Q_L3_OPT_RITUAL_PURITY,Ритуальная чистота (вуду),Ritualna čistoća (abdest),Pastërtia rituale (abdesti),Abdest,الطهارة (الوضوء),Kesucian ritual (wudhu),Ritual purity (voodoo)
-Q_L3_OPT_FASTING,Пост,Post,Agjërimi,Oruç,الصيام,Puasa,Fast
-Q_L3_OPT_LOUD_READING,Громкое чтение,Glasno čitanje,Lexim me zë të lartë,Yüksek sesle okuma,القراءة بصوت عالٍ,Membaca dengan keras,Reading aloud
-Q_L3_TAWAF_REQUIREMENT_EXPLANATION,Для тавафа необходимо находиться в состоянии ритуальной чистоты.,Za tavaf je potrebno biti u stanju ritualne čistoće.,Për tavafin duhet të jeni në gjendje të pastërtisë rituale.,Tavaf için abdestli olmak gerekir.,للطواف يجب أن تكون على طهارة.,Untuk tawaf harus dalam keadaan suci secara ritual.,To perform tawaf one must be in a state of ritual purity.
+THEORY_L4_PRAYER_TITLE,Завершение тавафа,Završetak tavafa,Përfundimi i tavafit,Tavafın tamamlanması,إتمام الطواف,Penyelesaian tawaf,Completion of tawaf
+THEORY_L4_PRAYER_TEXT,Таваф завершается двухракаатным намазом у места Ибрахима (Макам Ибрахим). Чтение определенных дуа во время тавафа не является обязательным,Tavaf se završava dvorekatnom molitvom na mjestu Ibrahima (Maqam Ibrahim). Učenje određenih dova tokom tavafa nije obavezno.,Tavafi përfundon me një namaz dy-rekatesh në vendin e Ibrahimit (Maqam Ibrahim). Recitimi i duave specifike gjatë tavafit nuk është i detyrueshëm.,"Tavaf, İbrahim Makamı'nda kılınan iki rekatlık namazla sona erer. Tavaf sırasında belirli dualar okumak zorunlu değildir.",يُختتم الطواف بركعتين عند مقام إبراهيم. ولا يُشترط قراءة أدعية محددة أثناء الطواف.,Tawaf diakhiri dengan salat dua rakaat di tempat Ibrahim (Maqam Ibrahim). Membaca doa-doa tertentu selama tawaf tidak diwajibkan.,Tawaf concludes with a two-raka'ah prayer at the place of Ibrahim (Maqam Ibrahim). Reciting specific du'as during tawaf is not obligatory.
 ,,,,,,,
-Q_L3_WHEN_CIRCLE_COMPLETE,Когда круг считается завершённым?,Kada se krug smatra završenim?,Kur rrathi konsiderohet i përfunduar?,Devir ne zaman tamamlanmış sayılır?,متى يُعتبر الشوط مكتملاً؟,Kapan putaran dianggap selesai?,When is a circle considered complete?
-Q_L3_OPT_HALFWAY,После половины пути,Nakon pola puta,Pas gjysmës së rrugës,Yolun yarısında,بعد نصف الطريق,Setelah setengah jalan,After half way
-Q_L3_OPT_RETURN_TO_BLACK_STONE,При возвращении к Чёрному камню,Pri povratku do Crnog kamena,Kur ktheheni te Guri i Zi,Hacerü'l-Esved'e dönüldüğünde,عند العودة إلى الحجر الأسود,Saat kembali ke Hajar Aswad,On returning to the Black Stone
-Q_L3_OPT_THREE_STEPS,После трёх шагов,Nakon tri koraka,Pas tre hapave,Üç adım sonra,بعد ثلاث خطوات,Setelah tiga langkah,After three steps
-Q_L3_OPT_AFTER_PRAYER,После молитвы,Nakon molitve,Pas lutjes,Namazdan sonra,بعد الصلاة,Setelah sholat,After prayer
-Q_L3_CIRCLE_COMPLETE_EXPLANATION,Круг завершается при возвращении к Чёрному камню.,Krug se završava pri povratku do Crnog kamena.,Rrethi përfundon kur ktheheni te Guri i Zi.,Devir Hacerü'l-Esved'e dönüldüğünde tamamlanır.,يكتمل الشوط عند العودة إلى الحجر الأسود.,Putaran selesai saat kembali ke Hajar Aswad.,The circle is completed upon returning to the Black Stone.
+# === LEVEL 5 - SAY & MARWAH ===,,,,,,,
+LEVEL_5_TITLE,Сай и Марва,Sai i Marva,Sai dhe Marva,Sai ve Marva,ساي ومارفة,Sai dan Marva,Sai and Marva
+LEVEL_5_DESC,Прохождение между Сафой и Марвой,Prolaz između Safe i Marve,Kalimi midis Safa dhe Marwa,Safa ile Merve arası geçiş,الممر بين الصفا والمروة,Jalur antara Safa dan Marwa,Passage between Safa and Marwa
 ,,,,,,,
-Q_L3_WHAT_TO_READ_DURING_TAWAF,Что читается во время тавафа?,Šta se čita tokom tavafa?,Çfarë lexohet gjatë tavafit?,Tavafta ne okunur?,ماذا يُقرأ أثناء الطواف؟,Apa yang dibaca selama tawaf?,What is recited during tawaf?
-Q_L3_OPT_ONLY_TALBIYAH,Только тальбия,Samo telbija,Vetëm telbija,Sadece telbiye,التلبية فقط,Hanya talbiyah,Only Talbiya
-Q_L3_OPT_DUA_AND_DHIKR,Дуа и поминание Аллаха,Dove i spominjanje Allaha,Dua dhe përmendja e Allahut,Dua ve zikir,الدعاء والذكر,Doa dan dzikir,Dua and remembrance of Allah
-Q_L3_OPT_ONLY_ADHAN,Только азан,Samo ezan,Vetëm ezani,Sadece ezan,الأذان فقط,Hanya adzan,Only adhan
-Q_L3_OPT_NOTHING,Ничего,Ništa,Asgjë,Hiçbir şey,لا شيء,Tidak ada,Nothing
-Q_L3_TAWAF_READING_EXPLANATION,Во время тавафа читаются дуа и совершается поминание Аллаха.,Tokom tavafa se čitaju dove i spominje Allah.,Gjatë tavafit lexohen dua dhe përmendet Allahu.,Tavafta dua okunur ve Allah zikredilir.,أثناء الطواف تُقرأ الأدعية ويُذكر الله.,Selama tawaf dibacakan doa dan dzikir kepada Allah.,"During tawaf, dua is recited and remembrance of Allah is performed."
+THEORY_L5_SAY_DEF_TITLE,Что такое сай?,Šta je sai?,Çfarë është sai?,Sai nedir?,ما هو ساي؟,Apa itu sai?,What is sai?
+THEORY_L5_SAY_DEF_TEXT,Сай — это семь проходов между холмами Сафа и Марва. Один проход — от Сафы до Марвы. Седьмой проход заканчивается на Марве.,Sai je niz od sedam prijevoja između brda Safa i Marwa. Jedan prijevoj ide od Safe do Marwe. Sedmi prijevoj završava kod Marwe.,Sai është një seri prej shtatë kalimesh midis kodrave të Safasë dhe Mervasë. Një kalim shkon nga Safa në Merva. Kalimi i shtatë përfundon në Merva.,"Sai, Safa ve Marwa tepeleri arasında yer alan yedi geçitten oluşan bir sıradır. Geçitlerden biri Safa'dan Marwa'ya uzanır. Yedinci geçit ise Marwa'da sona erer.",ساي عبارة عن سلسلة من سبعة ممرات جبلية بين تلال الصفا والمروة. يمتد أحد هذه الممرات من الصفا إلى المروة، بينما ينتهي الممر السابع عند المروة.,Sai adalah serangkaian tujuh jalur pegunungan yang terletak di antara perbukitan Safa dan Marwa. Satu jalur membentang dari Safa ke Marwa. Jalur ketujuh berakhir di Marwa.,Sai is a series of seven passes between the hills of Safa and Marwa. One pass runs from Safa to Marwa. The seventh pass ends at Marwa.
 ,,,,,,,
-Q_L3_TAWAF_OBJECT,Что является объектом обхода во время тавафа?,Šta je objekat obilaska tokom tavafa?,Cili është objekti i silljes gjatë tavafit?,Tavafta etrafında dönülen nesne nedir?,ما هو موضع الطواف؟,Apa objek yang dikelilingi saat tawaf?,What is the object of circumambulation during tawaf?
-Q_L3_OPT_SAFA_MOUNT,Гора Сафа,Brdo Safa,Mali Safa,Safa tepesi,جبل الصفا,Bukit Safa,Mount Safa
-Q_L3_OPT_KAABA,Кааба,Kaba,Qabeja,Kâbe,الكعبة,Ka'bah,Kaaba
-Q_L3_OPT_MEDINA_MOSQUE,Мечеть в Медине,Džamija u Medini,Xhamia në Medine,Medine'deki Mescid,المسجد في المدينة,Masjid di Madinah,Mosque in Medina
-Q_L3_OPT_ZAMZAM,Замзам,Zemzem,Zemzemi,Zemzem,زمزم,Zamzam,Zamzam
-Q_L3_TAWAF_OBJECT_EXPLANATION,Таваф совершается вокруг Каабы.,Tavaf se obavlja oko Kabe.,Tavafi kryhet rreth Qabes.,Tavaf Kâbe etrafında yapılır.,يُؤدى الطواف حول الكعبة.,Tawaf dilakukan mengelilingi Ka'bah.,Tawaf is performed around the Kaaba.
+THEORY_L5_DUAS_TITLE,Дуа во время сай,Dova tokom saija,Dua gjatë sai-t,Sai sırasında dua,الدعاء أثناء الصلاة,Doa selama sai,Dua during sai
+THEORY_L5_DUAS_TEXT,Желательно читать специальные дуа на подъеме на холмы,Preporučljivo je čitati posebne dove prilikom penjanja uzbrdo.,Këshillohet të lexoni dua të veçanta kur ngjiteni në kodra.,Tepelere tırmanırken özel dualar okumak tavsiye edilir.,يُنصح بقراءة أدعية خاصة عند صعود التلال.,Dianjurkan untuk membaca doa-doa khusus saat mendaki bukit.,It is advisable to read special duas when climbing hills.
+,,,,,,,
+THEORY_L5_COMPLETION_TITLE,Завершение сай,Završetak gradilišta,Përfundimi i faqes,Şantiyenin tamamlanması,اكتمال الموقع,Penyelesaian situs,Completion of the site
+THEORY_L5_COMPLETION_TEXT,Сай завершается бритьем или укорачиванием волос. Мужчины могут сбрить голову налысо (желательно) или коротко постричься. Женщины подрезают прядь волос. После этого ихрам заканчивается.,"Sa'i završava brijanjem ili šišanjem kose. Muškarci mogu obrijati glave na ćelavo (poželjno) ili ošišati kosu na kratko. Žene podšišaju pramen kose. Nakon toga, ihram završava.","Sa'i përfundon me rruajtje ose prerje të flokëve. Burrat mund ta rruajnë kokën tullace (preferohet) ose t'u presin flokët shkurt. Gratë shkurtojnë një tufë flokësh. Pas kësaj, ihrami përfundon.","Sa'i, saçların tıraş edilmesi veya kesilmesiyle sona erer. Erkekler başlarını tamamen tıraş edebilir (tercih edilen yöntem) veya saçlarını kısa kestirebilirler. Kadınlar ise saçlarından bir tutam keserler. Bundan sonra ihram sona erer.",ينتهي السعي بحلق الشعر أو قصه. يجوز للرجال حلق رؤوسهم بالكامل (وهو الأفضل) أو قص شعرهم قصيراً. أما النساء فيقصرن خصلة من الشعر. وبعد ذلك ينتهي الإحرام.,"Sa'i diakhiri dengan mencukur atau memotong rambut. Pria boleh mencukur habis rambut mereka (lebih disukai) atau memotong rambut mereka pendek. Wanita memangkas sehelai rambut. Setelah ini, ihram berakhir.","The sa'i ends with shaving or cutting the hair. Men may shave their heads bald (preferred) or have their hair cut short. Women trim a lock of hair. After this, ihram ends."
+,,,,,,,
+THEORY_L5_AFTER_IHRAM_TITLE,После выхода из ихрама,Nakon izlaska iz ihrama,Pas daljes nga ihrami,İhramdan çıktıktan sonra,بعد الخروج من الإحرام,Setelah keluar dari ihram,After exiting ihram
+THEORY_L5_AFTER_IHRAM_TEXT,После бритья/укорачивания волос паломник выходит из ихрама. Теперь разрешено всё,"Nakon brijanja/šišanja kose, hodočasnik izlazi iz ihrama. Sada je sve dozvoljeno.","Pasi rruhet/pret flokët, haxhiu del nga ihram. Tani gjithçka është e lejuar.","Hacı, saçlarını tıraş ettikten/kestikten sonra ihramdan çıkar. Artık her şey serbesttir.",بعد حلق/قص الشعر، يخرج الحاج من الإحرام. الآن كل شيء مباح.,"Setelah mencukur/memotong rambut, jamaah haji keluar dari ihram. Sekarang semuanya diperbolehkan.","After shaving/cutting the hair, the pilgrim exits ihram. Now everything is permitted."
+,,,,,,,
+# === LEVEL 6 - REPEAT UMRAH ===,,,,,,,
+LEVEL_6_TITLE,Повторная умра (Умра Муфрада),Ponovljena Umra (Umrah Mufrada),Umra e përsëritur (Umra Mufrada),Tekrarlanan Umre (Umre Mufrada),العمرة المتكررة (العمرة المفردة),Umrah Berulang (Umrah Mufrada),Repeated Umrah (Umrah Mufrada)
+LEVEL_6_DESC,Как совершить повторную умру из Мекки,Kako obaviti drugu umru iz Meke,Si të kryeni një Umre të Dytë nga Meka,Mekke'den İkinci Umre Nasıl Yapılır?,كيفية أداء العمرة الثانية من مكة المكرمة,Cara Melakukan Umrah Kedua dari Mekah,How to Perform a Second Umrah from Mecca
+,,,,,,,
+THEORY_L6_AISHA_MOSQUE_TITLE,Мечеть Айши,Aišina džamija,Xhamia e Aishes,Ayşe Camii,مسجد عائشة,Masjid Aisha,Aisha Mosque
+THEORY_L6_AISHA_MOSQUE_TEXT,Для повторной умры нужно поехать в Масджид ат-Тан'им (мечеть Айши). Это ближайший микат для паломников,Za drugu umru morate putovati do džamije Masjid al-Tan'im (Aišina džamija). Ovo je najbliži mikat za hodočasnike.,"Për një Umre të dytë, duhet të udhëtoni për në Masjid al-Tan'im (Xhamia e Aishes). Ky është mikati më i afërt për pelegrinët.","İkinci Umre için Mescid-i Tan'im'e (Aişe Camii) gitmeniz gerekir. Bu, hacılar için en yakın mikattır.",لأداء العمرة الثانية، يجب التوجه إلى مسجد التنعيم (مسجد عائشة). وهو أقرب ميقات للحجاج.,"Untuk umrah kedua, Anda harus pergi ke Masjid al-Tan'im (Masjid Aisyah). Ini adalah miqat terdekat bagi para peziarah.","For a second Umrah, you must travel to Masjid al-Tan'im (Aisha's Mosque). This is the closest miqat for pilgrims."
+,,,,,,,
+THEORY_L6_TAXI_TITLE,Такси до мечети Айши,Taksi do džamije Aiša,Taksi për në Xhaminë e Aishes,Ayşe Camii'ne taksi,سيارة أجرة إلى مسجد عائشة,Taksi ke Masjid Aisha,Taxi to Aisha Mosque
+THEORY_L6_TAXI_TEXT,Можно поехать группой с туроператором или самостоятельно на такси. Стоимость такси примерно 30-40 реалов. Таксист будет ждать на парковке и отвезет обратно.,Možete putovati s turističkom agencijom ili sami uzeti taksi. Taksi košta otprilike 30-40 reala. Taksista će vas čekati na parkingu i vratiti.,Mund të udhëtoni me një operator turistik ose të merrni një taksi vetë. Një taksi kushton afërsisht 30-40 reais. Shoferi i taksisë do të presë në parking dhe do t'ju kthejë mbrapsht.,Bir tur operatörüyle seyahat edebilir veya kendi başınıza taksi tutabilirsiniz. Taksi yaklaşık 30-40 real tutar. Taksi şoförü otoparkta bekleyecek ve sizi geri götürecektir.,يمكنك السفر مع شركة سياحية أو استقلال سيارة أجرة بنفسك. تبلغ تكلفة سيارة الأجرة حوالي 30-40 ريال برازيلي. سينتظرك سائق التاكسي في موقف السيارات ويعيدك إلى وجهتك.,Anda bisa bepergian dengan operator tur atau naik taksi sendiri. Biaya taksi sekitar 30-40 reais. Sopir taksi akan menunggu di tempat parkir dan mengantar Anda kembali.,You can travel with a tour operator or take a taxi on your own. A taxi costs approximately 30-40 reais. The taxi driver will wait in the parking lot and take you back.
+,,,,,,,
+THEORY_L6_PRAYER_TITLE,Намаз в мечети Айши,Namaz u džamiji Aiša,Namaz në Xhaminë Aisha,Ayşe Camii'nde Namaz,صلاة الصلاة في مسجد عائشة,Salat di Masjid Aisha,Namaz at Aisha Mosque
+THEORY_L6_PRAYER_TEXT,В мечети Айши нужно сделать 2 ракаата намаза,U džamiji Aiša potrebno je obaviti 2 rekata namaza.,"Në xhaminë Aisha, duhet të kryeni 2 rekate namaz.",Ayşe Camii'nde 2 rekat namaz kılmanız gerekiyor.,في مسجد عائشة، يجب عليك أداء ركعتين من الصلاة.,"Di Masjid Aisha, Anda perlu melaksanakan salat 2 rakaat.","In the Aisha Mosque, you need to perform 2 rakats of prayer."
+,,,,,,,
+THEORY_L6_REPEAT_RITUALS_TITLE,Повторение обрядов,Ponavljanje rituala,Përsëritja e ritualeve,Ritüellerin tekrarı,تكرار الطقوس,Pengulangan ritual,Repetition of rituals
+THEORY_L6_REPEAT_RITUALS_TEXT,После возвращения в Мекку все обряды повторяются: таваф 7 кругов,"Nakon povratka u Meku, svi rituali se ponavljaju: tavaf 7 krugova","Pas kthimit në Mekë, të gjitha ritualet përsëriten: tavaf 7 rrathë",Mekke'ye döndükten sonra tüm ritüeller tekrarlanır: tavaf 7 tur.,بعد العودة إلى مكة، تُعاد جميع المناسك: الطواف سبع مرات.,"Setelah kembali ke Mekah, semua ritual diulangi: tawaf 7 putaran.","After returning to Mecca, all rituals are repeated: tawaf 7 circles"
+,,,,,,,
+# === LEVEL 0 - UMRA INTRODUCTION ===,,,,,,,
+LEVEL_0_TITLE,Умра: введение,Umra: Uvod,Umra: Një Hyrje,Umre: Bir Giriş,العمرة: مقدمة,Umrah: Sebuah Pengantar,Umrah: An Introduction
+LEVEL_0_DESC,Изучи основы малого паломничества,Naučite osnove malog hodočašća,Mësoni bazat e pelegrinazhit të vogël,Küçük hac yolculuğunun temellerini öğrenin.,تعرّف على أساسيات الحج الأصغر,Pelajari dasar-dasar ziarah kecil.,Learn the basics of the lesser pilgrimage
 ,,,,,,,
 ,,,,,,,
 # === UI ===,,,,,,,
@@ -218,210 +112,889 @@ UI_TITLE_QUIZ,Викторина,KViz,Kuiz,Quiz,مسابقة,Quiz,Quiz
 UI_TITLE_THEORY,Теория,Teorija,Teoria,Teori,نظرية,Teori,Theory
 UI_GO_TO_TEST,Перейти к тесту,Idi na test,Shko te testi,Teste git,الذهاب إلى الاختبار,Menuju test,Go to the test
 UI_GO_TO_THEORY,Перейти к теории,Idi na teoriju,Shko te teoria,Teoriye git,الذهاب إلى النظرية,Menuju teori,Go to theory
-UI_TITLE_LEVEL_1,Подгтотовка к хаджу,Priprema za hadž,Përgatitja për haxh,Hac hazırlıkları,الاستعداد للحج,Persiapan Haji,Preparation for Hajj
-UI_TITLE_LEVEL_2,Микат,Mikat,Mikat,Mikat,ميكات,Mikat,Mikat
-UI_TITLE_LEVEL_3,Таваф уль кудум,Tavaf ul kudum,Tavaf ul kudum,Tawaf ul qudum,طواف القدوم,Tawaf ul qudum,Tawaf ul qudum
-UI_PROGRESS_RESET_KEY,Сброс,Resetuj,Reset,Sıfırla,إعادة ضبط,Mengatur ulang,Reset
+UI_TITLE_LEVEL_1,Подгтотовка к хаджу,#REF!,Përgatitja për haxh,#REF!,#REF!,#REF!,#REF!
+UI_TITLE_LEVEL_2,Микат,#REF!,Mikat,#REF!,#REF!,#REF!,#REF!
+UI_TITLE_LEVEL_3,Таваф уль кудум,#REF!,Tavaf ul kudum,#REF!,#REF!,#REF!,#REF!
+UI_PROGRESS_RESET_KEY,Сброс,#REF!,Reset,#REF!,#REF!,#REF!,#REF!
 ,,,,,,,
 ,,,,,,,
 ,,,,,,,
-LEVEL_4_TITLE, Сай,Sai,Sai,Sai,ساي,Sai,Sai
-LEVEL_4_DESC,Сай и марва,Sai i Marva,Sai dhe Marva,Sai ve Marva,ساي ومارفة,Sai dan Marva,Sai and Marva
-Q1_SAY_LINGUISTIC_MEANING,Что означает слово «сай» (سَعْي) в арабском языке?,"Šta znači riječ ""reći"" (سَعْي) na arapskom?","Çfarë do të thotë fjala ""thuaj"" (سَعْي) në arabisht?","Arapçada ""say"" (سَعْي) kelimesi ne anlama gelir?","ماذا تعني كلمة ""يقول"" (سَعْي) في اللغة العربية؟","Apa arti kata ""say"" (سَعْي) dalam bahasa Arab?","What does the word ""say"" (سَعْي) mean in Arabic?"
-Q1_OPT_1_WALKING,Ходьба,Hodanje,Ecje,Yürüme,المشي,Sedang berjalan,Walking
-Q1_OPT_2_STRIVING_OR_EXERTION,Стремление / усердие,Težnja / marljivost,Aspiratë / zell,Hırs / gayret,الطموح / الاجتهاد,Aspirasi / ketekunan,Aspiration / diligence
-Q1_OPT_3_RUNNING,Бег,Trčanje,Vrapim,Koşma,جري,Berlari,Running
-Q1_OPT_4_PRAYER,Молитва,Molitva,Lutje,Namaz,صلاة,Doa,Prayer
-Q1_EXPL_SAY_MEANING,"В арабском языке «сай» означает усердие, стремление и активное движение. В шариатском смысле — это ритуальное прохождение между холмами Сафа и Марва.","Na arapskom jeziku, ""say"" označava marljivost, trud i aktivno kretanje. U šerijatskom smislu, odnosi se na ritualnu šetnju između brda Safa i Merva.","Në arabisht, ""thuaj"" nënkupton zell, përpjekje dhe lëvizje aktive. Në kuptimin e Sheriatit, i referohet ecjes rituale midis kodrave të Safasë dhe Marvasë.","Arapçada ""say"" kelimesi gayret, çaba ve aktif hareketi ifade eder. Şeriat anlamında ise Safa ve Merve tepeleri arasındaki ritüel yürüyüşü ifade eder.","في اللغة العربية، تدل كلمة ""يقول"" على الاجتهاد والسعي والحركة النشطة. أما في الشريعة الإسلامية، فتشير إلى المشية الطقسية بين الصفا والمروة.","Dalam bahasa Arab, ""say"" berarti ketekunan, usaha, dan gerakan aktif. Dalam konteks syariah, ini merujuk pada perjalanan ritual antara bukit Safa dan Marwa.","In Arabic, ""say"" signifies diligence, striving, and active movement. In the Shariah sense, it refers to the ritual walk between the hills of Safa and Marwa."
-Q2_SAY_STARTING_POINT,С какого холма начинается сай?,Sa kojeg brda počinje sai?,Nga cila kodër fillon sai?,Sai ağacı hangi tepeden başlar?,من أي تلة يبدأ مسار الساي؟,Dari bukit manakah sai bermula?,From which hill does the sai begin?
-Q2_OPT_1_MARWA,Марва,Marva,Marva,Marva,مارفا,Marva,Marva
-Q2_OPT_2_KAABA,Кааба,Kaba,Qabeja,Kabe,الكعبة,Kaaba,Kaaba
-Q2_OPT_3_SAFA,Сафа,Safa,Safa,Safa,صفا,Safa,Safa
-Q2_OPT_4_ARAFAT,Арафат,Arafat,Arafat,Arafat,عرفات,Arafat,Arafat
-Q2_EXPL_START_SAFA,Сай начинается с холма ас-Сафа и заканчивается на холме аль-Марва. Седьмой круг завершается на Марве.,Sa'i počinje na brdu As-Safa i završava na brdu Al-Marwa. Sedmi krug završava kod Marwe.,Sa'i fillon në kodrën Es-Safa dhe përfundon në kodrën El-Marva. Qarku i shtatë përfundon në Marva.,"Sa'i, As-Safa Tepesi'nden başlar ve Al-Marwa Tepesi'nde sona erer. Yedinci tur Marwa'da sona erer.",يبدأ السعي من تل الصفا وينتهي عند تل المروة. وتنتهي الدورة السابعة عند المروة.,Rute Sa'i dimulai dari Bukit As-Safa dan berakhir di Bukit Al-Marwa. Rute ketujuh berakhir di Marwa.,The Sa'i begins at As-Safa Hill and ends at Al-Marwa Hill. The seventh circuit ends at Marwa.
-Q3_SAY_NUMBER_OF_LAPS,Сколько кругов (шаутов) составляет сай?,Od koliko krugova (povika) se sastoji sai?,Nga sa rrathë (britma) përbëhet një sai?,Bir sai kaç çemberden (çıkıntıdan) oluşur?,كم عدد الدوائر (الصيحات) التي يتكون منها الساي؟,Ada berapa lingkaran (teriakan) yang membentuk sebuah sai?,How many circles (shouts) does a sai consist of?
-Q3_OPT_1_THREE,Три,Tri,Tre,Üç,ثلاثة,Tiga,Three
-Q3_OPT_2_FIVE,Пять,Pet,Pesë,Beş,خمسة,Lima,Five
-Q3_OPT_3_SEVEN,Семь,Sedam,Shtatë,Yedi,سبعة,Tujuh,Seven
-Q3_OPT_4_TEN,Десять,Deset,Dhjetë,On,عشرة,Sepuluh,Ten
-Q3_EXPL_SEVEN_LAPS,"Сай состоит из семи кругов. Путь от Сафы до Марвы считается одним кругом, обратно от Марвы до Сафы — вторым, и так далее.","Sai se sastoji od sedam krugova. Putovanje od Safe do Marwe smatra se jednim krugom, povratno putovanje od Marwe do Safe smatra se drugim krugom i tako dalje.","Sai përbëhet nga shtatë xhiro. Udhëtimi nga Safa në Marwa konsiderohet një xhiro, udhëtimi i kthimit nga Marwa në Safa konsiderohet një xhiro e dytë e kështu me radhë.","Sai, yedi turdan oluşmaktadır. Safa'dan Marwa'ya gidiş bir tur, Marwa'dan Safa'ya dönüş ikinci tur ve bu şekilde devam eder.",يتكون مسار ساي من سبع دورات. تعتبر الرحلة من الصفا إلى المروة دورة واحدة، وتعتبر رحلة العودة من المروة إلى الصفا دورة ثانية، وهكذا.,"Sai terdiri dari tujuh putaran. Perjalanan dari Safa ke Marwa dianggap sebagai satu putaran, perjalanan kembali dari Marwa ke Safa dianggap sebagai putaran kedua, dan seterusnya.","Sai consists of seven laps. The journey from Safa to Marwa is considered one lap, the return journey from Marwa to Safa is considered a second lap, and so on."
-Q4_SAY_HISTORICAL_ORIGIN,В память о каком событии установлен ритуал сай?,U spomen na koji događaj je uspostavljen sai ritual?,Në kujtim të cilës ngjarje është vendosur rituali sai?,Sai ritüeli hangi olayın anısına oluşturulmuştur?,تخليداً لذكرى أي حدث تم تأسيس طقوس الساي؟,Ritual Sai didirikan untuk memperingati peristiwa apa?,In memory of what event is the sai ritual established?
-Q4_OPT_1_PROPHET_MUHAMMAD,О пророке Мухаммаде ﷺ,"O Poslaniku Muhammedu, s.a.v.s.",Rreth Profetit Muhamed ﷺ,Hz. Muhammed ﷺ hakkında,عن النبي محمد ﷺ,Tentang Nabi Muhammad ﷺ,About Prophet Muhammad ﷺ
-Q4_OPT_2_PROPHET_IBRAHIM,О пророке Ибрахиме (Аврааме),O proroku Ibrahimu (Abrahamu),Rreth Profetit Ibrahim (Abraham),İbrahim Peygamber (Abraham) hakkında,عن النبي إبراهيم (عليه السلام),Tentang Nabi Ibrahim (Abraham),About the Prophet Ibrahim (Abraham)
-Q4_OPT_3_HAGAR_HAJAR,О Хаджар (Агари) — жене Ибрахима,O Hadžeri (Hagar) - Ibrahimovoj ženi,Rreth Haxheres (Hagar) - gruas së Ibrahimit,İbrahim'in eşi Hacer (Hagar) hakkında,عن هاجر (هاجر) - زوجة إبراهيم,Tentang Hajar (Hagar) - istri Ibrahim,About Hajar (Hagar) - the wife of Ibrahim
-Q4_OPT_4_PROPHET_ISMAIL,О пророке Исмаиле,O proroku Ismailu,Rreth Profetit Ismail,Peygamber İsmail hakkında,عن النبي إسماعيل,Tentang Nabi Ismail,About Prophet Ismail
-Q4_EXPL_HAGAR_STORY,"Сай установлен в память о Хаджар, которая семь раз бегала между холмами Сафа и Марва в поисках воды для своего сына Исмаила.","Sai je podignut u spomen na Hadžeru, koja je sedam puta trčala između brda Safa i Merva tražeći vodu za svog sina Ismaila.","Sai u ngrit në kujtim të Haxheres, e cila vrapoi shtatë herë midis kodrave të Safasë dhe Marvasë në kërkim të ujit për djalin e saj Ismailin.","Sai, oğlu İsmail için su bulmak amacıyla Safa ve Merve tepeleri arasında yedi kez koşan Hacer'in anısına dikilmiştir.",أُقيمت ساي تخليداً لذكرى هاجر، التي ركضت سبع مرات بين تلال الصفا والمروة بحثاً عن الماء لابنها إسماعيل.,"Sai didirikan untuk mengenang Hajar, yang berlari tujuh kali antara bukit Safa dan Marwa untuk mencari air bagi putranya, Ismail.","Sai was erected in memory of Hajar, who ran seven times between the hills of Safa and Marwa in search of water for her son Ismail."
-Q5_SAY_RULING_STATUS,Каков шариатский статус сай в хадже?,Kakav je šerijatski status Sa'ija u hadžu?,Cili është statusi i Sa'i-t në Haxh sipas Sheriatit?,Hacda Sa'i'nin şeriat açısından statüsü nedir?,ما هو الوضع الشرعي للسعي في الحج؟,Bagaimana status syariat Sa'i dalam ibadah haji?,What is the Sharia status of Sa'i in Hajj?
-Q5_OPT_1_SUNAH_ONLY,Только сунна,Samo Sunnet,Vetëm Sunet,Sadece Sünnet,السنة فقط,Hanya Sunnah,Only Sunnah
-Q5_OPT_2_RUKN_PILLAR,Рукн (столп),Rukn (stub),Rukn (shtyllë),Rukn (sütun),الركن (العمود),Rukn (pilar),Rukn (pillar)
-Q5_OPT_3_WAJIB_OBLIGATORY,Ваджиб (обязательное),Vadžib (obavezno),Vaxhib (i detyrueshëm),Vajib (zorunlu),واجب (إلزامي),Wajib (wajib),Wajib (obligatory)
-Q5_OPT_4_MUSTAHAB_RECOMMENDED,Мустахаб (желательное),Mustahab (poželjno),Mustehabb (i preferuar),Mustahabb (tercih edilen),مستحب (مفضل),Mustahabb (lebih disukai),Mustahabb (preferred)
-Q5_EXPL_SAY_RUKN,"По мнению большинства ученых, сай является рукном (столпом) хаджа и умры. Его намеренное оставление делает хадж недействительным.","Prema većini učenjaka, sa'i je rukn (stup) hadža i umre. Namjerno ostavljanje istog čini hadž nevažećim.","Sipas shumicës së dijetarëve, sa'i është një rukn (shtyllë) e Haxhit dhe Umres. Lënia e qëllimshme e saj e zhvleftëson Haxhin.","Çoğu âlime göre sa'i, Hac ve Umre'nin rükünlerinden biridir. Kasıtlı olarak sa'i'yi terk etmek Hac'ı geçersiz kılar.",بحسب رأي أغلب العلماء، يُعدّ السعي ركناً من أركان الحج والعمرة، وتركه عمداً يُبطل الحج.,"Menurut sebagian besar ulama, sa'i adalah rukun (rukun) haji dan umrah. Sengaja meninggalkannya akan membatalkan ibadah haji.","According to most scholars, the sa'i is a rukn (pillar) of Hajj and Umrah. Intentionally leaving it behind invalidates the Hajj."
-Q6_SAY_GREEN_LIGHTS_SECTION,Что делают мужчины на участке между двумя зелеными огнями (ориентирами) во время сай?,Šta muškarci rade u području između dva zelena svjetla (orijentira) tokom saija?,Çfarë bëjnë burrat në zonën midis dy dritave jeshile (pikave referuese) gjatë sai-t?,Sai sırasında erkekler iki yeşil ışık (işaret noktası) arasındaki alanda ne yaparlar?,ماذا يفعل الرجال في المنطقة الواقعة بين الإشارتين الخضراوين (المعالم) أثناء سباق ساي؟,Apa yang dilakukan para pria di area antara dua lampu hijau (penanda lokasi) selama sai?,What do men do in the area between the two green lights (landmarks) during sai?
-Q6_OPT_1_WALK_NORMALLY,Идут спокойно,Oni hodaju mirno,Ata ecin të qetë,Sakin bir şekilde yürüyorlar.,يمشون بهدوء,Mereka berjalan dengan tenang,They walk calmly
-Q6_OPT_2_RUN_RAPIDLY,Бегут ускоренным шагом (харвала),Trče brzim tempom (harwala),Ata vrapojnë me një ritëm të shpejtë (harwala),Hızlı bir tempoda koşuyorlar (harwala),يركضون بخطى سريعة (هاروالا),Mereka berlari dengan kecepatan tinggi (harwala),They run at a quick pace (harwala)
-Q6_OPT_3_STOP_PRAY,Останавливаются для молитвы,Zaustavljaju se da se mole,Ata ndalojnë për t'u lutur,Dua etmek için duruyorlar.,يتوقفون للصلاة,Mereka berhenti untuk berdoa.,They stop to pray
-Q6_OPT_4_SIT_REST,Садятся отдохнуть,Sjedaju da se odmore,Ata ulen për të pushuar,Dinlenmek için oturuyorlar.,يجلسون للراحة,Mereka duduk untuk beristirahat.,They sit down to rest
-Q6_EXPL_RUNNING_MEN,Для мужчин сунной является харвала — ускоренный бег без прыжков на участке между зелеными огнями. Женщины идут спокойно.,"Za muškarce, sunnet je harvala - trčanje brzim tempom bez preskakanja između zelenih semafora. Žene hodaju mirno.","Për burrat, suneti është harwala - vrapimi me ritëm të shpejtë pa kërcyer midis dritave jeshile. Gratë ecin me qetësi.","Erkekler için sünnet, harwala'dır; yani yeşil ışıklar arasında atlamadan hızlı bir şekilde koşmaktır. Kadınlar ise sakin bir şekilde yürürler.",بالنسبة للرجال، السنة هي الهرولة - الجري بخطى سريعة دون القفز بين الإشارات الخضراء. أما النساء فيمشين بهدوء.,"Bagi laki-laki, sunnahnya adalah harwala—berlari dengan cepat tanpa menerobos lampu hijau. Perempuan berjalan dengan tenang.","For men, the sunnah is harwala—running at a fast pace without jumping between green lights. Women walk calmly."
-Q7_SAY_CONDITION_VALIDITY,Что является обязательным условием действительности сай?,Koji je obavezni uslov za validnost web stranice?,Cili është një kusht i detyrueshëm për vlefshmërinë e një faqeje interneti?,Bir internet sitesinin geçerliliği için zorunlu koşul nedir?,ما هو الشرط الإلزامي لصحة موقع الويب؟,Apa saja syarat wajib agar sebuah situs web valid?,What is a mandatory condition for the validity of a website?
-Q7_OPT_1_BE_IN_WUDU,Быть в омовении (вуду),Uzimati abdest (abdest),Të jesh në abdes (wudu),Abdestli olmak (vudu),أن يكون المرء في حالة وضوء,Bersuci (wudu),To be in ablution (wudu)
-Q7_OPT_2_WEAR_IHRAM,Быть в ихраме,Budite u ihramu,Ji në ihram,İhramda bulunun.,ارتدِ الإحرام,Berbaringlah dalam keadaan ihram,Be in ihram
-Q7_OPT_3_COMPLETE_SEVEN_LAPS,Полное прохождение всех семи кругов,Potpuni prolazak svih sedam krugova,Kalimi i plotë i të gjitha shtatë rrathëve,Yedi çemberin tamamının geçişini tamamlayın.,المرور الكامل على جميع الدوائر السبع,Selesaikan seluruh tujuh lingkaran.,Complete passage of all seven circles
-Q7_OPT_4_FAST_BEFORE,Поститься перед сай,Postite prije Saija,Agjërimi para Sai-t,Sai'den önce oruç,صيام قبل ساي,Berpuasa sebelum Sai,Fast before Sai
-Q7_EXPL_COMPLETION,"Обязательным условием является прохождение всех семи кругов полностью. Если пропущен хотя бы один круг, сай считается недействительным.","Završetak svih sedam krugova je obavezan. Ako se propusti čak i jedan krug, sai se smatra nevažećim.","Përfundimi i të shtatë qarqeve është i detyrueshëm. Nëse humbet edhe një qark, sai konsiderohet i pavlefshëm.","Yedi devrenin tamamını bitirmek zorunludur. Devrelerden birinin bile atlanması durumunda, sai geçersiz sayılır.",إكمال جميع الدوائر السبع إلزامي. إذا تم تفويت أي دائرة، يُعتبر الاختبار غير صالح.,"Menyelesaikan ketujuh putaran adalah wajib. Jika satu putaran saja terlewat, sai tersebut dianggap tidak sah.","Completing all seven circuits is mandatory. If even one circuit is missed, the sai is considered invalid."
-Теория (Theory),,,,,,,
-,,,,,,,
-THEORY_L4_SAY_DEFINITION_TITLE,Определение сай,Definicija saija,Përkufizimi i sai,Sai'nin tanımı,تعريف sai,Definisi sai,Definition of sai
-THEORY_L4_SAY_DEFINITION_TEXT,"Сай (سَعْي) в арабском языке означает «усердие», «стремление», «активное движение». В исламском праве (фикхе) сай — это ритуальное семикратное прохождение между холмами Сафа и Марва. Сай является неотъемлемой частью как хаджа, так и умры.","Na arapskom jeziku, sai (سَعْي) znači ""marljivost"", ""težnja"" i ""aktivno kretanje"". U islamskom pravu (fikhu), sai se odnosi na ritualni sedmostruki hod između brda Safa i Merva. Sai je sastavni dio i hadža i umre.","Në arabisht, sai (سَعْي) do të thotë ""zell"", ""përpjekje"" dhe ""lëvizje aktive"". Në ligjin islam (fikh), sai i referohet ecjes rituale shtatëfishe midis kodrave të Safasë dhe Marvasë. Sai është një pjesë integrale si e Haxhit ashtu edhe e Umres.","Arapçada sai (سَعْي) ""gayretlilik"", ""çabalama"" ve ""aktif hareket"" anlamına gelir. İslam hukukunda (fıkıh) sai, Safa ve Merve tepeleri arasında yapılan yedi aşamalı ritüel yürüyüşü ifade eder. Sai, hem Hac hem de Umre'nin ayrılmaz bir parçasıdır.","في اللغة العربية، تعني كلمة ""سعي"" الاجتهاد والسعي والحركة النشطة. وفي الفقه الإسلامي، يشير السعي إلى المشي سبع مرات بين الصفا والمروة. ويُعدّ السعي جزءًا لا يتجزأ من مناسك الحج والعمرة.","Dalam bahasa Arab, sai (سَعْي) berarti ""ketekunan,"" ""usaha,"" dan ""gerakan aktif."" Dalam hukum Islam (fiqh), sai merujuk pada ritual berjalan tujuh kali lipat antara bukit Safa dan Marwa. Sai merupakan bagian integral dari ibadah Haji dan Umrah.","In Arabic, sai (سَعْي) means ""diligence,"" ""striving,"" and ""active movement."" In Islamic law (fiqh), sai refers to the ritual seven-fold walk between the hills of Safa and Marwa. The sai is an integral part of both Hajj and Umrah."
-THEORY_L4_SAFA_MARWA_TITLE,Холмы Сафа и Марва,Brda Safa i Marwah,Kodrat Safa dhe Marwah,Safa ve Marwah Tepeleri,صفا وتلال المروة,Bukit Safa dan Marwah,Safa and Marwah Hills
-THEORY_L4_SAFA_MARWA_TEXT,"Ас-Сафа и аль-Марва — два исторических холма на территории Запретной мечети в Мекке. Сай начинается на холме ас-Сафа и заканчивается на холме аль-Марва. В настоящее время эти холмы соединены крытыми галереями, расстояние между ними составляет примерно 450 метров.","As-Safa i al-Marwa su dva historijska brda unutar Velike džamije u Meki. Sa'i počinje na As-Safi, a završava na al-Marwi. Ova brda su trenutno povezana natkrivenim pješačkim stazama, a udaljenost između njih je otprilike 450 metara.","Es-Safa dhe el-Marva janë dy kodra historike brenda Xhamisë së Madhe në Mekë. Sa'i fillon në Es-Safa dhe përfundon në el-Marva. Këto kodra aktualisht janë të lidhura me shtigje të mbuluara, me një distancë midis tyre prej afërsisht 450 metrash.","Safa ve Merve, Mekke'deki Büyük Cami'nin içinde yer alan iki tarihi tepedir. Sa'i yolu Safa'dan başlar ve Merve'de sona erer. Bu tepeler şu anda yaklaşık 450 metrelik bir mesafeyle kapalı yürüyüş yollarıyla birbirine bağlanmıştır.",الصفا والمروة تلتان تاريخيتان تقعان داخل المسجد الحرام في مكة المكرمة. يبدأ السعي من الصفا وينتهي عند المروة. وتربط بين هاتين التلتين ممرات مسقوفة، وتبلغ المسافة بينهما حوالي 450 متراً.,"As-Safa dan al-Marwa adalah dua bukit bersejarah di dalam Masjidil Haram di Mekah. Jalan Sa'i dimulai dari As-Safa dan berakhir di al-Marwa. Kedua bukit ini saat ini dihubungkan oleh jalan setapak beratap, dengan jarak antara keduanya sekitar 450 meter.","As-Safa and al-Marwa are two historic hills within the Great Mosque in Mecca. The Sa'i begins on As-Safa and ends on al-Marwa. These hills are currently connected by covered walkways, with the distance between them approximately 450 meters."
-THEORY_L4_NUMBER_LAPS_TITLE,Количество кругов,Broj krugova,Numri i xhirove,Tur sayısı,عدد اللفات,Jumlah putaran,Number of laps
-THEORY_L4_NUMBER_LAPS_TEXT,"Сай состоит из семи кругов. Путь от Сафы до Марвы считается одним кругом, обратный путь от Марвы до Сафы — вторым кругом, и так далее. После завершения седьмого круга паломник оказывается на Марве. Важно соблюдать последовательность и не пропускать круги.","Sa'i se sastoji od sedam krugova. Putovanje od Safe do Merve smatra se jednim krugom, povratak od Merve do Safe je drugi krug i tako dalje. Nakon završetka sedmog kruga, hodočasnik stiže u Mervu. Važno je slijediti redoslijed i ne preskakati krugove.","Sa'i përbëhet nga shtatë xhiro. Udhëtimi nga Safa në Merva konsiderohet një xhiro, udhëtimi i kthimit nga Merva në Safa është xhiroja e dytë e kështu me radhë. Pas përfundimit të xhiros së shtatë, haxhiu arrin në Merva. Është e rëndësishme të ndiqet sekuenca dhe të mos anashkalohen xhirot.","Sa'i, yedi turdan oluşur. Safa'dan Merve'ye olan yolculuk bir tur, Merve'den Safa'ya dönüş yolculuğu ikinci tur olarak kabul edilir ve bu şekilde devam eder. Yedinci turu tamamladıktan sonra hacı Merve'ye ulaşır. Turları sırayla takip etmek ve atlamamak önemlidir.",يتألف السعي من سبعة أشواط. يُعتبر الذهاب من الصفا إلى المروة شوطًا واحدًا، والعودة من المروة إلى الصفا شوطًا ثانيًا، وهكذا. بعد إتمام الشوط السابع، يصل الحاج إلى المروة. من المهم اتباع الترتيب وعدم تخطي أي شوط.,"Ibadah Sa'i terdiri dari tujuh putaran. Perjalanan dari Safa ke Marwah dianggap sebagai satu putaran, perjalanan kembali dari Marwah ke Safa adalah putaran kedua, dan seterusnya. Setelah menyelesaikan putaran ketujuh, jamaah haji sampai di Marwah. Penting untuk mengikuti urutan tersebut dan tidak melewatkan putaran.","The Sa'i consists of seven circuits. The journey from Safa to Marwah is considered one circuit, the return journey from Marwah to Safa is the second circuit, and so on. After completing the seventh circuit, the pilgrim reaches Marwah. It is important to follow the sequence and not skip circuits."
-THEORY_L4_HISTORY_HAGAR_TITLE,История Хаджар,Historija Hadžera,Historia e Haxherit,Hajar'ın Tarihi,تاريخ الحجر,Sejarah Hajar,History of Hajar
-THEORY_L4_HISTORY_HAGAR_TEXT,"Ритуал сай установлен в память о Хаджар (Агари) — жене пророка Ибрахима (мир ему) и матери пророка Исмаила. Оставленная с младенцем Исмаилом в безводной долине, она семь раз пробежала между холмами Сафа и Марва в поисках воды. После её усердия забил источник Замзам. Это событие стало символом упования на Аллаха и активного стремления.","Ritual Sa'ija uspostavljen je u spomen na Hagaru (Hagar), suprugu Poslanika Ibrahima (mir neka je s njim) i majku Poslanika Ismaila. Ostavljena s malim Ismailom u bezvodnoj dolini, sedam puta je trčala između brda Safa i Merva u potrazi za vodom. Nakon njenog truda, izbio je izvor Zemzem. Ovaj događaj postao je simbol povjerenja u Allaha i aktivnog nastojanja.","Rituali i Sa'iut u vendos në kujtim të Hagarës (Agarit), gruas së Profetit Ibrahim (paqja qoftë mbi të) dhe nënës së Profetit Ismail. E braktisur me foshnjën Ismail në një luginë pa ujë, ajo vrapoi shtatë herë midis kodrave të Safasë dhe Mervasë në kërkim të ujit. Pas zellit të saj, burimi i Zemzemit shpërtheu. Kjo ngjarje u bë simbol i besimit në Allah dhe përpjekjes aktive.","Sa'i ritüeli, Hz. İbrahim'in (aleyhisselam) eşi ve Hz. İsmail'in annesi Hacer'in anısına kurulmuştur. Bebek İsmail ile susuz bir vadide terk edilen Hacer, su bulmak için Safa ve Merve tepeleri arasında yedi kez koşmuştur. Bu gayreti sonucunda Zemzem pınarı fışkırmıştır. Bu olay, Allah'a tevekkülün ve aktif çabanın sembolü olmuştur.",أُقيمت شعيرة السعي تخليداً لذكرى هاجر، زوجة النبي إبراهيم عليه السلام وأم النبي إسماعيل عليه السلام. إذ تُركت مع إسماعيل الرضيع في وادٍ قاحل، فسعت سبع مرات بين الصفا والمروة بحثاً عن الماء. وبعد سعيها الدؤوب، انفجر نبع زمزم. وأصبح هذا الحدث رمزاً للتوكل على الله والسعي الحثيث.,"Ritual Sa'i didirikan untuk mengenang Hagar, istri Nabi Ibrahim (saw) dan ibu dari Nabi Ismail. Ditinggalkan bersama bayi Ismail di lembah yang kering, ia berlari tujuh kali antara bukit Safa dan Marwah untuk mencari air. Setelah usahanya yang gigih, mata air Zamzam pun muncul. Peristiwa ini menjadi simbol kepercayaan kepada Allah dan usaha yang aktif.","The ritual of Sa'i was established in memory of Hagar (Hagar), the wife of the Prophet Ibrahim (peace be upon him) and the mother of the Prophet Ishmael. Abandoned with the infant Ishmael in a waterless valley, she ran seven times between the hills of Safa and Marwah in search of water. After her diligence, the spring of Zamzam gushed forth. This event became a symbol of trust in Allah and active striving."
-THEORY_L4_RULING_STATUS_TITLE,Правовой статус сай,Pravni status sai-ja,Statusi ligjor i sai-t,Sai'nin hukuki statüsü,الوضع القانوني لـ sai,Status hukum sai,Legal status of sai
-THEORY_L4_RULING_STATUS_TEXT,"Большинство ученых (в том числе ханафиты, шафииты, ханбалиты) считают сай рукном (столпом) хаджа и умры. Это означает, что без совершения сай хадж или умра считаются недействительными. Маликиты считают сай ваджибом (обязательным), а не рукном, но также подчеркивают его важность.","Većina učenjaka (uključujući hanefije, šafije i hanbelije) smatra sa'i rukn (stup) hadža i umre. To znači da se bez sa'ija, hadž ili umra smatraju nevažećim. Malikiti smatraju sa'i vadžib (obaveznim) umjesto rukna, ali također naglašavaju njegov značaj.","Shumica e dijetarëve (duke përfshirë hanefijtë, shafijtë dhe hanbelitë) e konsiderojnë sa'i rukn (shtyllë) të haxhit dhe umres. Kjo do të thotë që pa sa'i, haxhi ose umre konsiderohen të pavlefshme. Malikitë e konsiderojnë sa'i vaxhib (të detyrueshëm) në vend të rukn-it, por ata gjithashtu theksojnë rëndësinë e tij.","Çoğu âlim (Hanefiler, Şafiiler ve Hanbeliler dahil) sa'i'yi Hac ve Umre'nin rükün (şartı) olarak kabul eder. Bu, sa'i olmadan Hac veya Umre'nin geçersiz sayıldığı anlamına gelir. Malikiler ise sa'i'yi rükün olmaktan ziyade vacip (zorunlu) olarak kabul eder, ancak önemini de vurgularlar.",يعتبر معظم العلماء (بمن فيهم الحنفية والشافعية والحنابلة) السعي ركنًا أساسيًا في الحج والعمرة. وهذا يعني أن الحج والعمرة لا يصحان بدون السعي. أما المالكية، فيعتبرون السعي واجبًا لا الركن، لكنهم يؤكدون على أهميته أيضًا.,"Sebagian besar ulama (termasuk mazhab Hanafi, Syafi'i, dan Hanbali) menganggap sa'i sebagai rukun (rukun) haji dan umrah. Ini berarti bahwa tanpa sa'i, haji atau umrah dianggap tidak sah. Mazhab Maliki menganggap sa'i wajib (mengharuskan) dan bukan rukun, tetapi mereka juga menekankan pentingnya sa'i.","Most scholars (including the Hanafis, Shafi'is, and Hanbalis) consider the sa'i rukn (pillar) of Hajj and Umrah. This means that without the sa'i, Hajj or Umrah are considered invalid. The Malikis consider the sa'i wajib (obligatory) rather than the rukn, but they also emphasize its importance."
-THEORY_L4_RUNNING_SECTION_TITLE,Участок между зелеными огнями,Područje između zelenih svjetala,Zona midis dritave jeshile,Yeşil ışıklar arasındaki alan,المنطقة الواقعة بين الأضواء الخضراء,Area di antara lampu hijau,The area between the green lights
-THEORY_L4_RUNNING_SECTION_TEXT,"Между холмами Сафа и Марва установлены два зеленых ориентира (огня). Для мужчин сунной является харвала — ускоренный бег без отрыва ног от земли (легкий бег трусцой) на этом участке. Женщины проходят этот участок спокойным шагом, так как для них харвала не предписана.","Između brda Safa i Merva podignuta su dva zelena obilježja (vatre). Za muškarce, sunnet je harvala - brzo, lagano trčanje - na ovom dijelu. Žene hodaju laganim tempom, jer im harvala nije propisana.","Midis kodrave të Safasë dhe Mervasë, janë ngritur dy pika referimi të gjelbra (zjarre). Për burrat, Suneti është harwala - një vrapim i shpejtë dhe i lehtë - në këtë pjesë. Gratë ecin me një ritëm të ngadaltë, pasi harwala nuk është e përshkruar për to.","Safa ve Merve tepeleri arasında iki yeşil işaret (ateş) dikilmiştir. Erkekler için bu güzergahta sünnet olan harwala, yani tempolu ve hafif bir koşudur. Kadınlar için harwala farz olmadığı için, yavaş bir tempoda yürürler.",بين جبلي الصفا والمروة، أُقيمت علامتان خضراوان (نارتان). بالنسبة للرجال، السنة هي الهروالة - وهي هرولة خفيفة سريعة - في هذا الطريق. أما النساء فيمشين بخطى وئيدة، إذ لا يُشرع لهن الهروالة.,"Di antara bukit Safa dan Marwah, telah didirikan dua penanda hijau (api unggun). Bagi laki-laki, sunnahnya adalah harwala—lari kecil yang cepat dan ringan—di sepanjang jalan ini. Perempuan berjalan dengan santai, karena harwala tidak dianjurkan bagi mereka.","Between the hills of Safa and Marwah, two green landmarks (fires) have been erected. For men, the Sunnah is harwala—a brisk, light jog—on this stretch. Women walk at a leisurely pace, as harwala is not prescribed for them."
-THEORY_L4_VALIDITY_CONDITIONS_TITLE,Условия действительности сай,Uslovi važenja sajta,Kushtet e vlefshmërisë së faqes,Sitenin geçerlilik şartları,شروط صلاحية الموقع,Ketentuan dan keabsahan situs,Terms of validity of the site
-THEORY_L4_VALIDITY_CONDITIONS_TEXT,"Для действительности сай необходимо: 1) намерение (ният); 2) начало с холма ас-Сафа; 3) совершение всех семи кругов в правильной последовательности; 4) завершение на холме аль-Марва. Омовение (вуду) не является обязательным условием, но желательно.","Da bi sa'i bio važeći, potrebno je sljedeće: 1) namjera (niyat); 2) početak od as-Safe; 3) završetak svih sedam krugova pravilnim redoslijedom; 4) završetak na al-Marwi. Abdest (abdest) nije obavezan zahtjev, ali se preporučuje.","Që sa'i të jetë i vlefshëm, kërkohen këto gjëra: 1) nijeti; 2) fillimi nga es-Safa; 3) përfundimi i të shtatë qarqeve në sekuencën e saktë; 4) përfundimi në el-Merve. Abdesi (abdesi) nuk është një kërkesë e detyrueshme, por rekomandohet.","Sa'i'nin geçerli olabilmesi için şunlar gereklidir: 1) Niyet; 2) Safa'dan başlamak; 3) Yedi turu doğru sırayla tamamlamak; 4) Merve'de bitirmek. Abdest zorunlu bir şart değildir, ancak tavsiye edilir.",لصحة السعي، يُشترط ما يلي: ١) النية؛ ٢) البدء من الصفا؛ ٣) إتمام الأشواط السبعة بالترتيب الصحيح؛ ٤) الانتهاء عند المروة. الوضوء ليس واجباً، ولكنه مستحب.,"Agar salat Sa'i sah, syarat-syarat berikut harus dipenuhi: 1) niat (niyat); 2) dimulai dari as-Safa; 3) menyelesaikan ketujuh putaran secara berurutan; 4) berakhir di al-Marwah. Wudu (bersuci) bukanlah syarat wajib, tetapi dianjurkan.","For the sa'i to be valid, the following is required: 1) intention (niyat); 2) starting from as-Safa; 3) completing all seven circuits in the correct sequence; 4) finishing at al-Marwah. Wudu (ablution) is not a mandatory requirement, but is recommended."
-,,,,,,,
-Level 5 — Арафат (Arafat),,,,,,,
 ,,,,,,,
 ,,,,,,,
-LEVEL_5_TITLE,Стояние на Арафате,Stojeći na Arafatu,Duke qëndruar në Arafat,Arafat'ın üzerinde durmak,الوقوف على عرفات,Berdiri di Arafat,Standing on Arafat
-LEVEL_5_DESC,Изучи вукуф на Арафате — величайший день хаджа,Naučite Vukuf s Arafata – najveći dan hadža,Mësoni Vukufin e Arafatit - dita më e madhe e Haxhit,Hac ibadetinin en önemli günü olan Arafat'ın vakfını öğrenin.,تعرّف على وقف عرفات - أعظم أيام الحج,Pelajari Wuquf Arafat – hari terbesar dalam ibadah Haji,Learn the Wuquf of Arafat – the greatest day of Hajj
 ,,,,,,,
 ,,,,,,,
-Q1_ARAFAT_RULING_STATUS,Каков шариатский статус стояния (вукуф) на Арафате?,Kakav je šerijatski status vukufa (vakufa) na Arafatu?,Cili është statusi sheriatik i qëndrimit (wuquf) në Arafat?,Arafat'ta vakfın (ayakta durmanın) şeriat açısından durumu nedir?,ما هو الوضع الشرعي للوقوف على عرفات؟,Apa kedudukan wuquf (berdiri) menurut syariat di Arafat?,What is the Shari'ah status of standing (wuquf) on Arafat?
-Q1_OPT_1_SUNAH_RECOMMENDED,Сунна (желательное),Sunnet (poželjno),Suneti (i preferuar),Sünnet (tercih edilen),السنة (المفضلة),Sunnah (lebih disukai),Sunnah (preferred)
-Q1_OPT_2_WAJIB_OBLIGATORY,Ваджиб (обязательное),Vadžib (obavezno),Vaxhib (i detyrueshëm),Vajib (zorunlu),واجب (إلزامي),Wajib (wajib),Wajib (obligatory)
-Q1_OPT_3_RUKN_PILLAR,Рукн (столп),Rukn (stub),Rukn (shtyllë),Rukn (sütun),الركن (العمود),Rukn (pilar),Rukn (pillar)
-Q1_OPT_4_MUSTAHAB_VOLUNTARY,Мустахаб (добровольное),Mustahab (dobrovoljno),Mustehabb (vullnetar),Mustahabb (gönüllü),مستحب (طوعي),Mustahabb (sukarela),Mustahabb (voluntary)
-Q1_EXPL_ARAFAT_RUKN,Вукуф на Арафате является рукном (столпом) хаджа по единогласному мнению всех ученых. Пророк ﷺ сказал: «Хадж — это Арафат».,"Wuquf na Arefatu je rukn (stub) hadža prema konsenzusu učenjaka. Poslanik, sallallahu alejhi ve sellem, je rekao: ""Hadž je Arefat.""","Vukuf në Arafat është rukn (shtyllë) e Haxhit sipas konsensusit të dijetarëve. Pejgamberi ﷺ tha: ""Haxhi është Arafat"".","Arafat'taki vukuf, ilim adamlarının görüş birliğine göre Haccın bir rükünüdür. Peygamber Efendimiz şöyle buyurmuştur: ""Hac Arafat'tır.""","والوقوف بعرفات ركن من أركان الحج باتفاق العلماء. قال النبي صلى الله عليه وسلم: ""الحج عرفة"".","Wuquf di Arafah merupakan rukn (rukun) haji menurut ijma para ulama. Nabi ﷺ bersabda: ""Haji adalah Arafat.""","Wuquf at Arafat is a rukn (pillar) of Hajj according to scholarly consensus. The Prophet ﷺ said: ""Hajj is Arafat."""
-Q2_ARAFAT_DATE_HIJRI,В какой день месяца Зуль-хиджа совершается стояние на Арафате?,Kojeg dana mjeseca zul-hidždžeta se obavlja stajanje na Arefatu?,Në cilën ditë të muajit Dhul-Hixhe kryhet qëndrimi në Arafat?,Zilhicce ayının hangi gününde Arafat'ta saygı duruşu yapılır?,في أي يوم من شهر ذي الحجة يتم الوقوف بعرفة؟,Pada tanggal berapa di bulan Dzul-Hijjah shalat berdiri di Arafat dilakukan?,On which day of the month of Dhul-Hijjah is the standing at Arafat performed?
-Q2_OPT_1_8_DHUL_HIJJAH,8 Зуль-хиджа,8. Zul-hidždžet,8 Dhul-Hixhe,8 Zilhicce,8 ذي الحجة,8 Dzul Hijjah,8 Dhul-Hijjah
-Q2_OPT_2_9_DHUL_HIJJAH,9 Зуль-хиджа,9. Zul-hidždžet,9 Dhul-Hixhe,9 Zilhicce,9 ذي الحجة,9 Dzul Hijjah,9 Dhul-Hijjah
-Q2_OPT_3_10_DHUL_HIJJAH,10 Зуль-хиджа,10. Zul-hidždžet,10 Dhul-Hixhe,10 Zilhicce,10 ذي الحجة,10 Dzul Hijjah,10 Dhul-Hijjah
-Q2_OPT_4_11_DHUL_HIJJAH,11 Зуль-хиджа,11. Zul-hidždžet,11 Dhul-Hixhe,11 Zilhicce,11 ذي الحجة,11 Dzul Hijjah,11 Dhul-Hijjah
-Q2_EXPL_ARAFAT_DATE,Стояние на Арафате совершается 9-го числа месяца Зуль-хиджа. Это самый главный день хаджа.,Hadždž na Arafatu se održava 9. zul-hidždžeta. Ovo je najvažniji dan hadža.,Qëndrimi i Haxhit në Arafat zhvillohet më 9 Dhul-Hixhe. Kjo është dita më e rëndësishme e Haxhit.,"Hac ibadetinin en önemli günü olan Arafat'taki Hac Duruşu, Zilhicce ayının 9. gününde gerçekleşir.",يُقام موقف الحج في عرفات في التاسع من ذي الحجة، وهو أهم أيام الحج.,Haji di Arafat dilaksanakan pada tanggal 9 Dzul Hijjah. Ini adalah hari terpenting dalam ibadah haji.,The Hajj Stand at Arafat takes place on the 9th of Dhul-Hijjah. This is the most important day of the Hajj.
-Q3_ARAFAT_TIME_DURATION,В какое время длится стояние на Арафате?,Koliko dugo traje stajanje kod Arafata?,Sa zgjat qëndrimi në Arafat?,Arafat'taki ayakta durma süresi ne kadar sürer?,كم يدوم الوقوف عند عرفات؟,Berapa lama waktu yang dibutuhkan untuk berdiri di Arafat?,How long does the standing at Arafat last?
-Q3_OPT_1_FROM_FAJR_TO_SUNSET,От рассвета (фаджр) до заката (магриб),Od zore (fadžra) do zalaska sunca (magriba),Nga agimi (sabahu) deri në perëndim të diellit (akshami),Sabahtan (fecr) akşama (mağrib) kadar,من الفجر إلى غروب الشمس,Dari waktu subuh (fajr) hingga waktu maghrib (maghrib),From dawn (fajr) to sunset (maghrib)
-Q3_OPT_2_FROM_ZUHR_TO_MAGHRIB,От полуденной молитвы (зухр) до заката,Od podnevne molitve (zuhr) do zalaska sunca,Nga namazi i drekës (zuhr) deri në perëndim të diellit,Öğle namazından (zuhr) gün batımına kadar,من صلاة الظهر حتى غروب الشمس,Dari waktu shalat Zuhur hingga matahari terbenam.,From midday prayer (zuhr) until sunset
-Q3_OPT_3_FROM_SUNRISE_TO_ZUHR,От восхода солнца до полудня,Od izlaska sunca do podneva,Nga lindja e diellit deri në mesditë,Güneş doğuşundan öğlene kadar,من شروق الشمس إلى الظهر,Dari matahari terbit hingga tengah hari,From sunrise to noon
-Q3_OPT_4_ENTIRE_NIGHT,Всю ночь,Cijelu noć,Gjithë natën,Bütün gece,طوال الليل,Sepanjang malam,All night
-Q3_EXPL_ARAFAT_TIME,Время вукуф начинается с рассвета 9 Зуль-хиджа и продолжается до захода солнца. Однако основное время пребывания — после полуденной молитвы до заката.,"Vrijeme za vukaf počinje u zoru 9. zul-hidždžeta i traje do zalaska sunca. Međutim, glavno vrijeme za ibadet je od popodnevne molitve do zalaska sunca.","Koha e vuqafit fillon në agim të datës 9 Dhul-Hixhe dhe vazhdon deri në perëndim të diellit. Megjithatë, koha kryesore për adhurim është nga namazi i pasdites deri në perëndim të diellit.","Vakıf vakti, Zilhicce ayının 9. günü şafak vaktiyle başlar ve gün batımına kadar devam eder. Ancak ibadet için esas vakit, ikindi namazından gün batımına kadar olan süredir.",يبدأ وقت الوقوف عند فجر التاسع من ذي الحجة ويستمر حتى غروب الشمس. إلا أن وقت العبادة الرئيسي هو من صلاة العصر حتى غروب الشمس.,"Waktu wukaf dimulai saat fajar pada tanggal 9 Dzul-Hijjah dan berlanjut hingga matahari terbenam. Namun, waktu utama untuk beribadah adalah dari shalat Ashar hingga matahari terbenam.","The time for wuqaf begins at dawn on the 9th of Dhul-Hijjah and continues until sunset. However, the main time for worship is from the afternoon prayer until sunset."
-Q4_ARAFAT_LOCATION_MEANING,Что означает название «Арафат»?,"Šta znači ime ""Arafat""?","Çfarë do të thotë emri ""Arafat""?","""Arafat"" isminin anlamı nedir?","ماذا يعني اسم ""عرفات""؟","Apa arti nama ""Arafat""?","What does the name ""Arafat"" mean?"
-Q4_OPT_1_PLACE_OF_SACRIFICE,Место жертвоприношения,Mjesto žrtvovanja,Vendi i sakrificës,Kurban yeri,مكان التضحية,Tempat pengorbanan,Place of sacrifice
-Q4_OPT_2_PLACE_OF_KNOWLEDGE,Место познания,Mjesto znanja,Vendi i dijes,Bilginin yeri,مكان المعرفة,Tempat pengetahuan,Place of knowledge
-Q4_OPT_3_PLACE_OF_STONING,Место побивания камнями,Mjesto kamenovanja,Vendi i vrasjes me gurë,Taşlama yeri,مكان الرجم,Tempat rajam,The place of stoning
-Q4_OPT_4_PLACE_OF_TALBIYAH,Место тальбии,Mjesto Talbija,Vendi i Talbisë,Talbiya'nın yeri,مكان التلبية,Tempat Talbiya,Place of Talbiya
-Q4_EXPL_ARAFAT_MEANING,"Название «Арафат» происходит от арабского корня «арифа» — познавать. Согласно преданию, здесь встретились Адам и Хавва после изгнания из Рая и узнали друг друга.","Ime ""Arafat"" potiče od arapskog korijena ""arifa"", što znači znati. Prema legendi, Adam i Eva su se ovdje sreli nakon protjerivanja iz Raja i prepoznali jedno drugo.","Emri ""Arafat"" vjen nga rrënja arabe ""arifa"", që do të thotë të dish. Sipas legjendës, Adami dhe Eva u takuan këtu pas dëbimit të tyre nga Parajsa dhe e njohën njëri-tjetrin.","""Arafat"" adı, Arapça ""arifa"" kökünden gelir ve ""bilmek"" anlamına gelir. Efsaneye göre, Adem ve Havva cennetten kovulduktan sonra burada buluşmuş ve birbirlerini tanımışlardır.","اسم ""عرفات"" مشتق من الجذر العربي ""عارفة""، الذي يعني المعرفة. وتقول الأسطورة إن آدم وحواء التقيا هنا بعد طردهما من الجنة وتعرفا على بعضهما.","Nama ""Arafat"" berasal dari akar kata Arab ""arifa,"" yang berarti mengetahui. Menurut legenda, Adam dan Hawa bertemu di sini setelah diusir dari Surga dan saling mengenali.","The name ""Arafat"" comes from the Arabic root ""arifa,"" meaning to know. According to legend, Adam and Eve met here after their expulsion from Paradise and recognized each other."
-Q5_ARAFAT_FAREWELL_SERMON,Какой пророк произнес прощальную проповедь на Арафате?,Koji je prorok održao svoju oproštajnu propovijed na Arafatu?,Cili profet mbajti predikimin e lamtumirës në Arafat?,Arafat'ta veda hutbesini hangi peygamber verdi?,أي نبي ألقى خطبة الوداع في عرفات؟,Nabi manakah yang menyampaikan khutbah perpisahan di Arafat?,Which prophet delivered his farewell sermon at Arafat?
-Q5_OPT_1_PROPHET_MUSA,Пророк Муса (Моисей),Poslanik Musa (Musa),Profeti Musa (Moisiu),Peygamber Musa (Musa),النبي موسى,Nabi Musa (Moses),Prophet Musa (Moses)
-Q5_OPT_2_PROPHET_IBRAHIM,Пророк Ибрахим (Авраам),Poslanik Ibrahim (Abraham),Profeti Ibrahim (Abraham),Peygamber İbrahim (Abraham),النبي إبراهيم (إبراهيم),Nabi Ibrahim (Abraham),Prophet Ibrahim (Abraham)
-Q5_OPT_3_PROPHET_MUHAMMAD,Пророк Мухаммад ﷺ,"Poslanik Muhammed, a.s.",Profeti Muhamed ﷺ,Peygamber Muhammed ﷺ,النبي محمد ﷺ,Nabi Muhammad ﷺ,Prophet Muhammad ﷺ
-Q5_OPT_4_PROPHET_ADAM,Пророк Адам,Poslanik Adam,Profeti Adam,Peygamber Adem,النبي آدم,Nabi Adam,Prophet Adam
-Q5_EXPL_FAREWELL_SERMON,Пророк Мухаммад ﷺ произнес свою прощальную проповедь в долине Урана у подножия горы Арафат во время прощального хаджа в 10 году хиджры.,"Poslanik Muhammed, s.a.v.s., održao je svoju oproštajnu propovijed u dolini Urana, u podnožju planine Arafat, tokom oproštajnog hadža 10. godine po Hidžri.","Profeti Muhamed (paqja dhe bekimet e Allahut qofshin mbi të) mbajti predikimin e lamtumirës në luginën e Uranit, rrëzë malit Arafat, gjatë Haxhit të lamtumirës në vitin 10 pas Hixhrit.","Peygamberimiz Hz. Muhammed ﷺ, Hicri 10. yılda veda haccı sırasında Arafat Dağı'nın eteğindeki Uran vadisinde veda hutbesini vermiştir.",ألقى النبي محمد ﷺ خطبة الوداع في وادي أوران عند سفح جبل عرفات خلال حجة الوداع في السنة العاشرة للهجرة.,Nabi Muhammad ﷺ menyampaikan khutbah perpisahan beliau di lembah Uran di kaki Gunung Arafat selama ibadah haji perpisahan pada tahun 10 Hijriah.,Prophet Muhammad ﷺ delivered his farewell sermon in the valley of Uran at the foot of Mount Arafat during the farewell Hajj in the year 10 AH.
-Q6_ARAFAT_MISSING_CONSEQUENCE,"Что происходит, если паломник пропустил стояние на Арафате?",Šta se dešava ako hodočasnik propusti stajanje na Arafatu?,Çfarë ndodh nëse një pelegrin nuk arrin të qëndrojë në Arafat?,Hacılar Arafat'ta durmayı kaçırırsa ne olur?,ماذا يحدث إذا لم يقف الحاج عند عرفات؟,Apa yang terjadi jika seorang jamaah haji gagal berdiri di Arafat?,What happens if a pilgrim misses standing at Arafat?
-Q6_OPT_1_SACRIFICE_ANIMAL,Достаточно принести жертву,Dovoljno je podnijeti žrtvu,Mjafton të bësh një sakrificë,Fedakarlık yapmak yeterlidir.,يكفي أن تقدم تضحية,Cukup dengan berkorban.,It is enough to make a sacrifice
-Q6_OPT_2_FAST_THREE_DAYS,Нужно поститься три дня,Trebate postiti tri dana,Duhet të agjërosh për tre ditë,Üç gün boyunca oruç tutmanız gerekiyor.,عليك الصيام لمدة ثلاثة أيام,Anda perlu berpuasa selama tiga hari.,You need to fast for three days
-Q6_OPT_3_HAJJ_INVALID,Хадж становится недействительным,Hadž postaje nevažeći,Haxhi bëhet i pavlefshëm,Hac geçersiz hale gelir,الحج يصبح باطلاً,Ibadah haji menjadi tidak sah.,Hajj becomes invalid
-Q6_OPT_4_PAY_FIDYAH,Нужно заплатить фидью (искупление),Morate platiti fidju (iskupljenje),Duhet të paguash fidjah (shlyerje faji),Fidye (kefaret) ödemeniz gerekiyor.,يجب عليك دفع الفدية (التكفير).,Anda harus membayar fidyah (penebusan dosa).,You have to pay fidyah (atonement)
-Q6_EXPL_MISSING_ARAFAT,"Если паломник пропустил стояние на Арафате даже на один миг, его хадж считается недействительным. Хадж нельзя восполнить, только совершить заново.","Ako hodočasnik i na trenutak propusti stajanje na Arafatu, njegov hadž se smatra nevažećim. Hadž se ne može nadoknaditi; mora se ponoviti.","Nëse një pelegrin nuk arrin të qëndrojë në Arafat qoftë edhe për një moment, Haxhi i tij konsiderohet i pavlefshëm. Haxhi nuk mund të ribëhet; ai duhet të përsëritet.","Bir hacı Arafat'ta bir an bile durmayı kaçırırsa, haccı geçersiz sayılır. Hac telafi edilemez; tekrar edilmesi gerekir.",إذا غفل الحاج عن الوقوف عند عرفات ولو للحظة، يُعتبر حجه باطلاً. ولا يجوز قضاء الحج، بل يجب إعادته.,"Jika seorang jamaah haji melewatkan berdiri di Arafat meskipun hanya sesaat, ibadah hajinya dianggap tidak sah. Ibadah haji tidak dapat diganti; harus diulang.","If a pilgrim misses standing at Arafat even for a moment, their Hajj is considered invalid. The Hajj cannot be made up; it must be repeated."
-Q7_ARAFAT_RECOMMENDED_SUPPLICATION,Какая молитва (дуа) является наиболее предпочтительной в день Арафата?,Koja je dova (namaz) najpoželjnija na dan Arefata?,Cila lutje (dua) është më e preferuara në ditën e Arafatit?,Arafat günü hangi dua en faziletli duadır?,أي دعاء هو الأفضل في يوم عرفة؟,Doa manakah yang paling dianjurkan pada hari Arafat?,Which prayer (dua) is most preferable on the day of Arafat?
-Q7_OPT_1_TALBIYAH_ONLY,Только тальбия,Samo Talbija,Vetëm Talbija,Sadece Talbiya,التلبية فقط,Hanya Talbiya,Only Talbiya
-Q7_OPT_2_LA_ILAHA_ILLALLAH,Ля иляха илляллах,La ilahe illallah,La ilahe il-lallah,La ilaha illallah,لا إله إلا الله,La ilaha illallah,La ilaha illallah
-Q7_OPT_3_SAYID_AL_ISTIGHFAR,Сайидуль истигфар (главная мольба о прощении),Sayyidul Istighfar (glavna molitva za oprost),Sayyidul Istighfar (lutja kryesore për falje),Seyyidul İstiğfar (bağışlanma için yapılan başlıca dua),سيد الاستغفار (الدعاء الرئيسي للمغفرة),Sayyidul Istighfar (doa utama untuk memohon ampunan),Sayyidul Istighfar (the main prayer for forgiveness)
-Q7_OPT_4_SURAH_AL_IKHLAS,Сура аль-Ихляс,Sura al-Ihlas,Sureja el-Ihlas,İhlas Suresi,سورة الإخلاص,Surah al-Ikhlas,Surah al-Ikhlas
-Q7_EXPL_BEST_DUA,"Пророк ﷺ сказал: «Лучшая молитва — это молитва в день Арафата, а лучшая из того, что говорили я и пророки до меня: Ля иляха илляллаху вахдаху ля шарика лях, ляхуль мульку ва ляхуль хамду ва хува аля кулли шайин кадир».","Poslanik, sallallahu alejhi ve sellem, je rekao: “Najbolja molitva je namaz na dan Arefata, a najbolje od onoga što smo ja i poslanici prije mene rekli je: La ilahe illallah wahdahu la šerika lah, lahul mulku wa lahul hamdu ve huva ala kulli shayin qadir.”","Pejgamberi salAllahu alejhi ue selem ka thënë: “Namazi më i mirë është namazi në ditën e Arafatit, dhe më e mira nga ajo që kam thënë unë dhe pejgamberët para meje është: La ilahe illlah uehdehu la sherika lah, lahul mulku ue lahul hamdu ue huve ala kuli shejin kadir”.","Peygamber Efendimiz (s.a.v.) şöyle buyurmuştur: ""Namazın en faziletlisi Arafat günü kılınan namazdır. Benim ve benden önceki peygamberlerin söylediği sözlerin en hayırlısı: La ilahe illallah vahdehu lâ şerike leh, lehül mülkü ve lehül hamdu ve hüve alâ külli şey'in kadir.""",قال النبي صلى الله عليه وسلم: «أفضل الصلاة صلاة يوم عرفة، وخير ما قلت أنا والنبيون من قبلي: لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قادر».,"Nabi ﷺ bersabda: “Doa yang paling utama adalah doa di hari Arafah, dan yang paling utama dari apa yang aku dan para nabi sebelumku ucapkan adalah: La ilaha illallah wahdahu la syarika lah, lahul mulku wa lahul hamdu wa huwa ala kulli shayin qadir.”","The Prophet ﷺ said: “The best prayer is the prayer on the day of Arafat, and the best of what I and the prophets before me said is: La ilaha illallah wahdahu la sharika lah, lahul mulku wa lahul hamdu wa huwa ala kulli shayin qadir.”"
 ,,,,,,,
 ,,,,,,,
-THEORY_L5_WUQUF_DEFINITION_TITLE,Определение вукуф,Definicija vuqufa,Përkufizimi i vukufit,Wuquf'un tanımı,تعريف الوقوف,Definisi wuquf,Definition of wuquf
-THEORY_L5_WUQUF_DEFINITION_TEXT,"Вукуф (وقوف) в арабском языке означает «стояние», «остановка», «пребывание». В шариатском смысле вукуф на Арафате — это пребывание паломника на территории Арафата в определенное время, независимо от того, стоит он, сидит или лежит. Главное — нахождение в границах Арафата.","Vukuf (وقوف) na arapskom znači ""stajanje"", ""zaustavljanje"" ili ""ostanak"". U šerijatskom smislu, vukuf na Arafatu odnosi se na boravak hodočasnika unutar granica Arafata tokom određenog vremenskog perioda, bez obzira da li stoje, sjede ili leže. Ključ je ostanak unutar granica Arafata.","Vukufi (وقوف) në arabisht do të thotë ""të qëndrosh në këmbë"", ""të ndalosh"" ose ""të qëndrosh"". Në kuptimin e Sheriatit, vukufi në Arafat i referohet qëndrimit të një pelegrini brenda kufijve të Arafatit për një periudhë të caktuar kohore, pavarësisht nëse është në këmbë, ulur apo shtrirë. Çelësi është të qëndrosh brenda kufijve të Arafatit.","Arapçada ""wuquf"" (وقوف) kelimesi ""ayakta durmak"", ""durmak"" veya ""kalmak"" anlamına gelir. Şeriat anlamında Arafat'ta wuquf, bir hacının Arafat sınırları içinde belirli bir süre kalmasını ifade eder; bu süre boyunca ayakta durması, oturması veya yatması fark etmez. Önemli olan Arafat sınırları içinde kalmaktır.","الوقوف في اللغة العربية يعني ""الوقوف"" أو ""التوقف"" أو ""البقاء"". وفي الشريعة الإسلامية، يشير الوقوف في عرفات إلى إقامة الحاج داخل حدود عرفات لفترة زمنية محددة، سواء كان واقفًا أو جالسًا أو مستلقيًا. والشرط الأساسي هو البقاء داخل حدود عرفات.","Wuquf (وقوف) dalam bahasa Arab berarti ""berdiri,"" ""berhenti,"" atau ""tinggal."" Dalam pengertian syariah, wuquf di Arafat mengacu pada keberadaan seorang jamaah haji di dalam batas-batas Arafat untuk jangka waktu tertentu, terlepas dari apakah mereka berdiri, duduk, atau berbaring. Kuncinya adalah tetap berada di dalam batas-batas Arafat.","Wuquf (وقوف) in Arabic means ""standing,"" ""stopping,"" or ""staying."" In the Shariah sense, wuquf at Arafat refers to a pilgrim's stay within the boundaries of Arafat for a specific period of time, regardless of whether they are standing, sitting, or lying down. The key is staying within the boundaries of Arafat."
-THEORY_L5_RUKN_STATUS_TITLE,Правовой статус: столп хаджа,Pravni status: Stub hadža,Statusi ligjor: Shtylla e Haxhit,Hukuki statü: Hac ibadetinin bir şartı,الوضع القانوني: ركن من أركان الحج,Status hukum: Rukun ibadah haji,Legal status: Pillar of Hajj
-THEORY_L5_RUKN_STATUS_TEXT,"Вукуф на Арафате является рукном (столпом) хаджа по единогласному мнению всех мазхабов. Пророк Мухаммад ﷺ сказал: «Хадж — это Арафат» (аль-Хаджжу Арафат). Это означает, что стояние на Арафате — самая важная часть хаджа, без которой хадж недействителен.","Vukuf na Arefatu je rukn (stup) hadža prema jednoglasnom mišljenju svih škola mišljenja. Poslanik Muhammed, s.a.v.s., je rekao: ""Hadž je Arefat"" (al-Hajju Arafat). To znači da je stajanje na Arefatu najvažniji dio hadža, bez kojeg je hadž nevažeći.","Vukufi në Arafat është një rukn (shtyllë) e Haxhit sipas konsensusit unanim të të gjitha shkollave të mendimit. Profeti Muhamed ﷺ tha: ""Haxhi është Arafat"" (el-Haxhxh Arafat). Kjo do të thotë që qëndrimi në këmbë në Arafat është pjesa më e rëndësishme e Haxhit, pa të cilën Haxhi është i pavlefshëm.","Arafat'ta vakf tutmak, tüm mezheplerin oy birliğiyle kabul ettiği üzere, Hac'ın rükünlerinden biridir. Peygamberimiz Hz. Muhammed ﷺ, ""Hac, Arafat'tır"" (el-Hacju Arafat) buyurmuştur. Bu, Arafat'ta durmanın Hac'ın en önemli kısmı olduğu ve onsuz Hac'ın geçersiz olduğu anlamına gelir.",الوقوف بعرفة ركنٌ من أركان الحج، بإجماع جميع المذاهب. وقد قال النبي محمد ﷺ: «الحج عرفة». وهذا يعني أن الوقوف بعرفة هو أهم ركن من أركان الحج، وبدونه يبطل الحج.,"Wuquf di Arafat adalah rukun (rukun) haji menurut konsensus bulat dari semua mazhab. Nabi Muhammad ﷺ bersabda, ""Haji adalah Arafat"" (al-Hajju Arafat). Ini berarti bahwa berdiri di Arafat adalah bagian terpenting dari haji, tanpanya haji menjadi tidak sah.","Wuquf at Arafat is a rukn (pillar) of Hajj according to the unanimous consensus of all schools of thought. The Prophet Muhammad ﷺ said, ""Hajj is Arafat"" (al-Hajju Arafat). This means that standing at Arafat is the most important part of Hajj, without which the Hajj is invalid."
-THEORY_L5_DATE_TIME_TITLE,Время вукуф,Vrijeme vuqufa,Koha e vukufit,Vuquf zamanı,وقت الفوقوف,Waktu vuquf,Time of vuquf
-THEORY_L5_DATE_TIME_TEXT,Вукуф на Арафате совершается 9-го числа месяца Зуль-хиджа. Время вукуф начинается с рассвета (фаджр) 9 Зуль-хиджа и продолжается до захода солнца (магриб) того же дня. Однако основное и наиболее предпочтительное время — после полуденной молитвы (зухр) до заката. Пребывание на Арафате ночью 10 Зуль-хиджа не засчитывается.,"Vukuf (klanjanje) na Arafatu se obavlja 9. zul-hidždžeta. Vrijeme za vukuf počinje u zoru (fadžr) 9. zul-hidždžeta i traje do zalaska sunca (magrib) istog dana. Međutim, primarno i najpoželjnije vrijeme je nakon podneva (zuhr) do zalaska sunca. Boravak na Arafatu u noći 10. zul-hidždžeta se ne računa.","Vukufi (sexhdeja) në Arafat kryhet më 9 Dhul-Hixhe. Koha për vukuf fillon në agim (sabah) më 9 Dhul-Hixhe dhe vazhdon deri në perëndim të diellit (akshamit) të po asaj dite. Megjithatë, koha kryesore dhe më e preferuar është pas namazit të drekës (zuhr) deri në perëndim të diellit. Qëndrimi në Arafat natën e 10 Dhul-Hixhe nuk llogaritet.","Arafat'ta secde (vuquf), Zilhicce ayının 9. gününde yapılır. Vukuf vakti, Zilhicce ayının 9. gününde sabah namazıyla (fajr) başlar ve aynı gün akşam namazına (maghrib) kadar devam eder. Ancak, en çok tercih edilen ve esas vakit, öğle namazından (zuhr) sonra gün batımına kadar olan süredir. Zilhicce ayının 10. gecesi Arafat'ta kalmak geçerli sayılmaz.",يُؤدّى الوقوف بعرفة في التاسع من ذي الحجة. يبدأ وقت الوقوف مع فجر التاسع من ذي الحجة ويستمر حتى غروب الشمس في اليوم نفسه. إلا أن أفضل وقت للوقوف هو بعد صلاة الظهر حتى غروب الشمس. ولا يُحتسب مبيت عرفة ليلة العاشر من ذي الحجة.,"Wuquf (sujud) di Arafat dilakukan pada tanggal 9 Dzul-Hijjah. Waktu wuquf dimulai saat fajar (fajr) pada tanggal 9 Dzul-Hijjah dan berlanjut hingga matahari terbenam (maghrib) pada hari yang sama. Namun, waktu utama dan paling disukai adalah setelah shalat Zuhur hingga matahari terbenam. Menginap di Arafat pada malam tanggal 10 Dzul-Hijjah tidak dihitung.","Wuquf (prostration) at Arafat is performed on the 9th of Dhul-Hijjah. The time for wuquf begins at dawn (fajr) on the 9th of Dhul-Hijjah and continues until sunset (maghrib) on the same day. However, the primary and most preferred time is after the midday prayer (zuhr) until sunset. Staying at Arafat on the night of 10th of Dhul-Hijjah does not count."
-THEORY_L5_MOUNT_ARAFAT_TITLE,Гора Арафат и значение названия,Planina Arafat i značenje imena,Mali Arafat dhe kuptimi i emrit,Arafat Dağı ve isminin anlamı,جبل عرفات ومعنى الاسم,Gunung Arafat dan arti nama tersebut,Mount Arafat and the meaning of the name
-THEORY_L5_MOUNT_ARAFAT_TEXT,"Гора Арафат (Джабаль ар-Рахма — Гора Милосердия) расположена примерно в 20 км от Мекки. Название «Арафат» происходит от корня «арифа» (عَرَفَ) — «познавать», «узнавать». Согласно преданию, именно здесь Адам и Хавва встретились после изгнания из Рая и узнали друг друга. Также существует мнение, что здесь ангел Джибриль обучал Ибрахима обрядам хаджа.","Planina Arafat (Džabal ar-Rahma - Planina milosti) nalazi se otprilike 20 km od Meke. Naziv ""Arafat"" potiče od korijena ""arifa"" (عَرَفَ) - ""znati"", ""prepoznati"". Prema legendi, upravo su se ovdje Adam i Hava sreli nakon protjerivanja iz Raja i prepoznali se. Također se vjeruje da je anđeo Gabrijel ovdje podučio Abrahama obredima hadža.","Mali Arafat (Xhabal ar-Rahma—Mali i Mëshirës) ndodhet afërsisht 20 km larg Mekës. Emri ""Arafat"" vjen nga rrënja ""arifa"" (عَرَفَ)—""të dish"", ""të njohësh"". Sipas legjendës, ishte këtu që Adami dhe Hava u takuan pas dëbimit të tyre nga Parajsa dhe e njohën njëri-tjetrin. Besohet gjithashtu se engjëlli Gabriel i mësoi Abrahamit ritet e Haxhit këtu.","Arafat Dağı (Cebel-i Rahma - Rahmet Dağı), Mekke'ye yaklaşık 20 km uzaklıktadır. ""Arafat"" adı, ""bilmek"", ""tanımak"" anlamına gelen ""arifa"" (عَرَفَ) kökünden gelir. Efsaneye göre, Adem ve Havva cennetten kovulduktan sonra burada karşılaşmış ve birbirlerini tanımışlardır. Ayrıca, Cebrail meleğinin İbrahim'e Hac ibadetini burada öğrettiğine inanılır.","يقع جبل عرفات (جبل الرحمة) على بُعد حوالي ٢٠ كيلومترًا من مكة المكرمة. اسم ""عرفات"" مشتق من الجذر ""عرفة"" الذي يعني ""المعرفة"" أو ""التمييز"". وتقول الأسطورة إن آدم وحواء التقيا هنا بعد طردهما من الجنة وتعرّفا على بعضهما. ويُعتقد أيضًا أن جبريل عليه السلام علّم إبراهيم عليه السلام مناسك الحج هنا.","Gunung Arafat (Jabal ar-Rahma—Gunung Rahmat) terletak sekitar 20 km dari Mekah. Nama ""Arafat"" berasal dari akar kata ""arifa"" (عَرَفَ)—""untuk mengetahui,"" ""untuk mengenali."" Menurut legenda, di sinilah Adam dan Hawa bertemu setelah diusir dari Surga dan saling mengenali. Dipercaya juga bahwa malaikat Jibril mengajarkan tata cara ibadah haji kepada Ibrahim di tempat ini.","Mount Arafat (Jabal ar-Rahma—Mount of Mercy) is located approximately 20 km from Mecca. The name ""Arafat"" comes from the root ""arifa"" (عَرَفَ)—""to know,"" ""to recognize."" According to legend, it was here that Adam and Hawwa met after their expulsion from Paradise and recognized each other. It is also believed that the angel Gabriel taught Abraham the rites of Hajj here."
-THEORY_L5_FAREWELL_SERMON_TITLE,Прощальная проповедь,Oproštajna propovijed,Predikim Lamtumire,Veda Vaazı,خطبة الوداع,Khotbah Perpisahan,Farewell Sermon
-THEORY_L5_FAREWELL_SERMON_TEXT,"В 10 году хиджры пророк Мухаммад ﷺ совершил свой единственный хадж, названный Прощальным хаджем (Хаджжатуль-Вада). На Арафате, в долине Урана у подножия горы, он произнес знаменитую прощальную проповедь, в которой разъяснил основы ислама, права женщин, запрет ростовщичества и кровной мести. Эта проповедь стала важнейшим наставлением для всех мусульман.","U 10. godini po hidžri, Poslanik Muhammed, sallallahu alejhi ve sellem, obavio je svoj jedini hadž, poznat kao Oproštajni hadž (Hajjat ​​​​ul-Wada). Na Arafatu, u dolini Urana u podnožju planine, održao je svoju poznatu oproštajnu propovijed, u kojoj je objasnio temelje islama, prava žena i zabranu lihvarenja i krvne osvete. Ova propovijed postala je najvažnije učenje za sve muslimane.","Në vitin 10 pas Hixhrit, Profeti Muhamed (paqja qoftë mbi të) kreu Haxhin e tij të vetëm, të njohur si Haxhi i Lamtumirës (Hajjat ​​​​el-Wada). Në Arafat, në luginën e Uranit, rrëzë malit, ai mbajti predikimin e tij të famshëm të lamtumirës, ​​në të cilin shpjegoi themelet e Islamit, të drejtat e grave dhe ndalimin e kamatës dhe gjakmarrjes. Ky predikim u bë mësimi më i rëndësishëm për të gjithë muslimanët.","Hicri 10 yılında Peygamberimiz Hz. Muhammed ﷺ, tek haccını, Veda Haccı (Haccat el-Vada) olarak bilinen haccını gerçekleştirdi. Uran Vadisi'ndeki Arafat Dağı'nın eteğinde, İslam'ın temellerini, kadın haklarını ve faiz ile kan davasının yasaklanmasını anlattığı meşhur veda hutbesini verdi. Bu hutbe, tüm Müslümanlar için en önemli öğreti haline geldi.",في السنة العاشرة للهجرة، أدى النبي محمد ﷺ حجته الوحيدة، المعروفة بحج الوداع. وفي عرفات، بوادي أوران عند سفح الجبل، ألقى خطبته الشهيرة، التي شرح فيها أصول الإسلام، وحقوق المرأة، وحرم الربا والثأر. وقد أصبحت هذه الخطبة أهم تعاليم المسلمين.,"Pada tahun 10 Hijriah, Nabi Muhammad ﷺ melaksanakan ibadah haji satu-satunya, yang dikenal sebagai Haji Perpisahan (Hajjat ​​​​al-Wada). Di Arafat, di lembah Uran di kaki gunung, beliau menyampaikan khutbah perpisahan yang terkenal, di mana beliau menjelaskan dasar-dasar Islam, hak-hak perempuan, dan larangan riba dan balas dendam berdarah. Khutbah ini menjadi ajaran terpenting bagi seluruh umat Islam.","In the year 10 AH, the Prophet Muhammad ﷺ performed his only Hajj, known as the Farewell Hajj (Hajjat ​​al-Wada). At Arafat, in the valley of Uran at the foot of the mountain, he delivered his famous farewell sermon, in which he explained the foundations of Islam, the rights of women, and the prohibition of usury and blood feud. This sermon became the most important teaching for all Muslims."
-THEORY_L5_CONSEQUENCES_MISSING_TITLE,Последствия пропуска Арафата,Posljedice Arafatovog izostavljanja,Pasojat e mospërfshirjes së Arafatit,Arafat'ın ihmalinin sonuçları,عواقب إغفال عرفات,Konsekuensi dari pengabaian Arafat,Consequences of Arafat's omission
-THEORY_L5_CONSEQUENCES_MISSING_TEXT,"Если паломник не смог присутствовать на Арафате в установленное время (от рассвета до заката 9 Зуль-хиджа) даже на один миг, его хадж считается недействительным. В этом случае паломник должен выйти из ихрама, совершить жертвоприношение (если было намерение на хадж), а затем восполнить хадж в следующем году. Нет искупления (фидьи), которое могло бы заменить вукуф.","Ako hodočasnik ne bude prisutan na Arafatu u propisanom vremenu (od zore do zalaska sunca 9. zul-hidždžeta), čak i na trenutak, njegov hadž se smatra nevažećim. U tom slučaju, hodočasnik mora izaći iz ihrama, obaviti žrtvu (ako je namjeravao obaviti hadž), a zatim nadoknaditi hadž sljedeće godine. Ne postoji iskupljenje (fidja) koje može zamijeniti vukaf.","Nëse një haxhi nuk arrin të jetë i pranishëm në Arafat gjatë kohës së caktuar (nga agimi deri në perëndim të diellit më 9 Dhul-Hixhe), qoftë edhe për një moment, Haxhi i tij konsiderohet i pavlefshëm. Në këtë rast, haxhiu duhet të dalë nga ihrami, të kryejë një kurban (nëse ka ndërmend të kryejë Haxhin) dhe pastaj ta kryejë Haxhin vitin pasardhës. Nuk ka asnjë shlyerje (fidja) që mund të zëvendësojë vukafin.","Hacının, Zilhicce ayının 9. gününde şafaktan gün batımına kadar olan süre zarfında Arafat'ta bir an bile bulunmaması durumunda, haccı geçersiz sayılır. Bu durumda, hacı ihramdan çıkmalı, (hac yapmayı niyet etmişse) kurban kesmeli ve haccını ertesi yıl kaza etmelidir. Vakıf yerine geçecek hiçbir kefaret (fidye) yoktur.",إذا لم يحضر الحاج بعرفة في الوقت المحدد (من الفجر إلى غروب شمس التاسع من ذي الحجة)، ولو للحظة، يُعتبر حجه باطلاً. وفي هذه الحالة، يجب على الحاج أن يخلع الإحرام، ويؤدي نذراً (إن كان ينوي الحج)، ثم يقضي الحج في العام التالي. ولا توجد فدية تحل محل الوفاق.,"Jika seorang jamaah haji gagal hadir di Arafat pada waktu yang ditentukan (dari fajar hingga matahari terbenam pada tanggal 9 Dzul-Hijjah), meskipun hanya sesaat, ibadah hajinya dianggap tidak sah. Dalam hal ini, jamaah haji harus keluar dari ihram, melakukan kurban (jika mereka bermaksud melaksanakan haji), dan kemudian mengganti haji yang hilang pada tahun berikutnya. Tidak ada penebusan (fidya) yang dapat menggantikan wuqaf.","If a pilgrim fails to be present at Arafat during the prescribed time (from dawn to sunset on the 9th of Dhul-Hijjah), even for a moment, their Hajj is considered invalid. In this case, the pilgrim must exit ihram, perform a sacrifice (if they intended to perform Hajj), and then make up the Hajj the following year. There is no expiation (fidya) that can replace wuqaf."
-THEORY_L5_DUA_SUPPLICATIONS_TITLE,Дуа в день Арафата,Dova na Dan Arefata,Dua në Ditën e Arafatit,Arafat Gününde Dua,دعاء في يوم عرفة,Doa di Hari Arafat,Dua on the Day of Arafat
-THEORY_L5_DUA_SUPPLICATIONS_TEXT,"День Арафата — лучший день в году для молитв и поклонения. Пророк ﷺ сказал: «Лучшая молитва — это молитва в день Арафата». Наиболее предпочтительным дуа является: «Ля иляха илляллаху вахдаху ля шарика лях, ляхуль мульку ва ляхуль хамду ва хува аля кулли шайин кадир» (Нет божества, кроме одного Аллаха, у Которого нет сотоварища. Ему принадлежит власть и хвала, и Он способен на всякую вещь). Также рекомендуется много просить прощения и обращаться с личными мольбами.","Dan Arefata je najbolji dan u godini za molitvu i ibadet. Poslanik, s.a.v.s., je rekao: ""Najbolja molitva je molitva na Dan Arefata."" Najpopularnija dova je: ""La ilahe illallahu vahdahu la šerika lah, lahul mulku ve lahul hamdu ve huva ala kulli šejin kadir"" (Nema božanstva osim Allaha jedinog, Koji nema sudruga, Njemu pripada suverenost i hvala, i On je sposoban za sve). Također se preporučuje često tražiti oprost i upućivati ​​lične dove.","Dita e Arafatit është dita më e mirë e vitit për lutje dhe adhurim. Profeti (paqja dhe bekimet e Allahut qofshin mbi të) tha: ""Lutja më e mirë është lutja në Ditën e Arafatit"". Duaja më e preferuar është: ""La ilahe illallahu uahdehu la sherika lah, lahul mulku ue lahul hamdu ue huwa ala kulli shejin kadir"" (Nuk ka zot tjetër përveç Allahut, i Cili nuk ka partner, Atij i takon sovraniteti dhe lavdërimi, dhe Ai është i aftë për çdo gjë). Gjithashtu rekomandohet të kërkohet falje shpesh dhe të bëhen lutje personale.","Arafat Günü, namaz ve ibadet için yılın en hayırlı günüdür. Peygamberimiz ﷺ şöyle buyurmuştur: ""En faziletli namaz, Arafat Günü namazıdır."" En çok tercih edilen dua şudur: ""La ilaha illallahu wahdahu la sharika lah, lahul mulku wa lahul hamdu wa huwa ala kulli shayin qadir"" (Allah'tan başka ilah yoktur, O tektir, ortağı yoktur, mülk ve övgü O'na aittir ve her şeye kadirdir). Ayrıca sık sık af dilemek ve kişisel dualar etmek de tavsiye edilir.",يوم عرفة هو أفضل أيام السنة للصلاة والعبادة. قال النبي ﷺ: «أفضل الصلاة صلاة يوم عرفة». وأفضل الأدعية: «لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير». كما يُستحب الإكثار من طلب المغفرة والدعاء.,"Hari Arafat adalah hari terbaik dalam setahun untuk shalat dan beribadah. Nabi ﷺ bersabda, ""Shalat yang terbaik adalah shalat di Hari Arafat."" Doa yang paling banyak dibaca adalah: ""La ilaha illallahu wahdahu la sharika lah, lahul mulku wa lahul hamdu wa huwa ala kulli shayin qadir"" (Tidak ada Tuhan selain Allah Yang Maha Esa, Yang tidak mempunyai sekutu, Milik-Nya kekuasaan dan segala puji, dan Maha Kuasa atas segala sesuatu). Dianjurkan juga untuk sering memohon ampunan dan memanjatkan doa pribadi.","The Day of Arafat is the best day of the year for prayer and worship. The Prophet ﷺ said, ""The best prayer is the prayer on the Day of Arafat."" The most preferred du'a is: ""La ilaha illallahu wahdahu la sharika lah, lahul mulku wa lahul hamdu wa huwa ala kulli shayin qadir"" (There is no deity but Allah alone, Who has no partner, To Him belongs the sovereignty and the praise, and He is capable of all things). It is also recommended to ask forgiveness frequently and make personal supplications."
-,,,,,,,
- , ,,,,,,
-THEORY_L0_UMRA_DEFINITION,Q1 — Что такое Умра?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_VS_HAJJ,Q2 — Чем Умра отличается от Хаджа?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_STEPS,Q3 — Сколько основных этапов в Умре?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_MIQAT,Q4 — Что такое Микат?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_IHRAM_STATE,Q5 — Что такое Ихрам?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_IHRAM_APPEARANCE,Q6 — Как выглядит ихрам для мужчин?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_COMPLETION,Q7 — Что происходит после завершения Умры?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
- ,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
- ,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
- , ,,,,,,
-LEVEL_0_TITLE,Умра: введение,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-LEVEL_0_DESC,Изучи основы малого паломничества — Умры,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Вопросы (Questions),,,,,,,
-,,,,,,,
-Q1_UMRA_DEFINITION,Что такое Умра?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q1_OPT_1_MAJOR_PILGRIMAGE,Большое паломничество (Хадж),Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q1_OPT_2_MINOR_PILGRIMAGE,Малое паломничество,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q1_OPT_3_FASTING_RAMADAN,Пост в месяц Рамадан,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q1_OPT_4_ZAKAT_ALMS,Закят (обязательная милостыня),Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q1_EXPL_UMRA_DEF,"Умра — это малое паломничество в Мекку, которое можно совершить практически в любое время года. Она включает несколько обязательных обрядов и является великим видом поклонения Аллаху.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q2_UMRA_VS_HAJJ_DIFFERENCE,В чём отличие Умры от Хаджа?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q2_OPT_1_TIMING_ONLY,Только во времени совершения,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q2_OPT_2_NUMBER_RITUALS_ONLY,Только в количестве обрядов,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q2_OPT_3_BOTH_TIMING_AND_RITUALS,"И во времени, и в количестве обрядов",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q2_OPT_4_NO_DIFFERENCE,Отличий нет,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q2_EXPL_UMRA_HAJJ_DIFF,"Хадж совершается только в определённые дни месяца Зуль-хиджа и является одним из пяти столпов Ислама. Умру можно совершать почти круглый год, и она включает меньше обязательных обрядов.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q3_UMRA_STEPS_COUNT,Из скольких основных этапов состоит Умра?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q3_OPT_1_THREE,Трёх,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q3_OPT_2_FOUR,Четырёх,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q3_OPT_3_FIVE,Пяти,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q3_OPT_4_SIX,Шести,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q3_EXPL_UMRA_STEPS,Умра состоит из пяти основных этапов: 1) Вступление в состояние Ихрама у Миката; 2) Прибытие в Масджид аль-Харам; 3) Совершение Тавафа вокруг Каабы; 4) Совершение Са'и между Сафой и Марвой; 5) Бритьё или укорачивание волос и выход из Ихрама.,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q4_MIQAT_DEFINITION,Что такое Микат?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q4_OPT_1_PLACE_OF_SACRIFICE,Место жертвоприношения,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q4_OPT_2_BOUNDARY_FOR_IHRAM,Граница для вступления в ихрам,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q4_OPT_3_HOLY_WELL,Священный колодец,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q4_OPT_4_MOSQUE_IN_MEDINA,Мечеть в Медине,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q4_EXPL_MIQAT,"Микат — это установленная граница, перед которой паломник должен войти в состояние Ихрама, если направляется на Умру или Хадж.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q5_IHRAM_DEFINITION,Что такое Ихрам?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q5_OPT_1_TYPE_OF_PRAYER,Вид молитвы,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q5_OPT_2_SPECIAL_CLOTHING_ONLY,Только специальная одежда,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q5_OPT_3_STATE_OF_WORSHIP,Особое состояние поклонения,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q5_OPT_4_FASTING_DAY,День поста,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q5_EXPL_IHRAM,Ихрам — это особое состояние поклонения. Оно начинается с намерения (нийя) и произнесения тальбии и сопровождается определёнными правилами и ограничениями.,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q6_IHRAM_MEN_CLOTHING,Как выглядит ихрам для мужчин?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q6_OPT_1_ONE_PIECE_CLOTH,Один отрез ткани,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q6_OPT_2_TWO_WHITE_SEWN_GARMENTS,Два белых сшитых одеяния,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q6_OPT_3_TWO_WHITE_UNSEWN_CLOTHS,Два белых несшитых полотна,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q6_OPT_4_COLORFUL_ROBE,Разноцветный халат,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q6_EXPL_MEN_IHRAM,"Мужчины надевают два белых несшитых полотна: одно закрывает нижнюю часть тела, второе покрывает плечи и верхнюю часть тела. Голова остаётся открытой. Запрещается использовать духи после вступления в ихрам.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q7_UMRA_COMPLETION_RITUAL,Что завершает Умру и выход из ихрама?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q7_OPT_1_SACRIFICE_ANIMAL,Жертвоприношение животного,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q7_OPT_2_FAST_TWO_DAYS,Пост в течение двух дней,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q7_OPT_3_SHAVING_OR_CUTTING_HAIR,Бритьё или укорачивание волос,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q7_OPT_4_SECOND_TAWAF,Второй таваф,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-Q7_EXPL_COMPLETION,"После завершения Са'и мужчины полностью сбривают волосы или значительно их укорачивают, женщины срезают небольшую прядь волос. После этого паломник выходит из состояния Ихрама, и Умра считается завершённой.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
 ,,,,,,,
 ,,,,,,,
-THEORY_L0_UMRA_DEFINITION_TITLE,Что такое Умра?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_DEFINITION_TEXT,"Умра — это малое паломничество в Мекку, которое можно совершить практически в любое время года. Она включает несколько обязательных обрядов и является великим видом поклонения Аллаху.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_VS_HAJJ_TITLE,Чем Умра отличается от Хаджа?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_VS_HAJJ_TEXT,"Хадж совершается только в определённые дни месяца Зуль-хиджа и является одним из пяти столпов Ислама. Умру можно совершать почти круглый год, и она включает меньше обязательных обрядов.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_STEPS_TITLE,Основные этапы Умры,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_STEPS_TEXT,Умра состоит из пяти основных этапов: 1) Вступление в состояние Ихрама у Миката; 2) Прибытие в Масджид аль-Харам; 3) Совершение Тавафа вокруг Каабы; 4) Совершение Са'и между Сафой и Марвой; 5) Бритьё или укорачивание волос и выход из Ихрама.,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_MIQAT_TITLE,Что такое Микат?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_MIQAT_TEXT,"Микат — это установленная граница, перед которой паломник должен войти в состояние Ихрама, если направляется на Умру или Хадж.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_IHRAM_STATE_TITLE,Что такое Ихрам?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_IHRAM_STATE_TEXT,Ихрам — это особое состояние поклонения. Оно начинается с намерения (нийя) и произнесения тальбии и сопровождается определёнными правилами и ограничениями.,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_IHRAM_APPEARANCE_TITLE,Как выглядит Ихрам?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_IHRAM_APPEARANCE_TEXT,"Мужчины: два белых несшитых полотна; одно закрывает нижнюю часть тела; второе покрывает плечи и верхнюю часть тела; голова остаётся открытой; запрещается использовать духи после вступления в Ихрам. Женщины: обычная скромная одежда; закрыто всё тело, кроме лица и кистей рук (в соответствии с принятым мнением); специальных цветов или формы одежды не требуется; одежда должна быть чистой и не привлекать внимание.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_COMPLETION_TITLE,Что происходит после завершения Умры?,Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
-THEORY_L0_UMRA_COMPLETION_TEXT,"После завершения Са'и мужчины полностью сбривают волосы или значительно их укорачивают, женщины срезают небольшую прядь волос. После этого паломник выходит из состояния Ихрама, и Умра считается завершённой.",Loading...,Loading...,Loading...,Loading...,Loading...,Loading...
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,,,,,,
+,,,,,,,
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+,,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!,#VALUE!
