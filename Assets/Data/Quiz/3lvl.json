@@ -1,0 +1,92 @@
+[
+  {
+    "LevelId": "level_3",
+    "LevelName": "LEVEL_3_TITLE",
+    "Description": "LEVEL_3_DESC",
+    "imagePath": null
+  },
+  {
+    "QuestionText": "Q3_ARRIVAL_AIRPORT",
+    "Options": [
+      "Q3_OPT_1_JEDDAH_MEDINA",
+      "Q3_OPT_2_RIYADH_ONLY",
+      "Q3_OPT_3_DAMMAM_ONLY",
+      "Q3_OPT_4_TABUK_ONLY"
+    ],
+    "CorrectAnswerIndex": 0,
+    "Explanation": "Q3_EXPL_ARRIVAL",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q3_TRANSPORT_TO_MECCA",
+    "Options": [
+      "Q3_OPT_1_BUS_TAXI_TRAIN",
+      "Q3_OPT_2_WALK_ONLY",
+      "Q3_OPT_3_CAMEL_ONLY",
+      "Q3_OPT_4_BOAT_ONLY"
+    ],
+    "CorrectAnswerIndex": 0,
+    "Explanation": "Q3_EXPL_TRANSPORT",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q3_IHRAM_STATUS_ON_ROAD",
+    "Options": [
+      "Q3_OPT_1_REGULAR_CLOTHES",
+      "Q3_OPT_2_ALREADY_IN_IHRAM",
+      "Q3_OPT_3_NO_RESTRICTIONS",
+      "Q3_OPT_4_ANY_CLOTHES"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q3_EXPL_IHRAM_STATUS",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q3_PERFUME_ON_ROAD",
+    "Options": [
+      "Q3_OPT_1_YES_ALLOWED",
+      "Q3_OPT_2_NO_NOT_ALLOWED",
+      "Q3_OPT_3_ONLY_AT_NIGHT",
+      "Q3_OPT_4_ONLY_IN_CAR"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q3_EXPL_PERFUME_ROAD",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q3_HAIR_CUT_ON_ROAD",
+    "Options": [
+      "Q3_OPT_1_YES_ALLOWED",
+      "Q3_OPT_2_NO_NOT_ALLOWED",
+      "Q3_OPT_3_ONLY_FOR_MEN",
+      "Q3_OPT_4_ONLY_IN_MECCA"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q3_EXPL_HAIR_ROAD",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q3_FORGOT_IHRAM",
+    "Options": [
+      "Q3_OPT_1_IGNORE_AND_CONTINUE",
+      "Q3_OPT_2_RETURN_TO_MIQAT",
+      "Q3_OPT_3_WEAR_AT_HOTEL",
+      "Q3_OPT_4_WEAR_AT_MOSQUE"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q3_EXPL_FORGOT_IHRAM",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q3_IHRAM_RESTRICTIONS",
+    "Options": [
+      "Q3_OPT_1_ALL_NORMAL",
+      "Q3_OPT_2_NO_PERFUME_NO_CUT",
+      "Q3_OPT_3_ONLY_NO_PERFUME",
+      "Q3_OPT_4_ONLY_NO_CUT"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q3_EXPL_RESTRICTIONS",
+    "GemsReward": 10
+  }
+]

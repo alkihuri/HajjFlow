@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: UmraBasics_TheoryContainer
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: UmraBasics
+  Cards:
+  - {fileID: 11400000, guid: cec09b4fd6b6e450ab5a6a526f17d377, type: 2}
+  - {fileID: 11400000, guid: 556ddf2dbc6214720810a7d377732ed1, type: 2}
+  - {fileID: 11400000, guid: cc9ebccaec20e47d2945459b3d537a4f, type: 2}
+  - {fileID: 11400000, guid: 109b49871ee674dde9c453fb8c046c17, type: 2}
+  - {fileID: 11400000, guid: 2e5433325f6ec4ae5bbadbb55e053a8f, type: 2}
+  - {fileID: 11400000, guid: c2f4fdabc764543e892b7b7b25fb34a7, type: 2}
+  - {fileID: 11400000, guid: edc6ac9e90326485baea8eb7884b66ba, type: 2}

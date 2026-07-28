@@ -1,0 +1,25 @@
+[
+  {
+    "Id": "level_5"
+  },
+  {
+    "Title": "THEORY_L5_SAY_DEF_TITLE",
+    "Text": "THEORY_L5_SAY_DEF_TEXT"
+  },
+  {
+    "Title": "THEORY_L5_SAY_WALKS_TITLE",
+    "Text": "THEORY_L5_SAY_WALKS_TEXT"
+  },
+  {
+    "Title": "THEORY_L5_SAY_DUAS_TITLE",
+    "Text": "THEORY_L5_SAY_DUAS_TEXT"
+  },
+  {
+    "Title": "THEORY_L5_SAY_COMPLETION_TITLE",
+    "Text": "THEORY_L5_SAY_COMPLETION_TEXT"
+  },
+  {
+    "Title": "THEORY_L5_AFTER_IHRAM_TITLE",
+    "Text": "THEORY_L5_AFTER_IHRAM_TEXT"
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "Id": "level_0"
+  },
+  {
+    "Title": "THEORY_L0_UMRA_DEF_TITLE",
+    "Text": "THEORY_L0_UMRA_DEF_TEXT"
+  },
+  {
+    "Title": "THEORY_L0_UMRA_VS_HAJJ_TITLE",
+    "Text": "THEORY_L0_UMRA_VS_HAJJ_TEXT"
+  },
+  {
+    "Title": "THEORY_L0_UMRA_STEPS_TITLE",
+    "Text": "THEORY_L0_UMRA_STEPS_TEXT"
+  },
+  {
+    "Title": "THEORY_L0_MIQAT_TITLE",
+    "Text": "THEORY_L0_MIQAT_TEXT"
+  },
+  {
+    "Title": "THEORY_L0_IHRAM_STATE_TITLE",
+    "Text": "THEORY_L0_IHRAM_STATE_TEXT"
+  },
+  {
+    "Title": "THEORY_L0_IHRAM_APPEARANCE_TITLE",
+    "Text": "THEORY_L0_IHRAM_APPEARANCE_TEXT"
+  },
+  {
+    "Title": "THEORY_L0_UMRA_COMPLETION_TITLE",
+    "Text": "THEORY_L0_UMRA_COMPLETION_TEXT"
+  }
+]

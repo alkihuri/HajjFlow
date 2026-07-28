@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -45,15 +46,19 @@ namespace HajjFlow.UI
         [SerializeField] private LevelController _levelControllerPrefab;
         [SerializeField] private List<LevelController> _levelControllers = new List<LevelController>();
 
-        [Header("Level Configuration")] [SerializeField]
-        private List<LevelData> _levels = new List<LevelData>();
+        [Header("Main Configuration")] [SerializeField]
+        private GameMainConfig _config;
+        [SerializeField] private List<LevelData> _levels = new List<LevelData>();
 
         private ProgressService _progressService;
         private List<LevelTileUI> _levelSelectButtons = new List<LevelTileUI>();
 
-
+        
+        
+        
         private void Awake()
         {
+            _levels = _config.Levels.Select(le=> le.LevelData).ToList();
             foreach (var level in _levels)
             {
                 // Instantiate a LevelController for each level and parent it under _levelsControllersContainer
@@ -274,10 +279,18 @@ namespace HajjFlow.UI
 #if UNITY_EDITOR
         private void OnValidate()
         {
+            
             // load all LEvelData assets from the Resources/Levels folder if the list is empty (for convenience)
             if (_levels.Count == 0)
             {
-                _levels = Resources.LoadAll<LevelData>("SO/Levels").ToList();
+                
+                _levels = _config.Levels.Select(le=> le.LevelData).ToList();
+                if (_levels.Count == 0)
+                {
+                    Debug.LogWarning("[UIService] No levels found in configuration. Please assign levels in the GameMainConfig or place LevelData assets in Resources/SO/Levels.");
+                    Debug.Log("[UIService] Attempting to load LevelData assets from Resources/SO/Levels...");
+                    _levels = Resources.LoadAll<LevelData>("SO/Levels").ToList();
+                }
             }
         }
 #endif

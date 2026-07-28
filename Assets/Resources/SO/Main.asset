@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff152c380d64c86abfad0a5b6ce2508, type: 3}
+  m_Name: Main
+  m_EditorClassIdentifier: Assembly-CSharp::Core.GameMainConfig
+  Levels:
+  - LevelId: level_0
+    LevelData: {fileID: 11400000, guid: 099a44d54385f4385b54a87d7497fc9c, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: b6e2f91dac2994b46a729589f4fc87ec, type: 2}
+  - LevelId: level_1
+    LevelData: {fileID: 11400000, guid: 1e0e08f4920bc4c8d956b3bf8807f9ba, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 5d032e0b11bf9443f8834b2f2bda0870, type: 2}
+  - LevelId: level_2
+    LevelData: {fileID: 11400000, guid: 57e695569f4e54ffcaba19c7981b441b, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: a1811bd1701484960bd4b2f6bf8169ce, type: 2}
+  - LevelId: level_3
+    LevelData: {fileID: 11400000, guid: bfc854aee8cd14beaa90b4738bc81a0f, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 509d79772da1749729cbca99a9258837, type: 2}
+  - LevelId: level_4
+    LevelData: {fileID: 11400000, guid: 4a01fcc22afba4d3281d41b49e82a38d, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 2d069e2b52491404abd5469c89f2c74a, type: 2}
+  - LevelId: level_5
+    LevelData: {fileID: 11400000, guid: 7a8aad14f34a2401990f9f8ad334633e, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: bd4b779122ee3437bbc3420f1ded5cb1, type: 2}
+  - LevelId: level_6
+    LevelData: {fileID: 11400000, guid: a9584c36d354f432ba20977f1fab0932, type: 2}
+    TheoryContainer: {fileID: 11400000, guid: 72c83b9c67a9048f38e34d014292ca37, type: 2}
+  QuizJsonFolderPath: Data/Quiz
+  TheoryJsonFolderPath: Data/Theory
+  AutoCreateTheoryContainers: 1

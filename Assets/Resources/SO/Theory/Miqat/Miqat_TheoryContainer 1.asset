@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: Miqat_TheoryContainer 1
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: Miqat
+  Cards:
+  - {fileID: 11400000, guid: ed429c4738f244540891294854dd1d67, type: 2}
+  - {fileID: 11400000, guid: f772b6991cd2542a48a018dc1a27c94a, type: 2}
+  - {fileID: 11400000, guid: 55f4201f774ec4183923f601e050e163, type: 2}
+  - {fileID: 11400000, guid: b13fc03c2010042e38553fb8921f8185, type: 2}
+  - {fileID: 11400000, guid: c4df4d49395e94c39bfffff9e157dbb6, type: 2}
+  - {fileID: 11400000, guid: f278ad6dbdbeb4dd0958c30f961c9b0a, type: 2}
+  - {fileID: 11400000, guid: e045186cbb4f3423a920242a3df670e5, type: 2}

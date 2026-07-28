@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
   m_Name: Sa3i_LevelData
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
-  LevelIndex: 5
+  LevelIndex: 0
   LevelId: Sa3i
   LevelName: LEVEL_4_TITLE
   Description: LEVEL_4_DESC

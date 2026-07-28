@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
+  m_Name: level_1_LevelData
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
+  LevelIndex: 0
+  LevelId: level_1
+  LevelName: LEVEL_1_TITLE
+  Description: LEVEL_1_DESC
+  LevelDescriptionKey: LEVEL_1_DESC
+  QuestionTextKeys: []
+  Thumbnail: {fileID: 0}
+  Questions:
+  - QuestionText: Q1_IHRAM_DEFINITION
+    Options:
+    - Q1_OPT_1_CLOTHING_ONLY
+    - Q1_OPT_2_WORSHIP_STATE
+    - Q1_OPT_3_PRAYER_TYPE
+    - Q1_OPT_4_FASTING_DAY
+    CorrectAnswerIndex: 1
+    Explanation: Q1_EXPL_IHRAM_DEF
+    GemsReward: 10
+  - QuestionText: Q1_ENTER_IHRAM
+    Options:
+    - Q1_OPT_1_PRAY_ONLY
+    - Q1_OPT_2_NIYYAH_TALBIYAH
+    - Q1_OPT_3_WEAR_CLOTHES
+    - Q1_OPT_4_WASH_BODY
+    CorrectAnswerIndex: 1
+    Explanation: Q1_EXPL_ENTER_IHRAM
+    GemsReward: 10
+  - QuestionText: Q1_PERFUME_ALLOWED
+    Options:
+    - Q1_OPT_1_YES_ALWAYS
+    - Q1_OPT_2_NO_NEVER
+    - Q1_OPT_3_ONLY_MEN
+    - Q1_OPT_4_ONLY_WOMEN
+    CorrectAnswerIndex: 1
+    Explanation: Q1_EXPL_PERFUME
+    GemsReward: 10
+  - QuestionText: Q1_SOAP_ALLOWED
+    Options:
+    - Q1_OPT_1_YES_ANY_SOAP
+    - Q1_OPT_2_NO_NEVER_WASH
+    - Q1_OPT_3_WATER_ONLY_NO_SCENT
+    - Q1_OPT_4_ONLY_BEFORE_IHRAM
+    CorrectAnswerIndex: 2
+    Explanation: Q1_EXPL_SOAP
+    GemsReward: 10
+  - QuestionText: Q1_PROHIBITED_IHRAM
+    Options:
+    - Q1_OPT_1_WASH_WATER
+    - Q1_OPT_2_SCRATCH_BODY
+    - Q1_OPT_3_PERFUME_CUT_HAIR
+    - Q1_OPT_4_WEAR_SANDALS
+    CorrectAnswerIndex: 2
+    Explanation: Q1_EXPL_PROHIBITED
+    GemsReward: 10
+  - QuestionText: Q1_PERMITTED_IHRAM
+    Options:
+    - Q1_OPT_1_WASH_SCENTED_SOAP
+    - Q1_OPT_2_CUT_HAIR
+    - Q1_OPT_3_WASH_WATER_SCRATCH
+    - Q1_OPT_4_USE_PERFUME
+    CorrectAnswerIndex: 2
+    Explanation: Q1_EXPL_PERMITTED
+    GemsReward: 10
+  - QuestionText: Q1_REMOVE_BEFORE_IHRAM
+    Options:
+    - Q1_OPT_1_SHOES_ONLY
+    - Q1_OPT_2_REGULAR_CLOTHES_JEWELRY
+    - Q1_OPT_3_WALLET_PHONE
+    - Q1_OPT_4_NOTHING
+    CorrectAnswerIndex: 1
+    Explanation: Q1_EXPL_REMOVE
+    GemsReward: 10
+  CompletionBonusGems: 20
+  PassThreshold: 60

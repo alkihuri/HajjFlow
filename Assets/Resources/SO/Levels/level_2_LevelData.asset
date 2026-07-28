@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab756a3eded3345dc986fd67be582403, type: 3}
+  m_Name: level_2_LevelData
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Data.LevelData
+  LevelIndex: 0
+  LevelId: level_2
+  LevelName: LEVEL_2_TITLE
+  Description: LEVEL_2_DESC
+  LevelDescriptionKey: LEVEL_2_DESC
+  QuestionTextKeys: []
+  Thumbnail: {fileID: 0}
+  Questions:
+  - QuestionText: Q2_MIQAT_DEFINITION
+    Options:
+    - Q2_OPT_1_SACRED_MOUNTAIN
+    - Q2_OPT_2_IHRAM_BOUNDARY
+    - Q2_OPT_3_PRAYER_PLACE
+    - Q2_OPT_4_CITY_GATE
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_MIQAT_DEF
+    GemsReward: 10
+  - QuestionText: Q2_MIQAT_COUNT
+    Options:
+    - Q2_OPT_1_THREE
+    - Q2_OPT_2_FOUR
+    - Q2_OPT_3_FIVE
+    - Q2_OPT_4_SIX
+    CorrectAnswerIndex: 2
+    Explanation: Q2_EXPL_MIQAT_COUNT
+    GemsReward: 10
+  - QuestionText: Q2_PLANE_MIQAT
+    Options:
+    - Q2_OPT_1_PRAY_ON_PLANE
+    - Q2_OPT_2_WEAR_IHRAM_BEFORE_CROSS
+    - Q2_OPT_3_WAIT_LANDING
+    - Q2_OPT_4_IGNORE_MIQAT
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_PLANE_MIQAT
+    GemsReward: 10
+  - QuestionText: Q2_NIYYAH_UMRAH
+    Options:
+    - Q2_OPT_1_ALLAHU_AKBAR
+    - Q2_OPT_2_LABBAYKA_UMRATAN
+    - Q2_OPT_3_SUBHANALLAH
+    - Q2_OPT_4_BISMILLAH
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_NIYYAH
+    GemsReward: 10
+  - QuestionText: Q2_CROSS_WITHOUT_IHRAM
+    Options:
+    - Q2_OPT_1_CONTINUE_PATH
+    - Q2_OPT_2_RETURN_TO_MIQAT
+    - Q2_OPT_3_IGNORE_ERROR
+    - Q2_OPT_4_START_TAWAF
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_CROSS_ERROR
+    GemsReward: 10
+  - QuestionText: Q2_MIQAT_REGIONS
+    Options:
+    - Q2_OPT_1_ONE_FOR_ALL
+    - Q2_OPT_2_DIFFERENT_FOR_REGIONS
+    - Q2_OPT_3_ONLY_IN_MECCA
+    - Q2_OPT_4_ONLY_IN_MEDINA
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_MIQAT_REGIONS
+    GemsReward: 10
+  - QuestionText: Q2_MIQAT_EGYPTIANS
+    Options:
+    - Q2_OPT_1_DHUL_HULAYFAH
+    - Q2_OPT_2_JUHFAH
+    - Q2_OPT_3_YALAMLAM
+    - Q2_OPT_4_DHAT_IRQ
+    CorrectAnswerIndex: 1
+    Explanation: Q2_EXPL_MIQAT_EGYPT
+    GemsReward: 10
+  CompletionBonusGems: 20
+  PassThreshold: 60

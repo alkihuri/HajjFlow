@@ -1,0 +1,92 @@
+[
+  {
+    "LevelId": "level_5",
+    "LevelName": "LEVEL_5_TITLE",
+    "Description": "LEVEL_5_DESC",
+    "imagePath": null
+  },
+  {
+    "QuestionText": "Q5_SAY_DEFINITION",
+    "Options": [
+      "Q5_OPT_1_CIRCUMAMBULATE_KAABA",
+      "Q5_OPT_2_WALK_SAFA_MARWAH",
+      "Q5_OPT_3_PRAYER_RAKATS",
+      "Q5_OPT_4_SHAVING_RITUAL"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_SAY_DEF",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_WALKS",
+    "Options": [
+      "Q5_OPT_1_FIVE",
+      "Q5_OPT_2_SIX",
+      "Q5_OPT_3_SEVEN",
+      "Q5_OPT_4_EIGHT"
+    ],
+    "CorrectAnswerIndex": 2,
+    "Explanation": "Q5_EXPL_SAY_WALKS",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_END_7TH",
+    "Options": [
+      "Q5_OPT_1_SAFA",
+      "Q5_OPT_2_MARWAH",
+      "Q5_OPT_3_KAABA",
+      "Q5_OPT_4_ZAMZAM"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_END_7TH",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_DISTANCE",
+    "Options": [
+      "Q5_OPT_1_1_KM",
+      "Q5_OPT_2_2_5_KM",
+      "Q5_OPT_3_5_KM",
+      "Q5_OPT_4_7_KM"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_DISTANCE",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_DUA_OBLIGATORY",
+    "Options": [
+      "Q5_OPT_1_YES_MUST_READ",
+      "Q5_OPT_2_NO_NOT_OBLIGATORY",
+      "Q5_OPT_3_ONLY_WHEN_ASCENDING",
+      "Q5_OPT_4_ONLY_WHEN_DESCENDING"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_SAY_DUA",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_SAY_COMPLETION",
+    "Options": [
+      "Q5_OPT_1_TAWAF_AGAIN",
+      "Q5_OPT_2_SHAVE_CUT_HAIR",
+      "Q5_OPT_3_PRAY_NAMAZ",
+      "Q5_OPT_4_DRINK_ZAMZAM"
+    ],
+    "CorrectAnswerIndex": 1,
+    "Explanation": "Q5_EXPL_SAY_COMPLETION",
+    "GemsReward": 10
+  },
+  {
+    "QuestionText": "Q5_AFTER_IHRAM_PERMITTED",
+    "Options": [
+      "Q5_OPT_1_WASH_PERFUME_SCENT",
+      "Q5_OPT_2_ONLY_WASH_WATER",
+      "Q5_OPT_3_ONLY_PERFUME",
+      "Q5_OPT_4_NOTHING_PERMITTED"
+    ],
+    "CorrectAnswerIndex": 0,
+    "Explanation": "Q5_EXPL_AFTER_IHRAM",
+    "GemsReward": 10
+  }
+]

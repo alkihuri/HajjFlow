@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
   LevelId: Arafat
   Cards:
-  - {fileID: 11400000, guid: eb2ef473074334a1ea145054fa36a4d1, type: 2}
-  - {fileID: 11400000, guid: 46bfe0ee5f306402383c783b446c7e38, type: 2}
-  - {fileID: 11400000, guid: 5421af08b17dd4e319f552f335c7d752, type: 2}
-  - {fileID: 11400000, guid: add3034f44a9743d29a312ae1519ec90, type: 2}
-  - {fileID: 11400000, guid: 4603a4abdb2c647108ae3a5f11e8285c, type: 2}
-  - {fileID: 11400000, guid: 4dc47e40cef5c4d8aa573c51ab2591e5, type: 2}
-  - {fileID: 11400000, guid: f6b6434dd05024dcf8574c31c786ed95, type: 2}
+  - {fileID: 11400000, guid: 38be2299d2a304714ad57baf4986a143, type: 2}
+  - {fileID: 11400000, guid: 067ef58c04d414779a04204a790688d8, type: 2}
+  - {fileID: 11400000, guid: 92d1a37fc7e524a729bc69b273cf3ef9, type: 2}
+  - {fileID: 11400000, guid: d80315e1004f048198f522a0be9e74e7, type: 2}
+  - {fileID: 11400000, guid: 3862de602fa8c433c99f00ac2504f570, type: 2}
+  - {fileID: 11400000, guid: c323bfbed36a54a61835659a47a20efc, type: 2}
+  - {fileID: 11400000, guid: 4085c70223b274699a90481b19e9db88, type: 2}

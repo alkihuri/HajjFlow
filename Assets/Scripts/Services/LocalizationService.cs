@@ -42,7 +42,7 @@ namespace HajjFlow.Services
             {
                 { "ru", Language.Russian },
                 { "bs", Language.Bosnian },
-                { "al", Language.Albanian },
+                { "sq", Language.Albanian },
                 { "tr", Language.Turkish },
                 { "ar", Language.Arabic },
                 { "id", Language.Indonesian },

@@ -1,0 +1,25 @@
+[
+  {
+    "Id": "level_1"
+  },
+  {
+    "Title": "THEORY_L1_IHRAM_DEF_TITLE",
+    "Text": "THEORY_L1_IHRAM_DEF_TEXT"
+  },
+  {
+    "Title": "THEORY_L1_ENTER_IHRAM_TITLE",
+    "Text": "THEORY_L1_ENTER_IHRAM_TEXT"
+  },
+  {
+    "Title": "THEORY_L1_PROHIBITED_TITLE",
+    "Text": "THEORY_L1_PROHIBITED_TEXT"
+  },
+  {
+    "Title": "THEORY_L1_PERMITTED_TITLE",
+    "Text": "THEORY_L1_PERMITTED_TEXT"
+  },
+  {
+    "Title": "THEORY_L1_REMOVE_CLOTHES_TITLE",
+    "Text": "THEORY_L1_REMOVE_CLOTHES_TEXT"
+  }
+]

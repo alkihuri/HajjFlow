@@ -1,0 +1,25 @@
+[
+  {
+    "Id": "level_4"
+  },
+  {
+    "Title": "THEORY_L4_TAWAF_DEF_TITLE",
+    "Text": "THEORY_L4_TAWAF_DEF_TEXT"
+  },
+  {
+    "Title": "THEORY_L4_START_END_TITLE",
+    "Text": "THEORY_L4_START_END_TEXT"
+  },
+  {
+    "Title": "THEORY_L4_LINES_TITLE",
+    "Text": "THEORY_L4_LINES_TEXT"
+  },
+  {
+    "Title": "THEORY_L4_PRAYER_TITLE",
+    "Text": "THEORY_L4_PRAYER_TEXT"
+  },
+  {
+    "Title": "THEORY_L4_DUA_NOT_OBLIGATORY_TITLE",
+    "Text": "THEORY_L4_DUA_NOT_OBLIGATORY_TEXT"
+  }
+]

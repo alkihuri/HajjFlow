@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71fbd49ccca4497932d5e367728078d, type: 3}
+  m_Name: Arafat_TheoryContainer 1
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Theory.TheoryCardContainer
+  LevelId: Arafat
+  Cards:
+  - {fileID: 11400000, guid: 2f7d6e4cff2e24452b964b94c5b17877, type: 2}
+  - {fileID: 11400000, guid: f1fc14152595c4b63aec1db862e07dff, type: 2}
+  - {fileID: 11400000, guid: cf1fe6fb2209d401fb9a29b779b3a4aa, type: 2}
+  - {fileID: 11400000, guid: 1deaea8b0f9634c679f58e767f4e0f95, type: 2}
+  - {fileID: 11400000, guid: a398c531d13984ada83202057189993a, type: 2}
+  - {fileID: 11400000, guid: 2c44bdd752ff944dfa0547dca26614ec, type: 2}
+  - {fileID: 11400000, guid: 3436dfd70e26a49cda7224d3438e5555, type: 2}

@@ -1,0 +1,25 @@
+[
+  {
+    "Id": "level_3"
+  },
+  {
+    "Title": "THEORY_L3_ARRIVAL_TITLE",
+    "Text": "THEORY_L3_ARRIVAL_TEXT"
+  },
+  {
+    "Title": "THEORY_L3_TRANSPORT_TITLE",
+    "Text": "THEORY_L3_TRANSPORT_TEXT"
+  },
+  {
+    "Title": "THEORY_L3_IHRAM_STATUS_TITLE",
+    "Text": "THEORY_L3_IHRAM_STATUS_TEXT"
+  },
+  {
+    "Title": "THEORY_L3_PROHIBITIONS_TITLE",
+    "Text": "THEORY_L3_PROHIBITIONS_TEXT"
+  },
+  {
+    "Title": "THEORY_L3_FORGOT_IHRAM_TITLE",
+    "Text": "THEORY_L3_FORGOT_IHRAM_TEXT"
+  }
+]

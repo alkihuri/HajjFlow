@@ -75,7 +75,7 @@ namespace HajjFlow.Core.States
             {
                 Debug.LogWarning($"[GameStateMachine] State '{state.StateId}' already registered.");
                 return;
-            }
+            } 
 
             state.Initialize(this);
             _states.Add(state.StateId, state);
@@ -105,9 +105,11 @@ namespace HajjFlow.Core.States
         {
             if (!_states.ContainsKey(stateId))
             {
-                Debug.LogError($"[GameStateMachine] State '{stateId}' not registered!");
-                return;
+                _states[stateId] = new LevelState(stateId);
+                //Debug.LogError($"[GameStateMachine] State '{stateId}' not registered!");
+                //return;
             }
+          
 
             // Exit current state
             _currentState?.Exit();

@@ -1,0 +1,29 @@
+[
+  {
+    "Id": "level_2"
+  },
+  {
+    "Title": "THEORY_L2_MIQAT_DEF_TITLE",
+    "Text": "THEORY_L2_MIQAT_DEF_TEXT"
+  },
+  {
+    "Title": "THEORY_L2_MIQAT_COUNT_TITLE",
+    "Text": "THEORY_L2_MIQAT_COUNT_TEXT"
+  },
+  {
+    "Title": "THEORY_L2_PLANE_MIQAT_TITLE",
+    "Text": "THEORY_L2_PLANE_MIQAT_TEXT"
+  },
+  {
+    "Title": "THEORY_L2_NIYYAH_UMRAH_TITLE",
+    "Text": "THEORY_L2_NIYYAH_UMRAH_TEXT"
+  },
+  {
+    "Title": "THEORY_L2_CROSS_ERROR_TITLE",
+    "Text": "THEORY_L2_CROSS_ERROR_TEXT"
+  },
+  {
+    "Title": "THEORY_L2_MIQAT_REGIONS_TITLE",
+    "Text": "THEORY_L2_MIQAT_REGIONS_TEXT"
+  }
+]
