@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using HajjFlow.Core.LevelsLogic;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -42,44 +41,40 @@ namespace HajjFlow.Core.States
         /// <summary>Whether the game is paused.</summary>
         public bool IsPaused => _isPaused;
 
-        // ── Initialization ───────────────────────────────────────────────────────
+        // ── Dynamic state creation ───────────────────────────────────────────────
 
-        private void Awake()
+        /// <summary>
+        /// Creates a state instance by its id on demand.
+        /// States are created dynamically on first transition and cached for reuse.
+        /// </summary>
+        private BaseGameState CreateState(string stateId)
         {
-            RegisterDefaultStates();
-        }
-
-        /// <summary>Registers the built-in set of states.</summary>
-        private void RegisterDefaultStates()
-        {
-            // Game-flow states
-            RegisterState(new MainMenuState());
-            RegisterState(new LevelSelectState());
-            RegisterState(new ResultsState());
-
-            // Level-gameplay states - all use universal LevelState with different IDs
-            RegisterState(new LevelState(GameStateIds.UmraBasics, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Warmup, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Miqat, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Tawaf, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Sa3i, theoryBlockCount: 1));
-            RegisterState(new LevelState(GameStateIds.Arafat, theoryBlockCount: 1)); 
-            
-        }
-
-        /// <summary>Registers a state in the machine.</summary>
-        public void RegisterState(BaseGameState state)
-        {
-            if (state == null) return;
-            if (_states.ContainsKey(state.StateId))
+            switch (stateId)
             {
-                Debug.LogWarning($"[GameStateMachine] State '{state.StateId}' already registered.");
-                return;
-            } 
+                case GameStateIds.MainMenu:
+                    return new MainMenuState();
+                case GameStateIds.LevelSelect:
+                    return new LevelSelectState();
+                case GameStateIds.Results:
+                    return new ResultsState();
+                default:
+                    return new LevelState(stateId);
+            }
+        }
 
-            state.Initialize(this);
-            _states.Add(state.StateId, state);
-            Debug.Log($"[GameStateMachine] Registered state: {state.StateId}");
+        /// <summary>
+        /// Returns a cached state or creates and caches a new one dynamically.
+        /// </summary>
+        private BaseGameState GetOrCreateState(string stateId)
+        {
+            if (!_states.TryGetValue(stateId, out var state))
+            {
+                state = CreateState(stateId);
+                state.Initialize(this);
+                _states.Add(stateId, state);
+                Debug.Log($"[GameStateMachine] Dynamically created state: {stateId}");
+            }
+            return state;
         }
 
         // ── State transitions ────────────────────────────────────────────────────
@@ -103,19 +98,13 @@ namespace HajjFlow.Core.States
 
         private void ChangeStateInternal(string stateId, LevelData levelData)
         {
-            if (!_states.ContainsKey(stateId))
-            {
-                _states[stateId] = new LevelState(stateId);
-                //Debug.LogError($"[GameStateMachine] State '{stateId}' not registered!");
-                //return;
-            }
-          
+            var newState = GetOrCreateState(stateId);
 
             // Exit current state
             _currentState?.Exit();
 
             // Enter new state
-            _currentState = _states[stateId];
+            _currentState = newState;
 
             if (_currentState is LevelState levelState && levelData != null)
             {
