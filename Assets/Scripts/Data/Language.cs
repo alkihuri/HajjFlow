@@ -1,5 +1,6 @@
 namespace HajjFlow.Data
 {
+    [System.Serializable]
     public enum Language
     {
         Russian,
