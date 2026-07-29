@@ -18,8 +18,8 @@ namespace HajjFlow.Editor.ContentLoader
     public static class LocalizationEditorService
     {
         private const string GoogleSheetsCsvUrl =
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTX5Wh2iYEJWMZNxQqDw0rroPUyiGnJglnAG2WdxfVkj3kYEGHF27bYV6roA6mMpLS-_247HpV7K7JS/pub?gid=1439558173&single=true&output=csv";
-
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTX5Wh2iYEJWMZNxQqDw0rroPUyiGnJglnAG2WdxfVkj3kYEGHF27bYV6roA6mMpLS-_247HpV7K7JS/pub?gid=421214789&single=true&output=csv";
+        
         private const string CsvResourcePath = "localization";
 
         /// <summary>Parsed localization table: key → (Language → text).</summary>
