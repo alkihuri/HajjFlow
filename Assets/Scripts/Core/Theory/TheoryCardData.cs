@@ -26,6 +26,11 @@ namespace Core.Theory
             {
                 // get service
                 var localizationService = GameManager.Instance?.GetService<LocalizationService>();
+                if(localizationService==null)
+                    return;
+                
+                if(preview == null)
+                    preview = new Preview(Description, Title, localizationService.CurrentLanguage);
                 localizationService.ChangeLanguage(preview.Lang);
                 var localizedTitle = localizationService?.GetText(Title) ?? Title;
                 var localizedDescription = localizationService?.GetText(Description) ?? Description;
