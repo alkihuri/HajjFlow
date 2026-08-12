@@ -269,6 +269,38 @@ namespace Core.Theory
             OnCardChanged?.Invoke(index);  
         }
 
+        /// <summary>
+        /// Инициализирует менеджер карточек из рантайм-данных (без ScriptableObject контейнера).
+        /// Вызывается RuntimeLevelFactory при использовании удалённого контента.
+        /// </summary>
+        public void InitializeFromRuntimeData(List<TheoryCardData> runtimeCards)
+        {
+            if (runtimeCards == null || runtimeCards.Count == 0)
+            {
+                Debug.LogWarning("[TheoryCardsManager] No runtime cards provided!");
+                return;
+            }
+
+            // Очищаем предыдущие карточки
+            foreach (var card in _cards)
+            {
+                if (card != null)
+                    Destroy(card.gameObject);
+            }
+            _cards.Clear();
+
+            // Устанавливаем данные
+            _data = runtimeCards;
+            CardContainer = null; // Сбрасываем контейнер, чтобы использовался _data
+
+            _isInitialized = false;
+            _theoryCompleted = false;
+            CurrentCardIndex = 0;
+
+            Debug.Log($"[TheoryCardsManager] Initialized from runtime data: {runtimeCards.Count} cards");
+            Initialize();
+        }
+
         private void OnDestroy()
         {
             _cards.Clear();

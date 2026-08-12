@@ -530,45 +530,168 @@ namespace HajjFlow.Services
         }
 
         // ──────────────────────────────────────────────────────────────────
-        // КЭШИРОВАНИЕ
+        // КЭШИРОВАНИЕ (файловая система + PlayerPrefs fallback)
         // ──────────────────────────────────────────────────────────────────
+
+        private string CacheDirectory => System.IO.Path.Combine(Application.persistentDataPath, "ContentCache");
 
         private void SaveToCache()
         {
-            // Сохраняем в PlayerPrefs (простой вариант)
-            // Для больших данных рекомендуется использовать файловую систему
+            try
+            {
+                // Создаём директорию если её нет
+                if (!System.IO.Directory.Exists(CacheDirectory))
+                    System.IO.Directory.CreateDirectory(CacheDirectory);
 
+                // Сохраняем в файловую систему (надёжнее для больших данных)
+                SaveCacheFile("localization.json", SerializeLocalization());
+                SaveCacheFile("levels.json", SerializeLevels());
+                SaveCacheFile("questions.json", SerializeQuestions());
+                SaveCacheFile("theory.json", SerializeTheory());
+
+                // Timestamp в PlayerPrefs для быстрой проверки актуальности
+                PlayerPrefs.SetString(CacheKeys.LoadTimestamp, System.DateTime.UtcNow.Ticks.ToString());
+                PlayerPrefs.Save();
+
+                Debug.Log($"[ContentLoaderService] Data cached to: {CacheDirectory}");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"[ContentLoaderService] Failed to save cache: {ex.Message}");
+                // Fallback на PlayerPrefs
+                SaveToCachePlayerPrefs();
+            }
+        }
+
+        private void SaveCacheFile(string fileName, string content)
+        {
+            string path = System.IO.Path.Combine(CacheDirectory, fileName);
+            System.IO.File.WriteAllText(path, content, System.Text.Encoding.UTF8);
+        }
+
+        private string LoadCacheFile(string fileName)
+        {
+            string path = System.IO.Path.Combine(CacheDirectory, fileName);
+            if (System.IO.File.Exists(path))
+                return System.IO.File.ReadAllText(path, System.Text.Encoding.UTF8);
+            return null;
+        }
+
+        private void SaveToCachePlayerPrefs()
+        {
             PlayerPrefs.SetString(CacheKeys.Localization, SerializeLocalization());
             PlayerPrefs.SetString(CacheKeys.Levels, SerializeLevels());
             PlayerPrefs.SetString(CacheKeys.Questions, SerializeQuestions());
             PlayerPrefs.SetString(CacheKeys.Theory, SerializeTheory());
-            PlayerPrefs.SetString(CacheKeys.LoadTimestamp, System.DateTime.UtcNow.Ticks.ToString());
-
             PlayerPrefs.Save();
-
-            Debug.Log("[ContentLoaderService] Data cached successfully");
         }
 
         private void LoadFromCache()
         {
-            string localizationJson = PlayerPrefs.GetString(CacheKeys.Localization, "");
-            string levelsJson = PlayerPrefs.GetString(CacheKeys.Levels, "");
-            string questionsJson = PlayerPrefs.GetString(CacheKeys.Questions, "");
-            string theoryJson = PlayerPrefs.GetString(CacheKeys.Theory, "");
+            bool loaded = false;
 
-            if (!string.IsNullOrEmpty(localizationJson))
-                DeserializeLocalization(localizationJson);
+            // Попытка 1: файловая система
+            try
+            {
+                string localizationJson = LoadCacheFile("localization.json");
+                string levelsJson = LoadCacheFile("levels.json");
+                string questionsJson = LoadCacheFile("questions.json");
+                string theoryJson = LoadCacheFile("theory.json");
 
-            if (!string.IsNullOrEmpty(levelsJson))
-                DeserializeLevels(levelsJson);
+                if (!string.IsNullOrEmpty(levelsJson))
+                {
+                    if (!string.IsNullOrEmpty(localizationJson))
+                        DeserializeLocalization(localizationJson);
+                    DeserializeLevels(levelsJson);
+                    if (!string.IsNullOrEmpty(questionsJson))
+                        DeserializeQuestions(questionsJson);
+                    if (!string.IsNullOrEmpty(theoryJson))
+                        DeserializeTheory(theoryJson);
+                    loaded = true;
+                    Debug.Log("[ContentLoaderService] Data loaded from file cache");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"[ContentLoaderService] File cache failed: {ex.Message}");
+            }
 
-            if (!string.IsNullOrEmpty(questionsJson))
-                DeserializeQuestions(questionsJson);
+            // Попытка 2: PlayerPrefs (fallback)
+            if (!loaded)
+            {
+                string localizationJson = PlayerPrefs.GetString(CacheKeys.Localization, "");
+                string levelsJson = PlayerPrefs.GetString(CacheKeys.Levels, "");
+                string questionsJson = PlayerPrefs.GetString(CacheKeys.Questions, "");
+                string theoryJson = PlayerPrefs.GetString(CacheKeys.Theory, "");
 
-            if (!string.IsNullOrEmpty(theoryJson))
-                DeserializeTheory(theoryJson);
+                if (!string.IsNullOrEmpty(localizationJson))
+                    DeserializeLocalization(localizationJson);
+                if (!string.IsNullOrEmpty(levelsJson))
+                    DeserializeLevels(levelsJson);
+                if (!string.IsNullOrEmpty(questionsJson))
+                    DeserializeQuestions(questionsJson);
+                if (!string.IsNullOrEmpty(theoryJson))
+                    DeserializeTheory(theoryJson);
 
-            Debug.Log("[ContentLoaderService] Data loaded from cache");
+                loaded = _levels.Count > 0;
+                if (loaded)
+                    Debug.Log("[ContentLoaderService] Data loaded from PlayerPrefs cache");
+            }
+
+            // Попытка 3: Resources fallback (статика вшитая в билд)
+            if (!loaded)
+            {
+                LoadFromResources();
+            }
+        }
+
+        /// <summary>
+        /// Fallback загрузка из Resources (статические данные вшитые в билд).
+        /// </summary>
+        private void LoadFromResources()
+        {
+            var localizationAsset = Resources.Load<TextAsset>("localization");
+            if (localizationAsset != null)
+            {
+                ParseLocalizationCsv(localizationAsset.text);
+                Debug.Log("[ContentLoaderService] Loaded localization from Resources fallback");
+            }
+
+            // Пытаемся загрузить levels/questions/theory из Resources если они там есть
+            var levelsAsset = Resources.Load<TextAsset>("content_levels");
+            if (levelsAsset != null)
+                ParseLevelsCsv(levelsAsset.text);
+
+            var questionsAsset = Resources.Load<TextAsset>("content_questions");
+            if (questionsAsset != null)
+                ParseQuestionsCsv(questionsAsset.text);
+
+            var theoryAsset = Resources.Load<TextAsset>("content_theory");
+            if (theoryAsset != null)
+                ParseTheoryCsv(theoryAsset.text);
+
+            Debug.Log("[ContentLoaderService] Resources fallback complete");
+        }
+
+        /// <summary>
+        /// Возвращает timestamp последней успешной загрузки или null.
+        /// </summary>
+        public System.DateTime? GetLastLoadTimestamp()
+        {
+            string ticksStr = PlayerPrefs.GetString(CacheKeys.LoadTimestamp, "");
+            if (long.TryParse(ticksStr, out long ticks))
+                return new System.DateTime(ticks, System.DateTimeKind.Utc);
+            return null;
+        }
+
+        /// <summary>
+        /// Проверяет, нужно ли обновление (данные старше заданного интервала).
+        /// </summary>
+        public bool NeedsUpdate(System.TimeSpan maxAge)
+        {
+            var lastLoad = GetLastLoadTimestamp();
+            if (!lastLoad.HasValue) return true;
+            return (System.DateTime.UtcNow - lastLoad.Value) > maxAge;
         }
 
         private string SerializeLocalization()
