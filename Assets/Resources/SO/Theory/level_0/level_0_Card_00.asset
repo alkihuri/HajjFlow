@@ -16,3 +16,7 @@ MonoBehaviour:
   Title: THEORY_L0_UMRA_DEF_TITLE
   Description: THEORY_L0_UMRA_DEF_TEXT
   Image: {fileID: 0}
+  preview:
+    Lang: 0
+    Title: THEORY_L0_UMRA_DEF_TEXT
+    Description: THEORY_L0_UMRA_DEF_TITLE

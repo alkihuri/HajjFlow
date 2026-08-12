@@ -16,3 +16,7 @@ MonoBehaviour:
   Title: THEORY_L0_IHRAM_STATE_TITLE
   Description: THEORY_L0_IHRAM_STATE_TEXT
   Image: {fileID: 0}
+  preview:
+    Lang: 0
+    Title: THEORY_L0_IHRAM_STATE_TEXT
+    Description: THEORY_L0_IHRAM_STATE_TITLE
