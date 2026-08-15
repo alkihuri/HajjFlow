@@ -213,9 +213,39 @@ namespace HajjFlow.UI
         /// <summary>Instantiates one tile button per LevelData entry.</summary>
         private void BuildLevelGrid()
         {
-            if (_levels == null || _levelButtonPrefab == null || _levelButtonsContainer == null)
+            if (_levelButtonPrefab == null || _levelButtonsContainer == null)
             {
                 Debug.LogWarning("[UIService] Missing references — cannot build level grid.");
+                return;
+            }
+
+            // Пытаемся получить данные уровней из RuntimeLevelFactory (удалённый контент)
+            var runtimeFactory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
+            bool useRuntime = _config != null && _config.UseRemoteContent && runtimeFactory != null && runtimeFactory.IsContentAvailable;
+
+            if (useRuntime)
+            {
+                Debug.Log("[UIService] BuildLevelGrid: using runtime level data from RuntimeLevelFactory");
+                var runtimeLevelInfos = runtimeFactory.GetAllLevelInfos();
+                _levels = new List<LevelData>();
+
+                foreach (var info in runtimeLevelInfos)
+                {
+                    var levelData = runtimeFactory.CreateLevelData(info.levelId);
+                    if (levelData != null)
+                    {
+                        _levels.Add(levelData);
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("[UIService] BuildLevelGrid: using static level data from GameMainConfig");
+            }
+
+            if (_levels == null || _levels.Count == 0)
+            {
+                Debug.LogWarning("[UIService] No levels available — cannot build level grid.");
                 return;
             }
 
