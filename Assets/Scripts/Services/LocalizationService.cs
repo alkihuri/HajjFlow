@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using HajjFlow.Data;
 using HajjFlow.UI;
-using NUnit.Framework;
 
 namespace HajjFlow.Services
 {
@@ -115,7 +114,44 @@ namespace HajjFlow.Services
         {
             if (text != null)
                 _registeredTexts.Remove(text);
-                Debug.Log($"[LocalizationService] Unregistered game text {text}");
+            Debug.Log($"[LocalizationService] Unregistered game text {text}");
+        }
+
+        /// <summary>
+        /// Обновляет таблицу переводов новыми данными (используется ContentLoaderService).
+        /// Конвертирует из string-based языков (ru, en, ar) в Language enum.
+        /// </summary>
+        public void UpdateTranslationTable(Dictionary<string, Dictionary<string, string>> newTable)
+        {
+            _table.Clear();
+            foreach (var kvp in newTable)
+            {
+                string key = kvp.Key;
+                var stringTranslations = kvp.Value;
+                
+                var enumTranslations = new Dictionary<Language, string>();
+                foreach (var langKvp in stringTranslations)
+                {
+                    // Конвертируем языковой код (ru, en, ar) в Language enum
+                    if (ColumnToLanguage.TryGetValue(langKvp.Key.ToLower(), out var language))
+                    {
+                        enumTranslations[language] = langKvp.Value;
+                    }
+                }
+                
+                if (enumTranslations.Count > 0)
+                {
+                    _table[key] = enumTranslations;
+                }
+            }
+            Debug.Log($"[LocalizationService] Translation table updated with {_table.Count} keys");
+
+            // Обновляем все зарегистрированные UI текст
+            foreach (var text in _registeredTexts)
+            {
+                if (text != null)
+                    text.UpdateText();
+            }
         }
 
         /// <summary>
@@ -176,7 +212,7 @@ namespace HajjFlow.Services
             {
                 // Ensure Resources folder exists
                 string resourcesFolder = System.IO.Path.GetDirectoryName(path);
-                if (!System.IO.Directory.Exists(resourcesFolder))
+                if (resourcesFolder != null && !System.IO.Directory.Exists(resourcesFolder))
                 {
                     System.IO.Directory.CreateDirectory(resourcesFolder);
                 }

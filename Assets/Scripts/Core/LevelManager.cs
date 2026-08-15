@@ -1,6 +1,8 @@
 using UnityEngine;
 using HajjFlow.Data;
 using HajjFlow.Core.States;
+using HajjFlow.Services;
+using Core;
 
 namespace HajjFlow.Core
 {
@@ -41,6 +43,43 @@ namespace HajjFlow.Core
         public static void StartLevel(LevelData level)
         {
             StartLevel(level, GameStateIds.Warmup);
+        }
+
+        /// <summary>
+        /// Запускает уровень по levelId, используя RuntimeLevelFactory для получения данных.
+        /// Если удалённый контент недоступен — fallback на статические данные из GameMainConfig.
+        /// </summary>
+        public static void StartLevel(string levelId, string stateId = null)
+        {
+            var factory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
+
+            // Пробуем создать LevelData из рантайм-данных
+            if (factory != null && factory.IsContentAvailable)
+            {
+                var levelData = factory.CreateLevelData(levelId);
+                if (levelData != null)
+                {
+                    string resolvedStateId = stateId ?? GameStateIds.Warmup;
+                    StartLevel(levelData, resolvedStateId);
+                    return;
+                }
+            }
+
+            // Fallback: ищем в статическом конфиге
+            Debug.LogWarning($"[LevelManager] Falling back to static config for level: {levelId}");
+            var config = GameManager.Instance?.GetService<GameMainConfig>();
+            if (config != null)
+            {
+                var entry = config.GetLevelEntry(levelId);
+                if (entry?.LevelData != null)
+                {
+                    string resolvedStateId = stateId ?? GameStateIds.Warmup;
+                    StartLevel(entry.LevelData, resolvedStateId);
+                    return;
+                }
+            }
+
+            Debug.LogError($"[LevelManager] Could not start level '{levelId}' — no data found.");
         }
 
         /// <summary>Returns to the level-selection screen.</summary>

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 using HajjFlow.Core;
+using HajjFlow.Services;
 
 namespace Core.Theory
 {
@@ -51,7 +52,23 @@ namespace Core.Theory
 
         private void Awake()
         {
-            Initialize();
+            // Не инициализируем здесь! Дождёмся установки CardContainer в LevelController.Init()
+            Debug.Log("[TheoryCardsManager] Awake - waiting for CardContainer to be set by LevelController");
+        }
+
+        private void OnEnable()
+        {
+            // При включении объекта проверяем нужна ли инициализация
+            if (!_isInitialized && CardContainer != null)
+            {
+                Debug.Log("[TheoryCardsManager] OnEnable - CardContainer is set, initializing now");
+                InitializeTheory();
+            }
+            else if (!_isInitialized && _data.Count > 0)
+            {
+                Debug.Log("[TheoryCardsManager] OnEnable - No CardContainer but have runtime data, initializing");
+                InitializeTheory();
+            }
         }
 
         public void SkipTheory()
@@ -59,14 +76,20 @@ namespace Core.Theory
             OnTheoryCardsCompleted?.Invoke();
         }
 
-        private void Initialize()
+        /// <summary>
+        /// Явно инициализирует теорию. Вызывается из Awake() автоматически,
+        /// но может быть вызвана вручную для переинициализации.
+        /// </summary>
+        public void InitializeTheory()
         {
-            
-            
-            _audioService = GameManager.Instance?.GetService<AudioService>();
-            if (_isInitialized) return;
-            _isInitialized = true;
+            if (_isInitialized)
+            {
+                Debug.LogWarning("[TheoryCardsManager] Already initialized! Call Reset() to reinitialize.");
+                return;
+            }
 
+            _audioService = GameManager.Instance?.GetService<AudioService>();
+            
             if (_cardPrefab == null)
             {
                 Debug.LogError("[TheoryCardsManager] Card prefab is not assigned!");
@@ -80,10 +103,10 @@ namespace Core.Theory
                 return;
             }
             
-            Debug.Log($"[TheoryCardsManager] Initializing with {dataList.Count} cards from config");
-            
+            Debug.Log($"[TheoryCardsManager] Initializing with {dataList.Count} cards");
             CreateCards();
             UpdateCounter();
+            _isInitialized = true;
         }
 
         private void CreateCards()
@@ -91,7 +114,15 @@ namespace Core.Theory
             _cards.Clear();
             
             var dataList = CardDataList;
+            if (dataList == null || dataList.Count == 0)
+            {
+                Debug.LogWarning("[TheoryCardsManager] No card data available!");
+                return;
+            }
+
             int totalCount = dataList.Count;
+            
+            Debug.Log($"[TheoryCardsManager] Creating {totalCount} cards as deck");
             
             for (int i = 0; i < totalCount; i++)
             {
@@ -120,9 +151,11 @@ namespace Core.Theory
                     card.SwipeLeft += () => OnCardSwiped(card);
                     
                     _cards.Add(card);
+                    Debug.Log($"[TheoryCardsManager] Created card {i}: {dataList[i].Title}");
                 }
             }
             
+            // Устанавливаем z-order так чтобы новые карточки были сверху
             for (int i = totalCount - 1; i >= 0; i--)
             {
                 _cards[i].transform.SetAsLastSibling();
@@ -267,6 +300,92 @@ namespace Core.Theory
             CurrentCardIndex = index;
             UpdateCounter();
             OnCardChanged?.Invoke(index);  
+        }
+
+        /// <summary>
+        /// Инициализирует менеджер карточек из рантайм-данных (без ScriptableObject контейнера).
+        /// Вызывается RuntimeLevelFactory при использовании удалённого контента.
+        /// </summary>
+        public void InitializeFromRuntimeData(List<TheoryCardData> runtimeCards)
+        {
+            if (runtimeCards == null || runtimeCards.Count == 0)
+            {
+                Debug.LogWarning("[TheoryCardsManager] No runtime cards provided!");
+                return;
+            }
+
+            Debug.Log($"[TheoryCardsManager] Initializing from runtime data: {runtimeCards.Count} cards");
+
+            // Очищаем предыдущие карточки
+            foreach (var card in _cards)
+            {
+                if (card != null)
+                    Destroy(card.gameObject);
+            }
+            _cards.Clear();
+
+            // Устанавливаем данные
+            _data = runtimeCards;
+            CardContainer = null; // Сбрасываем контейнер, чтобы использовался _data
+
+            _isInitialized = false;
+            _theoryCompleted = false;
+            CurrentCardIndex = 0;
+
+            Debug.Log($"[TheoryCardsManager] Reset state and preparing to create cards");
+            CreateCards();
+            UpdateCounter();
+        }
+
+        /// <summary>
+        /// Инициализирует менеджер карточек из RuntimeLevelFactory (для удалённого контента из Google Sheets).
+        /// Вызывается после загрузки контента из ContentLoaderService.
+        /// </summary>
+        public void InitializeFromRuntimeModels(string levelId)
+        {
+            var runtimeFactory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
+            
+            if (runtimeFactory == null)
+            {
+                Debug.LogError("[TheoryCardsManager] RuntimeLevelFactory service not found!");
+                return;
+            }
+
+            if (!runtimeFactory.IsContentAvailable)
+            {
+                Debug.LogWarning("[TheoryCardsManager] Runtime content is not loaded yet. Wait for ContentLoaderService.OnLoadComplete");
+                return;
+            }
+
+            var runtimeTheoryCards = runtimeFactory.BuildTheoryCards(levelId);
+            
+            if (runtimeTheoryCards == null || runtimeTheoryCards.Count == 0)
+            {
+                Debug.LogWarning($"[TheoryCardsManager] No theory cards found for level '{levelId}'");
+                return;
+            }
+
+            Debug.Log($"[TheoryCardsManager] Initializing from runtime models: {runtimeTheoryCards.Count} cards for level '{levelId}'");
+
+            // Очищаем предыдущие карточки
+            foreach (var card in _cards)
+            {
+                if (card != null)
+                    Destroy(card.gameObject);
+            }
+            _cards.Clear();
+
+            // Устанавливаем данные
+            _data = runtimeTheoryCards;
+            CardContainer = null; // Сбрасываем контейнер, чтобы использовался _data
+
+            _isInitialized = false;
+            _theoryCompleted = false;
+            CurrentCardIndex = 0;
+
+            Debug.Log($"[TheoryCardsManager] Reset state and creating {runtimeTheoryCards.Count} cards from runtime models");
+            CreateCards();
+            UpdateCounter();
         }
 
         private void OnDestroy()

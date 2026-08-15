@@ -49,6 +49,47 @@ namespace HajjFlow.Services
             DisplayCurrentQuestion();
         }
 
+        /// <summary>
+        /// Инициализирует квиз из runtime моделей (ContentLoaderService).
+        /// Вызывается после загрузки контента из Google Sheets.
+        /// </summary>
+        public void InitializeFromRuntimeQuestions(string levelId)
+        {
+            var contentLoader = GameManager.Instance?.GetService<ContentLoaderService>();
+            
+            if (contentLoader == null)
+            {
+                Debug.LogError("[QuizService] ContentLoaderService not found!");
+                return;
+            }
+
+            var runtimeQuestions = contentLoader.GetQuestionsForLevel(levelId);
+            
+            if (runtimeQuestions == null || runtimeQuestions.Count == 0)
+            {
+                Debug.LogWarning($"[QuizService] No questions found for level '{levelId}'");
+                return;
+            }
+
+            // Конвертируем RuntimeQuizQuestion в QuizQuestion
+            var questions = new QuizQuestion[runtimeQuestions.Count];
+            for (int i = 0; i < runtimeQuestions.Count; i++)
+            {
+                var rq = runtimeQuestions[i];
+                questions[i] = new QuizQuestion
+                {
+                    QuestionText = rq.questionKey,
+                    Options = rq.optionKeys != null ? (string[])rq.optionKeys.Clone() : new string[4],
+                    CorrectAnswerIndex = rq.correctIndex,
+                    Explanation = rq.explanationKey,
+                    GemsReward = rq.gemsReward
+                };
+            }
+
+            Debug.Log($"[QuizService] Initialized from runtime questions: {questions.Length} questions for level '{levelId}'");
+            InitializeQuiz(questions);
+        }
+
         /// <summary>Отображает текущий вопрос</summary>
         public void DisplayCurrentQuestion()
         {

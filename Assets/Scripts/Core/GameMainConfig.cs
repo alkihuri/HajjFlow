@@ -35,6 +35,13 @@ namespace Core
         [Tooltip("Список всех уровней с привязанными данными теории и квиза")]
         public List<LevelEntry> Levels = new List<LevelEntry>();
 
+        [Header("Remote Content")]
+        [Tooltip("Использовать удалённый контент из Google Sheets вместо статических данных")]
+        public bool UseRemoteContent = true;
+
+        [Tooltip("Таймаут ожидания загрузки удалённого контента (секунды) перед fallback на статику")]
+        public float RemoteContentTimeout = 10f;
+
         [Header("Import Settings")]
         [Tooltip("Путь к папке с JSON файлами квизов (относительно Assets)")]
         public string QuizJsonFolderPath = "Data/Quiz";

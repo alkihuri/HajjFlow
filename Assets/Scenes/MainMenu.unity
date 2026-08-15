@@ -415,6 +415,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3831816035819117047, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
   m_PrefabInstance: {fileID: 6574980487578156792}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &651864077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6658407128814196165, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+  m_PrefabInstance: {fileID: 718052292907740996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d49618b68e4a579631cbc369e058ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.ContentLoaderService
 --- !u!1 &670444627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3940239825094795537, guid: f1e3adc03840d4576bf6f3bad5f6fc61, type: 3}
@@ -677,6 +688,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4252258918702972081, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _contentLoaderService
+      value: 
+      objectReference: {fileID: 651864077}
     - target: {fileID: 6335978810760529491, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_Name
       value: App
@@ -717,6 +732,10 @@ PrefabInstance:
       propertyPath: _nextLevelButton
       value: 
       objectReference: {fileID: 1770526467}
+    - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _levels.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7618345801822850509, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: _resetProgressButton
       value: 

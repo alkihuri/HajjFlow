@@ -16,3 +16,7 @@ MonoBehaviour:
   Title: THEORY_L5_WUQUF_DEFINITION_TITLE
   Description: THEORY_L5_WUQUF_DEFINITION_TEXT
   Image: {fileID: 0}
+  preview:
+    Lang: 0
+    Title: THEORY_L5_WUQUF_DEFINITION_TEXT
+    Description: THEORY_L5_WUQUF_DEFINITION_TITLE

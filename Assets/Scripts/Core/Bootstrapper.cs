@@ -2,6 +2,7 @@ using UnityEngine;
 using HajjFlow.Core.States;
 using HajjFlow.Services;
 using HajjFlow.UI;
+using Core;
 
 namespace HajjFlow.Core
 {
@@ -25,6 +26,12 @@ namespace HajjFlow.Core
         [SerializeField] private QuizService _quizService;
         [SerializeField] private GameStateMachine _gameStateMachine;
         [SerializeField] private AudioService _audioService;
+        [SerializeField] private ContentLoaderService _contentLoaderService;
+        [SerializeField] private AssetBundleService _assetBundleService;
+
+        [Header("Config")]
+        [SerializeField] private GameMainConfig _gameMainConfig;
+
         // ── Lifecycle ────────────────────────────────────────────────────────────
 
         private void Awake()
@@ -92,6 +99,21 @@ namespace HajjFlow.Core
 
             if (_gameStateMachine != null)
                 gm.RegisterService(_gameStateMachine);
+
+            // Content loading services
+            if (_contentLoaderService != null)
+                gm.RegisterService(_contentLoaderService);
+
+            if (_assetBundleService != null)
+                gm.RegisterService(_assetBundleService);
+
+            // RuntimeLevelFactory — зависит от ContentLoaderService и AssetBundleService
+            var runtimeLevelFactory = new RuntimeLevelFactory(_contentLoaderService, _assetBundleService);
+            gm.RegisterService(runtimeLevelFactory);
+
+            // GameMainConfig
+            if (_gameMainConfig != null)
+                gm.RegisterService(_gameMainConfig);
         }
 
         // ── Verification ─────────────────────────────────────────────────────────
