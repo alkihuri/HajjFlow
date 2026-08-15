@@ -44,26 +44,38 @@ namespace HajjFlow.Core.LevelsLogic
                 theoryCardsManager.OnTheoryCardsCompleted.AddListener(OnTheoryCompleted);
             } 
             
-            
-            
-            // TBD : вынести логику на уровень SO 
             var levelId = levelData != null ? levelData.LevelId : "null";
             
             gameObject.name = $"Level {levelId} Controller";
-            // load form Resource/SO/Theory/ scriptabel object with name matching levelId
-            var container = Resources.Load<TheoryCardContainer>($"SO/Theory/{levelId}/{levelId}_TheoryContainer");
+
+            // Проверяем есть ли уже контейнер в levelData (для runtime моделей)
+            TheoryCardContainer container = levelData.TheoryCardContainer;
+            
+            // Если контейнера нет - пытаемся загрузить из Resources (для статических моделей)
             if (container == null)
             {
-                Debug.LogWarning($"[{GetType().Name}] No TheoryCardContainer found for levelId '{levelId}' at path 'SO/Theory/{levelId}/{levelId}_TheoryContainer.asset'. " +
-                                 $"Make sure to create and assign a TheoryCardContainer for this level.");
+                Debug.Log($"[{GetType().Name}] TheoryCardContainer not found in LevelData for '{levelId}'. Trying to load from Resources...");
+                container = Resources.Load<TheoryCardContainer>($"SO/Theory/{levelId}/{levelId}_TheoryContainer");
+                
+                if (container == null)
+                {
+                    Debug.LogWarning($"[{GetType().Name}] No TheoryCardContainer found for levelId '{levelId}' " +
+                                     $"at path 'SO/Theory/{levelId}/{levelId}_TheoryContainer.asset' " +
+                                     $"and not provided in LevelData. Make sure to create and assign a TheoryCardContainer for this level.");
+                }
+                else
+                {
+                    Debug.Log($"[{GetType().Name}] Loaded TheoryCardContainer from Resources for '{levelId}'");
+                }
             }
             else
             {
-               
+                Debug.Log($"[{GetType().Name}] Using TheoryCardContainer from LevelData (runtime) for '{levelId}' with {container.Cards.Count} cards");
             }
 
             theoryCardsManager.CardContainer = container;
             
+            Debug.Log($"[{GetType().Name}] Initialized LevelController for '{levelId}' with {(container?.Cards.Count ?? 0)} theory cards");
         }
         
         

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Theory;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -43,6 +44,8 @@ namespace HajjFlow.Data
 
         /// <summary>Total number of questions configured for this level.</summary>
         public int QuestionCount => Questions != null ? Questions.Length : 0;
+
+        public TheoryCardContainer TheoryCardContainer { get; set; }
 
         [Header("Rewards")]
         /// <summary>Bonus gems awarded when the player completes the level for the first time.</summary>
