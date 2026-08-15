@@ -17,4 +17,4 @@ MonoBehaviour:
   RemoteContentTimeout: 10
   QuizJsonFolderPath: Data/Quiz
   TheoryJsonFolderPath: Data/Theory
-  AutoCreateTheoryContainers: 1
+  AutoCreateTheoryContainers: 0

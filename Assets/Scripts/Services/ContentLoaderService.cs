@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HajjFlow.Core;
+using HajjFlow.UI;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -108,6 +110,10 @@ namespace HajjFlow.Services
             {
                 StartCoroutine(LoadAllContent());
             }
+            
+            
+            var uiservice = GameManager.Instance?.GetService<UIService>();
+            OnLoadComplete +=  uiservice.ShowStartButton;
         }
 
         /// <summary>

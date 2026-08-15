@@ -48,18 +48,33 @@ namespace HajjFlow.UI
 
         [Header("Main Configuration")] [SerializeField]
         private GameMainConfig _config;
+
         [SerializeField] private List<LevelData> _levels = new List<LevelData>();
 
         private ProgressService _progressService;
         private List<LevelTileUI> _levelSelectButtons = new List<LevelTileUI>();
 
-        
-        
-        
-          private void Awake()
+
+        private void Awake()
         {
             // Инициализируем контроллеры уровней из конфига
             InitializeLevelControllers(_config.Levels.Select(le => le.LevelData).ToList());
+            HideStartButton();
+        }
+
+        public void HideStartButton()
+        {
+            _gameStartButton?.gameObject.SetActive(false);
+        }
+
+        public void ShowStartButton(bool load = true)
+        {
+            if (load)
+                _gameStartButton?.gameObject.SetActive(true);
+            else
+            {
+                Debug.LogWarning("[UIService] load is false, not showing start button");
+            }
         }
 
         /// <summary>
@@ -82,6 +97,7 @@ namespace HajjFlow.UI
                 if (controller != null)
                     Destroy(controller.gameObject);
             }
+
             _levelControllers.Clear();
 
             // Создаём новые контроллеры для каждого уровня
@@ -117,7 +133,37 @@ namespace HajjFlow.UI
 
             _nextLevelButton?.onClick.AddListener(NextLevel);
 
-            //BuildLevelGrid();
+            // Если используем remote контент - подписываемся на событие загрузки
+            if (_config != null && _config.UseRemoteContent)
+            {
+                var contentLoader = GameManager.Instance?.GetService<ContentLoaderService>();
+                if (contentLoader != null)
+                {
+                    Debug.Log("[UIService] Subscribing to ContentLoaderService.OnLoadComplete for BuildLevelGrid");
+                    contentLoader.OnLoadComplete += (success) =>
+                    {
+                        if (success)
+                        {
+                            Debug.Log("[UIService] Content loaded, building level grid...");
+                            BuildLevelGrid();
+                        }
+                        else
+                        {
+                            Debug.LogError("[UIService] Content loading failed!");
+                        }
+                    };
+                }
+                else
+                {
+                    Debug.LogWarning("[UIService] UseRemoteContent is true but ContentLoaderService not found!");
+                }
+            }
+            else
+            {
+                // Если используем static контент - сразу строим сетку
+                Debug.Log("[UIService] Using static content, building level grid immediately");
+                BuildLevelGrid();
+            }
         }
 
 
@@ -270,13 +316,14 @@ namespace HajjFlow.UI
                 if (runtimeLevels.Count > 0)
                 {
                     _levels = runtimeLevels;
-                    
+
                     // ✅ ВАЖНО: Инициализируем контроллеры для runtime моделей!
                     InitializeLevelControllers(_levels);
                 }
                 else
                 {
-                    Debug.LogWarning("[UIService] BuildLevelGrid: runtime data yielded no levels, falling back to static config");
+                    Debug.LogWarning(
+                        "[UIService] BuildLevelGrid: runtime data yielded no levels, falling back to static config");
                 }
             }
             else
@@ -290,8 +337,8 @@ namespace HajjFlow.UI
                 return;
             }
 
-            _levels = _levels.OrderBy(l => l.LevelIndex).ToList();  
-            
+            _levels = _levels.OrderBy(l => l.LevelIndex).ToList();
+
             foreach (var levelData in _levels)
             {
                 GameObject tile = Instantiate(_levelButtonPrefab, _levelButtonsContainer);
@@ -350,15 +397,14 @@ namespace HajjFlow.UI
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            
             // load all LEvelData assets from the Resources/Levels folder if the list is empty (for convenience)
             if (_levels.Count == 0)
             {
-                
-                _levels = _config.Levels.Select(le=> le.LevelData).ToList();
+                _levels = _config.Levels.Select(le => le.LevelData).ToList();
                 if (_levels.Count == 0)
                 {
-                    Debug.LogWarning("[UIService] No levels found in configuration. Please assign levels in the GameMainConfig or place LevelData assets in Resources/SO/Levels.");
+                    Debug.LogWarning(
+                        "[UIService] No levels found in configuration. Please assign levels in the GameMainConfig or place LevelData assets in Resources/SO/Levels.");
                     Debug.Log("[UIService] Attempting to load LevelData assets from Resources/SO/Levels...");
                     _levels = Resources.LoadAll<LevelData>("SO/Levels").ToList();
                 }
@@ -373,7 +419,7 @@ namespace HajjFlow.UI
         public void InitializeControllersFromRuntime()
         {
             var runtimeFactory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
-            
+
             if (runtimeFactory == null)
             {
                 Debug.LogError("[UIService] RuntimeLevelFactory service not found!");
@@ -382,7 +428,8 @@ namespace HajjFlow.UI
 
             if (!runtimeFactory.IsContentAvailable)
             {
-                Debug.LogWarning("[UIService] Runtime content is not loaded yet. Wait for ContentLoaderService.OnLoadComplete");
+                Debug.LogWarning(
+                    "[UIService] Runtime content is not loaded yet. Wait for ContentLoaderService.OnLoadComplete");
                 return;
             }
 
