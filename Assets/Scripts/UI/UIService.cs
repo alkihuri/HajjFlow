@@ -227,15 +227,24 @@ namespace HajjFlow.UI
             {
                 Debug.Log("[UIService] BuildLevelGrid: using runtime level data from RuntimeLevelFactory");
                 var runtimeLevelInfos = runtimeFactory.GetAllLevelInfos();
-                _levels = new List<LevelData>();
+                var runtimeLevels = new List<LevelData>();
 
                 foreach (var info in runtimeLevelInfos)
                 {
                     var levelData = runtimeFactory.CreateLevelData(info.levelId);
                     if (levelData != null)
                     {
-                        _levels.Add(levelData);
+                        runtimeLevels.Add(levelData);
                     }
+                }
+
+                if (runtimeLevels.Count > 0)
+                {
+                    _levels = runtimeLevels;
+                }
+                else
+                {
+                    Debug.LogWarning("[UIService] BuildLevelGrid: runtime data yielded no levels, falling back to static config");
                 }
             }
             else
