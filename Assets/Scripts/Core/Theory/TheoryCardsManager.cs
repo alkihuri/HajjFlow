@@ -52,7 +52,23 @@ namespace Core.Theory
 
         private void Awake()
         {
-            InitializeTheory();
+            // Не инициализируем здесь! Дождёмся установки CardContainer в LevelController.Init()
+            Debug.Log("[TheoryCardsManager] Awake - waiting for CardContainer to be set by LevelController");
+        }
+
+        private void OnEnable()
+        {
+            // При включении объекта проверяем нужна ли инициализация
+            if (!_isInitialized && CardContainer != null)
+            {
+                Debug.Log("[TheoryCardsManager] OnEnable - CardContainer is set, initializing now");
+                InitializeTheory();
+            }
+            else if (!_isInitialized && _data.Count > 0)
+            {
+                Debug.Log("[TheoryCardsManager] OnEnable - No CardContainer but have runtime data, initializing");
+                InitializeTheory();
+            }
         }
 
         public void SkipTheory()

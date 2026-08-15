@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using HajjFlow.Data;
+using HajjFlow.Core;
 using Core.Theory;
 
 namespace HajjFlow.Services
@@ -86,8 +87,9 @@ namespace HajjFlow.Services
         }
 
         /// <summary>
-        /// Создать LevelData из рантайм-данных для указанного уровня.
+        /// Создаёт LevelData из рантайм-данных для указанного уровня.
         /// Это позволяет использовать существующий flow через LevelData без изменения GameStateMachine.
+        /// Включает создание вопросов И карточек теории.
         /// </summary>
         public LevelData CreateLevelData(string levelId)
         {
@@ -106,8 +108,14 @@ namespace HajjFlow.Services
             levelData.LevelDescriptionKey = levelInfo.descriptionKey;
             levelData.LevelIndex = levelInfo.order;
 
-            // Генерируем вопросы
+            // Генерируем вопросы для квиза
             levelData.Questions = BuildQuizQuestions(levelId);
+            Debug.Log($"[RuntimeLevelFactory] Built {levelData.Questions?.Length ?? 0} quiz questions for '{levelId}'");
+
+            // Генерируем контейнер с карточками теории
+            var theoryContainer = BuildTheoryContainer(levelId);
+            levelData.TheoryCardContainer = theoryContainer;
+            Debug.Log($"[RuntimeLevelFactory] Built theory container with {theoryContainer.Cards.Count} cards for '{levelId}'");
 
             // Пытаемся загрузить thumbnail из Asset Bundles
             if (_assetBundleService != null && !string.IsNullOrEmpty(levelInfo.imageBundleKey))
@@ -115,8 +123,30 @@ namespace HajjFlow.Services
                 levelData.Thumbnail = _assetBundleService.GetSprite(levelInfo.imageBundleKey);
             }
 
-            Debug.Log($"[RuntimeLevelFactory] Created LevelData for '{levelId}': {levelData.Questions?.Length ?? 0} questions");
+            Debug.Log($"[RuntimeLevelFactory] Created LevelData for '{levelId}': {levelData.Questions?.Length ?? 0} questions + {theoryContainer.Cards.Count} theory cards");
             return levelData;
+        }
+
+        /// <summary>
+        /// Инициализирует карточки теории для уровня в TheoryCardsManager.
+        /// Вызывается автоматически из LevelState при показе теории.
+        /// </summary>
+        public void InitializeTheoryForLevel(string levelId, TheoryCardsManager theoryManager)
+        {
+            if (theoryManager == null)
+            {
+                Debug.LogError($"[RuntimeLevelFactory] TheoryCardsManager is null!");
+                return;
+            }
+
+            if (!IsContentAvailable)
+            {
+                Debug.LogWarning($"[RuntimeLevelFactory] Content is not loaded yet!");
+                return;
+            }
+
+            Debug.Log($"[RuntimeLevelFactory] Initializing theory cards for '{levelId}'");
+            theoryManager.InitializeFromRuntimeModels(levelId);
         }
 
         /// <summary>
@@ -192,6 +222,29 @@ namespace HajjFlow.Services
             container.LevelId = levelId;
             container.Cards = BuildTheoryCards(levelId);
             return container;
+        }
+
+        /// <summary>
+        /// Инициализирует вопросы квиза для уровня в QuizService.
+        /// Вызывается автоматически из LevelState при показе квиза.
+        /// </summary>
+        public void InitializeQuizForLevel(string levelId)
+        {
+            if (!IsContentAvailable)
+            {
+                Debug.LogWarning($"[RuntimeLevelFactory] Content is not loaded yet!");
+                return;
+            }
+
+            var quizService = GameManager.Instance?.GetService<QuizService>();
+            if (quizService == null)
+            {
+                Debug.LogWarning($"[RuntimeLevelFactory] QuizService not found!");
+                return;
+            }
+
+            Debug.Log($"[RuntimeLevelFactory] Initializing quiz for '{levelId}'");
+            quizService.InitializeFromRuntimeQuestions(levelId);
         }
 
         /// <summary>
