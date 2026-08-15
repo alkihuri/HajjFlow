@@ -56,12 +56,37 @@ namespace HajjFlow.UI
         
         
         
-        private void Awake()
+          private void Awake()
         {
-            _levels = _config.Levels.Select(le=> le.LevelData).ToList();
+            // Инициализируем контроллеры уровней из конфига
+            InitializeLevelControllers(_config.Levels.Select(le => le.LevelData).ToList());
+        }
+
+        /// <summary>
+        /// Инициализирует LevelController'ы для списка уровней.
+        /// Вызывается из Awake() или после загрузки runtime моделей.
+        /// </summary>
+        private void InitializeLevelControllers(List<LevelData> levels)
+        {
+            if (levels == null || levels.Count == 0)
+            {
+                Debug.LogWarning("[UIService] No levels provided for controller initialization");
+                return;
+            }
+
+            _levels = levels;
+
+            // Очищаем старые контроллеры если они есть
+            foreach (var controller in _levelControllers)
+            {
+                if (controller != null)
+                    Destroy(controller.gameObject);
+            }
+            _levelControllers.Clear();
+
+            // Создаём новые контроллеры для каждого уровня
             foreach (var level in _levels)
             {
-                // Instantiate a LevelController for each level and parent it under _levelsControllersContainer
                 if (_levelControllerPrefab != null && _levelsControllersContainer != null)
                 {
                     var controllerObj = Instantiate(_levelControllerPrefab, _levelsControllersContainer);
@@ -70,9 +95,12 @@ namespace HajjFlow.UI
                     {
                         controller.Init(level);
                         _levelControllers.Add(controller);
+                        Debug.Log($"[UIService] Created LevelController for '{level.LevelId}'");
                     }
                 }
             }
+
+            Debug.Log($"[UIService] Initialized {_levelControllers.Count} level controllers");
         }
 
         private void Start()
@@ -89,7 +117,7 @@ namespace HajjFlow.UI
 
             _nextLevelButton?.onClick.AddListener(NextLevel);
 
-            BuildLevelGrid();
+            //BuildLevelGrid();
         }
 
 
@@ -210,6 +238,7 @@ namespace HajjFlow.UI
 
         // ── Private ──────────────────────────────────────────────────────────────
 
+        [ContextMenu("Build Level Grid")]
         /// <summary>Instantiates one tile button per LevelData entry.</summary>
         private void BuildLevelGrid()
         {
@@ -221,7 +250,7 @@ namespace HajjFlow.UI
 
             // Пытаемся получить данные уровней из RuntimeLevelFactory (удалённый контент)
             var runtimeFactory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
-            bool useRuntime = _config != null && _config.UseRemoteContent && runtimeFactory != null && runtimeFactory.IsContentAvailable;
+            bool useRuntime = _config != null && _config.UseRemoteContent && runtimeFactory != null;
 
             if (useRuntime)
             {
@@ -241,6 +270,9 @@ namespace HajjFlow.UI
                 if (runtimeLevels.Count > 0)
                 {
                     _levels = runtimeLevels;
+                    
+                    // ✅ ВАЖНО: Инициализируем контроллеры для runtime моделей!
+                    InitializeLevelControllers(_levels);
                 }
                 else
                 {
@@ -333,6 +365,52 @@ namespace HajjFlow.UI
             }
         }
 #endif
+
+        /// <summary>
+        /// Инициализирует контроллеры из Runtime моделей (ContentLoaderService).
+        /// Вызывается после загрузки контента из Google Sheets.
+        /// </summary>
+        public void InitializeControllersFromRuntime()
+        {
+            var runtimeFactory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
+            
+            if (runtimeFactory == null)
+            {
+                Debug.LogError("[UIService] RuntimeLevelFactory service not found!");
+                return;
+            }
+
+            if (!runtimeFactory.IsContentAvailable)
+            {
+                Debug.LogWarning("[UIService] Runtime content is not loaded yet. Wait for ContentLoaderService.OnLoadComplete");
+                return;
+            }
+
+            var runtimeLevelInfos = runtimeFactory.GetAllLevelInfos();
+            var runtimeLevels = new List<LevelData>();
+
+            Debug.Log($"[UIService] Initializing controllers from {runtimeLevelInfos.Count} runtime levels...");
+
+            foreach (var info in runtimeLevelInfos)
+            {
+                var levelData = runtimeFactory.CreateLevelData(info.levelId);
+                if (levelData != null)
+                {
+                    runtimeLevels.Add(levelData);
+                    Debug.Log($"[UIService] Created LevelData for '{info.levelId}' from runtime model");
+                }
+            }
+
+            if (runtimeLevels.Count > 0)
+            {
+                Debug.Log($"[UIService] Initializing {runtimeLevels.Count} level controllers from runtime data");
+                InitializeLevelControllers(runtimeLevels);
+            }
+            else
+            {
+                Debug.LogWarning("[UIService] No runtime levels were created!");
+            }
+        }
 
         /// <summary>
         /// Получает контроллер уровня по его ID с ленивой инициализацией.

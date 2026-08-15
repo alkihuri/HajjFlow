@@ -25,14 +25,56 @@ namespace HajjFlow.Services
         /// <summary>
         /// Возвращает true если удалённый контент загружен и доступен.
         /// </summary>
-        public bool IsContentAvailable => _contentLoader != null && GetAllLevelInfos().Count > 0;
+        public bool IsContentAvailable
+        {
+            get
+            {
+                if (_contentLoader == null)
+                {
+                    Debug.LogWarning("[RuntimeLevelFactory] ContentLoaderService is null!");
+                    return false;
+                }
+
+                var levels = _contentLoader.GetAllLevels();
+                bool available = levels != null && levels.Count > 0;
+                
+                if (!available)
+                    Debug.LogWarning("[RuntimeLevelFactory] No levels available from ContentLoaderService");
+                
+                return available;
+            }
+        }
 
         /// <summary>
         /// Получить все доступные уровни (отсортированы по order).
+        /// Гарантирует что контент загружен перед возвратом.
         /// </summary>
         public List<ContentLoaderService.RuntimeLevelInfo> GetAllLevelInfos()
         {
-            return _contentLoader?.GetAllLevels() ?? new List<ContentLoaderService.RuntimeLevelInfo>();
+            if (_contentLoader == null)
+            {
+                Debug.LogError("[RuntimeLevelFactory] ContentLoaderService is NULL! Cannot get levels.");
+                return new List<ContentLoaderService.RuntimeLevelInfo>();
+            }
+
+            try
+            {
+                var levels = _contentLoader.GetAllLevels();
+                
+                if (levels == null || levels.Count == 0)
+                {
+                    Debug.LogWarning("[RuntimeLevelFactory] ContentLoaderService returned empty level list. Check if content is loaded.");
+                    return new List<ContentLoaderService.RuntimeLevelInfo>();
+                }
+
+                Debug.Log($"[RuntimeLevelFactory] Successfully loaded {levels.Count} levels from ContentLoaderService");
+                return levels;
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"[RuntimeLevelFactory] Error getting levels: {ex.Message}");
+                return new List<ContentLoaderService.RuntimeLevelInfo>();
+            }
         }
 
         /// <summary>
@@ -156,5 +198,34 @@ namespace HajjFlow.Services
         /// Возвращает количество доступных уровней.
         /// </summary>
         public int LevelCount => GetAllLevelInfos().Count;
+
+        /// <summary>
+        /// Ждёт пока контент загрузится (корутина).
+        /// Используйте перед первым обращением к GetAllLevelInfos().
+        /// </summary>
+        public System.Collections.IEnumerator WaitForContentLoad(int maxWaitSeconds = 30)
+        {
+            if (_contentLoader == null)
+            {
+                Debug.LogError("[RuntimeLevelFactory] ContentLoaderService is null!");
+                yield break;
+            }
+
+            float elapsedTime = 0f;
+            
+            while (elapsedTime < maxWaitSeconds)
+            {
+                if (IsContentAvailable)
+                {
+                    Debug.Log($"[RuntimeLevelFactory] Content loaded successfully after {elapsedTime:F1} seconds");
+                    yield break;
+                }
+
+                elapsedTime += 0.5f;
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            Debug.LogError($"[RuntimeLevelFactory] Content loading timeout after {maxWaitSeconds} seconds!");
+        }
     }
 }
