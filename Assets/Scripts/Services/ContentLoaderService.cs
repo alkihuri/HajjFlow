@@ -114,14 +114,16 @@ namespace HajjFlow.Services
 
         private void Start()
         {
+            var uiservice = GameManager.Instance?.GetService<UIService>();
+            OnLoadComplete +=  uiservice.ShowStartButton;
+            
             if (_enableAutoLoad)
             {
                 StartCoroutine(LoadAllContent());
             }
             
             
-            var uiservice = GameManager.Instance?.GetService<UIService>();
-            OnLoadComplete +=  uiservice.ShowStartButton;
+  
         }
 
         /// <summary>
