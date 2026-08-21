@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEditor;
 using HajjFlow.Data;
+using HajjFlow.Services;
 using Core.Theory;
 
 namespace HajjFlow.Editor.ContentLoader
@@ -14,6 +15,22 @@ namespace HajjFlow.Editor.ContentLoader
     /// </summary>
     public static class DataLoader
     {
+        /// <summary>
+        /// Deletes the persistent runtime content cache and starts a complete
+        /// re-download. Available while the game is running in the Editor.
+        /// </summary>
+        public static void EraseCacheData()
+        {
+            var contentLoader = UnityEngine.Object.FindObjectOfType<ContentLoaderService>();
+            if (contentLoader == null)
+            {
+                Debug.LogWarning("[DataLoader] ContentLoaderService was not found. Enter Play Mode before reloading runtime content.");
+                return;
+            }
+
+            contentLoader.EraseCacheData();
+        }
+
         // ── Questions (LevelData) ────────────────────────────────────────────
 
         /// <summary>

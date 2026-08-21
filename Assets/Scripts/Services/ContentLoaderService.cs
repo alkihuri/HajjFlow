@@ -86,6 +86,14 @@ namespace HajjFlow.Services
         private List<RuntimeTheoryCard> _theoryCards = new List<RuntimeTheoryCard>();
         private Dictionary<string, Dictionary<string, string>> _localizationTable = new Dictionary<string, Dictionary<string, string>>();
 
+        // Сырые CSV сохраняются в persistentDataPath. Это надёжнее JsonUtility для
+        // локализации (JsonUtility не сериализует Dictionary) и одинаково работает
+        // в WebGL persistent storage.
+        private string _localizationCsv;
+        private string _levelsCsv;
+        private string _questionsCsv;
+        private string _theoryCsv;
+
         // Кэширование
         private static class CacheKeys
         {
@@ -125,6 +133,16 @@ namespace HajjFlow.Services
             Debug.Log("[ContentLoaderService] Starting content load...");
             OnLoadProgress?.Invoke(0f);
 
+            // При повторных запусках не обращаемся к сети: полный валидный кэш
+            // должен быть использован первым.
+            if (LoadFromCache())
+            {
+                OnLoadProgress?.Invoke(1f);
+                OnLoadComplete?.Invoke(true);
+                Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
+                yield break;
+            }
+
             _currentRetry = 0;
 
             bool loadSuccess = false;
@@ -135,7 +153,14 @@ namespace HajjFlow.Services
                 if (hasInternet)
                 {
                     yield return StartCoroutine(LoadAllFromGoogle());
-                    loadSuccess = true;
+                    loadSuccess = IsAllDataLoaded();
+                    if (!loadSuccess)
+                    {
+                        Debug.LogWarning($"[ContentLoaderService] Content download was incomplete (attempt {_currentRetry + 1}/{_maxRetries})");
+                        _currentRetry++;
+                        if (_currentRetry < _maxRetries)
+                            yield return new WaitForSeconds(_retryDelaySeconds);
+                    }
                 }
                 else
                 {
@@ -149,11 +174,13 @@ namespace HajjFlow.Services
                 }
             }
 
-            // Если всё равно не загрузилось с интернета - используем кэш
+            // Если сеть стала недоступна во время первой загрузки, используем
+            // возможный ранее сохранённый кэш, затем встроенный Resources fallback.
             if (!loadSuccess)
             {
                 Debug.Log("[ContentLoaderService] Loading from cache...");
-                LoadFromCache();
+                if (!LoadFromCache())
+                    LoadFromResources();
             }
 
             OnLoadProgress?.Invoke(1f);
@@ -181,21 +208,26 @@ namespace HajjFlow.Services
             StartCoroutine(LoadTheoryFromGoogle());
 
             // Ждём пока все загрузятся
-            while (!IsAllDataLoaded())
+            while (!IsAllRequestsFinished())
             {
                 progress += 0.01f;
                 OnLoadProgress?.Invoke(Mathf.Clamp01(progress));
                 yield return new WaitForSeconds(0.1f);
             }
 
-            // Сохраняем в кэш
-            SaveToCache();
+            // Кэшируем только полный, успешно полученный набор данных.
+            if (IsAllDataLoaded())
+                SaveToCache();
         }
 
         private bool _localizationLoaded;
         private bool _levelsLoaded;
         private bool _questionsLoaded;
         private bool _theoryLoaded;
+        private bool _localizationRequestFinished;
+        private bool _levelsRequestFinished;
+        private bool _questionsRequestFinished;
+        private bool _theoryRequestFinished;
 
         private void ResetLoadFlags()
         {
@@ -203,11 +235,21 @@ namespace HajjFlow.Services
             _levelsLoaded = false;
             _questionsLoaded = false;
             _theoryLoaded = false;
+            _localizationRequestFinished = false;
+            _levelsRequestFinished = false;
+            _questionsRequestFinished = false;
+            _theoryRequestFinished = false;
         }
 
         private bool IsAllDataLoaded()
         {
             return _localizationLoaded && _levelsLoaded && _questionsLoaded && _theoryLoaded;
+        }
+
+        private bool IsAllRequestsFinished()
+        {
+            return _localizationRequestFinished && _levelsRequestFinished &&
+                   _questionsRequestFinished && _theoryRequestFinished;
         }
 
         /// <summary>
@@ -223,6 +265,8 @@ namespace HajjFlow.Services
                 {
                     string csvContent = request.downloadHandler.text;
                     ParseLocalizationCsv(csvContent);
+                    _localizationCsv = csvContent;
+                    _localizationLoaded = true;
                     Debug.Log($"[ContentLoaderService] Localization loaded: {_localizationTable.Count} keys");
                 }
                 else
@@ -231,7 +275,7 @@ namespace HajjFlow.Services
                 }
             }
 
-            _localizationLoaded = true;
+            _localizationRequestFinished = true;
         }
 
         /// <summary>
@@ -248,6 +292,8 @@ namespace HajjFlow.Services
                 {
                     string csvContent = request.downloadHandler.text;
                     ParseLevelsCsv(csvContent);
+                    _levelsCsv = csvContent;
+                    _levelsLoaded = true;
                     Debug.Log($"[ContentLoaderService] Levels loaded: {_levels.Count} levels");
                 }
                 else
@@ -256,7 +302,7 @@ namespace HajjFlow.Services
                 }
             }
 
-            _levelsLoaded = true;
+            _levelsRequestFinished = true;
         }
 
         /// <summary>
@@ -273,6 +319,8 @@ namespace HajjFlow.Services
                 {
                     string csvContent = request.downloadHandler.text;
                     ParseQuestionsCsv(csvContent);
+                    _questionsCsv = csvContent;
+                    _questionsLoaded = true;
                     Debug.Log($"[ContentLoaderService] Questions loaded: {_questions.Count} questions");
                 }
                 else
@@ -281,7 +329,7 @@ namespace HajjFlow.Services
                 }
             }
 
-            _questionsLoaded = true;
+            _questionsRequestFinished = true;
         }
 
         /// <summary>
@@ -298,6 +346,8 @@ namespace HajjFlow.Services
                 {
                     string csvContent = request.downloadHandler.text;
                     ParseTheoryCsv(csvContent);
+                    _theoryCsv = csvContent;
+                    _theoryLoaded = true;
                     Debug.Log($"[ContentLoaderService] Theory loaded: {_theoryCards.Count} cards");
                 }
                 else
@@ -306,7 +356,7 @@ namespace HajjFlow.Services
                 }
             }
 
-            _theoryLoaded = true;
+            _theoryRequestFinished = true;
         }
 
         // ──────────────────────────────────────────────────────────────────
@@ -549,11 +599,13 @@ namespace HajjFlow.Services
                 if (!System.IO.Directory.Exists(CacheDirectory))
                     System.IO.Directory.CreateDirectory(CacheDirectory);
 
-                // Сохраняем в файловую систему (надёжнее для больших данных)
-                SaveCacheFile("localization.json", SerializeLocalization());
-                SaveCacheFile("levels.json", SerializeLevels());
-                SaveCacheFile("questions.json", SerializeQuestions());
-                SaveCacheFile("theory.json", SerializeTheory());
+                // Храним исходные CSV, а не сериализованные runtime-модели.
+                // JsonUtility не поддерживает Dictionary, поэтому иначе
+                // локализация не восстанавливается из кэша.
+                SaveCacheFile("localization.csv", _localizationCsv);
+                SaveCacheFile("levels.csv", _levelsCsv);
+                SaveCacheFile("questions.csv", _questionsCsv);
+                SaveCacheFile("theory.csv", _theoryCsv);
 
                 // Timestamp в PlayerPrefs для быстрой проверки актуальности
                 PlayerPrefs.SetString(CacheKeys.LoadTimestamp, System.DateTime.UtcNow.Ticks.ToString());
@@ -564,7 +616,8 @@ namespace HajjFlow.Services
             catch (System.Exception ex)
             {
                 Debug.LogError($"[ContentLoaderService] Failed to save cache: {ex.Message}");
-                // Fallback на PlayerPrefs
+                // PlayerPrefs остаётся fallback для платформ, где файловое
+                // хранилище недоступно.
                 SaveToCachePlayerPrefs();
             }
         }
@@ -585,36 +638,44 @@ namespace HajjFlow.Services
 
         private void SaveToCachePlayerPrefs()
         {
-            PlayerPrefs.SetString(CacheKeys.Localization, SerializeLocalization());
-            PlayerPrefs.SetString(CacheKeys.Levels, SerializeLevels());
-            PlayerPrefs.SetString(CacheKeys.Questions, SerializeQuestions());
-            PlayerPrefs.SetString(CacheKeys.Theory, SerializeTheory());
+            PlayerPrefs.SetString(CacheKeys.Localization, _localizationCsv ?? string.Empty);
+            PlayerPrefs.SetString(CacheKeys.Levels, _levelsCsv ?? string.Empty);
+            PlayerPrefs.SetString(CacheKeys.Questions, _questionsCsv ?? string.Empty);
+            PlayerPrefs.SetString(CacheKeys.Theory, _theoryCsv ?? string.Empty);
             PlayerPrefs.Save();
         }
 
-        private void LoadFromCache()
+        /// <summary>
+        /// Загружает только полный кэш. Частичный набор не используется, чтобы
+        /// приложение не стартовало со смешанными версиями контента.
+        /// </summary>
+        private bool LoadFromCache()
         {
-            bool loaded = false;
-
-            // Попытка 1: файловая система
             try
             {
-                string localizationJson = LoadCacheFile("localization.json");
-                string levelsJson = LoadCacheFile("levels.json");
-                string questionsJson = LoadCacheFile("questions.json");
-                string theoryJson = LoadCacheFile("theory.json");
+                string localizationCsv = LoadCacheFile("localization.csv");
+                string levelsCsv = LoadCacheFile("levels.csv");
+                string questionsCsv = LoadCacheFile("questions.csv");
+                string theoryCsv = LoadCacheFile("theory.csv");
 
-                if (!string.IsNullOrEmpty(levelsJson))
+                if (!string.IsNullOrWhiteSpace(localizationCsv) &&
+                    !string.IsNullOrWhiteSpace(levelsCsv) &&
+                    !string.IsNullOrWhiteSpace(questionsCsv) &&
+                    !string.IsNullOrWhiteSpace(theoryCsv))
                 {
-                    if (!string.IsNullOrEmpty(localizationJson))
-                        DeserializeLocalization(localizationJson);
-                    DeserializeLevels(levelsJson);
-                    if (!string.IsNullOrEmpty(questionsJson))
-                        DeserializeQuestions(questionsJson);
-                    if (!string.IsNullOrEmpty(theoryJson))
-                        DeserializeTheory(theoryJson);
-                    loaded = true;
-                    Debug.Log("[ContentLoaderService] Data loaded from file cache");
+                    ParseLocalizationCsv(localizationCsv);
+                    ParseLevelsCsv(levelsCsv);
+                    ParseQuestionsCsv(questionsCsv);
+                    ParseTheoryCsv(theoryCsv);
+                    _localizationCsv = localizationCsv;
+                    _levelsCsv = levelsCsv;
+                    _questionsCsv = questionsCsv;
+                    _theoryCsv = theoryCsv;
+                    if (IsCachedContentValid())
+                    {
+                        Debug.Log("[ContentLoaderService] Data loaded from file cache");
+                        return true;
+                    }
                 }
             }
             catch (System.Exception ex)
@@ -622,33 +683,39 @@ namespace HajjFlow.Services
                 Debug.LogWarning($"[ContentLoaderService] File cache failed: {ex.Message}");
             }
 
-            // Попытка 2: PlayerPrefs (fallback)
-            if (!loaded)
+            // В WebGL persistentDataPath может быть недоступен до инициализации
+            // виртуальной FS, поэтому оставляем PlayerPrefs как запасной кэш.
+            string localizationPlayerPrefs = PlayerPrefs.GetString(CacheKeys.Localization, "");
+            string levelsPlayerPrefs = PlayerPrefs.GetString(CacheKeys.Levels, "");
+            string questionsPlayerPrefs = PlayerPrefs.GetString(CacheKeys.Questions, "");
+            string theoryPlayerPrefs = PlayerPrefs.GetString(CacheKeys.Theory, "");
+            if (!string.IsNullOrWhiteSpace(localizationPlayerPrefs) &&
+                !string.IsNullOrWhiteSpace(levelsPlayerPrefs) &&
+                !string.IsNullOrWhiteSpace(questionsPlayerPrefs) &&
+                !string.IsNullOrWhiteSpace(theoryPlayerPrefs))
             {
-                string localizationJson = PlayerPrefs.GetString(CacheKeys.Localization, "");
-                string levelsJson = PlayerPrefs.GetString(CacheKeys.Levels, "");
-                string questionsJson = PlayerPrefs.GetString(CacheKeys.Questions, "");
-                string theoryJson = PlayerPrefs.GetString(CacheKeys.Theory, "");
-
-                if (!string.IsNullOrEmpty(localizationJson))
-                    DeserializeLocalization(localizationJson);
-                if (!string.IsNullOrEmpty(levelsJson))
-                    DeserializeLevels(levelsJson);
-                if (!string.IsNullOrEmpty(questionsJson))
-                    DeserializeQuestions(questionsJson);
-                if (!string.IsNullOrEmpty(theoryJson))
-                    DeserializeTheory(theoryJson);
-
-                loaded = _levels.Count > 0;
-                if (loaded)
+                ParseLocalizationCsv(localizationPlayerPrefs);
+                ParseLevelsCsv(levelsPlayerPrefs);
+                ParseQuestionsCsv(questionsPlayerPrefs);
+                ParseTheoryCsv(theoryPlayerPrefs);
+                _localizationCsv = localizationPlayerPrefs;
+                _levelsCsv = levelsPlayerPrefs;
+                _questionsCsv = questionsPlayerPrefs;
+                _theoryCsv = theoryPlayerPrefs;
+                if (IsCachedContentValid())
+                {
                     Debug.Log("[ContentLoaderService] Data loaded from PlayerPrefs cache");
+                    return true;
+                }
             }
 
-            // Попытка 3: Resources fallback (статика вшитая в билд)
-            if (!loaded)
-            {
-                LoadFromResources();
-            }
+            return false;
+        }
+
+        private bool IsCachedContentValid()
+        {
+            return _localizationTable.Count > 0 && _levels.Count > 0 &&
+                   _questions.Count > 0 && _theoryCards.Count > 0;
         }
 
         /// <summary>
@@ -856,12 +923,31 @@ namespace HajjFlow.Services
             PlayerPrefs.DeleteKey(CacheKeys.LoadTimestamp);
             PlayerPrefs.Save();
 
+            try
+            {
+                if (System.IO.Directory.Exists(CacheDirectory))
+                    System.IO.Directory.Delete(CacheDirectory, true);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[ContentLoaderService] Failed to delete file cache: {ex.Message}");
+            }
+
             _localizationTable.Clear();
             _levels.Clear();
             _questions.Clear();
             _theoryCards.Clear();
 
             Debug.Log("[ContentLoaderService] Cache cleared");
+        }
+
+        /// <summary>
+        /// Удаляет кэш и запускает новую полную загрузку из сети.
+        /// </summary>
+        public void EraseCacheData()
+        {
+            ClearCache();
+            StartCoroutine(LoadAllContent());
         }
     }
 }
