@@ -53,6 +53,7 @@ namespace HajjFlow.UI
 
         private ProgressService _progressService;
         private List<LevelTileUI> _levelSelectButtons = new List<LevelTileUI>();
+        private bool _levelGridBuilt;
 
 
         private void Awake()
@@ -152,6 +153,17 @@ namespace HajjFlow.UI
                             Debug.LogError("[UIService] Content loading failed!");
                         }
                     };
+
+                    // A cached load completes synchronously in
+                    // ContentLoaderService.Start(). In that case its event may
+                    // have fired before this Start() method subscribes, so build
+                    // the grid from the data that is already available.
+                    var runtimeFactory = GameManager.Instance?.GetService<RuntimeLevelFactory>();
+                    if (runtimeFactory != null && runtimeFactory.IsContentAvailable)
+                    {
+                        Debug.Log("[UIService] Cached content is already available, building level grid...");
+                        BuildLevelGrid();
+                    }
                 }
                 else
                 {
@@ -288,6 +300,12 @@ namespace HajjFlow.UI
         /// <summary>Instantiates one tile button per LevelData entry.</summary>
         private void BuildLevelGrid()
         {
+            if (_levelGridBuilt)
+            {
+                Debug.Log("[UIService] Level grid is already built.");
+                return;
+            }
+
             if (_levelButtonPrefab == null || _levelButtonsContainer == null)
             {
                 Debug.LogWarning("[UIService] Missing references — cannot build level grid.");
@@ -351,6 +369,8 @@ namespace HajjFlow.UI
                     _levelSelectButtons.Add(tileUI);
                 }
             }
+
+            _levelGridBuilt = true;
         }
 
         private void OnLevelTileClicked(LevelData level)
