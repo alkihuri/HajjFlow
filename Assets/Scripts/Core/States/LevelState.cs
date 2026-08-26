@@ -140,7 +140,7 @@ namespace HajjFlow.Core.States
             var quizService = GameManager.Instance?.quizService;
             if (quizService != null)
             {
-                quizService.InitializeQuiz(_levelData.Questions);
+                quizService.InitializeQuiz(_levelData.LevelId, _levelData.Questions);
             }
 
             Debug.Log($"[{StateId}] Quiz started with {_levelData.Questions.Length} questions");
@@ -168,10 +168,31 @@ namespace HajjFlow.Core.States
             var quizService = GameManager.Instance?.quizService;
             if (progressService == null || _levelData == null) return;
 
-            // Сначала получаем актуальный процент из QuizService
+            if (string.IsNullOrEmpty(_levelData.LevelId))
+            {
+                Debug.LogError($"[{StateId}] Progress was not saved: level has no LevelId.");
+                return;
+            }
+
+            // Exit can be triggered after another level has been selected. Never
+            // let this state write progress into a level it no longer represents.
+            if (_stateMachine?.ActiveLevelData != null &&
+                _stateMachine.ActiveLevelData.LevelId != _levelData.LevelId)
+            {
+                Debug.LogWarning($"[{StateId}] Progress was not saved: active level ID " +
+                                 $"'{_stateMachine.ActiveLevelData.LevelId}' does not match '{_levelData.LevelId}'.");
+                return;
+            }
+
+            // The QuizService is shared. Use its score only when its quiz session
+            // was initialized for this exact level.
             if (quizService != null)
             {
-                _lastScorePercent = quizService.GetLastScorePercent();
+                if (!quizService.TryGetScorePercent(_levelData.LevelId, out _lastScorePercent))
+                {
+                    Debug.LogWarning($"[{StateId}] Progress was not saved: QuizService session does not belong to level '{_levelData.LevelId}'.");
+                    return;
+                }
             }
             
             Debug.Log($"[{StateId}] Saving progress: LevelId={_levelData.LevelId}, Score={_lastScorePercent:F1}%");
@@ -195,7 +216,8 @@ namespace HajjFlow.Core.States
                     profile.LevelProgress.Set(_levelData.LevelId, _lastScorePercent);
                     
                     // Добавляем в завершённые если ещё нет
-                    if (!profile.CompletedLevelIds.Contains(_levelData.LevelId))
+                    if (_lastScorePercent >= _levelData.PassThreshold &&
+                        !profile.CompletedLevelIds.Contains(_levelData.LevelId))
                     {
                         profile.CompletedLevelIds.Add(_levelData.LevelId);
                     }

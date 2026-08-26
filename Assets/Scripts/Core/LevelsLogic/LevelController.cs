@@ -174,7 +174,7 @@ namespace HajjFlow.Core.LevelsLogic
             quizUIController.Init(quizService);
             
             // 3. Инициализируем квиз с вопросами
-            quizService.InitializeQuiz(levelData.Questions);
+            quizService.InitializeQuiz(levelData.LevelId, levelData.Questions);
         }
 
         /// <summary>
@@ -201,4 +201,3 @@ namespace HajjFlow.Core.LevelsLogic
         }
     }
 }
-
