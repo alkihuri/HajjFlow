@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: GSheetsCommander::GSheetsCommander.GoogleSheetsConfig
   googleAppsScriptUrl: https://script.google.com/macros/s/AKfycbx1d1na4xLXbqfaPezTeweYwRMSxN6NPgsRC1WZ4_O3Vsx3UIIxFmu3rXB-WZmYkzyy/exec
   apiKey: 123
-  timeoutSeconds: 10
+  timeoutSeconds: 60
   enableLogging: 1
