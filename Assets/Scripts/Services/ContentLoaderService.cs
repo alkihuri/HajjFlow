@@ -115,7 +115,7 @@ namespace HajjFlow.Services
         private void Start()
         {
             var uiservice = GameManager.Instance?.GetService<UIService>();
-            OnLoadComplete +=  uiservice.ShowStartButton;
+            OnLoadComplete +=  uiservice.HideLoadingScreen;
             
             if (_enableAutoLoad)
             {

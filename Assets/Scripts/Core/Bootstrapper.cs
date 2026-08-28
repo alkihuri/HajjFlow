@@ -28,7 +28,8 @@ namespace HajjFlow.Core
         [SerializeField] private AudioService _audioService;
         [SerializeField] private ContentLoaderService _contentLoaderService;
         [SerializeField] private AssetBundleService _assetBundleService;
-
+        [SerializeField] private RegistrationService _registrationService;
+        
         [Header("Config")]
         [SerializeField] private GameMainConfig _gameMainConfig;
 
@@ -106,6 +107,9 @@ namespace HajjFlow.Core
 
             if (_assetBundleService != null)
                 gm.RegisterService(_assetBundleService);
+            
+            if(_registrationService != null)
+                gm.RegisterService(_registrationService);
 
             // RuntimeLevelFactory — зависит от ContentLoaderService и AssetBundleService
             var runtimeLevelFactory = new RuntimeLevelFactory(_contentLoaderService, _assetBundleService);

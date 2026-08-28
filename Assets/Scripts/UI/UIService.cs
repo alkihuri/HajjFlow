@@ -28,6 +28,7 @@ namespace HajjFlow.UI
         [SerializeField] private Button _backFromLevelsButton;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _gameStartButton;
+        [SerializeField] private GameObject _loadingScreen;
         [SerializeField] private Button _resetProgressButton;
 
         [SerializeField] private GameObject _gameStartScree;
@@ -39,6 +40,8 @@ namespace HajjFlow.UI
 
         [SerializeField] private TextMeshProUGUI _gemsCounterText;
 
+        [SerializeField] RegistrationSceneUI _registrationSceneUI;
+        
         // - level Controllers 
         [Header("Level Controllers")] [SerializeField]
         private Transform _levelsControllersContainer;
@@ -68,14 +71,9 @@ namespace HajjFlow.UI
             _gameStartButton?.gameObject.SetActive(false);
         }
 
-        public void ShowStartButton(bool load = true)
+        public void HideLoadingScreen(bool load = true)
         {
-            if (load)
-                _gameStartButton?.gameObject.SetActive(true);
-            else
-            {
-                Debug.LogWarning("[UIService] load is false, not showing start button");
-            }
+            
         }
 
         /// <summary>
