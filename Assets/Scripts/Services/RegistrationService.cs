@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class RegistrationService : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+   [SerializeField] private RegistrationSceneUI _registrationSceneUI;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public void RegisterUser(string username, string group)
+   { 
+      // register through API for google sheets
+   }
 }

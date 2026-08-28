@@ -116,6 +116,7 @@ namespace HajjFlow.Services
         {
             var uiservice = GameManager.Instance?.GetService<UIService>();
             OnLoadComplete +=  uiservice.HideLoadingScreen;
+            OnLoadComplete += uiservice.ShowRegistrasionScreen;
             
             if (_enableAutoLoad)
             {

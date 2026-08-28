@@ -63,16 +63,22 @@ namespace HajjFlow.UI
         {
             // Инициализируем контроллеры уровней из конфига
             InitializeLevelControllers(_config.Levels.Select(le => le.LevelData).ToList());
-            HideStartButton();
+            ShowLoadingScrren();
         }
 
-        public void HideStartButton()
-        {
-            _gameStartButton?.gameObject.SetActive(false);
+        public void ShowLoadingScrren()
+        { 
+            _loadingScreen?.SetActive(true);
         }
 
         public void HideLoadingScreen(bool load = true)
         {
+            if (_loadingScreen != null && load)
+                _loadingScreen.SetActive(false);
+            else
+            {
+                Debug.LogWarning("[UIService] Loading screen is still active not correct loading data");
+            }
             
         }
 
@@ -549,6 +555,12 @@ namespace HajjFlow.UI
             {
                 tile.UpdateUiData(forceRefresh);
             }
+        }
+
+        public void ShowRegistrasionScreen(bool load)
+        {
+            if(load)
+             _registrationSceneUI?.ShowRegistrationScreen();
         }
     }
 }
