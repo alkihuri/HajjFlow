@@ -1,5 +1,6 @@
 using System;
 using HajjFlow.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,8 +15,8 @@ public class RegistrationSceneUI : MonoBehaviour
     [SerializeField] Button skipButton;
     
     
-    [SerializeField] InputField _usernameInput;
-    [SerializeField] InputField _groupInput;
+    [SerializeField] TMP_InputField _usernameInput;
+    [SerializeField] TMP_InputField _groupInput;
 
     private void Awake()
     {
