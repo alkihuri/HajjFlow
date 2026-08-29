@@ -18,6 +18,8 @@ namespace HajjFlow.UI
 
         private TMP_Text _textComponent;
         private LocalizationService _service;
+        
+        public bool IsRegistered => _service != null;
 
         public string text
         {
@@ -32,16 +34,25 @@ namespace HajjFlow.UI
 
         private void Awake()
         {
+            RegisterController();
+        }
+
+        private void RegisterController()
+        {
             _textComponent = GetComponent<TMP_Text>();
             _service = GameManager.Instance?.GetService<LocalizationService>();
             if (_service != null)
             {
                 _service.Register(this);
             }
-        } 
+        }
 
         private void OnEnable()
         {
+            if (!IsRegistered)
+            {
+                RegisterController();
+            }
             UpdateText();
         }
 

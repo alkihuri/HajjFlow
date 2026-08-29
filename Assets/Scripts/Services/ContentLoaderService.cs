@@ -917,6 +917,7 @@ namespace HajjFlow.Services
         /// <summary>
         /// Очистить кэш.
         /// </summary>
+        [ContextMenu("Clear Localization")]
         public void ClearCache()
         {
             PlayerPrefs.DeleteKey(CacheKeys.Localization);

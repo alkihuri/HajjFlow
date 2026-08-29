@@ -73,8 +73,8 @@ namespace HajjFlow.Services
             {
                 if (text != null)
                     text.UpdateText();
-            }
-
+            } 
+            
             OnLanguageChanged?.Invoke();
             Debug.Log($"[LocalizationService] Changed language to {_currentLanguage}");
         }
