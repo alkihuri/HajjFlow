@@ -115,7 +115,8 @@ namespace HajjFlow.Services
         private void Start()
         {
             var uiservice = GameManager.Instance?.GetService<UIService>();
-            OnLoadComplete +=  uiservice.ShowStartButton;
+            OnLoadComplete +=  uiservice.HideLoadingScreen;
+            OnLoadComplete += uiservice.ShowRegistrasionScreen;
             
             if (_enableAutoLoad)
             {
@@ -916,6 +917,7 @@ namespace HajjFlow.Services
         /// <summary>
         /// Очистить кэш.
         /// </summary>
+        [ContextMenu("Clear Localization")]
         public void ClearCache()
         {
             PlayerPrefs.DeleteKey(CacheKeys.Localization);

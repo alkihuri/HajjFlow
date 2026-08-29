@@ -219,6 +219,10 @@ MonoBehaviour:
   _quizService: {fileID: 3858279563846927446}
   _gameStateMachine: {fileID: 1111066742607158676}
   _audioService: {fileID: 212813746283494078}
+  _contentLoaderService: {fileID: 6658407128814196165}
+  _assetBundleService: {fileID: 1163194381335291753}
+  _registrationService: {fileID: 2225787126501209792}
+  _gameMainConfig: {fileID: 0}
 --- !u!1 &8187556108474220264
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +379,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28213fb6f1254ebca0c0df54e631eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioService
+--- !u!114 &1163194381335291753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6613858586633072112, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
+  m_PrefabInstance: {fileID: 5471128590593952409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1047e9ea445748f5a99494cc68dacce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.AssetBundleService
+--- !u!114 &2225787126501209792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6129064764248947801, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
+  m_PrefabInstance: {fileID: 5471128590593952409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d9cd271fa344d4a98b55b6f0b2e4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RegistrationService
 --- !u!4 &2776345946652989014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7884348957232389327, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
@@ -391,6 +417,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955904e78dec4480ab3df84363bb5d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.QuizService
+--- !u!114 &6658407128814196165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1696221496247066460, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}
+  m_PrefabInstance: {fileID: 5471128590593952409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d49618b68e4a579631cbc369e058ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.ContentLoaderService
 --- !u!114 &7427348976528674981 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3242139822127340092, guid: ca3f7774b295942f0a573e128d640cc5, type: 3}

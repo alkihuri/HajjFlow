@@ -50,6 +50,7 @@ MonoBehaviour:
   _backFromLevelsButton: {fileID: 0}
   _nextLevelButton: {fileID: 0}
   _gameStartButton: {fileID: 0}
+  _loadingScreen: {fileID: 0}
   _resetProgressButton: {fileID: 0}
   _gameStartScree: {fileID: 0}
   _mainMenuScreen: {fileID: 0}
@@ -57,17 +58,19 @@ MonoBehaviour:
   _levelsUiRoot: {fileID: 0}
   _levelTitleText: {fileID: 0}
   _gemsCounterText: {fileID: 0}
+  _registrationSceneUI: {fileID: 0}
   _levelsControllersContainer: {fileID: 0}
   _levelControllerPrefab: {fileID: 5619453307015987227, guid: 31f9f9bcff5b4481a913b6ebd10a1cf5, type: 3}
   _levelControllers: []
   _config: {fileID: 11400000, guid: 305fcea4645314e44bfd0acae7299c95, type: 2}
   _levels:
-  - {fileID: 11400000, guid: fdb743d9e6a7241cca4de6a28536879b, type: 2}
-  - {fileID: 11400000, guid: 478272943ffcf410bb48f8514e3b3fd7, type: 2}
-  - {fileID: 11400000, guid: 0c03deecf709a425894185e84df9ff21, type: 2}
-  - {fileID: 11400000, guid: d5894872a58c54df29716cb6b794432e, type: 2}
-  - {fileID: 11400000, guid: 40fc8da0cbad044039d9390821d1cfd7, type: 2}
-  - {fileID: 11400000, guid: 411afba78e4ac48959c0578886c455e9, type: 2}
+  - {fileID: 11400000, guid: 099a44d54385f4385b54a87d7497fc9c, type: 2}
+  - {fileID: 11400000, guid: 1e0e08f4920bc4c8d956b3bf8807f9ba, type: 2}
+  - {fileID: 11400000, guid: 57e695569f4e54ffcaba19c7981b441b, type: 2}
+  - {fileID: 11400000, guid: bfc854aee8cd14beaa90b4738bc81a0f, type: 2}
+  - {fileID: 11400000, guid: 4a01fcc22afba4d3281d41b49e82a38d, type: 2}
+  - {fileID: 11400000, guid: 7a8aad14f34a2401990f9f8ad334633e, type: 2}
+  - {fileID: 11400000, guid: a9584c36d354f432ba20977f1fab0932, type: 2}
 --- !u!1 &2203383776885654323
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +106,8 @@ Transform:
   - {fileID: 8284062466420967236}
   - {fileID: 6411872880489190674}
   - {fileID: 452053975755744377}
+  - {fileID: 3381802633668179753}
+  - {fileID: 3158452010840418341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3805917914909629950
@@ -149,6 +154,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d49618b68e4a579631cbc369e058ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.ContentLoaderService
+--- !u!1 &4339955222790973800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3158452010840418341}
+  - component: {fileID: 6613858586633072112}
+  m_Layer: 0
+  m_Name: AssetBundleService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3158452010840418341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339955222790973800}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 540, y: 447, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7884348957232389327}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6613858586633072112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339955222790973800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1047e9ea445748f5a99494cc68dacce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.Services.AssetBundleService
+  _remoteBundleBaseUrl: 
+  _useStreamingAssetsAsFallback: 1
 --- !u!1 &4546231062010623777
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +290,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocalizationServiceLoader
   IsLoaded: 0
+--- !u!1 &4630870784145402138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5765907802375605006}
+  m_Layer: 0
+  m_Name: GoogleSheetsClient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5765907802375605006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630870784145402138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3381802633668179753}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7169433362660105778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3381802633668179753}
+  - component: {fileID: 6129064764248947801}
+  m_Layer: 0
+  m_Name: RegistrationService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3381802633668179753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169433362660105778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5765907802375605006}
+  m_Father: {fileID: 7884348957232389327}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6129064764248947801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169433362660105778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d9cd271fa344d4a98b55b6f0b2e4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RegistrationService
+  _registrationSceneUI: {fileID: 0}
 --- !u!1 &7214296282917123306
 GameObject:
   m_ObjectHideFlags: 0

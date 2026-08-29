@@ -28,6 +28,7 @@ namespace HajjFlow.UI
         [SerializeField] private Button _backFromLevelsButton;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Button _gameStartButton;
+        [SerializeField] private GameObject _loadingScreen;
         [SerializeField] private Button _resetProgressButton;
 
         [SerializeField] private GameObject _gameStartScree;
@@ -39,6 +40,8 @@ namespace HajjFlow.UI
 
         [SerializeField] private TextMeshProUGUI _gemsCounterText;
 
+        [SerializeField] RegistrationSceneUI _registrationSceneUI;
+        
         // - level Controllers 
         [Header("Level Controllers")] [SerializeField]
         private Transform _levelsControllersContainer;
@@ -60,22 +63,23 @@ namespace HajjFlow.UI
         {
             // Инициализируем контроллеры уровней из конфига
             InitializeLevelControllers(_config.Levels.Select(le => le.LevelData).ToList());
-            HideStartButton();
+            ShowLoadingScrren();
         }
 
-        public void HideStartButton()
-        {
-            _gameStartButton?.gameObject.SetActive(false);
+        public void ShowLoadingScrren()
+        { 
+            _loadingScreen?.SetActive(true);
         }
 
-        public void ShowStartButton(bool load = true)
+        public void HideLoadingScreen(bool load = true)
         {
-            if (load)
-                _gameStartButton?.gameObject.SetActive(true);
+            if (_loadingScreen != null && load)
+                _loadingScreen.SetActive(false);
             else
             {
-                Debug.LogWarning("[UIService] load is false, not showing start button");
+                Debug.LogWarning("[UIService] Loading screen is still active not correct loading data");
             }
+            
         }
 
         /// <summary>
@@ -551,6 +555,12 @@ namespace HajjFlow.UI
             {
                 tile.UpdateUiData(forceRefresh);
             }
+        }
+
+        public void ShowRegistrasionScreen(bool load)
+        {
+            if(load)
+             _registrationSceneUI?.ShowRegistrationScreen();
         }
     }
 }

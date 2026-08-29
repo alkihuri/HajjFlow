@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -15.2418, y: 114.4778}
-  m_SizeDelta: {x: 369.5165, y: 157.0445}
+  m_AnchoredPosition: {x: 231, y: 114.4778}
+  m_SizeDelta: {x: 453.2, y: 156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8541808928581895185
 CanvasRenderer:
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1599168904, guid: 003dff844341e415d9d8730494feead2, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -400929452, guid: d8c73347379c448889ec672b11882d67, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -332, y: 114.48}
-  m_SizeDelta: {x: 153.351, y: 131.7015}
+  m_AnchoredPosition: {x: -254, y: 114.48}
+  m_SizeDelta: {x: 453.2, y: 156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8052415616727958675
 CanvasRenderer:
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -113846350, guid: 6d3c1f611fc214976925767b5bc527ff, type: 3}
+  m_Sprite: {fileID: -400929452, guid: d8c73347379c448889ec672b11882d67, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1102431938683398188}
   - component: {fileID: 531356848078624111}
-  - component: {fileID: 522604306069929164}
+  - component: {fileID: 2057156906743267079}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -364,10 +364,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7622687561431981954}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 2000}
+  m_AnchoredPosition: {x: 0, y: -0.0007324219}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &531356848078624111
 MonoBehaviour:
@@ -384,18 +384,18 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
+    m_Top: 100
     m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
+  m_ChildAlignment: 4
+  m_Spacing: 120
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &522604306069929164
+--- !u!114 &2057156906743267079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &3951759105413509864
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.7
+  m_fontSize: 70.3
   m_fontSizeBase: 39.68
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4474083040929865582}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.83
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -740,7 +740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8415699138388671562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UI_RESET
+  m_text: UI_BACK_BUTTON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc2d4396850314b138c7d59b3bfd6989, type: 2}
   m_sharedMaterial: {fileID: 1374629613232328427, guid: cc2d4396850314b138c7d59b3bfd6989, type: 2}
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 40.45
   m_fontSizeBase: 39.68
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 35.870117, y: 19.130737, z: 39.457153, w: 27.50042}
+  m_margin: {x: -4.40361, y: 19.130737, z: 39.457153, w: 27.50042}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b60a03d8e6e34341b44890ecc002363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HajjFlow.UI.GameTextController
-  _localizationKey: UI_PROGRESS_RESET_KEY
+  _localizationKey: UI_BACK_BUTTON
 --- !u!1 &6108543612611984533
 GameObject:
   m_ObjectHideFlags: 0

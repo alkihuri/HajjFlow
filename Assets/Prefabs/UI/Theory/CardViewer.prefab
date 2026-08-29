@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1025043332, guid: 003dff844341e415d9d8730494feead2, type: 3}
+  m_Sprite: {fileID: 1093357255, guid: d8c73347379c448889ec672b11882d67, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252cc6407799441c398ef67aac5248a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonEffect
+  _button: {fileID: 1928570393609892965}
 --- !u!1 &4371311391360907666
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +213,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2057882273, guid: 003dff844341e415d9d8730494feead2, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -400929452, guid: d8c73347379c448889ec672b11882d67, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -570,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheoryCardsManager
-  _cardContainer: {fileID: 0}
+  <CardContainer>k__BackingField: {fileID: 0}
   _data:
   - {fileID: 11400000, guid: a4665bc4ac04c4fe3bf65a0ab16b5a5a, type: 2}
   - {fileID: 11400000, guid: ca6cc68540782466e89f748a9e1e58e6, type: 2}

@@ -53,7 +53,6 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 5bc7f9916f2464dcbaebd49f2dc5532a, type: 2}
   quizUIController: {fileID: 2501459692292343261}
   theoryCardsManager: {fileID: 3327895870742366158}
-  _uiService: {fileID: 0}
 --- !u!1001 &2018085946193826545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,14 +64,6 @@ PrefabInstance:
     - target: {fileID: 1752562244077858242, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
       propertyPath: m_Name
       value: QuestionCotroller
-      objectReference: {fileID: 0}
-    - target: {fileID: 1752562244077858242, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890382479107658515, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.3983154
       objectReference: {fileID: 0}
     - target: {fileID: 6870075782178824959, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
       propertyPath: m_Pivot.x
@@ -263,42 +254,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4385317277040619973, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: _cardContainer
-      value: 
-      objectReference: {fileID: 11400000, guid: 506d546bf8396453790820edcd394ff6, type: 2}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1261877294517639559}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-      propertyPath: OnTheoryCardsCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
       propertyPath: m_Name
       value: CardViewer
@@ -308,17 +263,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
---- !u!1 &1261877294517639559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
-  m_PrefabInstance: {fileID: 6968376478421957878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3327895870742366158 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5664308788833925944, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
   m_PrefabInstance: {fileID: 6968376478421957878}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261877294517639559}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7301fb6a14c1343c2bb2f41abf5a7189, type: 3}

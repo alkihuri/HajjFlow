@@ -27,6 +27,7 @@ namespace HajjFlow.Services
         public event Action OnReadyForNextQuestion;
 
         private QuizQuestion[] currentQuestions;
+        private string _activeLevelId;
         private int currentQuestionIndex = 0;
         private int correctAnswerCount = 0;
         private bool _waitingForNextQuestion = false;
@@ -34,12 +35,22 @@ namespace HajjFlow.Services
         /// <summary>Инициализирует квиз с массивом вопросов</summary>
         public void InitializeQuiz(QuizQuestion[] questions)
         {
+            InitializeQuiz(null, questions);
+        }
+
+        /// <summary>
+        /// Initializes a quiz session for a specific level. The level ID is retained
+        /// with the score so callers cannot save a score from another level.
+        /// </summary>
+        public void InitializeQuiz(string levelId, QuizQuestion[] questions)
+        {
             if (questions == null || questions.Length == 0)
             {
                 Debug.LogError("[QuizService] Questions array is empty!");
                 return;
             }
 
+            _activeLevelId = levelId;
             currentQuestions = questions;
             currentQuestionIndex = 0;
             correctAnswerCount = 0;
@@ -87,7 +98,7 @@ namespace HajjFlow.Services
             }
 
             Debug.Log($"[QuizService] Initialized from runtime questions: {questions.Length} questions for level '{levelId}'");
-            InitializeQuiz(questions);
+            InitializeQuiz(levelId, questions);
         }
 
         /// <summary>Отображает текущий вопрос</summary>
@@ -216,6 +227,7 @@ namespace HajjFlow.Services
         public void ResetQuiz()
         {
             currentQuestions = null;
+            _activeLevelId = null;
             currentQuestionIndex = 0;
             correctAnswerCount = 0;
             _waitingForNextQuestion = false;
@@ -226,6 +238,21 @@ namespace HajjFlow.Services
         { 
             if (currentQuestions == null || currentQuestions.Length == 0) return 0f;
             return (float)correctAnswerCount / currentQuestions.Length * 100f;
+        }
+
+        /// <summary>
+        /// Returns the current score only when it belongs to the requested level.
+        /// </summary>
+        public bool TryGetScorePercent(string levelId, out float scorePercent)
+        {
+            scorePercent = 0f;
+            if (string.IsNullOrEmpty(levelId) || _activeLevelId != levelId)
+            {
+                return false;
+            }
+
+            scorePercent = GetLastScorePercent();
+            return true;
         }
     }
 }
