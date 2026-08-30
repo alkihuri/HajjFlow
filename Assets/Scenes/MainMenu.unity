@@ -679,6 +679,10 @@ PrefabInstance:
       propertyPath: _registrationSceneUI
       value: 
       objectReference: {fileID: 504483433}
+    - target: {fileID: 4252258918702972081, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
+      propertyPath: _gameMainConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 305fcea4645314e44bfd0acae7299c95, type: 2}
     - target: {fileID: 6335978810760529491, guid: 9e9c8dff9c3914249aef0cc408acebd3, type: 3}
       propertyPath: m_Name
       value: App

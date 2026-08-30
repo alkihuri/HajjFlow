@@ -89,20 +89,24 @@ public class RegistrationService : MonoBehaviour
   /// <summary>
   /// Stores a completed level score in the registered user's row.
   /// Динамически определяет колонку на основе позиции уровня в списке.
+  /// Использует маппинг по levelId для корректного соответствия колонкам.
   /// </summary>
   public async Task SaveLevelResultAsync(string levelId, float scorePercent)
   {
       var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
-      var levelIndex = allLevels.FindIndex(l => l.levelId == levelId);
       
-      if (levelIndex < 0)
+      // Создаем маппинг levelId -> индекс колонки (как при регистрации)
+      var levelColumn = allLevels.FindIndex(l => l.levelId == levelId);
+      
+      if (levelColumn < 0)
       {
           Debug.LogWarning($"[RegistrationService] Level '{levelId}' not found in config.");
           return;
       }
       
       // Колонка B = индекс 0, C = индекс 1, и т.д.
-      string column = GetColumnLetter(levelIndex + 1); // +1 потому что колонка A - это имя пользователя
+      // +1 потому что колонка A - это имя пользователя
+      string column = GetColumnLetter(levelColumn + 1);
 
       string username = PlayerPrefs.GetString(UsernamePreferenceKey);
       string group = PlayerPrefs.GetString(GroupPreferenceKey);
@@ -114,20 +118,14 @@ public class RegistrationService : MonoBehaviour
 
       try
       {
-          int row = GetRegisteredRow(group);
+          // Ищем строку пользователя в Google Sheets
+          int row = await FindUserRowAsync(group, username);
           if (row < 1)
           {
-              row = await FindUserRowAsync(group, username);
-              if (row < 1)
-              {
-                  Debug.LogWarning($"[RegistrationService] User '{username}' was not found in group '{group}'.");
-                  return;
-              }
-
-              PlayerPrefs.SetInt(SheetRowPreferenceKey, row);
-              PlayerPrefs.SetString(SheetNamePreferenceKey, group);
-              PlayerPrefs.Save();
+              Debug.LogWarning($"[RegistrationService] User '{username}' was not found in group '{group}'.");
+              return;
           }
+
 
           string cell = $"{column}{row}";
           await _googleSheetsClient.SetCellAsync(
@@ -159,12 +157,6 @@ public class RegistrationService : MonoBehaviour
       return columnName;
   }
 
-  private static int GetRegisteredRow(string group)
-  {
-      return PlayerPrefs.GetString(SheetNamePreferenceKey) == group
-          ? PlayerPrefs.GetInt(SheetRowPreferenceKey, -1)
-          : -1;
-  }
 
   private async Task<int> FindUserRowAsync(string group, string username)
   {
