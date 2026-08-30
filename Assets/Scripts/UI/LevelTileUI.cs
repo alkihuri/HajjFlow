@@ -110,12 +110,12 @@ namespace HajjFlow.UI
             }
 
 
-            /*
+            
             if (_completedBadge != null)
             {
                 _completedBadge.SetActive(isCompleted || levelResult >= 99f);
             }
-            */
+            
         }
 
         /// <summary>Populates the tile with level information.</summary>
