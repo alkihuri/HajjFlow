@@ -44,13 +44,7 @@ public class RegistrationService : MonoBehaviour
           // A group is a shared sheet, so it is created only for the first user.
           if (!await _googleSheetsClient.SheetExistsAsync(group))
           {
-              
-              await _googleSheetsClient.CreateSheetAsync(group);
-              var levels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
-              List<string> levelColumns = new List<string>();
-              levelColumns.Add("Name");
-              levelColumns.AddRange(levels.Select(l=>l.levelId));
-              await _googleSheetsClient.AppendRowAsync(group,levelColumns.ToArray());  
+              await CreateSheetAndHeader(group);
           }
 
           var currentprogress = GameManager.Instance.GetService<StageCompletionService>().GetLevelREsult;
@@ -71,9 +65,19 @@ public class RegistrationService : MonoBehaviour
               {
                   newRow.Add(""); // Пустая ячейка для непройденного уровня
               }
+          } 
+          var existingRow = await FindUserRowAsync(group, username);
+
+          RowData createdRow= null;
+          if (existingRow == -1)
+          {
+               createdRow =  await _googleSheetsClient.AppendRowAsync(group,  newRow.Cast<object>().ToArray());
           }
-          
-          var createdRow = await _googleSheetsClient.AppendRowAsync(group, newRow.Cast<object>().ToArray());
+          else
+          {
+                createdRow = await _googleSheetsClient.UpdateRowAsync(group, existingRow, newRow.Cast<object>().ToArray());
+          }
+
           PlayerPrefs.SetInt(SheetRowPreferenceKey, createdRow.row);
           PlayerPrefs.SetString(SheetNamePreferenceKey, group);
           PlayerPrefs.Save();
@@ -84,6 +88,22 @@ public class RegistrationService : MonoBehaviour
       {
           Debug.LogError($"Registration failed: {ex.Message}");
       }
+  }
+
+  public async Task CreateSheetAndHeader(string group)
+  {
+      await _googleSheetsClient.CreateSheetAsync(group);
+      var levels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+      List<string> levelColumns = new List<string>(); 
+      levelColumns.Clear();
+      levelColumns.Add("ФИО ПАЛОМНИКА");
+      // get localisation service 
+      var localizationService = GameManager.Instance.GetService<LocalizationService>();
+      // map level nameKey to localized string\
+      var localizedNames = levels.Select(l => localizationService.GetText(l.nameKey));
+ 
+      levelColumns.AddRange(localizedNames);
+      await _googleSheetsClient.AppendRowAsync(group,levelColumns.ToArray());
   }
 
   /// <summary>
@@ -106,7 +126,7 @@ public class RegistrationService : MonoBehaviour
       
       // Колонка B = индекс 0, C = индекс 1, и т.д.
       // +1 потому что колонка A - это имя пользователя
-      string column = GetColumnLetter(levelColumn + 1);
+      string column = GetColumnLetter(levelColumn + 2);// +2 потому что колонка A - это имя пользователя, а индекс начинается с 0
 
       string username = PlayerPrefs.GetString(UsernamePreferenceKey);
       string group = PlayerPrefs.GetString(GroupPreferenceKey);
