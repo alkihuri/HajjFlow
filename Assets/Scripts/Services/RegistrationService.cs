@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Core;
-using UnityEngine;
 using GSheetsCommander;
 using HajjFlow.Core;
 using HajjFlow.Services;
+using UnityEngine;
 
 public class RegistrationService : MonoBehaviour
 {
@@ -55,10 +54,26 @@ public class RegistrationService : MonoBehaviour
           }
 
           var currentprogress = GameManager.Instance.GetService<StageCompletionService>().GetLevelREsult;
-          var result = currentprogress.Values.Select(v => v.ScorePercent);
-          var newRow = new string[] { username};
-          newRow = newRow.Concat(result.Select(r => r.ToString("0.#", CultureInfo.InvariantCulture))).ToArray();
-          var createdRow = await _googleSheetsClient.AppendRowAsync(group, newRow);
+          var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+          
+          // Создаем словарь пройденных уровней для быстрого поиска
+          var progressDict = currentprogress.ToDictionary(p => p.Key, p => p.Value.ScorePercent);
+          
+          // Проходим по всем уровням в правильном порядке
+          var newRow = new List<string> { username };
+          foreach (var level in allLevels)
+          {
+              if (progressDict.TryGetValue(level.levelId, out var score))
+              {
+                  newRow.Add(score.ToString("0.#", CultureInfo.InvariantCulture));
+              }
+              else
+              {
+                  newRow.Add(""); // Пустая ячейка для непройденного уровня
+              }
+          }
+          
+          var createdRow = await _googleSheetsClient.AppendRowAsync(group, newRow.Cast<object>().ToArray());
           PlayerPrefs.SetInt(SheetRowPreferenceKey, createdRow.row);
           PlayerPrefs.SetString(SheetNamePreferenceKey, group);
           PlayerPrefs.Save();
@@ -73,15 +88,21 @@ public class RegistrationService : MonoBehaviour
 
   /// <summary>
   /// Stores a completed level score in the registered user's row.
-  /// Columns B, C and D contain Warmup, Miqat and Tawaf scores respectively.
+  /// Динамически определяет колонку на основе позиции уровня в списке.
   /// </summary>
   public async Task SaveLevelResultAsync(string levelId, float scorePercent)
   {
-      if (!TryGetLevelColumn(levelId, out string column))
+      var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+      var levelIndex = allLevels.FindIndex(l => l.levelId == levelId);
+      
+      if (levelIndex < 0)
       {
-          Debug.LogWarning($"[RegistrationService] No Google Sheets column configured for level '{levelId}'.");
+          Debug.LogWarning($"[RegistrationService] Level '{levelId}' not found in config.");
           return;
       }
+      
+      // Колонка B = индекс 0, C = индекс 1, и т.д.
+      string column = GetColumnLetter(levelIndex + 1); // +1 потому что колонка A - это имя пользователя
 
       string username = PlayerPrefs.GetString(UsernamePreferenceKey);
       string group = PlayerPrefs.GetString(GroupPreferenceKey);
@@ -123,15 +144,19 @@ public class RegistrationService : MonoBehaviour
       }
   }
 
-  private static bool TryGetLevelColumn(string levelId, out string column)
+  /// <summary>
+  /// Преобразует индекс в буквенный адрес колонки (0->A, 1->B, 25->Z, 26->AA и т.д.).
+  /// </summary>
+  private static string GetColumnLetter(int columnIndex)
   {
-      switch (levelId)
+      string columnName = "";
+      while (columnIndex > 0)
       {
-          case "Warmup": column = "B"; return true;
-          case "Miqat": column = "C"; return true;
-          case "Tawaf": column = "D"; return true;
-          default: column = null; return false;
+          columnIndex--;
+          columnName = (char)('A' + (columnIndex % 26)) + columnName;
+          columnIndex /= 26;
       }
+      return columnName;
   }
 
   private static int GetRegisteredRow(string group)
