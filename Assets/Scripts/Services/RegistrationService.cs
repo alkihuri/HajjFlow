@@ -1,8 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
+using Core;
 using UnityEngine;
 using GSheetsCommander;
+using HajjFlow.Core;
+using HajjFlow.Services;
+
 public class RegistrationService : MonoBehaviour
 {
    private const string UsernamePreferenceKey = "Username";
@@ -34,12 +40,24 @@ public class RegistrationService : MonoBehaviour
   
       try
       {
-          var newRow = new string[] { username, "", "", "" };
+          
           
           // A group is a shared sheet, so it is created only for the first user.
           if (!await _googleSheetsClient.SheetExistsAsync(group))
+          {
+              
               await _googleSheetsClient.CreateSheetAsync(group);
+              var levels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+              List<string> levelColumns = new List<string>();
+              levelColumns.Add("Name");
+              levelColumns.AddRange(levels.Select(l=>l.levelId));
+              await _googleSheetsClient.AppendRowAsync(group,levelColumns.ToArray());  
+          }
 
+          var currentprogress = GameManager.Instance.GetService<StageCompletionService>().GetLevelREsult;
+          var result = currentprogress.Values.Select(v => v.ScorePercent);
+          var newRow = new string[] { username};
+          newRow = newRow.Concat(result.Select(r => r.ToString("0.#", CultureInfo.InvariantCulture))).ToArray();
           var createdRow = await _googleSheetsClient.AppendRowAsync(group, newRow);
           PlayerPrefs.SetInt(SheetRowPreferenceKey, createdRow.row);
           PlayerPrefs.SetString(SheetNamePreferenceKey, group);
