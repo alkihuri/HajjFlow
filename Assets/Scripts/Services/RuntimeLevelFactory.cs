@@ -23,6 +23,14 @@ namespace HajjFlow.Services
             _assetBundleService = assetBundleService;
         }
 
+        
+        /// <summary>
+        /// Возвращает полный список всех доступных уровней.
+        /// </summary>
+        public List<ContentLoaderService.RuntimeLevelInfo> AllLevels
+        {
+            get => GetAllLevelInfos();
+        }
         /// <summary>
         /// Возвращает true если удалённый контент загружен и доступен.
         /// </summary>

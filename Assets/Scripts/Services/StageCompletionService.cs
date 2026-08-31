@@ -25,6 +25,8 @@ namespace HajjFlow.Services
         /// <summary>Stored level results keyed by levelId.</summary>
         private readonly Dictionary<string, LevelResult> _levelResults = new Dictionary<string, LevelResult>();
 
+
+        public Dictionary<string, LevelResult> GetLevelREsult => _levelResults;
         
         //  DEBUG PURPOSE LEVEL RESUL SHOW IN INPECTOR
         [Header("Debug: Level Results")]
@@ -133,6 +135,12 @@ namespace HajjFlow.Services
             DebugLevelResults = _levelResults.Values.ToList(); // For inspector debugging
 
             Debug.Log($"[StageCompletionService] Level result recorded: {levelId} = {scorePercent:F1}%");
+
+            // Local progress is saved by LevelState first. Mirror the result to the
+            // registered student's group sheet without blocking gameplay on the request.
+            var registrationService = GameManager.Instance?.GetService<global::RegistrationService>();
+            if (registrationService != null)
+                _ = registrationService.SaveLevelResultAsync(levelId, scorePercent);
         }
 
         /// <summary>
@@ -231,4 +239,3 @@ namespace HajjFlow.Services
         public DateTime CompletedAt;
     }
 }
-

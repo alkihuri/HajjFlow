@@ -7,16 +7,16 @@ Comfortaa is a variable font with this axis:
   wght
 
 This means all the styles are contained in a single file:
-  Comfortaa-VariableFont_wght.ttf
+  Comfortaa/Comfortaa-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
 in those cases you can use the static font files for Comfortaa:
-  static/Comfortaa-Light.ttf
-  static/Comfortaa-Regular.ttf
-  static/Comfortaa-Medium.ttf
-  static/Comfortaa-SemiBold.ttf
-  static/Comfortaa-Bold.ttf
+  Comfortaa/static/Comfortaa-Light.ttf
+  Comfortaa/static/Comfortaa-Regular.ttf
+  Comfortaa/static/Comfortaa-Medium.ttf
+  Comfortaa/static/Comfortaa-SemiBold.ttf
+  Comfortaa/static/Comfortaa-Bold.ttf
 
 Get started
 -----------

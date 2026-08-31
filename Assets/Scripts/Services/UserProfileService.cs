@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using GSheetsCommander;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -115,6 +116,19 @@ namespace HajjFlow.Services
         }
 
         /// <summary>
+        /// Включает Google Sheets для загрузки/сохранения профиля пользователя.
+        /// </summary>
+        public void EnableGoogleSheets(GoogleSheetsConfig config, string username, string groupName)
+        {
+            if (_loaderService == null)
+            {
+                _loaderService = new ProfileLoaderService();
+            }
+            _loaderService.EnableGoogleSheets(config, username, groupName);
+            Debug.Log($"[UserProfileService] Google Sheets enabled for user '{username}'");
+        }
+
+        /// <summary>
         /// Синхронизирует данные с бекендом.
         /// </summary>
         public async Task SyncWithBackendAsync()
@@ -124,6 +138,47 @@ namespace HajjFlow.Services
                 await _loaderService.SyncWithBackendAsync();
                 _profile = _loaderService.GetProfile();
             }
+        }
+
+        /// <summary>
+        /// Загружает профиль пользователя из Google Sheets.
+        /// </summary>
+        public async Task LoadFromGoogleSheetsAsync()
+        {
+            if (_loaderService == null)
+            {
+                Debug.LogWarning("[UserProfileService] ProfileLoaderService not initialized. Initialize with EnableGoogleSheets first.");
+                return;
+            }
+
+            // This method is called after EnableGoogleSheets. It deliberately
+            // bypasses any PlayerPrefs cache until Google Sheets has responded.
+            var profile = await _loaderService.LoadFromGoogleSheetsAsync();
+            if (profile != null)
+            {
+                _profile = profile;
+                Debug.Log("[UserProfileService] Profile loaded from Google Sheets successfully");
+            }
+            else
+            {
+                Debug.LogWarning("[UserProfileService] Failed to load profile from Google Sheets");
+            }
+        }
+
+        /// <summary>
+        /// Сохраняет профиль пользователя в Google Sheets.
+        /// </summary>
+        public async Task SaveToGoogleSheetsAsync()
+        {
+            if (_loaderService == null)
+            {
+                Debug.LogWarning("[UserProfileService] ProfileLoaderService not initialized. Initialize with EnableGoogleSheets first.");
+                return;
+            }
+
+            var profile = GetProfile();
+            await _loaderService.SaveAsync(profile);
+            Debug.Log("[UserProfileService] Profile saved to Google Sheets successfully");
         }
 
         // ── Private ─────────────────────────────────────────────────────────────
