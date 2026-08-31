@@ -1,0 +1,1857 @@
+fileFormatVersion: 2
+guid: 3235825dd519c498db99c302d902a1b8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_0
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 10151
+        width: 1564
+        height: 3384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c90d6423237447facfa5ee9ec132a7
+      internalID: -306998604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_1
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 10125
+        width: 1564
+        height: 3384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b33967ab5549463f81142416dae0a2a
+      internalID: 1363529344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_2
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 6358
+        width: 1564
+        height: 3385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c42828ec1bd645989fd5cd2e4b6b218
+      internalID: 1275617699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_3
+      rect:
+        serializedVersion: 2
+        x: 2827
+        y: 9716
+        width: 135
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a85d98c70ec947d5b540e8a067daace
+      internalID: 897520319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_4
+      rect:
+        serializedVersion: 2
+        x: 2718
+        y: 9603
+        width: 53
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56c406109e5844c685c60e13968cb1b
+      internalID: 47926418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_5
+      rect:
+        serializedVersion: 2
+        x: 2776
+        y: 9603
+        width: 57
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2783c927cb0408796b1773fd08971e
+      internalID: -1054173664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_6
+      rect:
+        serializedVersion: 2
+        x: 2834
+        y: 9603
+        width: 58
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ec1e88316bb44e382e03e53f7c388b
+      internalID: -905804016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_7
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 9603
+        width: 52
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5a478aacbde4fadb580fa94bc31eb0
+      internalID: -664699026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_8
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 9603
+        width: 57
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd97e80aaa9274251b1c6d53aa981a25
+      internalID: 468981034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_9
+      rect:
+        serializedVersion: 2
+        x: 3023
+        y: 9603
+        width: 48
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e388ae5a1c0a4cd382028e1af70d097
+      internalID: 1070445825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_10
+      rect:
+        serializedVersion: 2
+        x: 2764
+        y: 9567
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da8fefa709f245229860c029421d4f4
+      internalID: 1261111391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_11
+      rect:
+        serializedVersion: 2
+        x: 2789
+        y: 9567
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e76ef301722bc4ec7b9a284543db4874
+      internalID: 457968134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_12
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 9567
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12155bd8f91748dd867b4fdf542c5d8
+      internalID: 66640677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_13
+      rect:
+        serializedVersion: 2
+        x: 2833
+        y: 9567
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cc4b297a17ae406d83cd8b667ad51d4
+      internalID: 1747297253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_14
+      rect:
+        serializedVersion: 2
+        x: 2859
+        y: 9567
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127a117c25aca40aea8b1e68a268c3c7
+      internalID: 935360019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_15
+      rect:
+        serializedVersion: 2
+        x: 2891
+        y: 9567
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87167a4b7e5d4775925fa63d245a811
+      internalID: 905452155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_16
+      rect:
+        serializedVersion: 2
+        x: 2918
+        y: 9567
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0962494698b84fbea8832007637deb3
+      internalID: 1845646683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_17
+      rect:
+        serializedVersion: 2
+        x: 2953
+        y: 9567
+        width: 47
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d3e96ca8d324893a819efef20d605c
+      internalID: -156939891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_18
+      rect:
+        serializedVersion: 2
+        x: 3002
+        y: 9567
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce7cde9c3a1940bc8ddce1340842f14
+      internalID: 659713348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_19
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 9108
+        width: 911
+        height: 334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc093493868944a3badd9ce25b409d3e
+      internalID: -1919451739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_20
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 8840
+        width: 864
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328b7b055bf2b478c85062dc8975e295
+      internalID: 400963478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_21
+      rect:
+        serializedVersion: 2
+        x: 3117
+        y: 8399
+        width: 965
+        height: 667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da84e3fc70fb49088fcf8bf95295462
+      internalID: 2090396605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_22
+      rect:
+        serializedVersion: 2
+        x: 2054
+        y: 8445
+        width: 688
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82feb7ac3b11f4e3ba93c2991d0acf65
+      internalID: -498046315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_23
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 8229
+        width: 577
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1bcf4ee4494f40ae93b4c61be64335c
+      internalID: -1117586512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_24
+      rect:
+        serializedVersion: 2
+        x: 2431
+        y: 7671
+        width: 314
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e260c374501e24343b648ac12ff0eac4
+      internalID: -338571322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_25
+      rect:
+        serializedVersion: 2
+        x: 2823
+        y: 7678
+        width: 270
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a1d84127f2f48e7bbc068552e6cc96
+      internalID: -1473950246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_26
+      rect:
+        serializedVersion: 2
+        x: 2481
+        y: 7268
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 803e5736373bd4d2bb39be9d81b8e86c
+      internalID: 823862796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_27
+      rect:
+        serializedVersion: 2
+        x: 2939
+        y: 7351
+        width: 237
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c4122f46e67476eb4bac2bd0ac8d0d
+      internalID: -1107528865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_28
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 6830
+        width: 119
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faae05e118786498c869d2baeacd8a09
+      internalID: -1825676336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_29
+      rect:
+        serializedVersion: 2
+        x: 2767
+        y: 6880
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f1526b7620864935a2ae38b5ade8c33
+      internalID: 1975711255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_30
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 6897
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa15a518807f1406e9b4b3a5908e65fb
+      internalID: -527718907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_31
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 6897
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295982aa9688d4e058683f42993eef81
+      internalID: 1518655011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_32
+      rect:
+        serializedVersion: 2
+        x: 3092
+        y: 6897
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f18878c08ff4e0aba7a5f898be313e
+      internalID: 699860243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_33
+      rect:
+        serializedVersion: 2
+        x: 3194
+        y: 6897
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a64020e5e4a451f98d8155912db848
+      internalID: -940698915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_34
+      rect:
+        serializedVersion: 2
+        x: 3297
+        y: 6897
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a89571dcafe4b309e5fadacff00426
+      internalID: 1591316293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_35
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 6897
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d66d6a0a01d47440b9b812fc4909dead
+      internalID: -1273362350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_36
+      rect:
+        serializedVersion: 2
+        x: 3502
+        y: 6897
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742e0811c4006464b8822569c22ab3e4
+      internalID: -1605148468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_37
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 6665
+        width: 119
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 124d1e5966a5046b99c340384ef6e6b0
+      internalID: 520107834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_38
+      rect:
+        serializedVersion: 2
+        x: 2767
+        y: 6736
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d31879a6259224d8ca602b83d203b71f
+      internalID: -1338362966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_39
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 6753
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123ca3044728545ec8b4d959ac8fa0fa
+      internalID: 402567615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_40
+      rect:
+        serializedVersion: 2
+        x: 2447
+        y: 6295
+        width: 446
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f123b80a253d9414da69f7427ab5f187
+      internalID: -1329484729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_41
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 5064
+        width: 1214
+        height: 696
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a737fcd52ccfd41a183d60c20f2bbdbf
+      internalID: -7207027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_42
+      rect:
+        serializedVersion: 2
+        x: 2276
+        y: 4180
+        width: 1533
+        height: 1690
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bbf21807c5b43288d9c3155d5d8b94
+      internalID: -1693501581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_43
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 4366
+        width: 1214
+        height: 694
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d428db56ea5da4498840ab4b81e8336f
+      internalID: 1042536303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_44
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 3632
+        width: 1217
+        height: 669
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c11cee50a504e4aa33f89825404246
+      internalID: -1363321678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_45
+      rect:
+        serializedVersion: 2
+        x: 2276
+        y: 2349
+        width: 1533
+        height: 1659
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ceca29e8e4f41f2b3149f5bb289350
+      internalID: -673643029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_46
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 2864
+        width: 1214
+        height: 665
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b3ca8478cfc4c20aed7b3bc1830e17
+      internalID: -1491673244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_47
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 2300
+        width: 188
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6f4e695f280a48cd880515bba111f38
+      internalID: -1248659924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_48
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 2477
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3748b15f751384577bfae3770189a6c5
+      internalID: -1487661093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_49
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 2477
+        width: 67
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f09b3ed8fa4ba4ce48c3bd14a9c8b095
+      internalID: 13157250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_50
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 2360
+        width: 68
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf0138607d7b48db8e85abadd930006
+      internalID: -1324077844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_51
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 2360
+        width: 68
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0ad3dab108f4ce2a3ec7a0e28062fb
+      internalID: 1831797140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_52
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 2361
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b77aa6fbc924b66bb1e40356b4e284
+      internalID: 2090682171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_53
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 2361
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c3e590a4d3e46889ef24ac4b89b10b
+      internalID: -259066982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_54
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 2361
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebeab087dc7447a4b0f555e1fc58c47
+      internalID: 790725890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_55
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 2361
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4338eb6966d144bfc90bd72e7c802f31
+      internalID: -931292599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_56
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 2361
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98357cf8808d747b4a79f6436f5405c8
+      internalID: -1708777169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_57
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 2250
+        width: 68
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad9d652452734831a7b009e7048fdb2
+      internalID: 1812182913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_58
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 2250
+        width: 68
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d5e2c1c96ee477c912390c1c4df402
+      internalID: -391754966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_59
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 2250
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642c899839e964b088b966f622d01b9a
+      internalID: 1483337503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_60
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 2250
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd520538ee8245929938c4c9e78cf8d
+      internalID: -1139943430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_61
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 2250
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a53d9e1b585241f4bce7d6d093f43b9
+      internalID: -1725688674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_62
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 2250
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19202e4c740884563af3625d8ba7ed1a
+      internalID: 2117843077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_63
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 2250
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4868d0cab1c43aab3385561eba7a67
+      internalID: -1329085150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_64
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1897
+        width: 66
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d48840ced5b944b5bc1c978d013fa39
+      internalID: -139225287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_65
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1905
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d911841c8454ad2b4693e35921ffeb
+      internalID: -90402387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_66
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1905
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc4908e0633d4242a42c3ce7739ea48
+      internalID: -479278493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_67
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1857
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b63f35978ed454baf86e1edad65c68a8
+      internalID: 1452255785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_68
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1857
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada5666e8f670464e9fad8f335d7a937
+      internalID: -110296545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_69
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1857
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f223737210091427896749c81b5cf910
+      internalID: 147263947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_70
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 1857
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1f45de37aa240f6a3702986ee70df6
+      internalID: -1964442280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_71
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 1857
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a685ee3e0b704a9d8dc4d8f2856006e
+      internalID: -739569897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_72
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 586
+        width: 1448
+        height: 1538
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18fa3b1a534c4835a9f3ded29749ff4
+      internalID: -972212101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_73
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1344
+        width: 1136
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 536, y: 139, z: 543, w: 147}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61c921eb1b974ddda7ddde40cdf8976
+      internalID: 1248245979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_umrah_game_300_ppi_74
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 312
+        width: 958
+        height: 867
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f37d495eb104c4238bc5e2a15f936332
+      internalID: 1454354309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a181df6dab3354803abf279e48e47331
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      atlas_umrah_game_300_ppi_0: -306998604
+      atlas_umrah_game_300_ppi_1: 1363529344
+      atlas_umrah_game_300_ppi_10: 1261111391
+      atlas_umrah_game_300_ppi_11: 457968134
+      atlas_umrah_game_300_ppi_12: 66640677
+      atlas_umrah_game_300_ppi_13: 1747297253
+      atlas_umrah_game_300_ppi_14: 935360019
+      atlas_umrah_game_300_ppi_15: 905452155
+      atlas_umrah_game_300_ppi_16: 1845646683
+      atlas_umrah_game_300_ppi_17: -156939891
+      atlas_umrah_game_300_ppi_18: 659713348
+      atlas_umrah_game_300_ppi_19: -1919451739
+      atlas_umrah_game_300_ppi_2: 1275617699
+      atlas_umrah_game_300_ppi_20: 400963478
+      atlas_umrah_game_300_ppi_21: 2090396605
+      atlas_umrah_game_300_ppi_22: -498046315
+      atlas_umrah_game_300_ppi_23: -1117586512
+      atlas_umrah_game_300_ppi_24: -338571322
+      atlas_umrah_game_300_ppi_25: -1473950246
+      atlas_umrah_game_300_ppi_26: 823862796
+      atlas_umrah_game_300_ppi_27: -1107528865
+      atlas_umrah_game_300_ppi_28: -1825676336
+      atlas_umrah_game_300_ppi_29: 1975711255
+      atlas_umrah_game_300_ppi_3: 897520319
+      atlas_umrah_game_300_ppi_30: -527718907
+      atlas_umrah_game_300_ppi_31: 1518655011
+      atlas_umrah_game_300_ppi_32: 699860243
+      atlas_umrah_game_300_ppi_33: -940698915
+      atlas_umrah_game_300_ppi_34: 1591316293
+      atlas_umrah_game_300_ppi_35: -1273362350
+      atlas_umrah_game_300_ppi_36: -1605148468
+      atlas_umrah_game_300_ppi_37: 520107834
+      atlas_umrah_game_300_ppi_38: -1338362966
+      atlas_umrah_game_300_ppi_39: 402567615
+      atlas_umrah_game_300_ppi_4: 47926418
+      atlas_umrah_game_300_ppi_40: -1329484729
+      atlas_umrah_game_300_ppi_41: -7207027
+      atlas_umrah_game_300_ppi_42: -1693501581
+      atlas_umrah_game_300_ppi_43: 1042536303
+      atlas_umrah_game_300_ppi_44: -1363321678
+      atlas_umrah_game_300_ppi_45: -673643029
+      atlas_umrah_game_300_ppi_46: -1491673244
+      atlas_umrah_game_300_ppi_47: -1248659924
+      atlas_umrah_game_300_ppi_48: -1487661093
+      atlas_umrah_game_300_ppi_49: 13157250
+      atlas_umrah_game_300_ppi_5: -1054173664
+      atlas_umrah_game_300_ppi_50: -1324077844
+      atlas_umrah_game_300_ppi_51: 1831797140
+      atlas_umrah_game_300_ppi_52: 2090682171
+      atlas_umrah_game_300_ppi_53: -259066982
+      atlas_umrah_game_300_ppi_54: 790725890
+      atlas_umrah_game_300_ppi_55: -931292599
+      atlas_umrah_game_300_ppi_56: -1708777169
+      atlas_umrah_game_300_ppi_57: 1812182913
+      atlas_umrah_game_300_ppi_58: -391754966
+      atlas_umrah_game_300_ppi_59: 1483337503
+      atlas_umrah_game_300_ppi_6: -905804016
+      atlas_umrah_game_300_ppi_60: -1139943430
+      atlas_umrah_game_300_ppi_61: -1725688674
+      atlas_umrah_game_300_ppi_62: 2117843077
+      atlas_umrah_game_300_ppi_63: -1329085150
+      atlas_umrah_game_300_ppi_64: -139225287
+      atlas_umrah_game_300_ppi_65: -90402387
+      atlas_umrah_game_300_ppi_66: -479278493
+      atlas_umrah_game_300_ppi_67: 1452255785
+      atlas_umrah_game_300_ppi_68: -110296545
+      atlas_umrah_game_300_ppi_69: 147263947
+      atlas_umrah_game_300_ppi_7: -664699026
+      atlas_umrah_game_300_ppi_70: -1964442280
+      atlas_umrah_game_300_ppi_71: -739569897
+      atlas_umrah_game_300_ppi_72: -972212101
+      atlas_umrah_game_300_ppi_73: 1248245979
+      atlas_umrah_game_300_ppi_74: 1454354309
+      atlas_umrah_game_300_ppi_8: 468981034
+      atlas_umrah_game_300_ppi_9: 1070445825
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
