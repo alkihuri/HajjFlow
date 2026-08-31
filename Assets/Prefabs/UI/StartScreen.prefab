@@ -3228,9 +3228,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9138364052380495490}
     m_Modifications:
+    - target: {fileID: 895941691514944528, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1224818467551766255, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_Name
       value: RegUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2756998087354583211, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3129418991932211307, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_Pivot.x

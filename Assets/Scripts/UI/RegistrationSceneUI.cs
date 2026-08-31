@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using HajjFlow.Core;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,9 @@ public class RegistrationSceneUI : MonoBehaviour
     
     [SerializeField] TMP_InputField _usernameInput;
     [SerializeField] TMP_InputField _groupInput;
-
+    [SerializeField] TextMeshProUGUI _loadingText;
+    
+    
     private void Awake()
     {
         if (_registrationButton != null)
@@ -57,11 +60,9 @@ public class RegistrationSceneUI : MonoBehaviour
 
         Debug.Log($"Registered with Username: {username}, Group: {group}");
         
-        
-        await GameManager.Instance.GetService<RegistrationService>().RegisterUserAsync(username, group,HideRegistrationScreen);
-        
         PlayLoadingScreen();
- 
+        await GameManager.Instance.GetService<RegistrationService>().RegisterUserAsync(username, group,HideRegistrationScreen);
+         
     }
 
     private void PlayLoadingScreen()
@@ -71,6 +72,27 @@ public class RegistrationSceneUI : MonoBehaviour
         _skipButton.interactable = true;
           
         _loadingScreenUI.SetActive(true); 
+        
+        // add animated 3 dots to text 
+        // save original text but add  0 1 2 3 dots to it
+         StartCoroutine(LoadingAnimation());
+    }
+
+    private IEnumerator LoadingAnimation()
+    { 
+        
+        string originalText = _loadingText.text;
+        int dotCount = 0;
+
+        while (_loadingScreenUI.activeSelf)
+        {
+            dotCount = (dotCount + 1) % 4; // Cycle through 0, 1, 2, 3
+            _loadingText.text = originalText + new string('.', dotCount);
+            yield return new WaitForSeconds(0.5f); // Update every half second
+        }
+
+        // Reset text when loading screen is hidden
+        _loadingText.text = originalText;
     }
 
 
@@ -83,5 +105,6 @@ public class RegistrationSceneUI : MonoBehaviour
     public void HideRegistrationScreen()
     {
         _registrationSceneUI.SetActive(false);
+        StopCoroutine(LoadingAnimation());
     }
 }
