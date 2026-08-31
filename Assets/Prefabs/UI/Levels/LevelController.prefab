@@ -61,6 +61,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5510729111978046499}
     m_Modifications:
+    - target: {fileID: 1345251790738911947, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1752562244077858242, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
       propertyPath: m_Name
       value: QuestionCotroller
@@ -68,10 +72,6 @@ PrefabInstance:
     - target: {fileID: 1752562244077858242, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3335339455089516765, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
-      propertyPath: m_fontSize
-      value: 65.85
       objectReference: {fileID: 0}
     - target: {fileID: 4433925621750903758, guid: 2fb00fdbb895b4140b0893a7a43fb2ee, type: 3}
       propertyPath: m_AnchorMax.y
@@ -329,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
       propertyPath: m_Name
       value: CardViewer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158186930175862129, guid: 17a77c7f32b494ed8ab6389ea8b806c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

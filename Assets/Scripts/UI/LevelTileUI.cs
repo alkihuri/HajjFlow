@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using HajjFlow.Data;
 using HajjFlow.Services;
+using UnityEngine.U2D;
 
 namespace HajjFlow.UI
 {
@@ -21,6 +22,7 @@ namespace HajjFlow.UI
     /// </summary>
     public class LevelTileUI : MonoBehaviour
     {
+        [SerializeField] private Sprite _mainSpriteAtlas;
         [SerializeField] private GameTextController _levelNameText;
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField] private Image _thumbnail;
@@ -45,7 +47,7 @@ namespace HajjFlow.UI
             {
                 Debug.LogWarning("[LevelTileUI] Cannot update - LevelData is null");
                 return;
-            }
+            } 
 
             float levelResult = 0f;
             bool isCompleted = false;

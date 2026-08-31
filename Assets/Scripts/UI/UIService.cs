@@ -41,6 +41,23 @@ namespace HajjFlow.UI
         [SerializeField] private TextMeshProUGUI _gemsCounterText;
 
         [SerializeField] RegistrationSceneUI _registrationSceneUI;
+
+
+        
+        /// <summary>
+        ///  HARD CODED THUMBNAILS FOR LEVELS
+        /// </summary>
+        [System.Serializable]
+        class LevelThumbnailData
+        {
+            public string LevelId;
+            public Sprite Thumbnail;
+        };
+        
+        [SerializeField] private List<LevelThumbnailData> _levelThumbnails = new List<LevelThumbnailData>();
+      
+      
+        
         
         // - level Controllers 
         [Header("Level Controllers")] [SerializeField]
@@ -331,6 +348,10 @@ namespace HajjFlow.UI
                     var levelData = runtimeFactory.CreateLevelData(info.levelId);
                     if (levelData != null)
                     {
+                        if (_levelThumbnails.Select(t => t.LevelId).Contains(info.levelId))
+                        {
+                            levelData.Thumbnail = _levelThumbnails.Find(t => t.LevelId == info.levelId).Thumbnail;
+                        }
                         runtimeLevels.Add(levelData);
                     }
                 }

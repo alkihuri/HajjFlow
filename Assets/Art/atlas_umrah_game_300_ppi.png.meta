@@ -1012,7 +1012,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_umrah_game_300_ppi_41
+      name: level_0
       rect:
         serializedVersion: 2
         x: 461
@@ -1056,7 +1056,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_umrah_game_300_ppi_43
+      name: level_1
       rect:
         serializedVersion: 2
         x: 417
@@ -1078,7 +1078,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_umrah_game_300_ppi_44
+      name: level_2
       rect:
         serializedVersion: 2
         x: 459
@@ -1122,7 +1122,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_umrah_game_300_ppi_46
+      name: level_3
       rect:
         serializedVersion: 2
         x: 462
@@ -1811,12 +1811,8 @@ TextureImporter:
       atlas_umrah_game_300_ppi_39: 402567615
       atlas_umrah_game_300_ppi_4: 47926418
       atlas_umrah_game_300_ppi_40: -1329484729
-      atlas_umrah_game_300_ppi_41: -7207027
       atlas_umrah_game_300_ppi_42: -1693501581
-      atlas_umrah_game_300_ppi_43: 1042536303
-      atlas_umrah_game_300_ppi_44: -1363321678
       atlas_umrah_game_300_ppi_45: -673643029
-      atlas_umrah_game_300_ppi_46: -1491673244
       atlas_umrah_game_300_ppi_47: -1248659924
       atlas_umrah_game_300_ppi_48: -1487661093
       atlas_umrah_game_300_ppi_49: 13157250
@@ -1850,6 +1846,10 @@ TextureImporter:
       atlas_umrah_game_300_ppi_74: 1454354309
       atlas_umrah_game_300_ppi_8: 468981034
       atlas_umrah_game_300_ppi_9: 1070445825
+      level_0: -7207027
+      level_1: 1042536303
+      level_2: -1363321678
+      level_3: -1491673244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
