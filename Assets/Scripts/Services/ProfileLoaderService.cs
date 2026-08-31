@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GSheetsCommander;
 using UnityEngine;
 using HajjFlow.Data;
 
@@ -12,7 +13,8 @@ namespace HajjFlow.Services
     /// Использует паттерн стратегии для выбора провайдера.
     /// 
     /// Архитектура:
-    /// - Загрузка: пробует провайдеры по приоритету (Backend -> PlayerPrefs -> File)
+    /// - Загрузка: при подключённом Google Sheets сначала читает таблицу, затем
+    ///   использует локальные данные только как fallback.
     /// - Сохранение: сохраняет во все локальные провайдеры + в бекенд если доступен
     /// </summary>
     public class ProfileLoaderService
@@ -64,6 +66,39 @@ namespace HajjFlow.Services
             
             RegisterProvider(new BackendProfileProvider(apiUrl, userId));
             Debug.Log($"[ProfileLoaderService] Backend enabled: {apiUrl}");
+        }
+
+        /// <summary>
+        /// Включает Google Sheets провайдер для загрузки/сохранения профиля.
+        /// </summary>
+        public void EnableGoogleSheets(GoogleSheetsConfig config, string username, string groupName)
+        {
+            if (config == null)
+            {
+                Debug.LogWarning("[ProfileLoaderService] GoogleSheetsConfig is null");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(groupName))
+            {
+                Debug.LogWarning("[ProfileLoaderService] Username and GroupName are required for Google Sheets");
+                return;
+            }
+
+            try
+            {
+                var provider = new GoogleSheetsProfileProvider(config, username, groupName);
+                RegisterProvider(provider);
+                // До подключения Google Sheets в кэше мог находиться профиль из
+                // PlayerPrefs. Он не должен помешать загрузке актуальных данных
+                // пользователя из таблицы.
+                InvalidateCache();
+                Debug.Log($"[ProfileLoaderService] Google Sheets enabled for user '{username}' in group '{groupName}'");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ProfileLoaderService] Failed to enable Google Sheets: {ex.Message}");
+            }
         }
 
         /// <summary>
@@ -140,19 +175,64 @@ namespace HajjFlow.Services
                 return _cachedProfile;
             }
 
-            foreach (var provider in _providers)
+            var googleSheetsProvider = _providers.FirstOrDefault(p => p.ProviderName == "GoogleSheets");
+            if (googleSheetsProvider != null)
+                return await LoadFromGoogleSheetsAsync();
+
+            return await LoadFromProvidersAsync(_providers);
+        }
+
+        /// <summary>
+        /// Принудительно загружает профиль из Google Sheets. PlayerPrefs читается
+        /// только если таблица недоступна или не содержит пользователя.
+        /// </summary>
+        public async Task<UserProfile> LoadFromGoogleSheetsAsync()
+        {
+            var googleSheetsProvider = _providers.FirstOrDefault(p => p.ProviderName == "GoogleSheets");
+            if (googleSheetsProvider == null)
+            {
+                Debug.LogWarning("[ProfileLoaderService] Google Sheets provider is not enabled");
+                return await LoadFromProvidersAsync(_providers);
+            }
+
+            _cachedProfile = null;
+            try
+            {
+                var profile = await googleSheetsProvider.LoadAsync();
+                if (profile != null)
+                {
+                    _cachedProfile = profile;
+
+                    // Обновляем локальный кэш только после успешной загрузки из
+                    // таблицы, чтобы на следующем запуске он не был устаревшим.
+                    foreach (var provider in _providers.Where(p => p.ProviderName == "PlayerPrefs"))
+                        await provider.SaveAsync(profile);
+
+                    Debug.Log("[ProfileLoaderService] Loaded from Google Sheets and refreshed PlayerPrefs cache");
+                    return profile;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[ProfileLoaderService] Google Sheets async load failed: {ex.Message}");
+            }
+
+            Debug.LogWarning("[ProfileLoaderService] Google Sheets returned no profile; using local fallback");
+            return await LoadFromProvidersAsync(_providers.Where(p => p.ProviderName != "GoogleSheets"));
+        }
+
+        private async Task<UserProfile> LoadFromProvidersAsync(IEnumerable<IProfileDataProvider> providers)
+        {
+            foreach (var provider in providers)
             {
                 try
                 {
-                    if (provider.HasData())
+                    var profile = await provider.LoadAsync();
+                    if (profile != null)
                     {
-                        var profile = await provider.LoadAsync();
-                        if (profile != null)
-                        {
-                            _cachedProfile = profile;
-                            Debug.Log($"[ProfileLoaderService] Loaded async from {provider.ProviderName}");
-                            return profile;
-                        }
+                        _cachedProfile = profile;
+                        Debug.Log($"[ProfileLoaderService] Loaded async from {provider.ProviderName}");
+                        return profile;
                     }
                 }
                 catch (Exception ex)
@@ -366,4 +446,3 @@ namespace HajjFlow.Services
         }
     }
 }
-

@@ -549,6 +549,12 @@ namespace HajjFlow.UI
             }
         }
 
+        
+        [ContextMenu("Force Refresh Level Tile Buttons")]
+        public void ForceRefreshLevelTileButtons()
+        {
+            UpdateLevelTileButtons(true);
+        }
         public void UpdateLevelTileButtons(bool forceRefresh = false)
         {
             foreach (var tile in _levelSelectButtons)

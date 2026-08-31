@@ -26,6 +26,52 @@ public class RegistrationService : MonoBehaviour
        _googleSheetsClient = new GoogleSheetsClient(_googleSheetsConfig);
    }
 
+   private async void Start()
+   {
+       // К этому моменту Bootstrapper уже зарегистрировал сервисы. Загружаем
+       // серверные данные до того, как локальный кэш будет использоваться далее.
+       await LoadUserProgressOnStartupAsync();
+   }
+
+   /// <summary>
+   /// Загружает прогресс пользователя из Google Sheets при запуске приложения.
+   /// Вызывается, если пользователь уже зарегистрирован.
+   /// </summary>
+   public async Task LoadUserProgressOnStartupAsync()
+   {
+       string username = PlayerPrefs.GetString(UsernamePreferenceKey, "");
+       string group = PlayerPrefs.GetString(GroupPreferenceKey, "");
+
+       if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(group))
+       {
+           Debug.Log("[RegistrationService] No registered user found, skipping progress load.");
+           return;
+       }
+
+       try
+       {
+           var userProfileService = GameManager.Instance.GetService<UserProfileService>();
+           userProfileService.EnableGoogleSheets(_googleSheetsConfig, username, group);
+           await userProfileService.LoadFromGoogleSheetsAsync();
+
+           var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+           int userRow = await FindUserRowAsync(group, username);
+
+           if (userRow > 0)
+           {
+               await SyncProgressFromSheetAsync(group, userRow, allLevels);
+               Debug.Log($"[RegistrationService] Loaded progress for user '{username}' from sheet '{group}'");
+           }
+           else
+           {
+               Debug.LogWarning($"[RegistrationService] User '{username}' not found in sheet '{group}'");
+           }
+       }
+       catch (System.Exception ex)
+       {
+           Debug.LogError($"[RegistrationService] Failed to load user progress on startup: {ex.Message}");
+       }
+   }
 
    
    // callback function to be called after registration is complete
@@ -47,38 +93,39 @@ public class RegistrationService : MonoBehaviour
               await CreateSheetAndHeader(group);
           }
 
-          var currentprogress = GameManager.Instance.GetService<StageCompletionService>().GetLevelREsult;
-          var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
-          
-          // Создаем словарь пройденных уровней для быстрого поиска
-          var progressDict = currentprogress.ToDictionary(p => p.Key, p => p.Value.ScorePercent);
-          
-          // Проходим по всем уровням в правильном порядке
-          var newRow = new List<string> { username };
-          foreach (var level in allLevels)
-          {
-              if (progressDict.TryGetValue(level.levelId, out var score))
-              {
-                  newRow.Add(score.ToString("0.#", CultureInfo.InvariantCulture));
-              }
-              else
-              {
-                  newRow.Add(""); // Пустая ячейка для непройденного уровня
-              }
-          } 
           var existingRow = await FindUserRowAsync(group, username);
-
-          RowData createdRow= null;
+          int sheetRow;
           if (existingRow == -1)
           {
-               createdRow =  await _googleSheetsClient.AppendRowAsync(group,  newRow.Cast<object>().ToArray());
+              var currentprogress = GameManager.Instance.GetService<StageCompletionService>().GetLevelREsult;
+              var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+              var progressDict = currentprogress.ToDictionary(p => p.Key, p => p.Value.ScorePercent);
+              var newRow = new List<string> { username };
+              foreach (var level in allLevels)
+              {
+                  newRow.Add(progressDict.TryGetValue(level.levelId, out var score)
+                      ? score.ToString("0.#", CultureInfo.InvariantCulture)
+                      : string.Empty);
+              }
+
+              var createdRow = await _googleSheetsClient.AppendRowAsync(group, newRow.Cast<object>().ToArray());
+              sheetRow = createdRow.row;
           }
           else
           {
-                createdRow = await _googleSheetsClient.UpdateRowAsync(group, existingRow, newRow.Cast<object>().ToArray());
-          }
+              // Для существующего пользователя источником истины является таблица.
+              // Не перезаписываем её значениями из PlayerPrefs.
+              sheetRow = existingRow;
+           }
 
-          PlayerPrefs.SetInt(SheetRowPreferenceKey, createdRow.row);
+          var userProfileService = GameManager.Instance.GetService<UserProfileService>(); 
+          userProfileService.EnableGoogleSheets(_googleSheetsConfig, username, group);
+          await userProfileService.LoadFromGoogleSheetsAsync();
+
+          var allRegisteredLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
+          await SyncProgressFromSheetAsync(group, sheetRow, allRegisteredLevels);
+          
+          PlayerPrefs.SetInt(SheetRowPreferenceKey, sheetRow);
           PlayerPrefs.SetString(SheetNamePreferenceKey, group);
           PlayerPrefs.Save();
           
@@ -87,6 +134,66 @@ public class RegistrationService : MonoBehaviour
       catch (Exception ex)
       {
           Debug.LogError($"Registration failed: {ex.Message}");
+      }
+  }
+
+  /// <summary>
+  /// Загружает прогресс пользователя из Google Sheets и синхронизирует с StageCompletionService.
+  /// Вызывается при повторной регистрации (когда пользователь уже есть в таблице).
+  /// </summary>
+  private async Task SyncProgressFromSheetAsync(string group, int userRow, List<ContentLoaderService.RuntimeLevelInfo> allLevels)
+  {
+      try
+      {
+          var stageCompletionService = GameManager.Instance?.GetService<StageCompletionService>();
+          if (stageCompletionService == null)
+          {
+              Debug.LogWarning("[RegistrationService] StageCompletionService not found, cannot sync progress from sheet.");
+              return;
+          }
+
+          // Получаем строку пользователя из Google Sheets
+          var range = await _googleSheetsClient.GetRangeAsync(group, $"A{userRow}:Z{userRow}");
+          if (range?.values == null || range.values.Length == 0)
+          {
+              Debug.LogWarning($"[RegistrationService] User row {userRow} not found in sheet {group}");
+              return;
+          }
+
+          object[] userRowData = range.values[0];
+
+          // Удаляем прежние локальные значения перед применением данных таблицы:
+          // пустая ячейка в Sheets также должна означать отсутствие прогресса.
+          foreach (var level in allLevels)
+          {
+              stageCompletionService.ClearLevelResult(level.levelId);
+          }
+
+          // Синхронизируем каждый уровень из таблицы в StageCompletionService
+          for (int i = 0; i < allLevels.Count; i++)
+          {
+              // Колонка A (индекс 0) - имя пользователя
+              // Колонка B (индекс 1) - первый уровень, и т.д.
+              int cellIndex = i + 1;
+
+              if (cellIndex < userRowData.Length && userRowData[cellIndex] != null)
+              {
+                  string cellValue = userRowData[cellIndex].ToString().Trim();
+                  
+                  if (!string.IsNullOrEmpty(cellValue) && float.TryParse(cellValue, NumberStyles.Any, CultureInfo.InvariantCulture, out var score))
+                  {
+                      // Обновляем результат уровня в StageCompletionService
+                      stageCompletionService.RecordLevelResult(allLevels[i].levelId, score);
+                      Debug.Log($"[RegistrationService] Synced progress: {allLevels[i].levelId} = {score:F1}% from sheet");
+                  }
+              }
+          }
+
+          Debug.Log($"[RegistrationService] Successfully synced progress from Google Sheets");
+      }
+      catch (System.Exception ex)
+      {
+          Debug.LogError($"[RegistrationService] Failed to sync progress from sheet: {ex.Message}");
       }
   }
 
