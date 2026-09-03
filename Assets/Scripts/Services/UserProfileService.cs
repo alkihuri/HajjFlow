@@ -4,9 +4,54 @@ using System.Threading.Tasks;
 using GSheetsCommander;
 using UnityEngine;
 using HajjFlow.Data;
+using Newtonsoft.Json;
 
 namespace HajjFlow.Services
 {
+    public class CreateUserResponse
+    {
+        [JsonProperty("row")]
+        public int Row { get; set; }
+    
+        [JsonProperty("user")]
+        public UserData User { get; set; }
+        
+        [JsonProperty("progress")]
+        public ProgressData [] Progress { get; set; }
+    }
+    
+    public class ProgressData
+    {
+        [JsonProperty("level")]
+        public string level { get; set; }
+    
+        [JsonProperty("percent")]
+        public string percent { get; set; }
+    }
+    
+    public class UserData
+    {
+        [JsonProperty("UserId")]
+        public string UserId { get; set; }
+    
+        [JsonProperty("PilgrimNumber")]
+        public string PilgrimNumber { get; set; }
+    
+        [JsonProperty("FullName")]
+        public string FullName { get; set; }
+    
+        [JsonProperty("GroupId")]
+        public string GroupId { get; set; }
+    
+        [JsonProperty("CreatedAt")]
+        public string CreatedAt { get; set; }
+    
+        [JsonProperty("UpdatedAt")]
+        public string UpdatedAt { get; set; }
+    
+        [JsonProperty("Status")]
+        public string Status { get; set; }
+    }
     /// <summary>
     /// Handles loading and saving the UserProfile.
     /// Uses ProfileLoaderService for multi-source persistence (PlayerPrefs + File + Backend).

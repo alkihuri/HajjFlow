@@ -25,9 +25,7 @@ namespace HajjFlow.Services
         /// <summary>Stored level results keyed by levelId.</summary>
         private readonly Dictionary<string, LevelResult> _levelResults = new Dictionary<string, LevelResult>();
 
-
-        public Dictionary<string, LevelResult> GetLevelREsult => _levelResults;
-        
+ 
         //  DEBUG PURPOSE LEVEL RESUL SHOW IN INPECTOR
         [Header("Debug: Level Results")]
         public List<LevelResult> DebugLevelResults = new List<LevelResult>();
@@ -224,6 +222,11 @@ namespace HajjFlow.Services
                 return result.ScorePercent;
             }
             return 0f;
+        }
+
+        public Dictionary<string,LevelResult> GetAllLevelsResult()
+        {
+            return _levelResults;
         }
     }
 
