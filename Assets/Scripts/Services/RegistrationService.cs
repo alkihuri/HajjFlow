@@ -222,7 +222,7 @@ public class RegistrationService : MonoBehaviour
   /// Динамически определяет колонку на основе позиции уровня в списке.
   /// Использует маппинг по levelId для корректного соответствия колонкам.
   /// </summary>
-  public async Task SaveLevelResultAsync(string levelId, float scorePercent)
+  public async Task SaveLevelResultAsync(string levelId, float scorePercent, Action <bool> doneCallback=null)
   {
       var allLevels = GameManager.Instance.GetService<RuntimeLevelFactory>().GetAllLevelInfos();
       
@@ -250,7 +250,7 @@ public class RegistrationService : MonoBehaviour
       try
       {
           // Ищем строку пользователя в Google Sheets
-          int row = await FindUserRowAsync(group, username);
+          int row = await FindUserRowAsync(group, username)+1;
           if (row < 1)
           {
               Debug.LogWarning($"[RegistrationService] User '{username}' was not found in group '{group}'.");
@@ -264,10 +264,12 @@ public class RegistrationService : MonoBehaviour
               cell,
               scorePercent.ToString("0.#", CultureInfo.InvariantCulture));
 
+          doneCallback?.Invoke(true);
           Debug.Log($"[RegistrationService] Saved {levelId} result ({scorePercent:F1}%) to {group}!{cell}.");
       }
       catch (Exception ex)
       {
+          doneCallback?.Invoke(false);
           // Network errors must not prevent the local progress from being saved.
           Debug.LogError($"[RegistrationService] Failed to save {levelId} result: {ex.Message}");
       }
