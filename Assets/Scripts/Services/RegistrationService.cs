@@ -250,7 +250,7 @@ public class RegistrationService : MonoBehaviour
       try
       {
           // Ищем строку пользователя в Google Sheets
-          int row = await FindUserRowAsync(group, username);
+          int row = await FindUserRowAsync(group, username)+1;
           if (row < 1)
           {
               Debug.LogWarning($"[RegistrationService] User '{username}' was not found in group '{group}'.");
