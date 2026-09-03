@@ -30,7 +30,6 @@ public class RegistrationService : MonoBehaviour
    {
        // К этому моменту Bootstrapper уже зарегистрировал сервисы. Загружаем
        // серверные данные до того, как локальный кэш будет использоваться далее.
-       await LoadUserProgressOnStartupAsync();
    }
 
    /// <summary>
@@ -48,6 +47,8 @@ public class RegistrationService : MonoBehaviour
            return;
        }
 
+       
+       
        try
        {
            var userProfileService = GameManager.Instance.GetService<UserProfileService>();
@@ -83,6 +84,9 @@ public class RegistrationService : MonoBehaviour
           return;
       }
   
+      
+      //await LoadUserProgressOnStartupAsync();
+      
       try
       {
           
@@ -287,7 +291,7 @@ public class RegistrationService : MonoBehaviour
 
   private async Task<int> FindUserRowAsync(string group, string username)
   {
-      var range = await _googleSheetsClient.GetRangeAsync(group, "A:A");
+      var range = await _googleSheetsClient.GetRangeAsync(group, "A2:A20");
       if (range.values == null) return -1;
 
       for (int index = 0; index < range.values.Length; index++)
