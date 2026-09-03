@@ -16,4 +16,4 @@ MonoBehaviour:
   apiKey: 123
   timeoutSeconds: 60
   enableLogging: 1
-  useGetRequests: 0
+  useGetRequests: 1
