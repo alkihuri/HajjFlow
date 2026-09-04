@@ -38,8 +38,27 @@ public class RegistrationService : MonoBehaviour
    /// Загружает прогресс пользователя из Google Sheets при запуске приложения.
    /// Вызывается, если пользователь уже зарегистрирован.
    /// </summary>
-   
 
+
+   /// HARD CODE RE REGISTER
+   [ContextMenu("UpdateData")]
+   public async Task UpdateDataInGoogleSheets()
+   {
+       var username = PlayerPrefs.GetString(UsernamePreferenceKey);
+         var group = PlayerPrefs.GetString(GroupPreferenceKey);
+
+          // if either username or group is empty, log a warning and return
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(group))
+            {
+                Debug.LogError($"[RegistrationService] Username and group cannot be empty");
+                return;
+            }
+            
+            await RegisterUserAsync(username, group, () => Debug.Log("Re-registration complete"));
+         
+   }
+   
+   
    // callback function to be called after registration is complete
   public async Task RegisterUserAsync(string username, string group, Action doneCallback)
   {
@@ -53,7 +72,12 @@ public class RegistrationService : MonoBehaviour
         var stageCompletionService = GameManager.Instance.GetService<StageCompletionService>();
         var levelResults = stageCompletionService.GetAllLevelsResult();
 
-
+// save username and group to PlayerPrefs
+      PlayerPrefs.SetString(UsernamePreferenceKey, username);
+      PlayerPrefs.SetString(GroupPreferenceKey, group);
+      PlayerPrefs.Save();
+      
+      Debug.Log($"[RegistrationService] Registering user: {username}, group: {group}");
 
        
         
@@ -81,6 +105,10 @@ public class RegistrationService : MonoBehaviour
     catch (GoogleSheetsException gex)
     {
         Debug.LogError($"[RegistrationService] GoogleSheets error - Code: {gex.Code}, Message: {gex.Message}, Details: {gex.Details}");
+        
+        
+        
+        
         doneCallback?.Invoke();
     }
     catch (Exception ex)
@@ -99,8 +127,12 @@ public class RegistrationService : MonoBehaviour
        
   }
 
-   
 
+  [ContextMenu("Test level 0 to 100%")]
+  private async void TestSaveLevelResult()
+  {
+      await SaveLevelResultAsync("level_1", 100f, success => Debug.Log($"TestSaveLevelResult callback: {success}"));
+  }
   /// <summary>
   /// Stores a completed level score in the registered user's row.
   /// Динамически определяет колонку на основе позиции уровня в списке.
@@ -111,6 +143,8 @@ public class RegistrationService : MonoBehaviour
       
       
       var userId = PlayerPrefs.GetString(UserIdPreferenceKey);
+      
+      Debug.unityLogger.Log($"[RegistrationService] Syncing level results for {userId}");
 
       if (string.IsNullOrWhiteSpace(userId))
       {

@@ -118,6 +118,13 @@ namespace HajjFlow.Core.States
             }
 
             _currentState.Enter();
+            
+            
+            var registreationService = GameManager.Instance?.GetService<global::RegistrationService>();
+            if (registreationService != null)
+            {
+                registreationService.UpdateDataInGoogleSheets();
+            }
 
             Debug.Log($"[GameStateMachine] → {stateId}");
             OnStateChanged?.Invoke(_currentState);

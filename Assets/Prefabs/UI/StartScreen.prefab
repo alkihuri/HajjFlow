@@ -3236,6 +3236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RegUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1224818467551766255, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2756998087354583211, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
