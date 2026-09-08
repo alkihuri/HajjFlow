@@ -106,23 +106,39 @@ namespace HajjFlow.Services
             yield return CheckConfigSheet();
             // При повторных запусках не обращаемся к сети: полный валидный кэш
             // должен быть использован первым.
-            
-            var lastModify =DateTime.Parse(PlayerPrefs.GetString(LAST_MODIFY_KEY, ""));
-            var configLastModify = DateTime.Parse(_sheetConfig.LastModify);
-            Debug.Log($"[ContentLoaderService] config last modify: {configLastModify}");
-            Debug.Log($"[ContentLoaderService] last modify: {lastModify}");
-            
-            
-            
-            var registrationService = GameManager.Instance?.GetService<RegistrationService>();
 
-            if (!registrationService.UpdateGoogleSheetConfig(_sheetConfig))
+            DateTime lastModify;
+            
+            if(!DateTime.TryParse(PlayerPrefs.GetString(LAST_MODIFY_KEY, ""), out lastModify))
             {
-                Debug.LogWarning($"[ContentLoaderService] Google Sheets config update failed.");
+                Debug.LogWarning("[ContentLoaderService] Last modified not found in player prefs.");
+            }
+            else
+            {
+                Debug.Log($"[ContentLoaderService] Last modify from prefs: {lastModify}");
+            }
+            
+            DateTime configLastModify;
+            if (!DateTime.TryParse(_sheetConfig.LastModify, out configLastModify))
+            {
+                Debug.LogError("[ContentLoaderService] Config last modify not found or invalid: {_sheetConfig.LastModify}");
+                if (lastModify != configLastModify)
+                {
+                    UpdateGoogleSheetConfig();
+                }
+                else
+                {
+                    Debug.LogWarning($"[ContentLoaderService] Last modify couldn't be parsed.");
+                }
+            }
+            else
+            {
+                Debug.Log($"[ContentLoaderService] config last modify: {configLastModify}");
             }
             
             
-            
+
+
             if(configLastModify != lastModify)
             {
                  
@@ -199,9 +215,16 @@ namespace HajjFlow.Services
             Debug.Log($"  - Theory cards: {_theoryCards.Count}");
         }
 
-      
-        
-        
+        private void UpdateGoogleSheetConfig()
+        {
+            var registrationService = GameManager.Instance?.GetService<RegistrationService>();
+            if (!registrationService.UpdateGoogleSheetConfig(_sheetConfig))
+            {
+                Debug.LogWarning($"[ContentLoaderService] Google Sheets config update failed.");
+            }
+        }
+
+
         private void ParseConfigCsv(string csvContent)
         {
             if (string.IsNullOrWhiteSpace(csvContent))
