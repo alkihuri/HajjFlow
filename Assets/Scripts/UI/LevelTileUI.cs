@@ -115,7 +115,7 @@ namespace HajjFlow.UI
             
             if (_completedBadge != null)
             {
-                _completedBadge.SetActive(isCompleted || levelResult >= 99f);
+                _completedBadge.SetActive(levelResult >= 99f);
             }
             
         }

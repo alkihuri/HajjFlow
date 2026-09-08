@@ -48,7 +48,7 @@ public class RegistrationService : MonoBehaviour
    public async Task UpdateDataInGoogleSheets()
    {
        
-       if(!IsRegistred)
+            if(!IsRegistred)
          {
               Debug.LogWarning($"[RegistrationService] User is not registered. Cannot update data.");
               return;
@@ -83,6 +83,12 @@ public class RegistrationService : MonoBehaviour
       }
       // get progress from StageCompletionService
       var stageCompletionService = GameManager.Instance.GetService<StageCompletionService>();
+
+      if (!IsRegistred)
+      {
+          stageCompletionService.ResetLevelResults();
+      }
+      
       var levelResults = stageCompletionService.GetAllLevelsResult();
 
         
@@ -114,8 +120,7 @@ public class RegistrationService : MonoBehaviour
         Debug.Log($"[RegistrationService] Sending registration request: {JsonConvert.SerializeObject(payload)}");
         var result = await _googleSheetsClient.SendAsync<CreateUserResponse>("createUser", payload);
         Debug.Log($"[RegistrationService] Registration successful: {result}");
-        doneCallback?.Invoke();
-        IsRegistred = true;
+        doneCallback?.Invoke(); 
     }
     catch (GoogleSheetsException gex)
     {
@@ -131,6 +136,9 @@ public class RegistrationService : MonoBehaviour
         Debug.LogError($"[RegistrationService] Registration failed: {ex.Message}\n{ex.StackTrace}");
         doneCallback?.Invoke();
     }
+    
+    
+    IsRegistred = true;
   }
 
   /// <summary>
