@@ -26,6 +26,7 @@ public class RegistrationService : MonoBehaviour
    private void Awake()
    {
        _googleSheetsClient = new GoogleSheetsClient(_googleSheetsConfig);
+       IsRegistred = false;
    }
 
    private async void Start()
@@ -39,11 +40,20 @@ public class RegistrationService : MonoBehaviour
    /// Вызывается, если пользователь уже зарегистрирован.
    /// </summary>
 
+   
+   
 
    /// HARD CODE RE REGISTER
    [ContextMenu("UpdateData")]
    public async Task UpdateDataInGoogleSheets()
    {
+       
+       if(!IsRegistred)
+         {
+              Debug.LogWarning($"[RegistrationService] User is not registered. Cannot update data.");
+              return;
+         }
+       
        var username = PlayerPrefs.GetString(UsernamePreferenceKey);
          var group = PlayerPrefs.GetString(GroupPreferenceKey);
 
@@ -57,21 +67,25 @@ public class RegistrationService : MonoBehaviour
             await RegisterUserAsync(username, group, () => Debug.Log("Re-registration complete"));
          
    }
-   
-   
+
+   public bool IsRegistred { get; set; }
+
+
    // callback function to be called after registration is complete
   public async Task RegisterUserAsync(string username, string group, Action doneCallback)
   {
+       
+      
       if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(group))
       {
           Debug.LogError("Username and group cannot be empty");
           return;
       }
-    
       // get progress from StageCompletionService
-        var stageCompletionService = GameManager.Instance.GetService<StageCompletionService>();
-        var levelResults = stageCompletionService.GetAllLevelsResult();
+      var stageCompletionService = GameManager.Instance.GetService<StageCompletionService>();
+      var levelResults = stageCompletionService.GetAllLevelsResult();
 
+        
 // save username and group to PlayerPrefs
       PlayerPrefs.SetString(UsernamePreferenceKey, username);
       PlayerPrefs.SetString(GroupPreferenceKey, group);
@@ -101,6 +115,7 @@ public class RegistrationService : MonoBehaviour
         var result = await _googleSheetsClient.SendAsync<CreateUserResponse>("createUser", payload);
         Debug.Log($"[RegistrationService] Registration successful: {result}");
         doneCallback?.Invoke();
+        IsRegistred = true;
     }
     catch (GoogleSheetsException gex)
     {
@@ -122,7 +137,7 @@ public class RegistrationService : MonoBehaviour
   /// Загружает прогресс пользователя из Google Sheets и синхронизирует с StageCompletionService.
   /// Вызывается при повторной регистрации (когда пользователь уже есть в таблице).
   /// </summary>
-  private async Task SyncProgressFromSheetAsync(string group, int userRow, List<ContentLoaderService.RuntimeLevelInfo> allLevels)
+  private async Task SyncProgressFromSheetAsync(string group, int userRow, List<RuntimeLevelInfo> allLevels)
   {
        
   }
@@ -190,5 +205,25 @@ public class RegistrationService : MonoBehaviour
       }
 
       return -1;
+  }
+
+  public bool UpdateGoogleSheetConfig(SheetsConfig config)
+  {
+      if (config != null)
+      {
+          if (config.ApiKey != "")
+          {
+              
+              Debug.Log($"[RegistrationService] Google Sheets App url updated  from {_googleSheetsConfig.GoogleAppsScriptUrl} to {config.AppUrl}");
+              _googleSheetsConfig.UpdateAppUrl(config.AppUrl);
+          }
+          else
+          {
+              Debug.LogError($"[RegistrationService] Google Sheets API key is empty");
+          } 
+      }
+       
+  
+      return true;
   }
 }

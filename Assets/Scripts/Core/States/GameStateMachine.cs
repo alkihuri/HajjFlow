@@ -123,7 +123,7 @@ namespace HajjFlow.Core.States
             var registreationService = GameManager.Instance?.GetService<global::RegistrationService>();
             if (registreationService != null)
             {
-                registreationService.UpdateDataInGoogleSheets();
+                 registreationService.UpdateDataInGoogleSheets();
             }
 
             Debug.Log($"[GameStateMachine] → {stateId}");

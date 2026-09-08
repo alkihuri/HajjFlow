@@ -10,22 +10,13 @@ using UnityEngine.Networking;
 
 namespace HajjFlow.Services
 {
-    /// <summary>
-    /// Загружает контент из Google Sheets (локализацию, уровни, вопросы, теорию).
-    /// Парсит CSV в рантайм-структуры данных.
-    /// Кэширует данные локально (PlayerPrefs/файловая система).
-    /// Предоставляет fallback при отсутствии интернета.
-    /// 
-    /// Архитектура:
-    /// 1. Google Sheets → CSV (UnityWebRequest)
-    /// 2. CSV Parser → RuntimeModels
-    /// 3. LocalizationService обновляется
-    /// 4. Кэш сохраняется на диск
-    /// </summary>
+    
+    // Рантайм-модели данных
+
     public class ContentLoaderService : MonoBehaviour
     {
         private LocalizationService _localizationService;
-        private bool _enableAutoLoad = true;
+        [SerializeField] private bool _enableAutoLoad = true;
         private float _retryDelaySeconds = 5f;
         private int _maxRetries = 3;
 
@@ -46,39 +37,13 @@ namespace HajjFlow.Services
             // Теория (LevelId, Order, TitleKey, TextKey, ImageBundleKey)
             public const string Theory =
                 "https://docs.google.com/spreadsheets/d/e/2PACX-1vTX5Wh2iYEJWMZNxQqDw0rroPUyiGnJglnAG2WdxfVkj3kYEGHF27bYV6roA6mMpLS-_247HpV7K7JS/pub?gid=365931188&single=true&output=csv";
+
+            public const string Config =
+                "https://docs.google.com/spreadsheets/d/e/2PACX-1vTX5Wh2iYEJWMZNxQqDw0rroPUyiGnJglnAG2WdxfVkj3kYEGHF27bYV6roA6mMpLS-_247HpV7K7JS/pub?gid=595103987&single=true&output=csv";
+            
         }
 
-        // Рантайм-модели данных
-        [Serializable]
-        public class RuntimeLevelInfo
-        {
-            public string levelId;
-            public string nameKey;
-            public string descriptionKey;
-            public int order;
-            public string imageBundleKey;
-        }
-
-        [Serializable]
-        public class RuntimeQuizQuestion
-        {
-            public string levelId;
-            public string questionKey;
-            public string[] optionKeys = new string[4];
-            public int correctIndex;
-            public string explanationKey;
-            public int gemsReward;
-        }
-
-        [Serializable]
-        public class RuntimeTheoryCard
-        {
-            public string levelId;
-            public int order;
-            public string titleKey;
-            public string textKey;
-            public string imageBundleKey;
-        }
+    
 
         // Коллекции рантайм-данных
         private List<RuntimeLevelInfo> _levels = new List<RuntimeLevelInfo>();
@@ -93,6 +58,8 @@ namespace HajjFlow.Services
         private string _levelsCsv;
         private string _questionsCsv;
         private string _theoryCsv;
+        
+        private const string LAST_MODIFY_KEY = "ContentLoader_LastModify";
 
         // Кэширование
         private static class CacheKeys
@@ -118,6 +85,7 @@ namespace HajjFlow.Services
             OnLoadComplete +=  uiservice.HideLoadingScreen;
             OnLoadComplete += uiservice.ShowRegistrasionScreen;
             
+            
             if (_enableAutoLoad)
             {
                 StartCoroutine(LoadAllContent());
@@ -135,11 +103,46 @@ namespace HajjFlow.Services
         {
             Debug.Log("[ContentLoaderService] Starting content load...");
             OnLoadProgress?.Invoke(0f);
-
+            yield return CheckConfigSheet();
             // При повторных запусках не обращаемся к сети: полный валидный кэш
             // должен быть использован первым.
-            if (LoadFromCache())
+            
+            var lastModify =DateTime.Parse(PlayerPrefs.GetString(LAST_MODIFY_KEY, ""));
+            var configLastModify = DateTime.Parse(_sheetConfig.LastModify);
+            Debug.Log($"[ContentLoaderService] config last modify: {configLastModify}");
+            Debug.Log($"[ContentLoaderService] last modify: {lastModify}");
+            
+            
+            
+            var registrationService = GameManager.Instance?.GetService<RegistrationService>();
+
+            if (!registrationService.UpdateGoogleSheetConfig(_sheetConfig))
             {
+                Debug.LogWarning($"[ContentLoaderService] Google Sheets config update failed.");
+            }
+            
+            
+            
+            if(configLastModify != lastModify)
+            {
+                 
+                Debug.Log("[ContentLoaderService] Config sheet has changed, forcing reload from Google Sheets.");
+                PlayerPrefs.SetString(LAST_MODIFY_KEY, _sheetConfig.LastModify);
+                PlayerPrefs.Save();
+                
+                PlayerPrefs.SetString(LAST_MODIFY_KEY, _sheetConfig.LastModify);
+                EraseCacheData(); 
+            }
+            else
+            {
+                Debug.Log("[ContentLoaderService] Config sheet has not changed, using cached data if available.");
+            }
+            
+            
+            
+            if (LoadFromCache() )
+            {
+                
                 OnLoadProgress?.Invoke(1f);
                 OnLoadComplete?.Invoke(true);
                 Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
@@ -196,6 +199,81 @@ namespace HajjFlow.Services
             Debug.Log($"  - Theory cards: {_theoryCards.Count}");
         }
 
+      
+        
+        
+        private void ParseConfigCsv(string csvContent)
+        {
+            if (string.IsNullOrWhiteSpace(csvContent))
+                return;
+        
+            string[] lines = csvContent.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        
+            foreach (string rawLine in lines)
+            {
+                string[] fields = ParseCsvLine(rawLine);
+        
+                if (fields.Length < 2)
+                    continue;
+        
+                string key = fields[0].Trim();
+                string value = fields[1].Trim();
+        
+                switch (key)
+                {
+                    case "LAST MODIFY":
+                        _sheetConfig.LastModify = value;
+                        break;
+        
+                    case "APP URL":
+                        _sheetConfig.AppUrl = value;
+                        break;
+        
+                    case "API KEY":
+                        _sheetConfig.ApiKey = value;
+                        break;
+        
+                    case "Timeout seconds":
+                        _sheetConfig.TimeoutSeconds = int.TryParse(value, out int timeout) ? timeout : 60;
+                        break;
+        
+                    case "Enable Logging":
+                        _sheetConfig.EnableLogging = bool.TryParse(value, out bool enable) ? enable : value.Equals("TRUE", StringComparison.OrdinalIgnoreCase);
+                        break;
+        
+                    case "Use Get Request":
+                        _sheetConfig.UseGetRequest = bool.TryParse(value, out bool useGet) ? useGet : value.Equals("TRUE", StringComparison.OrdinalIgnoreCase);
+                        break;
+                }
+            }
+        }
+        private IEnumerator CheckConfigSheet()
+        { 
+            
+            
+            
+            Debug.Log("[ContentLoaderService] Checking config sheet...");
+            using (UnityWebRequest request = UnityWebRequest.Get(GoogleSheetsUrls.Config))
+            {
+                yield return request.SendWebRequest();
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    string csvContent = request.downloadHandler.text;
+                    
+                    _sheetConfig = new SheetsConfig();
+                    ParseConfigCsv(csvContent);
+                    Debug.Log("[ContentLoaderService] Config sheet loaded successfully."); 
+                    
+                }
+                else
+                {
+                    Debug.LogWarning($"[ContentLoaderService] Failed to load config sheet: {request.error}");
+                }
+            }
+        }
+
+
         /// <summary>
         /// Загружает все данные параллельно из Google Sheets.
         /// </summary>
@@ -231,6 +309,7 @@ namespace HajjFlow.Services
         private bool _levelsRequestFinished;
         private bool _questionsRequestFinished;
         private bool _theoryRequestFinished;
+        private SheetsConfig _sheetConfig;
 
         private void ResetLoadFlags()
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using HajjFlow.Data;
 using HajjFlow.Core;
+using HajjFlow.UI;
 
 namespace HajjFlow.Services
 {
@@ -227,6 +228,16 @@ namespace HajjFlow.Services
         public Dictionary<string,LevelResult> GetAllLevelsResult()
         {
             return _levelResults;
+        }
+
+        public void ResetLevelResults()
+        { 
+            // Clear all stored level results
+            _levelResults.Clear();
+
+            var profile = GameManager.Instance?.GetService<ProfileLoaderService>();
+            profile.ClearAllData();
+            
         }
     }
 

@@ -27,7 +27,7 @@ namespace HajjFlow.Services
         /// <summary>
         /// Возвращает полный список всех доступных уровней.
         /// </summary>
-        public List<ContentLoaderService.RuntimeLevelInfo> AllLevels
+        public List<RuntimeLevelInfo> AllLevels
         {
             get => GetAllLevelInfos();
         }
@@ -58,12 +58,12 @@ namespace HajjFlow.Services
         /// Получить все доступные уровни (отсортированы по order).
         /// Гарантирует что контент загружен перед возвратом.
         /// </summary>
-        public List<ContentLoaderService.RuntimeLevelInfo> GetAllLevelInfos()
+        public List<RuntimeLevelInfo> GetAllLevelInfos()
         {
             if (_contentLoader == null)
             {
                 Debug.LogError("[RuntimeLevelFactory] ContentLoaderService is NULL! Cannot get levels.");
-                return new List<ContentLoaderService.RuntimeLevelInfo>();
+                return new List<RuntimeLevelInfo>();
             }
 
             try
@@ -73,7 +73,7 @@ namespace HajjFlow.Services
                 if (levels == null || levels.Count == 0)
                 {
                     Debug.LogWarning("[RuntimeLevelFactory] ContentLoaderService returned empty level list. Check if content is loaded.");
-                    return new List<ContentLoaderService.RuntimeLevelInfo>();
+                    return new List<RuntimeLevelInfo>();
                 }
 
                 Debug.Log($"[RuntimeLevelFactory] Successfully loaded {levels.Count} levels from ContentLoaderService");
@@ -82,14 +82,14 @@ namespace HajjFlow.Services
             catch (System.Exception ex)
             {
                 Debug.LogError($"[RuntimeLevelFactory] Error getting levels: {ex.Message}");
-                return new List<ContentLoaderService.RuntimeLevelInfo>();
+                return new List<RuntimeLevelInfo>();
             }
         }
 
         /// <summary>
         /// Получить информацию об уровне по levelId.
         /// </summary>
-        public ContentLoaderService.RuntimeLevelInfo GetLevelInfo(string levelId)
+        public RuntimeLevelInfo GetLevelInfo(string levelId)
         {
             return GetAllLevelInfos().FirstOrDefault(l => l.levelId == levelId);
         }

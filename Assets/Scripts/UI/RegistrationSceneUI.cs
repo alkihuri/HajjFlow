@@ -54,15 +54,15 @@ public class RegistrationSceneUI : MonoBehaviour
         }
 
         // Save the username and group to PlayerPrefs
-        PlayerPrefs.SetString("Username", username);
-        PlayerPrefs.SetString("Group", group);
-        PlayerPrefs.Save();
-
+        
         Debug.Log($"Registered with Username: {username}, Group: {group}");
         
         PlayLoadingScreen();
         await GameManager.Instance.GetService<RegistrationService>().RegisterUserAsync(username, group,HideRegistrationScreen);
-         
+        PlayerPrefs.SetString("Username", username);
+        PlayerPrefs.SetString("Group", group);
+        PlayerPrefs.Save();
+
     }
 
     private void PlayLoadingScreen()
