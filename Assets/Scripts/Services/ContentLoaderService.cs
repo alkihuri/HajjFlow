@@ -104,6 +104,11 @@ namespace HajjFlow.Services
             Debug.Log("[ContentLoaderService] Starting content load...");
             OnLoadProgress?.Invoke(0f);
             yield return CheckConfigSheet();
+            
+            
+            var registrationService = GameManager.Instance?.GetService<RegistrationService>();
+            registrationService.UpdateGoogleSheetConfig(_sheetConfig);
+            
             // При повторных запусках не обращаемся к сети: полный валидный кэш
             // должен быть использован первым.
 

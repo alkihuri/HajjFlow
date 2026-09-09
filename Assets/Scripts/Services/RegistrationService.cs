@@ -219,15 +219,17 @@ public class RegistrationService : MonoBehaviour
   {
       if (config != null)
       {
-          if (config.ApiKey != "")
+          if (config.AppUrl != "")
           {
               
               Debug.Log($"[RegistrationService] Google Sheets App url updated  from {_googleSheetsConfig.GoogleAppsScriptUrl} to {config.AppUrl}");
-              _googleSheetsConfig.UpdateAppUrl(config.AppUrl);
+              _googleSheetsConfig.UpdateAppUrl(config.AppUrl); 
+              // update googlesheets client with new config
+                _googleSheetsClient = new GoogleSheetsClient(_googleSheetsConfig);
           }
           else
           {
-              Debug.LogError($"[RegistrationService] Google Sheets API key is empty");
+              Debug.LogError($"[RegistrationService] Google Sheets App url key is empty");
           } 
       }
        
