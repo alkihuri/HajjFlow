@@ -144,10 +144,8 @@ namespace HajjFlow.Services
                  
                 Debug.Log("[ContentLoaderService] Config sheet has changed, forcing reload from Google Sheets.");
                 PlayerPrefs.SetString(LAST_MODIFY_KEY, _sheetConfig.LastModify);
-                PlayerPrefs.Save();
-                
-                PlayerPrefs.SetString(LAST_MODIFY_KEY, _sheetConfig.LastModify);
-                EraseCacheData(); 
+                PlayerPrefs.Save(); 
+                ClearCache(); 
             }
             else
             {
