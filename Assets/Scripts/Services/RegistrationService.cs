@@ -22,6 +22,7 @@ public class RegistrationService : MonoBehaviour
    [SerializeField] private GoogleSheetsConfig _googleSheetsConfig;
    
    private GoogleSheetsClient _googleSheetsClient;
+   [SerializeField] private bool _clearDataWhenRegistering;
 
    private void Awake()
    {
@@ -84,7 +85,7 @@ public class RegistrationService : MonoBehaviour
       // get progress from StageCompletionService
       var stageCompletionService = GameManager.Instance.GetService<StageCompletionService>();
 
-      if (!IsRegistred)
+      if (!IsRegistred && _clearDataWhenRegistering)
       {
           stageCompletionService.ResetLevelResults();
       }
@@ -223,7 +224,8 @@ public class RegistrationService : MonoBehaviour
           {
               
               Debug.Log($"[RegistrationService] Google Sheets App url updated  from {_googleSheetsConfig.GoogleAppsScriptUrl} to {config.AppUrl}");
-              _googleSheetsConfig.UpdateAppUrl(config.AppUrl); 
+              _googleSheetsConfig.UpdateAppUrl(config.AppUrl);
+              _clearDataWhenRegistering = config.ClerDataOnRegister;
               // update googlesheets client with new config
                 _googleSheetsClient = new GoogleSheetsClient(_googleSheetsConfig);
           }

@@ -22,6 +22,7 @@ namespace HajjFlow.Services
         public int TimeoutSeconds;
         public bool EnableLogging;
         public bool UseGetRequest;
+        public bool ClerDataOnRegister;
         
         public SheetsConfig()
         {

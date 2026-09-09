@@ -270,6 +270,10 @@ namespace HajjFlow.Services
                     case "Use Get Request":
                         _sheetConfig.UseGetRequest = bool.TryParse(value, out bool useGet) ? useGet : value.Equals("TRUE", StringComparison.OrdinalIgnoreCase);
                         break;
+                    
+                    case "Clear When Reg":
+                        _sheetConfig.ClerDataOnRegister = bool.TryParse(value, out bool clearWhenReg) ? clearWhenReg : value.Equals("FALSE", StringComparison.OrdinalIgnoreCase);
+                    break;
                 }
             }
         }
