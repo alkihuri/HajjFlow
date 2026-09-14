@@ -248,6 +248,68 @@ There are two distinct persistence concerns:
 
 ---
 
+## Data-provider architecture and latest features
+
+The application is designed around a provider-based data layer, not a single hardcoded backend. `ProfileLoaderService` keeps a list of `IProfileDataProvider` implementations and chooses the first valid provider according to priority. The current set includes:
+
+- `PlayerPrefsProfileProvider` — local fast cache for repeated sessions in the browser.
+- `FileProfileProvider` — file-based local persistence for desktop/editor scenarios.
+- `BackendProfileProvider` — external API-based backend for structured remote profile sync.
+- `GoogleSheetsProfileProvider` — Google Sheets synchronization for user registration and progress tracking.
+
+This means Google Sheets is one of the providers in the system, not the only source of truth. In other words, the gameplay and profile services work against a shared profile interface, while the concrete provider can be local, remote, or spreadsheet-backed.
+
+### Auto-loading content from Google Sheets
+
+The content pipeline is remote-first and cache-aware. `ContentLoaderService` automatically downloads four main CSV datasets from published Google Sheets exports:
+
+- localization
+- levels
+- questions
+- theory
+
+It also reads a dedicated config sheet (`GoogleSheetsUrls.Config`) that stores values such as:
+
+- `LAST MODIFY`
+- `APP URL`
+- `API KEY`
+
+The config sheet is used to keep the app synchronized with the current remote Google Apps Script endpoint and to detect whether the content has changed. When `LAST MODIFY` differs from the cached value, the app clears stale content and reloads the latest CSV data. The resulting CSV is saved under `Application.persistentDataPath/ContentCache/` and reused on subsequent runs, which is especially important for WebGL where startup bandwidth and storage are limited.
+
+### Configs from another sheet and runtime reconfiguration
+
+The configuration is not a hardcoded constant. `ContentLoaderService.CheckConfigSheet()` parses the config CSV and stores the values into a runtime `SheetsConfig` object. Then `RegistrationService.UpdateGoogleSheetConfig(_sheetConfig)` pushes the current app URL and API settings to the active Google Sheets client.
+
+This makes the game adaptable to a different sheet or different Google Apps Script endpoint without a full code release. The config sheet effectively acts as an external control plane for the app: it can point the runtime to another spreadsheet or a different backend target while the application stays stable.
+
+### User registration and progress sync
+
+The project also includes a registration flow that writes a user row into the Google Sheets data source. `RegistrationService.RegisterUserAsync(...)` creates a user payload containing:
+
+- `UserId`
+- `fullName`
+- `pilgrimNumber`
+- `groupId`
+- `CreatedAt`
+- `UpdatedAt`
+- `Status`
+- `LevelResults`
+
+After registration, the app stores the user ID and group in `PlayerPrefs` and can later save per-level progress through `SaveLevelResultAsync(...)`. In practice this lets the app mirror local progression to the remote sheet while still keeping offline/local profile values available as a fallback.
+
+### Data-provider model in practice
+
+The provider model is intentionally layered:
+
+1. `ProfileLoaderService` receives providers and sorts them by priority.
+2. `Load()` reads the first provider that has data.
+3. `LoadFromGoogleSheetsAsync()` can force a Google Sheets read to refresh the cached profile.
+4. `Save(...)` writes to the active providers, keeping the local cache and any remote source in sync.
+
+This makes Google Sheets one data provider among several, with a clean extension point for future providers without changing the gameplay layer.
+
+---
+
 ## Visual assets and bundles
 
 Learning content can reference `imageBundleKey`. `AssetBundleService` resolves these assets from already loaded bundles and keeps in-memory caches for bundles and sprites.
