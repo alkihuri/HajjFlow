@@ -120,6 +120,17 @@ public class RegistrationService : MonoBehaviour
         
         Debug.Log($"[RegistrationService] Sending registration request: {JsonConvert.SerializeObject(payload)}");
         var result = await _googleSheetsClient.SendAsync<CreateUserResponse>("createUser", payload);
+        
+        if(result.User != null)
+        {
+            await SyncProgressFromSheetAsync(result);
+            Debug.Log($"[RegistrationService] User created with ID: {result.User.UserId}");
+        }
+        else
+        {
+            Debug.LogWarning($"[RegistrationService] User creation response did not contain a user object.");
+        }
+        
         Debug.Log($"[RegistrationService] Registration successful: {result}");
         doneCallback?.Invoke(); 
     }
@@ -146,9 +157,44 @@ public class RegistrationService : MonoBehaviour
   /// Загружает прогресс пользователя из Google Sheets и синхронизирует с StageCompletionService.
   /// Вызывается при повторной регистрации (когда пользователь уже есть в таблице).
   /// </summary>
-  private async Task SyncProgressFromSheetAsync(string group, int userRow, List<RuntimeLevelInfo> allLevels)
+  private async Task SyncProgressFromSheetAsync(CreateUserResponse result)
   {
-       
+      var stageCompletionService = GameManager.Instance?.GetService<StageCompletionService>();
+      var profileService = GameManager.Instance?.GetService<UserProfileService>();
+      
+      if (stageCompletionService == null || profileService == null)
+      {
+          Debug.LogWarning("[RegistrationService] Required services not found for syncing progress");
+          return;
+      }
+      
+      if (result?.User?.LevelResult != null && result.User.LevelResult.Length > 0)
+      {
+          Debug.Log($"[RegistrationService] Syncing {result.User.LevelResult.Length} level results from Google Sheets");
+          
+          // Синхронизируем каждый результат уровня
+          foreach (var levelResult in result.User.LevelResult)
+          {
+              if (levelResult != null && !string.IsNullOrEmpty(levelResult.LevelId))
+              {
+                  stageCompletionService.RecordLevelResult(levelResult.LevelId, levelResult.ScorePercent);
+                  
+                  // Также обновляем профиль пользователя
+                  profileService.UpdateProfile(profile =>
+                  {
+                      profile.LevelProgress.Set(levelResult.LevelId, levelResult.ScorePercent);
+                  });
+                  
+                  Debug.Log($"[RegistrationService] Synced {levelResult.LevelId}: {levelResult.ScorePercent:F2}%");
+              }
+          }
+          
+          Debug.Log($"[RegistrationService] Successfully synced {result.User.LevelResult.Length} level results from Google Sheets.");
+      }
+      else
+      {
+          Debug.LogWarning($"[RegistrationService] No level results found for user {result.User?.UserId} in Google Sheets.");
+      }
   }
 
 

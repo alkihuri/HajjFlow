@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using GSheetsCommander;
 using UnityEngine;
 using HajjFlow.Data;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HajjFlow.Services
 {
@@ -51,7 +54,235 @@ namespace HajjFlow.Services
     
         [JsonProperty("Status")]
         public string Status { get; set; }
+        
+        /// <summary>
+        /// LevelResult может быть либо:
+        /// 1. Массивом объектов: [{LevelId, ScorePercent, CompletedAt}, ...]
+        /// 2. JSON-строкой внутри строки: "{level_0={...}, level_1={...}}"
+        /// Используем custom converter для обработки обоих случаев.
+        /// </summary>
+        [JsonProperty("LevelResult")]
+        [JsonConverter(typeof(LevelResultConverter))]
+        public LevelResult[] LevelResult { get; set; }
     }
+    
+    /// <summary>
+    /// Custom JsonConverter для обработки LevelResult в разных форматах.
+    /// Конвертирует как массивы объектов, так и строки вида "{level_0={...}, level_1={...}}"
+    /// </summary>
+    public class LevelResultConverter : JsonConverter<LevelResult[]>
+    {
+        public override LevelResult[] ReadJson(JsonReader reader, Type objectType, LevelResult[] existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            var token = JToken.Load(reader);
+            
+            // Если это null, возвращаем пустой массив
+            if (token.Type == JTokenType.Null)
+                return Array.Empty<LevelResult>();
+            
+            // Случай 1: Это строка (JSON внутри строки)
+            if (token.Type == JTokenType.String)
+            {
+                return ParseLevelResultFromString(token.Value<string>());
+            }
+            
+            // Случай 2: Это уже объект или массив
+            if (token.Type == JTokenType.Object)
+            {
+                var obj = token as JObject;
+                return ParseLevelResultFromObject(obj);
+            }
+            
+            if (token.Type == JTokenType.Array)
+            {
+                var array = token as JArray;
+                return array.Select(item => item.ToObject<LevelResult>(serializer)).ToArray();
+            }
+            
+            return Array.Empty<LevelResult>();
+        }
+        
+        public override void WriteJson(JsonWriter writer, LevelResult[] value, JsonSerializer serializer)
+        {
+            // При сохранении преобразуем в простой массив объектов
+            serializer.Serialize(writer, value);
+        }
+        
+        /// <summary>
+        /// Парсит LevelResult из строки вида: "{level_3={...}, level_0={...}, level_2={...}}"
+        /// </summary>
+        private LevelResult[] ParseLevelResultFromString(string jsonString)
+        {
+            if (string.IsNullOrWhiteSpace(jsonString))
+                return Array.Empty<LevelResult>();
+            
+            var results = new List<LevelResult>();
+            
+            try
+            {
+                // Пытаемся распарсить как обычный JSON массив первым дел��м
+                if (jsonString.TrimStart().StartsWith("["))
+                {
+                    return JsonConvert.DeserializeObject<LevelResult[]>(jsonString) ?? Array.Empty<LevelResult>();
+                }
+                
+                // Иначе пытаемся распарсить объект вида {key1=obj1, key2=obj2, ...}
+                // Преобразуем в формат JSON
+                var normalized = NormalizeCSharpDictionary(jsonString);
+                var parsed = JsonConvert.DeserializeObject<Dictionary<string, object>>(normalized);
+                
+                if (parsed != null)
+                {
+                    foreach (var kvp in parsed)
+                    {
+                        var levelResult = ConvertToLevelResult(kvp.Key, kvp.Value);
+                        if (levelResult != null)
+                            results.Add(levelResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[LevelResultConverter] Failed to parse LevelResult string: {ex.Message}\nString: {jsonString}");
+            }
+            
+            return results.ToArray();
+        }
+        
+        /// <summary>
+        /// Парсит LevelResult из JObject.
+        /// Ожидает структуру вида: {level_id1: {...}, level_id2: {...}}
+        /// </summary>
+        private LevelResult[] ParseLevelResultFromObject(JObject obj)
+        {
+            if (obj == null)
+                return Array.Empty<LevelResult>();
+            
+            var results = new List<LevelResult>();
+            
+            foreach (var property in obj.Properties())
+            {
+                var levelResult = ConvertToLevelResult(property.Name, property.Value);
+                if (levelResult != null)
+                    results.Add(levelResult);
+            }
+            
+            return results.ToArray();
+        }
+        
+        /// <summary>
+        /// Конвертирует пару (levelId, data) в LevelResult.
+        /// </summary>
+        private LevelResult ConvertToLevelResult(string levelId, object data)
+        {
+            try
+            {
+                var levelResult = new LevelResult { LevelId = levelId };
+                
+                if (data is JObject jObj)
+                {
+                    // Пытаемся извлечь ScorePercent
+                    if (jObj.TryGetValue("ScorePercent", StringComparison.OrdinalIgnoreCase, out var scoreToken))
+                    {
+                        if (float.TryParse(scoreToken.Value<string>(), out var score))
+                            levelResult.ScorePercent = score;
+                    }
+                    
+                    // Пытаемся извлечь CompletedAt
+                    if (jObj.TryGetValue("CompletedAt", StringComparison.OrdinalIgnoreCase, out var dateToken))
+                    {
+                        if (DateTime.TryParse(dateToken.Value<string>(), out var date))
+                            levelResult.CompletedAt = date;
+                    }
+                }
+                else if (data is string dataStr)
+                {
+                    // Если это строка, пытаемся распарсить её как JSON
+                    try
+                    {
+                        var innerObj = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataStr);
+                        if (innerObj != null && innerObj.TryGetValue("ScorePercent", out var score))
+                        {
+                            if (float.TryParse(score.ToString(), out var scoreVal))
+                                levelResult.ScorePercent = scoreVal;
+                        }
+                    }
+                    catch { }
+                }
+                
+                return levelResult;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[LevelResultConverter] Failed to convert to LevelResult: {ex.Message}");
+                return null;
+            }
+        }
+        
+        /// <summary>
+        /// Нормализует C# Dictionary строку в JSON объект.
+        /// Преобразует: {key1=value1, key2=value2} → {"key1": "value1", "key2": "value2"}
+        /// </summary>
+        private string NormalizeCSharpDictionary(string input)
+        {
+            // Убираем внешние скобки
+            input = input.Trim();
+            if (input.StartsWith("{") && input.EndsWith("}"))
+                input = input.Substring(1, input.Length - 2);
+            
+            // Простой парсинг пар key=value
+            var parts = new List<string>();
+            var currentPart = "";
+            var depth = 0;
+            
+            foreach (var ch in input)
+            {
+                if (ch == '{' || ch == '[')
+                    depth++;
+                else if (ch == '}' || ch == ']')
+                    depth--;
+                else if (ch == ',' && depth == 0)
+                {
+                    if (!string.IsNullOrWhiteSpace(currentPart))
+                        parts.Add(currentPart.Trim());
+                    currentPart = "";
+                    continue;
+                }
+                
+                currentPart += ch;
+            }
+            
+            if (!string.IsNullOrWhiteSpace(currentPart))
+                parts.Add(currentPart.Trim());
+            
+            // Преобразуем каждую пару
+            var jsonParts = new List<string>();
+            foreach (var part in parts)
+            {
+                var eqIndex = part.IndexOf('=');
+                if (eqIndex > 0)
+                {
+                    var key = part.Substring(0, eqIndex).Trim();
+                    var value = part.Substring(eqIndex + 1).Trim();
+                    
+                    // Если value начинается с { или [, считаем его объектом/массивом
+                    if ((value.StartsWith("{") || value.StartsWith("[")) && 
+                        (value.EndsWith("}") || value.EndsWith("]")))
+                    {
+                        jsonParts.Add($"\"{key}\": {value}");
+                    }
+                    else
+                    {
+                        // Иначе заключаем в кавычки
+                        jsonParts.Add($"\"{key}\": \"{value}\"");
+                    }
+                }
+            }
+            
+            return "{" + string.Join(", ", jsonParts) + "}";
+        }
+    }
+    
     /// <summary>
     /// Handles loading and saving the UserProfile.
     /// Uses ProfileLoaderService for multi-source persistence (PlayerPrefs + File + Backend).
