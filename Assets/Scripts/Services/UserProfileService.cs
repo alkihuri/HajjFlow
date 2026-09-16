@@ -61,9 +61,9 @@ namespace HajjFlow.Services
         /// 2. JSON-строкой внутри строки: "{level_0={...}, level_1={...}}"
         /// Используем custom converter для обработки обоих случаев.
         /// </summary>
-        [JsonProperty("LevelResult")]
+        [JsonProperty("LevelResults")]
         [JsonConverter(typeof(LevelResultConverter))]
-        public LevelResult[] LevelResult { get; set; }
+        public LevelResult[] LevelResults { get; set; }
     }
     
     /// <summary>

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389420945c5741139fddc5df0d4060b0, type: 3}
   m_Name: GoogleSheetsConfig
   m_EditorClassIdentifier: GSheetsCommander::GSheetsCommander.GoogleSheetsConfig
-  googleAppsScriptUrl: 
+  googleAppsScriptUrl: https://script.google.com/macros/s/AKfycbxQlIqpFGc8KiiqlNYBHibn_fcJWGJ0UBlVsiMAFUG5jiMJPpJKtARDvio5uVL5AaZi/exec
   apiKey: 123
   timeoutSeconds: 60
   enableLogging: 1
