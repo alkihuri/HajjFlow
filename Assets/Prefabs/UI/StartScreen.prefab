@@ -485,10 +485,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9138364052380495490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -198.10143}
-  m_SizeDelta: {x: 0, y: 396.20285}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -220}
+  m_SizeDelta: {x: 1094, y: 3384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2749706536203155124
 CanvasRenderer:
@@ -3238,7 +3238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1224818467551766255, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2756998087354583211, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -3323,6 +3323,30 @@ PrefabInstance:
     - target: {fileID: 3129418991932211307, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1094
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3385
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

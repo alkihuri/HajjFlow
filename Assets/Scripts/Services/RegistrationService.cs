@@ -178,7 +178,8 @@ public class RegistrationService : MonoBehaviour
                
                if (levelResult != null && !string.IsNullOrEmpty(levelResult.LevelId))
                {
-                   stageCompletionService.RecordLevelResult(levelResult.LevelId, levelResult.ScorePercent);
+                   //
+                   //stageCompletionService.RecordLevelResult(levelResult.LevelId, levelResult.ScorePercent);
                    Debug.Log($"[StageCompletionService] Synced from Google Sheets {levelResult.LevelId}: {levelResult.ScorePercent:F2}%");
                    
                    profileService.UpdateProfile(profile =>
