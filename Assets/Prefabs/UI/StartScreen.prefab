@@ -3238,7 +3238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1224818467551766255, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2756998087354583211, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -3323,6 +3323,10 @@ PrefabInstance:
     - target: {fileID: 3129418991932211307, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085180711796008957, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8024361786357232691, guid: 6b8b1ecae050c496bb62508bdbd17687, type: 3}
       propertyPath: m_AnchorMax.x
