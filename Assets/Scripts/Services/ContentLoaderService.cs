@@ -19,7 +19,8 @@ namespace HajjFlow.Services
         [SerializeField] private bool _enableAutoLoad = true;
         private float _retryDelaySeconds = 5f;
         private int _maxRetries = 3;
-
+        
+        [SerializeField] private string _lastModifieData;
         // URL'ы для Google Sheets (экспорт в CSV)
         private static class GoogleSheetsUrls
         {
@@ -94,6 +95,11 @@ namespace HajjFlow.Services
             
   
         }
+        
+        private void OnValidate()
+        {
+            _lastModifieData = PlayerPrefs.GetString(LAST_MODIFY_KEY);
+        }
 
         /// <summary>
         /// Главный метод загрузки всего контента.
@@ -140,10 +146,10 @@ namespace HajjFlow.Services
             {
                 Debug.Log($"[ContentLoaderService] config last modify: {configLastModify}");
             }
-            
-            
 
 
+
+             
             if(configLastModify != lastModify)
             {
                  
@@ -155,18 +161,16 @@ namespace HajjFlow.Services
             else
             {
                 Debug.Log("[ContentLoaderService] Config sheet has not changed, using cached data if available.");
-            }
-            
-            
-            
-            if (LoadFromCache() )
-            {
+                if (LoadFromCache() )
+                {
                 
-                OnLoadProgress?.Invoke(1f);
-                OnLoadComplete?.Invoke(true);
-                Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
-                yield break;
+                    OnLoadProgress?.Invoke(1f);
+                    OnLoadComplete?.Invoke(true);
+                    Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
+                    yield break;
+                }
             }
+             
 
             _currentRetry = 0;
 
@@ -339,7 +343,7 @@ namespace HajjFlow.Services
         private bool _levelsRequestFinished;
         private bool _questionsRequestFinished;
         private bool _theoryRequestFinished;
-        private SheetsConfig _sheetConfig;
+        [SerializeField] private SheetsConfig _sheetConfig;
 
         private void ResetLoadFlags()
         {
