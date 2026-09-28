@@ -20,9 +20,13 @@ public class RegistrationService : MonoBehaviour
    [SerializeField] private RegistrationSceneUI _registrationSceneUI;
 
    [SerializeField] private GoogleSheetsConfig _googleSheetsConfig;
+
+   [SerializeField] private bool _forceClear;
    
    private GoogleSheetsClient _googleSheetsClient;
    [SerializeField] private bool _clearDataWhenRegistering;
+
+
 
    private void Awake()
    {
@@ -35,6 +39,9 @@ public class RegistrationService : MonoBehaviour
        // К этому моменту Bootstrapper уже зарегистрировал сервисы. Загружаем
        // серверные данные до того, как локальный кэш будет использоваться далее.
    }
+
+
+   
 
    /// <summary>
    /// Загружает прогресс пользователя из Google Sheets при запуске приложения.

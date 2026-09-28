@@ -13,16 +13,16 @@ namespace HajjFlow.Services
     /// stores the translation table, tracks the current language, and notifies
     /// registered UI text controllers when the language changes.
     /// </summary>
-    public class LocalizationService  
+    public class LocalizationService
     {
         private const string CsvResourcePath = "localization";
         private const string PlayerPrefsKey = "SelectedLanguage";
-        
+
         // Google Sheets published CSV URL (export as CSV format)
-        private const string GoogleSheetsCsvUrl = 
+        private const string GoogleSheetsCsvUrl =
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTX5Wh2iYEJWMZNxQqDw0rroPUyiGnJglnAG2WdxfVkj3kYEGHF27bYV6roA6mMpLS-_247HpV7K7JS/pub?gid=1439558173&single=true&output=csv";
 
-        private readonly Dictionary<string, Dictionary<Language, string>> _table
+        private Dictionary<string, Dictionary<Language, string>> _table
             = new Dictionary<string, Dictionary<Language, string>>();
 
         private readonly List<GameTextController> _registeredTexts
@@ -73,8 +73,8 @@ namespace HajjFlow.Services
             {
                 if (text != null)
                     text.UpdateText();
-            } 
-            
+            }
+
             OnLanguageChanged?.Invoke();
             Debug.Log($"[LocalizationService] Changed language to {_currentLanguage}");
         }
@@ -128,7 +128,7 @@ namespace HajjFlow.Services
             {
                 string key = kvp.Key;
                 var stringTranslations = kvp.Value;
-                
+
                 var enumTranslations = new Dictionary<Language, string>();
                 foreach (var langKvp in stringTranslations)
                 {
@@ -138,12 +138,13 @@ namespace HajjFlow.Services
                         enumTranslations[language] = langKvp.Value;
                     }
                 }
-                
+
                 if (enumTranslations.Count > 0)
                 {
                     _table[key] = enumTranslations;
                 }
             }
+
             Debug.Log($"[LocalizationService] Translation table updated with {_table.Count} keys");
 
             // Обновляем все зарегистрированные UI текст
@@ -158,38 +159,38 @@ namespace HajjFlow.Services
         /// Downloads the latest localization CSV from Google Sheets and updates the local Resources file.
         /// Call this from a MonoBehaviour using StartCoroutine.
         /// </summary>
- 
-        
+
+
         public IEnumerator LoadFromGoogleSheets(Action<bool> onComplete = null)
         {
             Debug.Log("[LocalizationService] Downloading localization from Google Sheets...");
-            
+
             using (UnityWebRequest request = UnityWebRequest.Get(GoogleSheetsCsvUrl))
             {
                 yield return request.SendWebRequest();
-                
+
                 if (request.result == UnityWebRequest.Result.Success)
                 {
                     string csvContent = request.downloadHandler.text;
-                    
+
                     // Parse the downloaded CSV
                     _table.Clear();
                     ParseCsv(csvContent);
-                    
+
                     Debug.Log($"[LocalizationService] Successfully loaded {_table.Count} keys from Google Sheets.");
-                    
+
                     // Update all registered UI texts
                     foreach (var text in _registeredTexts)
                     {
                         if (text != null)
                             text.UpdateText();
                     }
-                    
+
                     // Save to local file in Editor mode
 #if UNITY_EDITOR
                     SaveCsvToResources(csvContent);
 #endif
-                    
+
                     onComplete?.Invoke(true);
                 }
                 else
@@ -199,7 +200,10 @@ namespace HajjFlow.Services
                 }
             }
         }
-        
+
+
+
+
 #if UNITY_EDITOR
         /// <summary>
         /// Saves the CSV content to the Resources folder (Editor only).
@@ -207,7 +211,7 @@ namespace HajjFlow.Services
         private void SaveCsvToResources(string csvContent)
         {
             string path = System.IO.Path.Combine(Application.dataPath, "Resources", "localization.csv");
-            
+
             try
             {
                 // Ensure Resources folder exists
@@ -216,7 +220,7 @@ namespace HajjFlow.Services
                 {
                     System.IO.Directory.CreateDirectory(resourcesFolder);
                 }
-                
+
                 System.IO.File.WriteAllText(path, csvContent, System.Text.Encoding.UTF8);
                 UnityEditor.AssetDatabase.Refresh();
                 Debug.Log($"[LocalizationService] Saved localization.csv to Resources folder.");
@@ -330,8 +334,23 @@ namespace HajjFlow.Services
         }
 
         public List<GameTextController> GetRegisteredControllers()
-        { 
+        {
             return _registeredTexts;
+        }
+        public void UpdateLocalizationTable(string localizationCsv)
+        { 
+             
+            
+            ParseCsv(localizationCsv);
+            Debug.Log($"[LocalizationService] Updated localization table with {_table.Count} keys.");
+
+            // Update all registered UI texts
+            foreach (var text in _registeredTexts)
+            {
+                if (text != null)
+                    text.UpdateText();
+ 
+            }
         }
     }
 }

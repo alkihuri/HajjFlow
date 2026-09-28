@@ -13,7 +13,7 @@ namespace HajjFlow.Services
     /// 4. Кэш сохраняется на диск
     /// </summary>
     ///
-    ///   [System.Serializable]
+    [System.Serializable]
     public class SheetsConfig
     {
         public string LastModify;

@@ -19,7 +19,8 @@ namespace HajjFlow.Services
         [SerializeField] private bool _enableAutoLoad = true;
         private float _retryDelaySeconds = 5f;
         private int _maxRetries = 3;
-
+        
+        [SerializeField] private string _lastModifieData;
         // URL'ы для Google Sheets (экспорт в CSV)
         private static class GoogleSheetsUrls
         {
@@ -94,6 +95,11 @@ namespace HajjFlow.Services
             
   
         }
+        
+        private void OnValidate()
+        {
+            _lastModifieData = PlayerPrefs.GetString(LAST_MODIFY_KEY);
+        }
 
         /// <summary>
         /// Главный метод загрузки всего контента.
@@ -116,7 +122,9 @@ namespace HajjFlow.Services
             
             if(!DateTime.TryParse(PlayerPrefs.GetString(LAST_MODIFY_KEY, ""), out lastModify))
             {
-                Debug.LogWarning("[ContentLoaderService] Last modified not found in player prefs.");
+                Debug.LogWarning("[ContentLoaderService] Last modified not found in player prefs."); 
+                lastModify = DateTime.MinValue;
+                PlayerPrefs.SetString(LAST_MODIFY_KEY, lastModify.ToString());
             }
             else
             {
@@ -125,28 +133,20 @@ namespace HajjFlow.Services
             
             DateTime configLastModify;
             if (!DateTime.TryParse(_sheetConfig.LastModify, out configLastModify))
-            {
-                Debug.LogError("[ContentLoaderService] Config last modify not found or invalid: {_sheetConfig.LastModify}");
-                if (lastModify != configLastModify)
-                {
-                    UpdateGoogleSheetConfig();
-                }
-                else
-                {
-                    Debug.LogWarning($"[ContentLoaderService] Last modify couldn't be parsed.");
-                }
+            { 
+                Debug.LogWarning("[ContentLoaderService] Config last modify not found or invalid: {_sheetConfig.LastModify}");
             }
             else
             {
                 Debug.Log($"[ContentLoaderService] config last modify: {configLastModify}");
             }
-            
-            
 
 
+
+             
             if(configLastModify != lastModify)
             {
-                 
+                UpdateGoogleSheetConfig();
                 Debug.Log("[ContentLoaderService] Config sheet has changed, forcing reload from Google Sheets.");
                 PlayerPrefs.SetString(LAST_MODIFY_KEY, _sheetConfig.LastModify);
                 PlayerPrefs.Save(); 
@@ -155,18 +155,16 @@ namespace HajjFlow.Services
             else
             {
                 Debug.Log("[ContentLoaderService] Config sheet has not changed, using cached data if available.");
-            }
-            
-            
-            
-            if (LoadFromCache() )
-            {
+                if (LoadFromCache() )
+                {
                 
-                OnLoadProgress?.Invoke(1f);
-                OnLoadComplete?.Invoke(true);
-                Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
-                yield break;
+                    OnLoadProgress?.Invoke(1f);
+                    OnLoadComplete?.Invoke(true);
+                    Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
+                    yield break;
+                }
             }
+             
 
             _currentRetry = 0;
 
@@ -339,7 +337,7 @@ namespace HajjFlow.Services
         private bool _levelsRequestFinished;
         private bool _questionsRequestFinished;
         private bool _theoryRequestFinished;
-        private SheetsConfig _sheetConfig;
+        [SerializeField] private SheetsConfig _sheetConfig;
 
         private void ResetLoadFlags()
         {
@@ -388,6 +386,21 @@ namespace HajjFlow.Services
             }
 
             _localizationRequestFinished = true;
+
+            // replace in resources folder localization.csv with new one
+              
+            
+            var  localizationService = GameManager.Instance?.GetService<LocalizationService>();
+            if (localizationService != null)
+            {
+                localizationService.UpdateLocalizationTable(_localizationCsv);
+                Debug.Log("[ContentLoaderService] Localization table updated in LocalizationService.");
+            }
+            else
+            {
+                Debug.LogWarning("[ContentLoaderService] LocalizationService not found to update localization table.");
+            }
+
         }
 
         /// <summary>
