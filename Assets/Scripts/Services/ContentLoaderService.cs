@@ -1018,7 +1018,12 @@ namespace HajjFlow.Services
         /// </summary>
         public List<RuntimeTheoryCard> GetTheoryCardsForLevel(string levelId)
         {
-            return _theoryCards.Where(c => c.levelId == levelId).ToList();
+            
+            // might be level_1 Level 1 or level_1 Level 1 (en) or level_1 Level 1 (ar) etc. so we need to check if the levelId contains the levelId
+            
+            var normalizedLevelId = levelId.ToLower().Trim();
+            
+            return _theoryCards.Where(c => c.levelId.ToLower().Trim() == normalizedLevelId).ToList();
         }
 
         /// <summary>
