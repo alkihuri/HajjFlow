@@ -589,5 +589,18 @@ namespace HajjFlow.UI
             if(load)
              _registrationSceneUI?.ShowRegistrationScreen();
         }
+
+        public void UpdateHeadsOfGroup(List<string> sheetConfigHeadsOfGroup)
+        {
+            Debug.Log($"[UiService] Updating heads of group with {sheetConfigHeadsOfGroup.Count} entries from Google Sheet");
+            if (_registrationSceneUI != null)
+            {
+                _registrationSceneUI.UpdateHeadsOfGroup(sheetConfigHeadsOfGroup);
+            }
+            else
+            {
+                Debug.LogWarning("[UIService] RegistrationSceneUI is null, cannot update heads of group.");
+            }
+        }
     }
 }
