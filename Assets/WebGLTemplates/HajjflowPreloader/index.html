@@ -2,6 +2,9 @@
     <html lang="ru">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <title>{{{ PRODUCT_NAME }}}</title>
         <style>
             html, body {
@@ -12,11 +15,39 @@
                 background: #f5f5f5;
                 overflow: hidden;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+                /* Prevent double-tap zoom */
+                touch-action: manipulation;
+                /* Prevent text selection zoom */
+                -webkit-user-select: none;
+                user-select: none;
+                /* Prevent all zoom gestures */
+                -webkit-touch-callout: none;
             }
             #unity-canvas {
                 width: 100%;
                 height: 100%;
                 display: block;
+                /* Disable double-tap to zoom */
+                touch-action: manipulation;
+            }
+            /* Hide any HTML input elements that Unity creates for TMP_InputField */
+            /* This ensures the input happens inside Unity's canvas, not in browser */
+            input[type="standard"],
+            input[type="text"],
+            input[type="password"],
+            input[type="email"],
+            input[type="number"],
+            textarea {
+                position: fixed;
+                top: -9999px;
+                left: -9999px;
+                opacity: 0;
+                width: 0;
+                height: 0;
+                border: none;
+                padding: 0;
+                margin: 0;
+                pointer-events: none;
             }
             #loader {
                 position: fixed;
@@ -40,7 +71,7 @@
                 color: #333;
             }
             #loader-text {
-                font-size: clamp(20px, 4vw, 32px);
+                font-size: clamp(15px, 4vw, 20px);
                 line-height: 1.8;
                 max-width: 85vw;
                 max-width: 1000px;
@@ -65,7 +96,7 @@
             }
             #loader-progress-text {
                 font-size: clamp(18px, 3.5vw, 28px);
-                font-weight: 600;
+                font-weight: 300;
                 color: #333;
                 display: flex;
                 align-items: center;
@@ -79,6 +110,12 @@
                 border-top-color: #c41e3a;
                 border-radius: 50%;
                 animation: spin 1s linear infinite;
+            }
+            .logo-container {
+                width: clamp(20px, 10vw, 30px);
+                height: auto;
+                margin-bottom: clamp(20px, 4vw, 30px);
+                align-items: center;
             }
             @keyframes spin {
                 to { transform: rotate(360deg); }
@@ -108,8 +145,10 @@
     </head>
     <body>
     <div id="loader">
-        <div id="loader-title">HajjFlow</div>
-        <div id="loader-text">ваш помощник в подготовке к Умре. Во время поездки всегда следуйте указаниям руководителя вашей группы. Если у вас возник вопрос или нестандартная ситуация, обратитесь к руководителю, не принимайте самостоятельных решений на основании приложения.</div>
+        <div id="logo-container">
+            <img src="Logo.png" alt="Kavkaz Travel Logo" class="logo">
+        </div>   
+        <div id="loader-text">HajjFlow это ваш помощник в подготовке к Умре. Во время поездки всегда следуйте указаниям руководителя вашей группы. Если у вас возник вопрос или нестандартная ситуация, обратитесь к руководителю, не принимайте самостоятельных решений на основании приложения.</div>
         <div id="loader-progress-container">
             <div id="loader-progress-text">
                 <span class="spinner"></span>
@@ -125,6 +164,28 @@
     
     <script src="Build/{{{ LOADER_FILENAME }}}"></script>
     <script>
+        // === WebGL Input Handling Configuration ===
+        // This ensures TMP_InputField works correctly without displaying
+        // custom keyboard overlays or input interfaces.
+
+        // Prevent zoom: Ctrl+Scroll wheel
+        document.addEventListener('wheel', function(event) {
+            if (event.ctrlKey) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        // Prevent pinch zoom (two-finger gesture)
+        document.addEventListener('touchmove', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        // Allow Unity to handle all input field interactions natively
+        // This prevents browser from hijacking input focus with custom keyboards
+        let unityInstance = null;
+
         const canvas = document.querySelector("#unity-canvas");
         const loader = document.querySelector("#loader");
         const progressFill = document.querySelector("#loader-progress-fill");
@@ -144,8 +205,15 @@
             const percent = Math.round(progressValue * 100);
             progressFill.style.width = percent + "%";
             progressPercent.textContent = percent + "%";
-        }).then(() => {
+        }).then((instance) => {
+            unityInstance = instance;
             loader.style.display = "none";
+            
+            // Configure WebGL canvas for proper input handling
+            // This tells the browser to let Unity handle all input events
+            if (canvas.style) {
+                canvas.style.touchAction = "manipulation";
+            }
         }).catch((message) => {
             const progressText = document.querySelector("#loader-progress-text span:last-child");
             progressText.textContent = "Ошибка загрузки: " + message;

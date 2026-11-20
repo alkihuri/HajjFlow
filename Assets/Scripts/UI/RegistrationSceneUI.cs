@@ -144,6 +144,7 @@ public class RegistrationSceneUI : MonoBehaviour
             _groupInput.gameObject.SetActive(false);
         }
         _groupDropdown.options.Clear();
+        _groupDropdown.options.Add(new TMP_Dropdown.OptionData("Выбери своего руководителя...")); // Clear existing options
         foreach (var headsOfGroup in sheetConfigHeadsOfGroup)
         {
             _groupDropdown.options.Add(new TMP_Dropdown.OptionData(headsOfGroup));
