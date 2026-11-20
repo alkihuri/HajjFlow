@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using HajjFlow.Core;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class RegistrationSceneUI : MonoBehaviour
     [SerializeField] TMP_InputField _usernameInput;
     [SerializeField] TMP_InputField _groupInput;
     [SerializeField] TextMeshProUGUI _loadingText;
-    
+    [SerializeField] TMP_Dropdown _groupDropdown;
     
     private void Awake()
     {
@@ -33,6 +34,20 @@ public class RegistrationSceneUI : MonoBehaviour
         {
             _skipButton.onClick.AddListener(SkipRegistration);
         }
+
+        if (_groupDropdown != null)
+        {
+            // set to _groupInput text when dropdown value changes
+            _groupDropdown.onValueChanged.AddListener((index) =>
+            {
+                if (_groupDropdown.options.Count > index)
+                {
+                    _groupInput.text = _groupDropdown.options[index].text;
+                }
+
+            });
+        }
+        
         
     }
 
@@ -44,9 +59,15 @@ public class RegistrationSceneUI : MonoBehaviour
 
     private async void Register()
     {
-        string username = _usernameInput.text;
+        string username = _usernameInput.text; 
         string group = _groupInput.text;
 
+        if (username == "")
+        {
+            username = _groupDropdown.options[_groupDropdown.value].text;
+        }
+        
+        
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(group))
         {
             Debug.LogWarning("Username or group is empty. Please fill in both fields.");
@@ -106,5 +127,27 @@ public class RegistrationSceneUI : MonoBehaviour
     {
         _registrationSceneUI.SetActive(false);
         StopCoroutine(LoadingAnimation());
+    }
+
+    public void UpdateHeadsOfGroup(List<string> sheetConfigHeadsOfGroup)
+    { 
+        // if there is no head of froup hide the dropdown and show the input field
+        if (sheetConfigHeadsOfGroup == null || sheetConfigHeadsOfGroup.Count == 0)
+        {
+            _groupDropdown.gameObject.SetActive(false);
+            _groupInput.gameObject.SetActive(true);
+            return;
+        }  
+        else
+        {
+            _groupDropdown.gameObject.SetActive(true);
+            _groupInput.gameObject.SetActive(false);
+        }
+        _groupDropdown.options.Clear();
+        foreach (var headsOfGroup in sheetConfigHeadsOfGroup)
+        {
+            _groupDropdown.options.Add(new TMP_Dropdown.OptionData(headsOfGroup));
+        }
+         
     }
 }

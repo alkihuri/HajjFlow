@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 namespace HajjFlow.Services
 {
     /// <summary>
@@ -28,5 +30,7 @@ namespace HajjFlow.Services
         {
                  
         }
+
+        public List<string> HeadsOfGroup = new List<string>();
     }
 }
