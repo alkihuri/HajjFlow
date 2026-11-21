@@ -83,17 +83,20 @@ namespace HajjFlow.Services
         private void Start()
         {
             var uiservice = GameManager.Instance?.GetService<UIService>();
-            OnLoadComplete +=  uiservice.HideLoadingScreen;
-            OnLoadComplete += uiservice.ShowRegistrasionScreen;
-            
+            if (uiservice != null)
+            {
+                OnLoadComplete += uiservice.HideLoadingScreen;
+                OnLoadComplete += uiservice.ShowRegistrasionScreen;
+            }
+            else
+            {
+                Debug.LogWarning("[ContentLoaderService] UIService not found on start");
+            }
             
             if (_enableAutoLoad)
             {
                 StartCoroutine(LoadAllContent());
             }
-            
-            
-  
         }
         
         private void OnValidate()
@@ -113,7 +116,14 @@ namespace HajjFlow.Services
             
             
             var registrationService = GameManager.Instance?.GetService<RegistrationService>();
-            registrationService.UpdateGoogleSheetConfig(_sheetConfig);
+            if (registrationService != null)
+            {
+                registrationService.UpdateGoogleSheetConfig(_sheetConfig);
+            }
+            else
+            {
+                Debug.LogWarning("[ContentLoaderService] RegistrationService not found");
+            }
             
             // При повторных запусках не обращаемся к сети: полный валидный кэш
             // должен быть использован первым.
@@ -157,11 +167,15 @@ namespace HajjFlow.Services
                 Debug.Log("[ContentLoaderService] Config sheet has not changed, using cached data if available.");
                 if (LoadFromCache() )
                 {
-                
+                    Debug.Log("[ContentLoaderService] Cache validation passed, content loaded successfully");
                     OnLoadProgress?.Invoke(1f);
                     OnLoadComplete?.Invoke(true);
                     Debug.Log("[ContentLoaderService] Content loaded from persistent cache.");
                     yield break;
+                }
+                else
+                {
+                    Debug.LogWarning("[ContentLoaderService] Cache validation failed, forcing reload from Google Sheets");
                 }
             }
              
@@ -175,6 +189,7 @@ namespace HajjFlow.Services
                 
                 if (hasInternet)
                 {
+                    Debug.Log($"[ContentLoaderService] Attempt {_currentRetry + 1}/{_maxRetries}: Loading from Google Sheets...");
                     yield return StartCoroutine(LoadAllFromGoogle());
                     loadSuccess = IsAllDataLoaded();
                     if (!loadSuccess)
@@ -183,6 +198,10 @@ namespace HajjFlow.Services
                         _currentRetry++;
                         if (_currentRetry < _maxRetries)
                             yield return new WaitForSeconds(_retryDelaySeconds);
+                    }
+                    else
+                    {
+                        Debug.Log("[ContentLoaderService] Successfully loaded all data from Google Sheets");
                     }
                 }
                 else
@@ -201,9 +220,12 @@ namespace HajjFlow.Services
             // возможный ранее сохранённый кэш, затем встроенный Resources fallback.
             if (!loadSuccess)
             {
-                Debug.Log("[ContentLoaderService] Loading from cache...");
+                Debug.LogWarning("[ContentLoaderService] Loading from Google Sheets failed, trying cache fallback...");
                 if (!LoadFromCache())
+                {
+                    Debug.LogWarning("[ContentLoaderService] Cache fallback failed, loading from Resources...");
                     LoadFromResources();
+                }
             }
 
             OnLoadProgress?.Invoke(1f);
@@ -342,7 +364,15 @@ namespace HajjFlow.Services
 
             // Кэшируем только полный, успешно полученный набор данных.
             if (IsAllDataLoaded())
+            {
                 SaveToCache();
+                // ИСПРАВЛЕНИЕ: Обновляем сервисы после успешной загрузки и кэширования
+                UpdateServicesAfterLoadingCache();
+            }
+            else
+            {
+                Debug.LogError("[ContentLoaderService] Failed to load all data from Google Sheets");
+            }
         }
 
         private bool _localizationLoaded;
@@ -804,6 +834,12 @@ namespace HajjFlow.Services
                     !string.IsNullOrWhiteSpace(questionsCsv) &&
                     !string.IsNullOrWhiteSpace(theoryCsv))
                 {
+                    // ИСПРАВЛЕНИЕ: Очищаем перед парсингом, чтобы не было дублей
+                    _localizationTable.Clear();
+                    _levels.Clear();
+                    _questions.Clear();
+                    _theoryCards.Clear();
+
                     ParseLocalizationCsv(localizationCsv);
                     ParseLevelsCsv(levelsCsv);
                     ParseQuestionsCsv(questionsCsv);
@@ -812,9 +848,12 @@ namespace HajjFlow.Services
                     _levelsCsv = levelsCsv;
                     _questionsCsv = questionsCsv;
                     _theoryCsv = theoryCsv;
+                    
                     if (IsCachedContentValid())
                     {
                         Debug.Log("[ContentLoaderService] Data loaded from file cache");
+                        // ИСПРАВЛЕНИЕ: Обновляем LocalizationService и UIService после загрузки из кэша
+                        UpdateServicesAfterLoadingCache();
                         return true;
                     }
                 }
@@ -835,6 +874,12 @@ namespace HajjFlow.Services
                 !string.IsNullOrWhiteSpace(questionsPlayerPrefs) &&
                 !string.IsNullOrWhiteSpace(theoryPlayerPrefs))
             {
+                // ИСПРАВЛЕНИЕ: Очищаем перед парсингом
+                _localizationTable.Clear();
+                _levels.Clear();
+                _questions.Clear();
+                _theoryCards.Clear();
+
                 ParseLocalizationCsv(localizationPlayerPrefs);
                 ParseLevelsCsv(levelsPlayerPrefs);
                 ParseQuestionsCsv(questionsPlayerPrefs);
@@ -843,9 +888,12 @@ namespace HajjFlow.Services
                 _levelsCsv = levelsPlayerPrefs;
                 _questionsCsv = questionsPlayerPrefs;
                 _theoryCsv = theoryPlayerPrefs;
+                
                 if (IsCachedContentValid())
                 {
                     Debug.Log("[ContentLoaderService] Data loaded from PlayerPrefs cache");
+                    // ИСПРАВЛЕНИЕ: Обновляем сервисы и для PlayerPrefs кэша
+                    UpdateServicesAfterLoadingCache();
                     return true;
                 }
             }
@@ -853,10 +901,39 @@ namespace HajjFlow.Services
             return false;
         }
 
+        /// <summary>
+        /// Обновляет все зависимые сервисы после загрузки данных (из кэша или сети).
+        /// </summary>
+        private void UpdateServicesAfterLoadingCache()
+        {
+            // Обновляем LocalizationService
+            var localizationService = GameManager.Instance?.GetService<LocalizationService>();
+            if (localizationService != null)
+            {
+                localizationService.UpdateLocalizationTable(_localizationCsv);
+                Debug.Log("[ContentLoaderService] Localization table updated in LocalizationService.");
+            }
+            else
+            {
+                Debug.LogWarning("[ContentLoaderService] LocalizationService not found to update localization table.");
+            }
+        }
+
         private bool IsCachedContentValid()
         {
-            return _localizationTable.Count > 0 && _levels.Count > 0 &&
+            bool isValid = _localizationTable.Count > 0 && _levels.Count > 0 &&
                    _questions.Count > 0 && _theoryCards.Count > 0;
+            
+            if (!isValid)
+            {
+                Debug.LogWarning($"[ContentLoaderService] Cache validation failed:");
+                Debug.LogWarning($"  - Localization keys: {_localizationTable.Count} (expected > 0)");
+                Debug.LogWarning($"  - Levels: {_levels.Count} (expected > 0)");
+                Debug.LogWarning($"  - Questions: {_questions.Count} (expected > 0)");
+                Debug.LogWarning($"  - Theory cards: {_theoryCards.Count} (expected > 0)");
+            }
+            
+            return isValid;
         }
 
         /// <summary>

@@ -91,11 +91,11 @@ namespace HajjFlow.Services
             if (_table.TryGetValue(key, out var translations))
             {
                 if (translations.TryGetValue(_currentLanguage, out var value))
-                    return value;
-                else
-                {
-                    Debug.LogWarning($"[<color=red>LocalizationService</color>] Translation not found: {key}");
-                }
+                    return value; 
+            }
+            else
+            {
+                Debug.LogWarning($"[<color=red>LocalizationService</color>] Translation not found: {key}");
             }
 
             return key; // fallback
