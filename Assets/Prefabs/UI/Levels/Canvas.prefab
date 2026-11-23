@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4702008987756753947, guid: 9d3ea3796711f49d58743a1edec4ee39, type: 3}
       propertyPath: m_text
-      value: 'Version: 0.99 | Build Time: 2026-11-20 22:10:21'
+      value: 'Version: 0.99 | Build Time: 2026-11-23 19:28:31'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

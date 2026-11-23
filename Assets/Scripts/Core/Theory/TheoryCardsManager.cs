@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +15,8 @@ namespace Core.Theory
         [field: SerializeField]
         public TheoryCardContainer CardContainer { get; set; }
 
+        
+        [SerializeField] Transform _cardsParent;
         [SerializeField] private List<TheoryCardData> _data = new();
         [SerializeField] private TextMeshProUGUI _counterText;
         
@@ -126,7 +128,7 @@ namespace Core.Theory
             
             for (int i = 0; i < totalCount; i++)
             {
-                var cardObj = Instantiate(_cardPrefab, transform);
+                var cardObj = Instantiate(_cardPrefab, _cardsParent);
                 cardObj.name = $"Card_{i:D2}_{dataList[i].Title}";
                 
                 var card = cardObj.GetComponent<TheoryCardBase>();
