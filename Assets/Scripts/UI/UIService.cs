@@ -350,7 +350,7 @@ namespace HajjFlow.UI
                     {
                         if (_levelThumbnails.Select(t => t.LevelId).Contains(info.levelId))
                         {
-                            levelData.Thumbnail = _levelThumbnails.Find(t => t.LevelId == info.levelId).Thumbnail;
+                            levelData.Thumbnail = _levelThumbnails.Find(t => t.LevelId == info.imageBundleKey).Thumbnail;
                         }
                         runtimeLevels.Add(levelData);
                     }
