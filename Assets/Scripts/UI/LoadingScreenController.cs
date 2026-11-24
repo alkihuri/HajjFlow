@@ -16,7 +16,7 @@ public class LoadingScreenController : MonoBehaviour
          "Настройка интерфейса",
          "Синхронизация с сервером",
          "Обработка пользовательских данных",
-         "Загрузка текстур и моделей",
+         "Загрузка картинок и анимаций",
          "Финальная проверка"
      };
      [SerializeField] TextMeshProUGUI loadingText;
