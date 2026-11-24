@@ -82,8 +82,24 @@ namespace Core.Theory
                 {
                     _image.gameObject.SetActive(false); 
                 }
+            } 
+                // load from resources by tiitle if not set
+            if (!string.IsNullOrEmpty(Data.Title))
+            {    
+                var subSprite = Resources.LoadAll<Sprite>("questions");
+                foreach (var s in subSprite)
+                {
+                    if (s.name == Data.Description)
+                    {
+                        _image.sprite = s;
+                        _image.preserveAspect = true;
+                        _image.gameObject.SetActive(true);
+                    }
+                }
             }
+             
             
+
             ResetCardState();
         }
 
